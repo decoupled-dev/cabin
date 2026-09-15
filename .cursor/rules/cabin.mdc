@@ -7,7 +7,8 @@ alwaysApply: true
 
 You are working in **Cabin**: AAOS design language + dual UI (Compose + Views),
 compliance-first, dual Gradle/Soong distribution. Alpha modules: tokens,
-compliance, Theme Kit in `cabin-views`. Mark unimplemented APIs **planned**.
+compliance, Theme Kit + System/Status bars in `cabin-views`. Mark unimplemented
+APIs **planned**.
 
 ## Hard constraints
 

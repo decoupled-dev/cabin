@@ -61,7 +61,6 @@ safety-adjacent ([safety-critical](../../compliance/safety-critical.md)).
 ## Planned Views API (MVP primary)
 
 ```kotlin
-// Planned
 class CabinStatusBarView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -69,29 +68,10 @@ class CabinStatusBarView @JvmOverloads constructor(
     fun setItems(items: List<CabinStatusItem>) { /* … */ }
     fun setCompliance(host: CabinComplianceHost) { /* … */ }
 }
-
-sealed interface CabinStatusItem {
-    val id: String
-    val contentDescription: String
-}
-
-data class CabinStatusGlyph(
-    override val id: String,
-    override val contentDescription: String,
-    val icon: Drawable?,
-    val text: CharSequence? = null,
-    val signal: Signal<*>? = null,
-    val deepLink: StatusDeepLink? = null,
-) : CabinStatusItem
-
-data class StatusDeepLink(
-    val interaction: CabinInteraction = CabinInteraction.StatusDeepLink,
-    val opensSettings: Boolean,
-    val onActivate: () -> Unit,
-)
 ```
 
-Soong: part of `CabinViews` (**planned**).
+Alpha implementation: `dev.decoupled.cabin.views.CabinStatusBarView` in
+`cabin-views` / `CabinViews`. `Signal` lives in `cabin-compliance`.
 
 ## Planned Compose API (parity later; not MVP-required)
 
@@ -106,11 +86,11 @@ fun CabinStatusBar(
 
 ## Acceptance criteria (MVP)
 
-- [ ] Exhaustive unavailable/stale/fault rendering for signal-backed items
-- [ ] Matrix behavior matches restriction-states for Status Bar
-- [ ] Fault/warning contrast day/night
-- [ ] Content descriptions present
-- [ ] No dependency on `cabin-compose`
+- [x] Exhaustive unavailable/stale/fault rendering for signal-backed items
+- [x] Matrix behavior matches restriction-states for Status Bar
+- [x] Fault/warning contrast day/night
+- [x] Content descriptions present
+- [x] No dependency on `cabin-compose`
 
 ## Related
 

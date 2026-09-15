@@ -38,7 +38,7 @@ MVP; Views-first platform chrome remains the SystemUI path
 > [`website/`](https://github.com/decoupled-dev/cabin/tree/main/website) may
 > ship before the full Phase 6/7 catalog. Interactive demos remain later.
 > Night-scheme expansion and Theme Kit precede Views System/Status bars on the
-> MVP track.
+> MVP track. Bars are now Alpha in `cabin-views`; packaging notes remain.
 
 ## Phase 1 — Documentation + pre-implementation (current)
 
@@ -55,15 +55,15 @@ MVP; Views-first platform chrome remains the SystemUI path
 module layout, gating matrix, or bar contracts — after clearing
 [pre-implementation.md](pre-implementation.md).
 
-## Phase 2 — MVP v0.1 (next)
+## Phase 2 — MVP v0.1 (in progress)
 
 See [mvp.md](mvp.md) success criteria. Summary:
 
-- Tokens from `tokens/cabin.tokens.json`
-- Restriction Engine per [restriction-states.md](compliance/restriction-states.md)
-- Views System Bar + Status Bar per specs
-- Thin Soong + Maven packaging
-
+- [x] Tokens from `tokens/cabin.tokens.json`
+- [x] Restriction Engine per [restriction-states.md](compliance/restriction-states.md)
+- [x] Theme Kit (Views) per [theme-kit](adoption/theme-kit.md)
+- [x] Views System Bar + Status Bar per specs
+- [ ] Thin Soong + Maven packaging notes / publish
 ## Phase 3 — Media + HVAC
 
 Unblocked only after MVP done. Dual-stack as required; compliance hooks

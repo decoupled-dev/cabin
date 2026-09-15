@@ -13,7 +13,7 @@ import dev.decoupled.cabin.views.R as ViewsR
  * layer [ThemeOverlayCabin] / [ThemeOverlayCabinOemBrandDemo] on a host theme.
  * Widgets resolve colors via [CabinThemeResolver] — never hardcoded hex.
  *
- * System/Status bar widgets are **not** in this Alpha drop; Theme Kit only.
+ * System/Status bar widgets use the same Theme Kit attrs for day/night chrome.
  */
 object CabinThemes {
     /** Default DayNight theme resolving cabin-tokens roles. */

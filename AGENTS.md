@@ -7,10 +7,10 @@ Cabin is an open-source **AAOS design language** and dual UI kit
 **dual distribution** (Gradle/Maven for apps, Soong for AOSP build-tree).
 
 **Alpha library modules present:** `cabin-tokens` / `CabinTokens`,
-`cabin-compliance` / `CabinCompliance` (Restriction Engine), and Theme Kit in
-`cabin-views` / `CabinViews` (Views themes + resolver; **no** System/Status bar
-widgets yet). Compose kits and catalog remain **planned**. See
-[docs/mvp.md](docs/mvp.md) · [theme-kit](docs/adoption/theme-kit.md).
+`cabin-compliance` / `CabinCompliance` (Restriction Engine + `Signal`), and
+`cabin-views` / `CabinViews` (Theme Kit + System/Status bar Views chrome).
+Compose kits and catalog remain **planned**. See [docs/mvp.md](docs/mvp.md) ·
+[theme-kit](docs/adoption/theme-kit.md).
 
 **Before expanding library scope, satisfy [docs/pre-implementation.md](docs/pre-implementation.md)
 and respect the frozen [MVP v0.1](docs/mvp.md)** (tokens + Restriction Engine +
