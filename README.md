@@ -7,9 +7,10 @@ Material Design 3–class platform purpose-built for the vehicle cabin —
 not a phone UI stretched onto a bigger screen.
 
 > **Library Alpha (in progress):** `cabin-tokens` + `cabin-compliance` +
-> `cabin-views` (Theme Kit + System/Status bar Views chrome). Packaging /
+> `cabin-views` (Theme Kit + System/Status bar Views chrome). Compose Theme +
+> System/Status bars are **Experimental** (`cabin-compose`). Packaging /
 > Maven publish notes remain. See [MVP v0.1](docs/mvp.md) ·
-> [theme-kit](docs/adoption/theme-kit.md).
+> [theme-kit](docs/adoption/theme-kit.md) · [compose](docs/platforms/compose.md).
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-AAOS-green.svg)](docs/vision.md)
@@ -23,7 +24,7 @@ not a phone UI stretched onto a bigger screen.
 Requires JDK 17+ and an Android SDK (`local.properties` → `sdk.dir=`).
 
 ```bash
-./gradlew :cabin-tokens:test :cabin-compliance:test :cabin-views:test
+./gradlew :cabin-tokens:test :cabin-compliance:test :cabin-views:test :cabin-compose:test
 ```
 
 Regenerate tokens from the stub after editing [`tokens/cabin.tokens.json`](tokens/cabin.tokens.json):
@@ -36,7 +37,8 @@ python3 tools/generate_cabin_tokens.py
 Maven coordinates / Soong names: [api-contracts](docs/api-contracts.md).
 Soong sketches: `cabin-tokens/Android.bp` (`CabinTokens`),
 `cabin-compliance/Android.bp` (`CabinCompliance`),
-`cabin-views/Android.bp` (`CabinViews`).
+`cabin-views/Android.bp` (`CabinViews`),
+`cabin-compose/Android.bp` (`CabinCompose` — not for SystemUI).
 
 ---
 

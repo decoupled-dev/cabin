@@ -9,13 +9,15 @@ Cabin is an open-source **AAOS design language** and dual UI kit
 **Alpha library modules present:** `cabin-tokens` / `CabinTokens`,
 `cabin-compliance` / `CabinCompliance` (Restriction Engine + `Signal`), and
 `cabin-views` / `CabinViews` (Theme Kit + System/Status bar Views chrome).
-Compose kits and catalog remain **planned**. See [docs/mvp.md](docs/mvp.md) ·
-[theme-kit](docs/adoption/theme-kit.md).
+**Experimental:** `cabin-compose` / `CabinCompose` (Theme + System/Status bar
+parity). Catalog remains **planned**. See [docs/mvp.md](docs/mvp.md) ·
+[theme-kit](docs/adoption/theme-kit.md) · [compose](docs/platforms/compose.md).
 
 **Before expanding library scope, satisfy [docs/pre-implementation.md](docs/pre-implementation.md)
 and respect the frozen [MVP v0.1](docs/mvp.md)** (tokens + Restriction Engine +
 Theme Kit + System/Status bars, Views-first). Do not start Compose media/HVAC/EV
-screens until MVP success criteria pass.
+screens until MVP success criteria pass. Compose bar APIs are Experimental and
+do not replace Views for SystemUI.
 
 ## Product pillars
 

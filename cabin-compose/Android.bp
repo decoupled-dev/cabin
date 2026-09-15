@@ -1,0 +1,17 @@
+// Planned Soong module — sketch for Compose-capable platform apps only.
+// Same sources as the Gradle module. See docs/adoption/build-tree.md.
+// Do NOT add CabinCompose to SystemUI static_libs (Views-first; ADR 0002).
+
+android_library {
+    name: "CabinCompose",
+    srcs: ["src/main/java/**/*.kt"],
+    resource_dirs: ["src/main/res"],
+    manifest: "src/main/AndroidManifest.xml",
+    static_libs: [
+        "CabinTokens",
+        "CabinCompliance",
+        // Compose runtime / UI libs come from the host tree when linked.
+    ],
+    sdk_version: "system_current",
+    min_sdk_version: "29",
+}

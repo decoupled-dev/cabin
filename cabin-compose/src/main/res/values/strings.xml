@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cabin_status_unavailable">—</string>
+    <string name="cabin_status_unavailable_a11y">%1$s unavailable</string>
+    <string name="cabin_status_stale_value">%1$s ·</string>
+    <string name="cabin_status_stale_a11y">%1$s stale</string>
+    <string name="cabin_status_fault">!%1$s</string>
+    <string name="cabin_status_fault_a11y">%1$s fault %2$s</string>
+</resources>

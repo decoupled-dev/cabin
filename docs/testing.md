@@ -1,7 +1,8 @@
 # Testing
 
 Testing expectations for Cabin. **v0.1 MVP** focuses on Restriction Engine
-unit tests and Views chrome verification. Compose golden parity is **later**.
+unit tests and Views chrome verification. Compose bar parity is
+**Experimental** (post-MVP) with gate / Signal / tone unit tests.
 
 ## v0.1 required
 
@@ -51,7 +52,8 @@ unit tests and Views chrome verification. Compose golden parity is **later**.
 
 | Area | Expectation |
 | --- | --- |
-| Screenshot / golden | Paparazzi (or equiv.) for Views; Compose parity when Compose bars exist |
+| Compose System/Status bars | **Experimental** — gate / Signal / tone parity tests in `cabin-compose` (shipped); screenshot/golden later |
+| Screenshot / golden | Paparazzi (or equiv.) for Views; Compose parity screenshots |
 | Dual-stack parity | Shared fixtures for System/Status bar state |
 | Catalog | Visual QA harness off production images |
 | Platform image CI | Optional userdebug jobs consuming Soong modules |
@@ -60,7 +62,7 @@ unit tests and Views chrome verification. Compose golden parity is **later**.
 
 | Lane | v0.1 |
 | --- | --- |
-| **Gradle CI** (GitHub/etc.) | Unit tests for compliance + tokens + Theme Kit (`cabin-views`); Views bar tests as added; lint/format as added |
+| **Gradle CI** (GitHub/etc.) | Unit tests for compliance + tokens + Theme Kit / Views bars (`cabin-views`) + Experimental Compose bars (`cabin-compose`); lint/format as added |
 | **Platform / Soong** | Manual or partner tree verification that `Cabin*` modules build and SystemUI-shaped target links thinly; full AAOS image CI is partner-owned |
 
 Cabin does not require hosting a full AAOS tree in this repo for MVP.

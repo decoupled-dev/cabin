@@ -67,7 +67,7 @@ How the product is built, verified, taught, and adopted into OEM images.
 
 | Feature | Intent | Primary docs / modules |
 | --- | --- | --- |
-| **Compose Kit** | `cabin-compose` / `CabinCompose` theme + components | [compose](../platforms/compose.md) |
+| **Compose Kit** | `cabin-compose` / `CabinCompose` theme + System/Status bars (**Experimental**) | [compose](../platforms/compose.md) |
 | **Views Kit** | `cabin-views` / `CabinViews` theme + components (SystemUI primary) | [views](../platforms/views.md) |
 | **Build-tree / Soong distribution** | Same sources as Maven AARs; Soong modules for SystemUI, CarLauncher, platform media; RROs for brand; thin Views-first deps | [build-tree](../adoption/build-tree.md), [soong](../platforms/soong.md), [packaging](../adoption/packaging.md) |
 | **Agent skills + AGENTS.md** | Modular Agent Skills and hard rules so coding agents implement thin, compliant, dual-stack Cabin correctly | [AGENTS.md](../../AGENTS.md), [docs/agents](../agents/README.md), [skills/](../../skills/) |

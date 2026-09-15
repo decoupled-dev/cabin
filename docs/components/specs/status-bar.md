@@ -78,16 +78,19 @@ class CabinStatusBarView @JvmOverloads constructor(
 Alpha implementation: `dev.decoupled.cabin.views.CabinStatusBarView` in
 `cabin-views` / `CabinViews`. `Signal` lives in `cabin-compliance`.
 
-## Planned Compose API (parity later; not MVP-required)
+## Compose API (Experimental parity)
 
 ```kotlin
-// Planned — experimental until post-MVP
 @Composable
 fun CabinStatusBar(
     items: List<CabinStatusItem>,
     modifier: Modifier = Modifier,
 )
 ```
+
+Experimental implementation: `dev.decoupled.cabin.compose.CabinStatusBar` in
+`cabin-compose` / `CabinCompose`. Same Signal / emphasis / deep-link gating as
+Views; wrap with `CabinTheme`. **Not** for SystemUI Soong adoption.
 
 ## Acceptance criteria (MVP)
 
@@ -101,4 +104,5 @@ fun CabinStatusBar(
 
 - [System Bar spec](system-bar.md)
 - [Restriction states](../../compliance/restriction-states.md)
+- [Compose](../../platforms/compose.md) (Experimental parity)
 - [EV](../ev.md) (SOC item semantics; full EV screens post-MVP)

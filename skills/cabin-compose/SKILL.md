@@ -20,21 +20,37 @@ metadata:
 
 **Not** a prerequisite for SystemUI — use Views + Soong there.
 
-## Planned artifact
+## Artifact
 
 `dev.decoupled.cabin:cabin-compose` → depends on tokens + compliance.
 Must **not** depend on `cabin-views`.
 
+**Status:** Experimental Theme + System/Status bars. Views bars remain Alpha
+and the SystemUI path.
+
 ## Guidelines
 
-- `CabinTheme` + composition locals for tokens and compliance (**planned**)
-- Colors/type/space from tokens only
+- `CabinTheme` + composition locals for colors and compliance
+- Colors/type/space from tokens only (`resolveCabinColors`)
+- OEM brand via `CabinBrandOverrides` (primary only) — never remap safety
 - UDF; exhaustive vehicle `Signal` handling
 - Public composables accept `Modifier`
-- Gate interactions via compliance — skill `cabin-compliance`
+- Gate interactions via `LocalCabinComplianceState` — skill `cabin-compliance`
+- Missing compliance local is fail-closed (`Block`)
 - Semantics / content descriptions for icon-only controls
 
 → [docs/platforms/compose.md](../../docs/platforms/compose.md)
+
+## Experimental bar APIs
+
+```kotlin
+CabinTheme(vehicleState = …) {
+    CabinSystemBar(slots = …)
+    CabinStatusBar(items = …)
+}
+```
+
+Same Restriction Engine matrix, Signal tones, and day/night roles as Views.
 
 ## Parity with Views
 

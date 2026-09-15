@@ -64,6 +64,11 @@ See [mvp.md](mvp.md) success criteria. Summary:
 - [x] Theme Kit (Views) per [theme-kit](adoption/theme-kit.md)
 - [x] Views System Bar + Status Bar per specs
 - [ ] Thin Soong + Maven packaging notes / publish
+
+### Post-MVP (Experimental, not MVP-gated)
+
+- [x] Compose Theme + System/Status bar parity (`cabin-compose`) — Experimental;
+  Views remain the SystemUI path
 ## Phase 3 — Media + HVAC
 
 Unblocked only after MVP done. Dual-stack as required; compliance hooks
