@@ -99,10 +99,11 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | [llms.txt](../llms.txt) | LLM-oriented doc map |
 | [skills/](../skills/) | Modular Agent Skills (`SKILL.md` per concern) |
 
-### Website (future)
+### Website
 
 | Document | Description |
 | --- | --- |
+| [website/](https://github.com/decoupled-dev/cabin/tree/main/website) | Public docs shell (Docusaurus) — run/build/deploy |
 | [Site plan](website/site-plan.md) | Public docs IA modeled on m3.material.io |
 
 ## How to read these docs

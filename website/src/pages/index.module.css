@@ -1,0 +1,116 @@
+.hero {
+  padding: 4.5rem 0 3.5rem;
+  background:
+    radial-gradient(1200px 400px at 10% -10%, rgba(36, 99, 135, 0.12), transparent 60%),
+    radial-gradient(900px 360px at 90% 0%, rgba(60, 110, 90, 0.1), transparent 55%),
+    var(--cabin-hero-bg);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.heroInner {
+  max-width: 44rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--ifm-color-primary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.subtitle {
+  margin: 1rem 0 0;
+  font-size: 1.25rem;
+  color: var(--ifm-color-emphasis-800);
+  line-height: 1.45;
+}
+
+.lede {
+  margin: 1.25rem 0 0;
+  max-width: 38rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.section {
+  padding: 3.25rem 0;
+}
+
+.sectionMuted {
+  background: var(--cabin-muted-bg);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.sectionTitle {
+  margin: 0;
+  font-size: 1.75rem;
+  letter-spacing: -0.01em;
+}
+
+.sectionLede {
+  margin: 0.75rem 0 0;
+  max-width: 40rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.pillarGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.pillar {
+  padding: 0;
+}
+
+.pillarTitle {
+  margin: 0 0 0.5rem;
+  font-size: 1.05rem;
+}
+
+.pillar p {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.55;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.linkList {
+  margin: 1.25rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.linkList li {
+  margin: 0.35rem 0;
+}
+
+@media screen and (max-width: 996px) {
+  .hero {
+    padding: 3rem 0 2.5rem;
+  }
+}

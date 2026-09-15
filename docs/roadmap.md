@@ -34,6 +34,11 @@ MVP; Views-first platform chrome remains the SystemUI path
 | **5 — Catalog** | Interactive catalog | Layer 4 | Browseable reference |
 | **6 — Website** | Public docs site | Layer 4 | Public showcase |
 
+> **Early start:** a thin Docusaurus shell under
+> [`website/`](https://github.com/decoupled-dev/cabin/tree/main/website) may
+> ship before the full Phase 6/7 catalog. Interactive demos remain later.
+> Night-scheme / Theme Kit / Views bars stay on separate MVP tracks.
+
 ## Phase 1 — Documentation + pre-implementation (current)
 
 - [x] Root README, LICENSE, `.gitignore`
