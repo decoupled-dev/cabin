@@ -26,12 +26,7 @@ const steps = [
 
 export default function DevelopPage() {
   return (
-    <div className="relative isolate overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-background" />
-        <div className="absolute inset-x-0 top-0 h-[40vmin] bg-[radial-gradient(ellipse_at_top,var(--hero-glow-c),transparent_70%)] opacity-80" />
-      </div>
-
+    <div className="bg-background">
       <div className="mx-auto max-w-6xl px-5 pb-24 pt-16 sm:px-8 sm:pt-24">
         <Reveal>
           <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
@@ -57,7 +52,7 @@ export default function DevelopPage() {
 
         <ol className="mt-20 grid gap-8 md:grid-cols-3">
           {steps.map((step, i) => (
-            <Reveal key={step.title} delayMs={i * 80}>
+            <Reveal key={step.title} delayMs={Math.min(i * 40, 80)}>
               <li className="border-t border-[var(--outline-subtle)] pt-6">
                 <p className="text-status tabular-nums text-primary">
                   Step {i + 1}
@@ -74,7 +69,7 @@ export default function DevelopPage() {
         </ol>
 
         <Reveal className="mt-20">
-          <div className="grid gap-6 rounded-2xl border border-[var(--outline-subtle)] bg-surface p-8 lg:grid-cols-2">
+          <div className="grid gap-6 border-t border-[var(--outline-subtle)] pt-8 lg:grid-cols-2">
             <div>
               <h2 className="font-display text-headline text-on-surface">
                 Dual distribution

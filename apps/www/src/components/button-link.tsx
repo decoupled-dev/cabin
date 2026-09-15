@@ -4,9 +4,9 @@ type Variant = "primary" | "secondary" | "ghost";
 
 const styles: Record<Variant, string> = {
   primary:
-    "bg-primary text-on-primary hover:opacity-90 shadow-elev1 px-6 py-3.5 text-[0.95rem]",
+    "bg-primary text-on-primary hover:opacity-90 px-6 py-3.5 text-label",
   secondary:
-    "border border-outline/40 bg-[var(--surface-high)] text-on-surface hover:border-outline px-6 py-3.5",
+    "border border-outline/40 bg-transparent text-on-surface hover:border-outline hover:bg-[var(--surface-high)] px-6 py-3.5 text-label",
   ghost:
     "text-on-surface-variant hover:text-on-surface underline-offset-4 hover:underline",
 };
