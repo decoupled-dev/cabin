@@ -19,7 +19,9 @@ metadata:
 2. `cabin-tokens` / `CabinTokens` has **no** Compose, AppCompat, or Material dependency.
 3. OEM brand = overlay (Gradle token overlay or platform **RRO**), not a fork of components.
 4. Safety-adjacent roles (`error`, `warning`, charging fault meaning) must not be remapped for decoration.
-5. Day/night schemes are first-class.
+5. Day/night schemes are first-class — include chrome roles (`outline`,
+   `container`) and locked night contrast for `warning` / `error` / `charging`.
+6. Domain accents stay off body-text roles (`onSurface`, `onContainer`).
 
 ## Layers
 

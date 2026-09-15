@@ -88,9 +88,22 @@ Prefer stable `cabin_` attr names (finalize at implementation).
 
 ## Day / night
 
-Stub includes `cabin.color.scheme.day` and `.night` surface pairs. Codegen
-should emit `values` / `values-night` (or equivalent) so Theme Kit resolves
-with UiMode.
+Stub includes `cabin.color.scheme.day` and `.night` with chrome + feedback
+roles Theme Kit / System·Status bars need:
+
+| Role | Purpose |
+| --- | --- |
+| `surface` / `onSurface` | Base background + body text (neutral only) |
+| `surfaceVariant` | Recessed panels / wells |
+| `outline` | Separators, unselected chrome |
+| `container` / `onContainer` | System/Status bar container fill + content |
+| `warning` / `error` / `charging` | Status feedback; **night values are contrast-locked** |
+
+Codegen emits `values` / `values-night` (same resource names) so UiMode
+resolves schemes. Night `warning` / `error` / `charging` keep
+`extensions.cabin.lock: "safety-adjacent"` — do not soft-wash. Domain accents
+(`charging`, `climate`, `mediaAccent`) must not be used as body-text roles
+(`onSurface`, `onContainer`).
 
 ## Module boundary
 

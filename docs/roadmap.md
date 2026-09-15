@@ -37,7 +37,7 @@ MVP; Views-first platform chrome remains the SystemUI path
 > **Early start:** a thin Docusaurus shell under
 > [`website/`](https://github.com/decoupled-dev/cabin/tree/main/website) may
 > ship before the full Phase 6/7 catalog. Interactive demos remain later.
-> Night-scheme / Theme Kit / Views bars stay on separate MVP tracks.
+> Night-scheme expansion precedes Theme Kit / Views bars on the MVP track.
 
 ## Phase 1 — Documentation + pre-implementation (current)
 

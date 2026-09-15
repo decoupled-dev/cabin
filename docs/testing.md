@@ -18,7 +18,11 @@ unit tests and Views chrome verification. Compose golden parity is **later**.
 - Codegen or resource packaging produces expected keys from
   [`tokens/cabin.tokens.json`](../tokens/cabin.tokens.json)
 - Safety-lock metadata preserved for `warning` / `error`
-- Day/night surface roles present
+- Day/night scheme roles present: `surface`, `onSurface`, `surfaceVariant`,
+  `outline`, `container`, `onContainer`, plus feedback (`warning` / `error` /
+  `charging`)
+- Night contrast locked for `warning` / `error` / `charging` (no soft-wash)
+- Body-text roles (`onSurface`, `onContainer`) stay off domain accents
 
 ### Views System Bar / Status Bar
 

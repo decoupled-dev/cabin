@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- GENERATED from tokens/cabin.tokens.json. Night scheme surfaces. Do not edit. -->
+<!-- GENERATED from tokens/cabin.tokens.json. Night scheme chrome + locked feedback contrast. Do not edit. -->
 <resources>
     <color name="cabin_color_scheme_surface">#121212</color>
     <color name="cabin_color_scheme_onSurface">#F2F2F2</color>
+    <color name="cabin_color_scheme_surfaceVariant">#1E1E1E</color>
+    <color name="cabin_color_scheme_outline">#8A8A8A</color>
+    <color name="cabin_color_scheme_container">#1A1A1A</color>
+    <color name="cabin_color_scheme_onContainer">#F2F2F2</color>
+    <color name="cabin_color_scheme_warning">#FFB300</color>
+    <color name="cabin_color_scheme_error">#FF5252</color>
+    <color name="cabin_color_scheme_charging">#1DE9B6</color>
 </resources>

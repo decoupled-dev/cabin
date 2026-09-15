@@ -139,6 +139,7 @@ def generate() -> None:
 
     scheme_props: list[str] = []
     scheme_when: list[str] = []
+    night_contrast_locks: list[str] = []
     for scheme_name, roles in cabin["color"]["scheme"].items():
         args: list[str] = []
         for role, node in roles.items():
@@ -149,12 +150,21 @@ def generate() -> None:
                 colors_day.append((res, hex8))
             else:
                 colors_night.append((res, hex8))
+            lock = entry.get("extensions", {}).get("cabin.lock")
+            lock_expr = f'"{lock}"' if lock else "null"
+            if scheme_name == "night" and lock:
+                night_contrast_locks.append(role)
             args.append(
-                f'{role} = CabinColor(argb = {argb}, hex = "{hex8}", resourceName = "{res}")'
+                f'{role} = CabinColor(argb = {argb}, hex = "{hex8}", '
+                f'resourceName = "{res}", lock = {lock_expr})'
             )
         prop = f"scheme{kotlin_const(scheme_name)}"
+        # One role per line keeps generated scheme objects readable.
+        joined = ",\n            ".join(args)
         scheme_props.append(
-            f"private val {prop} = CabinColorSchemeColors({', '.join(args)})"
+            f"private val {prop} = CabinColorSchemeColors(\n"
+            f"            {joined},\n"
+            f"        )"
         )
         scheme_when.append(
             f"CabinColorScheme.{kotlin_const(scheme_name)} -> {prop}"
@@ -256,6 +266,7 @@ def generate() -> None:
     strings = dedupe(strings)
 
     lock_set = ", ".join(f'"{n}"' for n in locks)
+    night_lock_set = ", ".join(f'"{n}"' for n in night_contrast_locks)
 
     body = []
     body.append("@file:JvmName(\"CabinTokensGenerated\")")
@@ -277,7 +288,12 @@ def generate() -> None:
     body.append("    /** Semantic color role names locked as safety-adjacent. */")
     body.append(f"    val safetyLockedSemanticColors: Set<String> = setOf({lock_set})")
     body.append("")
-    body.append("    /** Resolve day/night scheme surface roles. */")
+    body.append("    /** Night scheme roles with locked contrast (no soft-wash). */")
+    body.append(
+        f"    val nightContrastLockedSchemeColors: Set<String> = setOf({night_lock_set})"
+    )
+    body.append("")
+    body.append("    /** Resolve day/night scheme chrome + feedback roles. */")
     body.append("    fun colorScheme(scheme: CabinColorScheme): CabinColorSchemeColors = Color.scheme(scheme)")
     body.append("")
     body.append("    object Color {")
@@ -325,7 +341,7 @@ def generate() -> None:
     )
     write(
         RES_NIGHT / "cabin_colors.xml",
-        colors_xml(colors_night, "Night scheme surfaces"),
+        colors_xml(colors_night, "Night scheme chrome + locked feedback contrast"),
     )
     write(RES_VALUES / "cabin_dimens.xml", dimens_xml(dimens))
     write(RES_VALUES / "cabin_integers.xml", integers_xml(integers))
@@ -388,7 +404,7 @@ def strings_xml(entries: list[tuple[str, str]]) -> str:
 
 
 ATTRS_XML = """<?xml version="1.0" encoding="utf-8"?>
-<!-- Theme / RRO attribute hooks for Cabin semantic roles. Alpha; Theme Kit binds these. -->
+<!-- Theme / RRO attribute hooks for Cabin semantic / scheme roles. Alpha; Theme Kit binds these. -->
 <resources>
     <attr name="cabin_colorPrimary" format="color|reference" />
     <attr name="cabin_colorOnPrimary" format="color|reference" />
@@ -398,6 +414,8 @@ ATTRS_XML = """<?xml version="1.0" encoding="utf-8"?>
     <attr name="cabin_colorOnSurface" format="color|reference" />
     <attr name="cabin_colorSurfaceVariant" format="color|reference" />
     <attr name="cabin_colorOutline" format="color|reference" />
+    <attr name="cabin_colorContainer" format="color|reference" />
+    <attr name="cabin_colorOnContainer" format="color|reference" />
     <attr name="cabin_colorSuccess" format="color|reference" />
     <attr name="cabin_colorWarning" format="color|reference" />
     <attr name="cabin_colorError" format="color|reference" />

@@ -21,7 +21,10 @@ implementation.
 ### Cabin-specific rules
 
 - Maintain **day** and **night** schemes ([UX restrictions](../compliance/ux-restrictions.md)).
-- Domain accents (`charging`, `climate`) stay recognizable under OEM overlays.
+  Schemes include `outline` / `container` for System/Status bars and locked
+  night contrast for `warning` / `error` / `charging`.
+- Domain accents (`charging`, `climate`, `mediaAccent`) stay recognizable under
+  OEM overlays and **must not** fill body-text roles (`onSurface`, `onContainer`).
 - Safety-adjacent warning/error meanings must not be remapped to brand pinks
   for decoration ([safety-critical](../compliance/safety-critical.md)).
 - Prefer muted large fields at night; reserve high luminance for signals.

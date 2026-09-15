@@ -39,7 +39,12 @@ drop active **fault** affordances.
 | `cabin.component.statusBar.iconSize` | Icons |
 | `cabin.component.statusBar.itemGap` | Gap |
 | `cabin.type.role.status` | Status typography |
-| `cabin.color.semantic.warning` / `error` / `charging` | Feedback / domain |
+| `cabin.color.scheme.*.warning` / `error` / `charging` | Feedback / domain (night contrast locked) |
+| `cabin.color.scheme.*.container` / `onContainer` / `outline` | Bar chrome |
+
+Stub file: [`tokens/cabin.tokens.json`](../../../tokens/cabin.tokens.json).
+See [token-schema](../../design-language/token-schema.md) for day/night role
+table.
 
 ## Compliance gates
 
