@@ -99,7 +99,7 @@ class CabinRestrictionEngineTest {
     }
 
     @Test
-    fun idling_substitutesComplexApp_blocksKeyboard() {
+    fun idling_substitutesComplexApp_blocksKeyboardAndFilterOrSort() {
         val idling = VehicleUiState.idling()
         assertEquals(
             GateDisposition.Substitute,
@@ -110,8 +110,16 @@ class CabinRestrictionEngineTest {
             engine.disposition(CabinInteraction.OpenKeyboard, idling),
         )
         assertEquals(
+            GateDisposition.Block,
+            engine.disposition(CabinInteraction.FilterOrSort, idling),
+        )
+        assertEquals(
             GateDisposition.Substitute,
             engine.disposition(CabinInteraction.StatusDeepLinkSettings, idling),
+        )
+        assertEquals(
+            GateDisposition.Allow,
+            engine.disposition(CabinInteraction.StatusDeepLinkInformational, idling),
         )
     }
 
@@ -178,22 +186,115 @@ class SystemBarMatrixTest(
             val moving = VehicleUiState.moving()
             val restricted = VehicleUiState.restricted()
             return listOf(
+                // NavigateSimple — A for all modes (incl. Idling)
                 arrayOf(CabinInteraction.NavigateSimple, parked, GateDisposition.Allow),
                 arrayOf(CabinInteraction.NavigateSimple, idling, GateDisposition.Allow),
                 arrayOf(CabinInteraction.NavigateSimple, moving, GateDisposition.Allow),
                 arrayOf(CabinInteraction.NavigateSimple, restricted, GateDisposition.Allow),
+                // MediaTransport — A for all modes (incl. Idling)
+                arrayOf(CabinInteraction.MediaTransport, parked, GateDisposition.Allow),
+                arrayOf(CabinInteraction.MediaTransport, idling, GateDisposition.Allow),
+                arrayOf(CabinInteraction.MediaTransport, moving, GateDisposition.Allow),
+                arrayOf(CabinInteraction.MediaTransport, restricted, GateDisposition.Allow),
+                // HvacPeek — A for all modes (Restricted baseline Allow for limited peek)
+                arrayOf(CabinInteraction.HvacPeek, parked, GateDisposition.Allow),
+                arrayOf(CabinInteraction.HvacPeek, idling, GateDisposition.Allow),
+                arrayOf(CabinInteraction.HvacPeek, moving, GateDisposition.Allow),
+                arrayOf(CabinInteraction.HvacPeek, restricted, GateDisposition.Allow),
+                // OpenComplexApp — A / S / B / B
                 arrayOf(CabinInteraction.OpenComplexApp, parked, GateDisposition.Allow),
                 arrayOf(CabinInteraction.OpenComplexApp, idling, GateDisposition.Substitute),
                 arrayOf(CabinInteraction.OpenComplexApp, moving, GateDisposition.Block),
                 arrayOf(CabinInteraction.OpenComplexApp, restricted, GateDisposition.Block),
+                // OpenKeyboard — A / B / B / B
                 arrayOf(CabinInteraction.OpenKeyboard, parked, GateDisposition.Allow),
                 arrayOf(CabinInteraction.OpenKeyboard, idling, GateDisposition.Block),
                 arrayOf(CabinInteraction.OpenKeyboard, moving, GateDisposition.Block),
                 arrayOf(CabinInteraction.OpenKeyboard, restricted, GateDisposition.Block),
+                // FilterOrSort — A / B / B / B (Idling + Moving + Restricted → Block)
                 arrayOf(CabinInteraction.FilterOrSort, parked, GateDisposition.Allow),
+                arrayOf(CabinInteraction.FilterOrSort, idling, GateDisposition.Block),
                 arrayOf(CabinInteraction.FilterOrSort, moving, GateDisposition.Block),
-                arrayOf(CabinInteraction.MediaTransport, restricted, GateDisposition.Allow),
-                arrayOf(CabinInteraction.HvacPeek, restricted, GateDisposition.Allow),
+                arrayOf(CabinInteraction.FilterOrSort, restricted, GateDisposition.Block),
+            )
+        }
+    }
+}
+
+@RunWith(Parameterized::class)
+class StatusBarMatrixTest(
+    private val interaction: CabinInteraction,
+    private val state: VehicleUiState,
+    private val expected: GateDisposition,
+) {
+    private val engine = CabinRestrictionEngine()
+
+    @Test
+    fun dispositionMatchesMatrix() {
+        assertEquals(expected, engine.disposition(interaction, state))
+    }
+
+    companion object {
+        @JvmStatic
+        @Parameterized.Parameters(name = "{0} @ {1} -> {2}")
+        fun data(): Collection<Array<Any>> {
+            val parked = VehicleUiState.parked()
+            val idling = VehicleUiState.idling()
+            val moving = VehicleUiState.moving()
+            val restricted = VehicleUiState.restricted()
+            return listOf(
+                // Glance — A for all modes (incl. Idling)
+                arrayOf(CabinInteraction.Glance, parked, GateDisposition.Allow),
+                arrayOf(CabinInteraction.Glance, idling, GateDisposition.Allow),
+                arrayOf(CabinInteraction.Glance, moving, GateDisposition.Allow),
+                arrayOf(CabinInteraction.Glance, restricted, GateDisposition.Allow),
+                // StatusDeepLink → informational — A / A / S / S
+                arrayOf(
+                    CabinInteraction.StatusDeepLinkInformational,
+                    parked,
+                    GateDisposition.Allow,
+                ),
+                arrayOf(
+                    CabinInteraction.StatusDeepLinkInformational,
+                    idling,
+                    GateDisposition.Allow,
+                ),
+                arrayOf(
+                    CabinInteraction.StatusDeepLinkInformational,
+                    moving,
+                    GateDisposition.Substitute,
+                ),
+                arrayOf(
+                    CabinInteraction.StatusDeepLinkInformational,
+                    restricted,
+                    GateDisposition.Substitute,
+                ),
+                // StatusDeepLink → settings / setup — A / S / B / B
+                arrayOf(
+                    CabinInteraction.StatusDeepLinkSettings,
+                    parked,
+                    GateDisposition.Allow,
+                ),
+                arrayOf(
+                    CabinInteraction.StatusDeepLinkSettings,
+                    idling,
+                    GateDisposition.Substitute,
+                ),
+                arrayOf(
+                    CabinInteraction.StatusDeepLinkSettings,
+                    moving,
+                    GateDisposition.Block,
+                ),
+                arrayOf(
+                    CabinInteraction.StatusDeepLinkSettings,
+                    restricted,
+                    GateDisposition.Block,
+                ),
+                // OpenKeyboard from status — A / B / B / B
+                arrayOf(CabinInteraction.OpenKeyboard, parked, GateDisposition.Allow),
+                arrayOf(CabinInteraction.OpenKeyboard, idling, GateDisposition.Block),
+                arrayOf(CabinInteraction.OpenKeyboard, moving, GateDisposition.Block),
+                arrayOf(CabinInteraction.OpenKeyboard, restricted, GateDisposition.Block),
             )
         }
     }
