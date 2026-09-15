@@ -92,7 +92,9 @@ for install / start / build / deploy.
 **Marketing site (separate):** User-facing product marketing lives in
 [`apps/www`](../../apps/www/README.md) (Next.js). It does **not** replace
 `website/` — docs remain the developer reference on GitHub Pages; marketing
-deep-links to that docs host.
+deep-links to that docs host. Marketing visual and copy craft is governed by
+[`apps/www/DESIGN.md`](../../apps/www/DESIGN.md) (anti-vibecode brief); see also
+[marketing-craft.md](marketing-craft.md).
 
 Planned capabilities as the site matures:
 
@@ -123,3 +125,4 @@ Planned capabilities as the site matures:
 - [Vision](../vision.md)
 - [Design language](../design-language/README.md)
 - [Roadmap](../roadmap.md)
+- [Marketing craft](marketing-craft.md) · [`apps/www/DESIGN.md`](../../apps/www/DESIGN.md)

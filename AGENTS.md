@@ -57,6 +57,9 @@ Full map: [docs/README.md](docs/README.md) · LLM map: [llms.txt](llms.txt).
 9. **Stay in MVP scope.** Do not add Theme Kit / Views bars / Compose domain
    screens / catalog unless maintainers request that next slice.
 10. **American English**; restrained, production-minded tone.
+11. **When editing `apps/www`**, follow [`apps/www/DESIGN.md`](apps/www/DESIGN.md)
+    (anti-vibecode craft brief). Do not treat the marketing site as generic AI
+    landing chrome or as a substitute for the `website/` docs shell.
 
 ## Soong vs Gradle
 

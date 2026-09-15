@@ -56,6 +56,9 @@ keep docs on `decoupled-dev.github.io/cabin/`.
 
 ## Design notes
 
+**Authoritative craft brief:** [DESIGN.md](./DESIGN.md) — read before changing
+layout, color, motion, or copy (anti-vibecode).
+
 - Night-leaning default with Day/Night toggle (Cabin day/night story)
 - Semantic color roles aligned with Cabin (primary green, charging, climate)
 - Typography: Syne (display) + Source Sans 3 (body)
