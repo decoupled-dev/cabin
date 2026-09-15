@@ -15,8 +15,17 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | [Vision](vision.md) | Positioning, uniqueness vs Material, OEM/Tier-1/dev adoption |
 | [Principles](principles.md) | Clean Code, SOLID, safety-critical UI, android/skills alignment |
 | [Architecture](architecture.md) | Multi-module plan, dependency rules, theming, anti-bloat |
-| [Roadmap](roadmap.md) | Phased delivery: docs → tokens → compose → views → … |
+| [Roadmap](roadmap.md) | Phased delivery aligned to the product feature layers |
 | [Contributing](contributing.md) | Contribution guide |
+
+### Product
+
+| Document | Description |
+| --- | --- |
+| [Product index](product/README.md) | Product design docs — stance, pillars, feature plan |
+| [Stance](product/stance.md) | Calm, legible, inevitable cabin HMI |
+| [Pillars](product/pillars.md) | Five gates every feature must pass |
+| [Features](product/features.md) | Layered feature plan (Foundations → Craft) |
 
 ### Compliance (first-class)
 
@@ -72,12 +81,14 @@ and dual UI component library (Jetpack Compose + legacy Views).
 
 ## How to read these docs
 
-1. Start with [vision](vision.md) and [principles](principles.md).
-2. Internalize [compliance](compliance/README.md) — it constrains every component.
-3. Learn [tokens](design-language/tokens.md) before implementing UI.
-4. Pick a platform ([Compose](platforms/compose.md) or [Views](platforms/views.md))
+1. Start with [vision](vision.md) and the [product stance](product/stance.md).
+2. Filter ideas through [pillars](product/pillars.md) and the
+   [feature plan](product/features.md).
+3. Internalize [compliance](compliance/README.md) — it constrains every component.
+4. Learn [tokens](design-language/tokens.md) before implementing UI.
+5. Pick a platform ([Compose](platforms/compose.md) or [Views](platforms/views.md))
    and keep parity contracts in mind.
-5. Use [architecture](architecture.md) and [packaging](adoption/packaging.md)
+6. Use [architecture](architecture.md) and [packaging](adoption/packaging.md)
    when wiring modules into a product.
 
 ## Dual stack reminder

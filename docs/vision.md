@@ -25,6 +25,17 @@ Cabin aims to be that platform:
 Cabin is **not** “Material with bigger buttons.” It is an automotive-native
 system that can still feel familiar to Android developers.
 
+## Product stance
+
+Cabin’s product bar is simple: the cabin should feel **calm**, **legible**, and
+**inevitable**. Every surface earns its place; compliance is design material,
+not a bolt-on. Features must pass five pillars — glanceable, quiet, safe by
+default, one language / two skins, thin by design — and land in a layered
+feature plan rather than a kitchen-sink backlog.
+
+See [product stance](product/stance.md), [pillars](product/pillars.md), and
+[features](product/features.md).
+
 ## Who it is for
 
 ### OEMs
@@ -122,6 +133,7 @@ Success is measured by:
 
 ## Related
 
+- [Product stance](product/stance.md) · [Pillars](product/pillars.md) · [Features](product/features.md)
 - [Principles](principles.md)
 - [Architecture](architecture.md)
 - [Roadmap](roadmap.md)
