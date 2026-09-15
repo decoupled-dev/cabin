@@ -46,19 +46,19 @@ export default function HomePage() {
           <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
         </div>
 
-        <div className="mx-auto flex max-w-6xl flex-col gap-14 px-5 pb-24 pt-16 sm:px-8 sm:pt-24 lg:gap-20">
-          <div className="max-w-3xl">
+        <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-14 sm:px-8 sm:pt-20 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-10 lg:pb-16 lg:pt-16 xl:gap-14">
+          <div className="max-w-xl lg:max-w-none">
             <h1 className="font-display text-display font-extrabold text-on-surface animate-brand-in">
               Cabin
             </h1>
             <p
-              className="mt-6 max-w-2xl font-display text-headline text-on-surface animate-fade-rise text-balance"
+              className="mt-5 max-w-xl font-display text-headline text-on-surface animate-fade-rise text-balance"
               style={{ animationDelay: "120ms" }}
             >
               The design platform for the automobile cabin
             </p>
             <p
-              className="mt-5 max-w-xl text-body text-on-surface-variant animate-fade-rise text-balance"
+              className="mt-4 max-w-md text-body text-on-surface-variant animate-fade-rise text-balance"
               style={{ animationDelay: "220ms" }}
             >
               Material Design 3–class craft for Android Automotive OS — calm,
@@ -66,7 +66,7 @@ export default function HomePage() {
               material.
             </p>
             <div
-              className="mt-10 flex flex-wrap items-center gap-3 animate-fade-rise"
+              className="mt-8 flex flex-wrap items-center gap-3 animate-fade-rise"
               style={{ animationDelay: "320ms" }}
             >
               <ButtonLink href="/develop">Get started</ButtonLink>

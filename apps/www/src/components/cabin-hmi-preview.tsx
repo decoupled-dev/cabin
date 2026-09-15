@@ -11,7 +11,7 @@ export function CabinHmiPreview() {
 
   return (
     <div
-      className="relative mx-auto w-full max-w-4xl animate-fade-rise"
+      className="relative mx-auto w-full max-w-xl animate-fade-rise lg:max-w-none"
       style={{ animationDelay: "180ms" }}
       aria-hidden
     >
@@ -33,7 +33,7 @@ export function CabinHmiPreview() {
         </div>
 
         {/* Content plane */}
-        <div className="relative min-h-[280px] bg-[var(--surface)] sm:min-h-[340px]">
+        <div className="relative min-h-[240px] bg-[var(--surface)] sm:min-h-[280px] lg:min-h-[300px]">
           <div className="absolute inset-0 cabin-grid opacity-40" />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,var(--hero-glow-c),transparent_50%),radial-gradient(ellipse_at_80%_70%,var(--hero-glow-b),transparent_45%)]" />
 
