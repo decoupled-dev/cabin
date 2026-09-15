@@ -31,6 +31,11 @@ drop active **fault** affordances.
 | Restricted | Settings deep links Block/Substitute per matrix |
 | Day / Night | Token schemes |
 
+Live warning / charging accents are selected via
+`CabinStatusEmphasis` on `CabinStatusGlyph`. Signal unavailable / stale /
+fault always override emphasis. Missing `CabinComplianceHost` is
+**fail-closed** (`GateDisposition.Block`) for activating deep links.
+
 ## Sizes & type (from tokens)
 
 | Token (stub) | Role |

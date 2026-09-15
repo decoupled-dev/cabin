@@ -68,7 +68,8 @@ host.updateState(adapterState) // map CarUxRestrictions → VehicleUiState
 ```
 
 Gated click listeners disable or substitute interactions consistently with
-Compose ([driving](../compliance/driving-restrictions.md)).
+Compose ([driving](../compliance/driving-restrictions.md)). Null compliance
+host is fail-closed (`Block`) so chrome cannot activate ungated.
 
 ## Parity contracts with Compose
 

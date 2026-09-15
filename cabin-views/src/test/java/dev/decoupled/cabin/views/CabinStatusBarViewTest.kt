@@ -190,6 +190,79 @@ class CabinStatusBarViewTest {
     }
 
     @Test
+    fun nullComplianceHost_failClosed_blocksDeepLink() {
+        var opened = 0
+        bar.setCompliance(null)
+        bar.setItems(
+            listOf(
+                CabinStatusGlyph(
+                    id = "wifi",
+                    contentDescription = "Wi-Fi settings",
+                    text = "Wi-Fi",
+                    deepLink = StatusDeepLink(opensSettings = true) { opened++ },
+                ),
+            ),
+        )
+
+        val view = bar.findItemView("wifi")!!
+        assertFalse(view.isEnabled)
+        view.performClick()
+        assertEquals(0, opened)
+    }
+
+    @Test
+    fun emphasisWarning_appliesThemeWarningColor() {
+        bar.setItems(
+            listOf(
+                CabinStatusGlyph(
+                    id = "alerts",
+                    contentDescription = "Active alerts",
+                    text = "2",
+                    emphasis = CabinStatusEmphasis.Warning,
+                ),
+            ),
+        )
+        val colors = CabinThemeResolver.resolveColors(themedContext)
+        assertEquals(StatusTone.Warning, bar.itemTone("alerts"))
+        assertEquals(colors.warning, bar.itemPrimaryTextColor("alerts"))
+    }
+
+    @Test
+    fun emphasisCharging_appliesThemeChargingColor() {
+        bar.setItems(
+            listOf(
+                CabinStatusGlyph(
+                    id = "soc",
+                    contentDescription = "Battery charging",
+                    text = "80%",
+                    signal = Signal.Value(value = "80%", atMillis = 1L),
+                    emphasis = CabinStatusEmphasis.Charging,
+                ),
+            ),
+        )
+        val colors = CabinThemeResolver.resolveColors(themedContext)
+        assertEquals(StatusTone.Charging, bar.itemTone("soc"))
+        assertEquals(colors.charging, bar.itemPrimaryTextColor("soc"))
+    }
+
+    @Test
+    fun signalFault_overridesChargingEmphasis() {
+        bar.setItems(
+            listOf(
+                CabinStatusGlyph(
+                    id = "soc",
+                    contentDescription = "Battery",
+                    signal = Signal.Fault(code = "E42"),
+                    emphasis = CabinStatusEmphasis.Charging,
+                ),
+            ),
+        )
+        val colors = CabinThemeResolver.resolveColors(themedContext)
+        assertEquals(StatusTone.Fault, bar.itemTone("soc"))
+        assertEquals(colors.error, bar.itemPrimaryTextColor("soc"))
+    }
+
+    @Test
     fun theme_dayNight_containerAndFeedbackResolve() {
         val day = CabinThemeResolver.resolveColors(themedContext)
         assertTrue(day.container != 0)

@@ -87,7 +87,12 @@ class CabinSystemBarView @JvmOverloads constructor(
         rebuildChildren()
     }
 
-    /** Attach Restriction Engine host; widgets re-evaluate gates on state changes. */
+    /**
+     * Attach Restriction Engine host; widgets re-evaluate gates on state changes.
+     *
+     * Null host is fail-closed: activating interactions resolve to
+     * [GateDisposition.Block] so chrome cannot ship ungated by accident.
+     */
     fun setCompliance(host: CabinComplianceHost?) {
         complianceHost?.removeOnChangeListener(onComplianceChanged)
         complianceHost = host
@@ -250,7 +255,8 @@ class CabinSystemBarView @JvmOverloads constructor(
     }
 
     private fun dispositionFor(interaction: CabinInteraction): GateDisposition {
-        val host = complianceHost ?: return GateDisposition.Allow
+        // Safe by default: missing host must not fail-open to Allow.
+        val host = complianceHost ?: return GateDisposition.Block
         return host.disposition(interaction)
     }
 
