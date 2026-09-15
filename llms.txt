@@ -6,6 +6,15 @@ Cabin targets OEMs, Tier-1s, and app developers. Docs Phase 1 — library APIs a
 
 ## Priority reading
 
+### Before library code
+
+1. [Pre-implementation gate](docs/pre-implementation.md)
+2. [MVP v0.1](docs/mvp.md)
+3. [Token schema](docs/design-language/token-schema.md) · [tokens/cabin.tokens.json](tokens/cabin.tokens.json)
+4. [Restriction states](docs/compliance/restriction-states.md)
+5. [System Bar spec](docs/components/specs/system-bar.md) · [Status Bar spec](docs/components/specs/status-bar.md)
+6. [API contracts](docs/api-contracts.md) · [ADRs](docs/adr/README.md)
+
 ### Implementers (library / app code — future)
 
 1. [AGENTS.md](AGENTS.md) — hard rules for coding agents

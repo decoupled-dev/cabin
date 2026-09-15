@@ -18,6 +18,17 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | [Roadmap](roadmap.md) | Phased delivery aligned to the product feature layers |
 | [Contributing](contributing.md) | Contribution guide |
 
+### Pre-implementation (before library code)
+
+| Document | Description |
+| --- | --- |
+| [Pre-implementation gate](pre-implementation.md) | Checklist before writing library source |
+| [MVP v0.1](mvp.md) | Frozen scope: tokens + restriction + Theme Kit + two bars (Views-first) |
+| [API contracts](api-contracts.md) | Maven, Soong names, packages, semver |
+| [Support matrix](support-matrix.md) | Planned API / AAOS / build-tree targets |
+| [Testing](testing.md) | v0.1 unit, Views, CI vs Soong expectations |
+| [ADRs](adr/README.md) | Architecture decision records |
+
 ### Product
 
 | Document | Description |
@@ -32,6 +43,7 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | Document | Description |
 | --- | --- |
 | [Compliance overview](compliance/README.md) | How compliance is modeled and enforced |
+| [Restriction states](compliance/restriction-states.md) | MVP state machine + System/Status Bar matrix |
 | [Driving restrictions](compliance/driving-restrictions.md) | Distraction minimization, gated interactions |
 | [UX restrictions](compliance/ux-restrictions.md) | Touch targets, density, contrast, day/night |
 | [Accessibility & glanceability](compliance/accessibility-glanceability.md) | Font size, readability, driver glance patterns |
@@ -44,6 +56,7 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | [Overview](design-language/README.md) | Cabin design language scope |
 | [Foundations](design-language/foundations.md) | Color, type, space, elevation, motion, icons |
 | [Tokens](design-language/tokens.md) | Semantic + component tokens, OEM theming without forks |
+| [Token schema](design-language/token-schema.md) | JSON stub, naming, overlay/RRO mapping |
 
 ### Components
 
@@ -52,6 +65,8 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | [Inventory](components/README.md) | Taxonomy and coverage map |
 | [System bars](components/system-bars.md) | Nav / system chrome |
 | [Status bars](components/status-bars.md) | Vehicle and system status |
+| [Spec: System Bar](components/specs/system-bar.md) | MVP implementable spec |
+| [Spec: Status Bar](components/specs/status-bar.md) | MVP implementable spec |
 | [Media](components/media.md) | Playback, browse, now-playing |
 | [EV](components/ev.md) | Range, charge, energy |
 | [HVAC](components/hvac.md) | Climate zones and controls |
@@ -95,12 +110,15 @@ and dual UI component library (Jetpack Compose + legacy Views).
 1. Start with [vision](vision.md) and the [product stance](product/stance.md).
 2. Filter ideas through [pillars](product/pillars.md) and the
    [feature plan](product/features.md).
-3. Internalize [compliance](compliance/README.md) — it constrains every component.
-4. Learn [tokens](design-language/tokens.md) before implementing UI.
-5. Pick a platform ([Compose](platforms/compose.md) or [Views](platforms/views.md))
+3. Before library code: [pre-implementation](pre-implementation.md) and
+   [MVP](mvp.md).
+4. Internalize [compliance](compliance/README.md) — it constrains every component.
+5. Learn [tokens](design-language/tokens.md) /
+   [token schema](design-language/token-schema.md) before implementing UI.
+6. Pick a platform ([Compose](platforms/compose.md) or [Views](platforms/views.md))
    and keep parity contracts in mind. Platform chrome uses Soong —
    [build-tree](adoption/build-tree.md).
-6. Use [architecture](architecture.md) and [packaging](adoption/packaging.md)
+7. Use [architecture](architecture.md) and [packaging](adoption/packaging.md)
    when wiring modules into a product.
 
 ## Dual stack reminder

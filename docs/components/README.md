@@ -28,12 +28,12 @@ Each component documents one of:
 
 | Area | Doc | Priority for early phases |
 | --- | --- | --- |
-| System bars | [system-bars.md](system-bars.md) | High (Views-heavy) |
-| Status bars | [status-bars.md](status-bars.md) | High |
-| Media | [media.md](media.md) | High |
-| EV / energy | [ev.md](ev.md) | High |
-| HVAC | [hvac.md](hvac.md) | High |
-| Vehicle controls | [vehicle-controls.md](vehicle-controls.md) | Medium–High |
+| System bars | [system-bars.md](system-bars.md) · **[MVP spec](specs/system-bar.md)** | **MVP** (Views-first) |
+| Status bars | [status-bars.md](status-bars.md) · **[MVP spec](specs/status-bar.md)** | **MVP** (Views-first) |
+| Media | [media.md](media.md) | After MVP |
+| EV / energy | [ev.md](ev.md) | After MVP |
+| HVAC | [hvac.md](hvac.md) | After MVP |
+| Vehicle controls | [vehicle-controls.md](vehicle-controls.md) | After MVP |
 | OEM extensions | [extension-model.md](extension-model.md) | Continuous |
 
 ## Dual-stack contract template

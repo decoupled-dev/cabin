@@ -8,33 +8,35 @@ invent foundations the earlier layers do not provide. Aligns with
 
 ## Layer 0 — Foundations
 
-Shared meaning before chrome or apps.
+Shared meaning before chrome or apps. **Included in frozen [MVP v0.1](../mvp.md).**
 
 | Feature | Intent | Primary docs / modules |
 | --- | --- | --- |
-| **Cabin Tokens** | Semantic + component tokens; OEM overlay without fork | [tokens](../design-language/tokens.md), `cabin-tokens` |
-| **Restriction Engine** | Driving / UX / safety policy as injectable gates | [compliance](../compliance/README.md), `cabin-compliance` |
-| **Theme Kit** | Day/night schemes resolving tokens into Compose + Views themes | [foundations](../design-language/foundations.md), theme in both stacks |
+| **Cabin Tokens** | Semantic + component tokens; OEM overlay without fork | [tokens](../design-language/tokens.md), [token schema](../design-language/token-schema.md), `tokens/cabin.tokens.json` |
+| **Restriction Engine** | Driving / UX / safety policy as injectable gates | [restriction-states](../compliance/restriction-states.md), `cabin-compliance` |
+| **Theme Kit** | Day/night schemes resolving tokens into Views themes (Compose mirror optional) | [foundations](../design-language/foundations.md), Views-first |
 
-**Exit for Layer 0:** Both UI stacks can theme from one token source and ask
-the same restriction questions.
+**Exit for Layer 0:** Theme Kit can resolve tokens; Restriction Engine answers
+allow/substitute/block for chrome interactions.
 
 ## Layer 1 — System surfaces
 
-Persistent cabin chrome. Views-first where system UI demands it; Compose
-parity for apps and previews.
+Persistent cabin chrome. **MVP includes System Bar + Status Bar (Views-first)
+only.** Overlay & Toast full pack is later.
 
-| Feature | Intent | Primary docs |
-| --- | --- | --- |
-| **System Bar** | Wayfinding slots, large targets, restriction-aware entries | [system bars](../components/system-bars.md) |
-| **Status Bar** | Glanceable vehicle/system status; honest unavailable/fault | [status bars](../components/status-bars.md) |
-| **Overlay & Toast** | Transient feedback that does not trap drivers; faults prefer banners when persistent | Patterns + safety docs |
+| Feature | Intent | Primary docs | MVP |
+| --- | --- | --- | --- |
+| **System Bar** | Wayfinding slots, large targets, restriction-aware entries | [spec](../components/specs/system-bar.md) | **Yes** |
+| **Status Bar** | Glanceable vehicle/system status; honest unavailable/fault | [spec](../components/specs/status-bar.md) | **Yes** |
+| **Overlay & Toast** | Transient feedback that does not trap drivers | Patterns + safety docs | Later |
 
-**Exit for Layer 1:** OEM can slot brand chrome without forking bar widgets.
+**Exit for Layer 1 (MVP):** OEM can slot brand chrome via tokens/RRO without
+forking bar widgets; SystemUI consumes thin Soong deps.
 
 ## Layer 2 — Core screens
 
-Domain surfaces every cabin program expects.
+Domain surfaces every cabin program expects. **Explicitly after MVP** — do not
+start until [mvp.md](../mvp.md) success criteria pass.
 
 | Feature | Intent | Primary docs |
 | --- | --- | --- |
@@ -94,10 +96,9 @@ regional regulation packs as a substitute for program policy overlays
 
 | Roadmap beat | Feature layers |
 | --- | --- |
-| Docs | Stance, pillars, this plan (complete in Phase 1) |
-| Tokens + Restriction Engine | Layer 0 |
-| System / Status bars | Layer 1 (bars first; overlay/toast with them) |
-| Media + HVAC | Layer 2 (first pair) |
+| Docs + pre-implementation | Stance, pillars, this plan, [MVP freeze](../mvp.md) |
+| **MVP v0.1** | Layer 0 + System/Status bars (Views) |
+| Media + HVAC | Layer 2 (first pair) — after MVP |
 | EV + Vehicle Controls | Layer 2 (second pair) |
 | Catalog | Layer 4 catalog |
 | Website | Layer 4 docs site |

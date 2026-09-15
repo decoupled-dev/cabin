@@ -21,6 +21,7 @@ forking components. See [vision](../vision.md) and [architecture](../architectur
 
 | Doc | Scope |
 | --- | --- |
+| [Restriction states](restriction-states.md) | MVP state machine + System/Status Bar matrix |
 | [Driving restrictions](driving-restrictions.md) | Motion / distraction gating |
 | [UX restrictions](ux-restrictions.md) | Targets, density, contrast, day/night |
 | [Accessibility & glanceability](accessibility-glanceability.md) | Readability, glance patterns |

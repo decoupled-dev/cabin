@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://decoupled.dev/cabin/tokens/cabin.tokens.json",
+  "title": "Cabin design tokens (stub)",
+  "description": "Source-of-truth stub for Cabin tokens. Intended for Style Dictionary / codegen into cabin-tokens (Android resources + Kotlin). Not a published runtime format yet. See docs/design-language/token-schema.md.",
+  "meta": {
+    "version": "0.1.0-stub",
+    "status": "planned-stub",
+    "naming": "cabin.{category}.{tier}.{name}"
+  },
+  "cabin": {
+    "color": {
+      "semantic": {
+        "primary": { "value": "#0B6E4F", "type": "color", "comment": "Brand action; OEM-overridable" },
+        "onPrimary": { "value": "#FFFFFF", "type": "color" },
+        "secondary": { "value": "#3D5A5B", "type": "color" },
+        "onSecondary": { "value": "#FFFFFF", "type": "color" },
+        "surface": { "value": "#121212", "type": "color", "comment": "Default night-leaning cabin surface example" },
+        "onSurface": { "value": "#F2F2F2", "type": "color" },
+        "surfaceVariant": { "value": "#1E1E1E", "type": "color" },
+        "outline": { "value": "#5C5C5C", "type": "color" },
+        "success": { "value": "#2E7D32", "type": "color" },
+        "warning": { "value": "#F9A825", "type": "color", "extensions": { "cabin.lock": "safety-adjacent" } },
+        "error": { "value": "#D32F2F", "type": "color", "extensions": { "cabin.lock": "safety-adjacent" } },
+        "charging": { "value": "#00897B", "type": "color", "comment": "Domain accent; meaning must stay recognizable" },
+        "climate": { "value": "#0288D1", "type": "color" },
+        "mediaAccent": { "value": "#7E57C2", "type": "color" },
+        "scrim": { "value": "#00000099", "type": "color" }
+      },
+      "scheme": {
+        "day": {
+          "surface": { "value": "#F5F5F5", "type": "color" },
+          "onSurface": { "value": "#121212", "type": "color" }
+        },
+        "night": {
+          "surface": { "value": "#121212", "type": "color" },
+          "onSurface": { "value": "#F2F2F2", "type": "color" }
+        }
+      }
+    },
+    "type": {
+      "family": {
+        "plain": { "value": "CabinSans", "type": "fontFamilies", "comment": "OEM-overridable; placeholder family name" }
+      },
+      "role": {
+        "display": {
+          "size": { "value": "40", "type": "fontSizes", "unit": "sp" },
+          "weight": { "value": "600", "type": "fontWeights" },
+          "lineHeight": { "value": "48", "type": "lineHeights", "unit": "sp" }
+        },
+        "headline": {
+          "size": { "value": "28", "type": "fontSizes", "unit": "sp" },
+          "weight": { "value": "600", "type": "fontWeights" },
+          "lineHeight": { "value": "36", "type": "lineHeights", "unit": "sp" }
+        },
+        "title": {
+          "size": { "value": "22", "type": "fontSizes", "unit": "sp" },
+          "weight": { "value": "600", "type": "fontWeights" },
+          "lineHeight": { "value": "28", "type": "lineHeights", "unit": "sp" }
+        },
+        "body": {
+          "size": { "value": "18", "type": "fontSizes", "unit": "sp" },
+          "weight": { "value": "400", "type": "fontWeights" },
+          "lineHeight": { "value": "24", "type": "lineHeights", "unit": "sp" }
+        },
+        "label": {
+          "size": { "value": "16", "type": "fontSizes", "unit": "sp" },
+          "weight": { "value": "600", "type": "fontWeights" },
+          "lineHeight": { "value": "20", "type": "lineHeights", "unit": "sp" }
+        },
+        "status": {
+          "size": { "value": "14", "type": "fontSizes", "unit": "sp" },
+          "weight": { "value": "500", "type": "fontWeights" },
+          "lineHeight": { "value": "18", "type": "lineHeights", "unit": "sp" }
+        }
+      }
+    },
+    "space": {
+      "xs": { "value": "4", "type": "spacing", "unit": "dp" },
+      "sm": { "value": "8", "type": "spacing", "unit": "dp" },
+      "md": { "value": "16", "type": "spacing", "unit": "dp" },
+      "lg": { "value": "24", "type": "spacing", "unit": "dp" },
+      "xl": { "value": "32", "type": "spacing", "unit": "dp" }
+    },
+    "size": {
+      "touch": {
+        "minimum": { "value": "76", "type": "sizing", "unit": "dp", "comment": "Cabin baseline; program-tunable via compliance profile" }
+      },
+      "icon": {
+        "status": { "value": "24", "type": "sizing", "unit": "dp" },
+        "systemBar": { "value": "28", "type": "sizing", "unit": "dp" }
+      }
+    },
+    "elevation": {
+      "level0": { "value": "0", "type": "elevation", "unit": "dp" },
+      "level1": { "value": "1", "type": "elevation", "unit": "dp" },
+      "level2": { "value": "3", "type": "elevation", "unit": "dp" }
+    },
+    "motion": {
+      "fast": {
+        "duration": { "value": "100", "type": "duration", "unit": "ms" }
+      },
+      "medium": {
+        "duration": { "value": "200", "type": "duration", "unit": "ms" }
+      },
+      "slow": {
+        "duration": { "value": "300", "type": "duration", "unit": "ms" }
+      }
+    },
+    "component": {
+      "systemBar": {
+        "height": { "value": "80", "type": "sizing", "unit": "dp" },
+        "iconSize": { "$ref": "#/cabin/size/icon/systemBar" },
+        "itemMinSize": { "$ref": "#/cabin/size/touch/minimum" },
+        "gap": { "$ref": "#/cabin/space/sm" }
+      },
+      "statusBar": {
+        "height": { "value": "48", "type": "sizing", "unit": "dp" },
+        "iconSize": { "$ref": "#/cabin/size/icon/status" },
+        "itemGap": { "$ref": "#/cabin/space/sm" }
+      }
+    }
+  }
+}

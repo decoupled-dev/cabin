@@ -3,6 +3,9 @@
 Status bars communicate vehicle and system state at a glance: connectivity,
 battery/charge, temperature outdoor, user profiles, and alerts.
 
+> **MVP implementable spec:** [specs/status-bar.md](specs/status-bar.md)
+> (Views-first). This page is the overview; the spec is the contract.
+
 ## Purpose
 
 - Provide persistent, glanceable status for drivers and passengers.

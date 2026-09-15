@@ -6,9 +6,15 @@ Cabin is an open-source **AAOS design language** and dual UI kit
 (**Jetpack Compose + legacy Views**), with **compliance-first** gates and
 **dual distribution** (Gradle/Maven for apps, Soong for AOSP build-tree).
 
-This repo is currently **docs Phase 1**. Library source is not published yet.
-Treat APIs, module coordinates, and `Android.bp` names as **planned** unless
-code exists.
+This repo is currently **docs Phase 1** (including the
+[pre-implementation pack](docs/pre-implementation.md)). Library source is not
+published yet. Treat APIs, module coordinates, and `Android.bp` names as
+**planned** unless code exists.
+
+**Before writing library code, satisfy [docs/pre-implementation.md](docs/pre-implementation.md)
+and respect the frozen [MVP v0.1](docs/mvp.md)** (tokens + Restriction Engine +
+Theme Kit + System/Status bars, Views-first). Do not start Compose media/HVAC/EV
+screens until MVP success criteria pass.
 
 ## Product pillars
 
@@ -27,16 +33,19 @@ Details: [docs/product/stance.md](docs/product/stance.md),
 
 | Priority | Doc |
 | --- | --- |
+| 0 | [docs/pre-implementation.md](docs/pre-implementation.md) · [docs/mvp.md](docs/mvp.md) — before library code |
 | 1 | [docs/vision.md](docs/vision.md) · [docs/product/README.md](docs/product/README.md) |
-| 2 | [docs/architecture.md](docs/architecture.md) · [docs/compliance/README.md](docs/compliance/README.md) |
-| 3 | [docs/design-language/tokens.md](docs/design-language/tokens.md) |
-| 4 | Stack: [compose](docs/platforms/compose.md) / [views](docs/platforms/views.md) / [soong](docs/platforms/soong.md) |
-| 5 | Adoption: [integration](docs/adoption/integration.md) · [build-tree](docs/adoption/build-tree.md) · [packaging](docs/adoption/packaging.md) |
+| 2 | [docs/architecture.md](docs/architecture.md) · [docs/compliance/README.md](docs/compliance/README.md) · [restriction-states](docs/compliance/restriction-states.md) |
+| 3 | [docs/design-language/token-schema.md](docs/design-language/token-schema.md) · [`tokens/cabin.tokens.json`](tokens/cabin.tokens.json) |
+| 4 | Specs: [system-bar](docs/components/specs/system-bar.md) · [status-bar](docs/components/specs/status-bar.md) |
+| 5 | Stack: [views](docs/platforms/views.md) / [soong](docs/platforms/soong.md) / [compose](docs/platforms/compose.md) |
+| 6 | Adoption: [build-tree](docs/adoption/build-tree.md) · [api-contracts](docs/api-contracts.md) |
 
 Full map: [docs/README.md](docs/README.md) · LLM map: [llms.txt](llms.txt).
 
 ## Hard rules
 
+0. **Before library code:** clear [docs/pre-implementation.md](docs/pre-implementation.md) and honor frozen [MVP v0.1](docs/mvp.md).
 1. **Do not bloat modules.** No umbrella AAR/Soong meta-module; samples/catalog/website never leak into product deps.
 2. **`cabin-tokens` and `cabin-compliance` have no UI framework dependencies** (no Compose, no Views widgets).
 3. **`cabin-compose` ⊀ `cabin-views`** and vice versa (no cross-stack dependency).

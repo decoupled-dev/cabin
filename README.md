@@ -6,8 +6,9 @@ It targets OEMs, Tier-1 suppliers, and app developers who need a
 Material Design 3–class platform purpose-built for the vehicle cabin —
 not a phone UI stretched onto a bigger screen.
 
-> **Phase 1:** Documentation foundation. Library modules, tokens, and samples
-> are planned — see the [roadmap](docs/roadmap.md).
+> **Phase 1:** Documentation foundation + [pre-implementation pack](docs/pre-implementation.md).
+> Library modules are planned — frozen [MVP v0.1](docs/mvp.md) is tokens +
+> Restriction Engine + Theme Kit + System/Status bars (Views-first).
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-AAOS-green.svg)](docs/vision.md)
@@ -16,6 +17,13 @@ not a phone UI stretched onto a bigger screen.
 
 ---
 
+## Before implementation
+
+Clear the [pre-implementation gate](docs/pre-implementation.md) and read the
+frozen [MVP v0.1](docs/mvp.md) before writing library code. Token stub:
+[`tokens/cabin.tokens.json`](tokens/cabin.tokens.json).
+
+---
 ## Why Cabin?
 
 Automotive HMI has constraints phones do not: driving state, distraction

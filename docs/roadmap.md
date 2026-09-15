@@ -1,116 +1,79 @@
 # Roadmap
 
 Phased delivery for Cabin. Phase 1 (this PR) is documentation only — including
-the [product stance](product/stance.md), [pillars](product/pillars.md), and
-[feature plan](product/features.md).
+the [product stance](product/stance.md), [pillars](product/pillars.md),
+[feature plan](product/features.md), and the
+[pre-implementation pack](pre-implementation.md) with a **frozen v0.1 MVP**.
 
 ## Sequencing
 
 Delivery follows product layers, not toolkit novelty:
 
 ```text
-Docs
-  → Tokens + Restriction Engine
-  → System / Status bars
+Docs (+ pre-implementation gate)
+  → MVP v0.1: Tokens + Restriction Engine + Theme Kit + System/Status bars (Views-first)
   → Media + HVAC
   → EV + Vehicle Controls
   → Catalog
   → Website
 ```
 
-Compose Kit and Views Kit grow **with** system surfaces and core screens so
-parity stays a release gate — not a trailing rewrite. See
-[features](product/features.md) for layer definitions and v1 non-goals.
+**Do not** start media/HVAC/EV/Compose domain screens until
+[MVP success criteria](mvp.md) are met. Compose Kit grows with surfaces after
+MVP; Views-first platform chrome remains the SystemUI path
+([ADR 0002](adr/0002-views-first-platform.md)).
 
 ## Phase overview
 
 | Phase | Focus | Feature layer | Outcome |
 | --- | --- | --- | --- |
-| **1 — Docs** | Vision, product stance/pillars/features, architecture, compliance, design language, components, platforms, adoption, site IA | Plan | Implementable contracts |
-| **2 — Tokens + Restriction Engine** | `cabin-tokens`, Theme Kit basics, `cabin-compliance` policy APIs | Layer 0 | Shared meaning + gates |
-| **3 — System / Status bars** | System Bar, Status Bar; Overlay & Toast baselines; dual-stack as required | Layer 1 | Brandable chrome |
-| **4 — Media + HVAC** | Now-playing/transport + climate zones/defrost on both stacks | Layer 2 (first) | First core domains |
-| **5 — EV + Vehicle Controls** | SOC/charge + body controls/hazards; extension slots | Layer 2 (second) | Energy + vehicle domains |
-| **6 — Catalog** | Interactive component catalog; parity fixtures visible | Layer 4 | Browseable reference |
-| **7 — Website** | Public docs site (Material-class IA) | Layer 4 | Public showcase |
+| **1 — Docs + pre-implementation** | Vision, product, compliance, tokens stub, MVP freeze, specs, ADRs, agents | Plan | Implementable contracts |
+| **2 — MVP v0.1** | `cabin-tokens`, Restriction Engine, Theme Kit, System + Status bars (Views), dual Gradle/Soong | Layer 0–1 (frozen) | Shippable thin chrome |
+| **3 — Media + HVAC** | Domain screens on dual stack as needed | Layer 2 (first) | First core domains |
+| **4 — EV + Vehicle Controls** | Energy + body controls | Layer 2 (second) | Energy + vehicle domains |
+| **5 — Catalog** | Interactive catalog | Layer 4 | Browseable reference |
+| **6 — Website** | Public docs site | Layer 4 | Public showcase |
 
-Patterns (Primary Action, Confirm Destructive, Cabin List/Grid, Empty & Error)
-land alongside Layers 1–2 as those screens need them — not as a disconnected
-phase.
+## Phase 1 — Documentation + pre-implementation (current)
 
-## Phase 1 — Documentation foundation (current)
+- [x] Root README, LICENSE, `.gitignore`
+- [x] Product stance, pillars, feature plan
+- [x] Compliance suite + restriction state matrix
+- [x] Token JSON stub + schema doc
+- [x] MVP freeze + pre-implementation gate
+- [x] System/Status Bar implementable specs
+- [x] API contracts, support matrix, testing, ADRs
+- [x] Build-tree / Soong + agent affordances
 
-- [x] Root README, LICENSE (Apache-2.0), `.gitignore`
-- [x] Docs index and cross-linked instruction set
-- [x] Product stance, pillars, and layered feature plan
-- [x] Compliance suite
-- [x] Design language + component inventory
-- [x] Dual-stack platform guidelines
-- [x] Adoption + packaging guidance
-- [x] Website IA plan
-- [x] Contributing guide
+**Exit criteria:** An implementer or agent can build MVP without inventing
+module layout, gating matrix, or bar contracts — after clearing
+[pre-implementation.md](pre-implementation.md).
 
-**Exit criteria:** A new contributor or OEM engineer can implement tokens and
-components against these docs without inventing architecture or product scope.
+## Phase 2 — MVP v0.1 (next)
 
-## Phase 2 — Tokens + Restriction Engine
+See [mvp.md](mvp.md) success criteria. Summary:
 
-- Token schema (semantic + component) and Theme Kit resolution
-- OEM overlay example (fictional brand)
-- Restriction Engine APIs (`CabinCompliance`, interaction gating)
-- Default AAOS-oriented baselines + program tighten overlays
-- Validation hooks for contrast / safety color locks
+- Tokens from `tokens/cabin.tokens.json`
+- Restriction Engine per [restriction-states.md](compliance/restriction-states.md)
+- Views System Bar + Status Bar per specs
+- Thin Soong + Maven packaging
 
-**Exit criteria:** Compose and Views prototypes consume the same tokens and
-honor the same restriction fixtures.
+## Phase 3 — Media + HVAC
 
-## Phase 3 — System / Status bars
+Unblocked only after MVP done. Dual-stack as required; compliance hooks
+mandatory.
 
-- System Bar slot model (Views-first for system UI; Compose parity)
-- Status Bar items with unavailable/stale/fault honesty
-- Overlay & Toast patterns that respect driving budgets
-- Screenshot / parity baselines for chrome
+## Phase 4 — EV + Vehicle Controls
 
-**Exit criteria:** OEM can brand chrome via tokens/slots without forking bar
-widgets; driving substitutes work on both stacks where both exist.
+Same gating as Phase 3.
 
-## Phase 4 — Media + HVAC
+## Phase 5 — Catalog
 
-- Media now-playing, transport, restriction-aware browse
-- HVAC zones, steppers, defrost (safety-critical availability)
-- Compliance hooks wired through Theme Kit / locals / hosts
-- Sample surfaces for media and climate
+Interactive catalog after real Layer 1–2 surfaces exist.
 
-**Exit criteria:** Dual-stack parity for media transport + HVAC temp/fan/defrost
-on shared state fixtures.
+## Phase 6 — Website
 
-## Phase 5 — EV + Vehicle Controls
-
-- EV SOC, range, charge session, charge fault banners
-- Vehicle control grid, latched toggles, hazards
-- Extension slots for OEM-specific controls
-- Samples for energy and vehicle controls
-
-**Exit criteria:** Fault/unavailable handling and latched states match across
-stacks; extension model proven with at least one OEM-shaped tile.
-
-## Phase 6 — Catalog
-
-- Interactive catalog (Compose-first; Views documented)
-- Filters by domain, stack, safety class, compliance relevance
-- Deep links ready for the public site
-
-**Exit criteria:** Catalog demonstrates Layers 1–2 without kitchen-sink
-dependencies in product artifacts.
-
-## Phase 7 — Website
-
-- Implement [site plan](website/site-plan.md)
-- Versioned docs aligned with library releases
-- Blog / versions for migration notes
-
-**Exit criteria:** Public IA matches Foundations / Styles / Components /
-Patterns / Compliance / Develop — with dual-stack callouts throughout.
+Implement [site plan](website/site-plan.md).
 
 ## Stability labels (future)
 
@@ -125,13 +88,13 @@ Patterns / Compliance / Develop — with dual-stack callouts throughout.
 - Vanity animation, phone-first patterns, kitchen-sink packs, OEM forks as
   default ([features](product/features.md))
 - Full OEM launcher as the primary product
-- Every vehicle domain in v1
-- Shipping website before tokens, restriction engine, and real surfaces to show
+- Domain screens before MVP
+- Shipping website before tokens, restriction engine, and real surfaces
 
 ## Related
 
+- [Pre-implementation](pre-implementation.md) · [MVP](mvp.md)
 - [Product features](product/features.md)
-- [Product pillars](product/pillars.md)
+- [ADRs](adr/README.md)
 - [Vision](vision.md)
 - [Architecture](architecture.md)
-- [Website plan](website/site-plan.md)

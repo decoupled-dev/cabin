@@ -3,6 +3,9 @@
 System bars are the persistent chrome of the AAOS experience: navigation affordances,
 app entry points, and system-level actions that frame application content.
 
+> **MVP implementable spec:** [specs/system-bar.md](specs/system-bar.md)
+> (Views-first). This page is the overview; the spec is the contract.
+
 ## Purpose
 
 - Provide consistent wayfinding across OEM launchers and system UI.

@@ -20,6 +20,7 @@ Views.
 | --- | --- |
 | Foundations | [foundations.md](foundations.md) — color, type, space, elevation, motion, iconography |
 | Tokens | [tokens.md](tokens.md) — semantic + component tokens, OEM overlays |
+| Token schema | [token-schema.md](token-schema.md) — JSON stub + codegen notes |
 
 ## Relationship to Material Design 3
 
@@ -47,8 +48,12 @@ Single source of truth: `cabin-tokens` ([architecture](../architecture.md)).
 Foundations and styles on the future website map directly to these docs
 ([site plan](../website/site-plan.md)).
 
+Machine-readable stub: [`tokens/cabin.tokens.json`](../../tokens/cabin.tokens.json)
+— see [token schema](token-schema.md).
+
 ## Related
 
 - [Foundations](foundations.md)
 - [Tokens](tokens.md)
+- [Token schema](token-schema.md)
 - [Components](../components/README.md)
