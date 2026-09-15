@@ -4,9 +4,10 @@
   "title": "Cabin design tokens (stub)",
   "description": "Source-of-truth stub for Cabin tokens. Intended for Style Dictionary / codegen into cabin-tokens (Android resources + Kotlin). Not a published runtime format yet. See docs/design-language/token-schema.md.",
   "meta": {
-    "version": "0.1.0-stub",
+    "version": "0.1.1-stub",
     "status": "planned-stub",
-    "naming": "cabin.{category}.{tier}.{name}"
+    "naming": "cabin.{category}.{tier}.{name}",
+    "notes": "Day/night schemes include chrome roles (outline, container) and locked night contrast for warning/error/charging. Domain accents stay off body-text roles (onSurface/onContainer)."
   },
   "cabin": {
     "color": {
@@ -16,25 +17,39 @@
         "secondary": { "value": "#3D5A5B", "type": "color" },
         "onSecondary": { "value": "#FFFFFF", "type": "color" },
         "surface": { "value": "#121212", "type": "color", "comment": "Default night-leaning cabin surface example" },
-        "onSurface": { "value": "#F2F2F2", "type": "color" },
+        "onSurface": { "value": "#F2F2F2", "type": "color", "comment": "Body text / icons; never a domain accent" },
         "surfaceVariant": { "value": "#1E1E1E", "type": "color" },
-        "outline": { "value": "#5C5C5C", "type": "color" },
+        "outline": { "value": "#5C5C5C", "type": "color", "comment": "Separators, unselected chrome" },
         "success": { "value": "#2E7D32", "type": "color" },
         "warning": { "value": "#F9A825", "type": "color", "extensions": { "cabin.lock": "safety-adjacent" } },
         "error": { "value": "#D32F2F", "type": "color", "extensions": { "cabin.lock": "safety-adjacent" } },
-        "charging": { "value": "#00897B", "type": "color", "comment": "Domain accent; meaning must stay recognizable" },
-        "climate": { "value": "#0288D1", "type": "color" },
-        "mediaAccent": { "value": "#7E57C2", "type": "color" },
+        "charging": { "value": "#00897B", "type": "color", "comment": "Domain accent; meaning must stay recognizable; not a body-text role" },
+        "climate": { "value": "#0288D1", "type": "color", "comment": "Domain accent; not a body-text role" },
+        "mediaAccent": { "value": "#7E57C2", "type": "color", "comment": "Domain accent; not a body-text role" },
         "scrim": { "value": "#00000099", "type": "color" }
       },
       "scheme": {
         "day": {
-          "surface": { "value": "#F5F5F5", "type": "color" },
-          "onSurface": { "value": "#121212", "type": "color" }
+          "surface": { "value": "#F5F5F5", "type": "color", "comment": "Base chrome / app background" },
+          "onSurface": { "value": "#121212", "type": "color", "comment": "Body text on surface; neutral only" },
+          "surfaceVariant": { "value": "#E8E8E8", "type": "color", "comment": "Recessed panels / wells" },
+          "outline": { "value": "#757575", "type": "color", "comment": "Bar separators, unselected chrome" },
+          "container": { "value": "#FFFFFF", "type": "color", "comment": "System/Status bar container fill" },
+          "onContainer": { "value": "#121212", "type": "color", "comment": "Content on bar container; neutral only" },
+          "warning": { "value": "#F9A825", "type": "color", "extensions": { "cabin.lock": "safety-adjacent" } },
+          "error": { "value": "#D32F2F", "type": "color", "extensions": { "cabin.lock": "safety-adjacent" } },
+          "charging": { "value": "#00897B", "type": "color", "comment": "Status charging accent; not body text" }
         },
         "night": {
-          "surface": { "value": "#121212", "type": "color" },
-          "onSurface": { "value": "#F2F2F2", "type": "color" }
+          "surface": { "value": "#121212", "type": "color", "comment": "Dimmed base; no large pure-white fields" },
+          "onSurface": { "value": "#F2F2F2", "type": "color", "comment": "Body text on surface; neutral only" },
+          "surfaceVariant": { "value": "#1E1E1E", "type": "color", "comment": "Recessed panels / wells" },
+          "outline": { "value": "#8A8A8A", "type": "color", "comment": "Bar separators visible on dark without bloom" },
+          "container": { "value": "#1A1A1A", "type": "color", "comment": "System/Status bar container fill" },
+          "onContainer": { "value": "#F2F2F2", "type": "color", "comment": "Content on bar container; neutral only" },
+          "warning": { "value": "#FFB300", "type": "color", "comment": "Locked night contrast — do not soft-wash", "extensions": { "cabin.lock": "safety-adjacent" } },
+          "error": { "value": "#FF5252", "type": "color", "comment": "Locked night contrast — do not soft-wash", "extensions": { "cabin.lock": "safety-adjacent" } },
+          "charging": { "value": "#1DE9B6", "type": "color", "comment": "Locked night contrast — keep recognizable, no soft-wash", "extensions": { "cabin.lock": "safety-adjacent" } }
         }
       }
     },

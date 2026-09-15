@@ -18,4 +18,11 @@
     <color name="cabin_color_semantic_scrim">#99000000</color>
     <color name="cabin_color_scheme_surface">#F5F5F5</color>
     <color name="cabin_color_scheme_onSurface">#121212</color>
+    <color name="cabin_color_scheme_surfaceVariant">#E8E8E8</color>
+    <color name="cabin_color_scheme_outline">#757575</color>
+    <color name="cabin_color_scheme_container">#FFFFFF</color>
+    <color name="cabin_color_scheme_onContainer">#121212</color>
+    <color name="cabin_color_scheme_warning">#F9A825</color>
+    <color name="cabin_color_scheme_error">#D32F2F</color>
+    <color name="cabin_color_scheme_charging">#00897B</color>
 </resources>

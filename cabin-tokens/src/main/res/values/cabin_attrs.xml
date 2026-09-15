@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Theme / RRO attribute hooks for Cabin semantic roles. Alpha; Theme Kit binds these. -->
+<!-- Theme / RRO attribute hooks for Cabin semantic / scheme roles. Alpha; Theme Kit binds these. -->
 <resources>
     <attr name="cabin_colorPrimary" format="color|reference" />
     <attr name="cabin_colorOnPrimary" format="color|reference" />
@@ -9,6 +9,8 @@
     <attr name="cabin_colorOnSurface" format="color|reference" />
     <attr name="cabin_colorSurfaceVariant" format="color|reference" />
     <attr name="cabin_colorOutline" format="color|reference" />
+    <attr name="cabin_colorContainer" format="color|reference" />
+    <attr name="cabin_colorOnContainer" format="color|reference" />
     <attr name="cabin_colorSuccess" format="color|reference" />
     <attr name="cabin_colorWarning" format="color|reference" />
     <attr name="cabin_colorError" format="color|reference" />

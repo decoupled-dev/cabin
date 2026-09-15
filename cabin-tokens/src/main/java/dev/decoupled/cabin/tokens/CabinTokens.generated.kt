@@ -6,18 +6,21 @@ package dev.decoupled.cabin.tokens
  * Public Cabin token constants generated from `tokens/cabin.tokens.json`.
  *
  * Do not edit by hand -- run `python3 tools/generate_cabin_tokens.py`.
- * Stub version: 0.1.0-stub
+ * Stub version: 0.1.1-stub
  *
  * This module has no Compose, Views widget, AppCompat, or Material dependencies.
  */
 object CabinTokens {
-    const val SOURCE_VERSION: String = "0.1.0-stub"
+    const val SOURCE_VERSION: String = "0.1.1-stub"
     const val SOURCE_PATH: String = "tokens/cabin.tokens.json"
 
     /** Semantic color role names locked as safety-adjacent. */
     val safetyLockedSemanticColors: Set<String> = setOf("warning", "error")
 
-    /** Resolve day/night scheme surface roles. */
+    /** Night scheme roles with locked contrast (no soft-wash). */
+    val nightContrastLockedSchemeColors: Set<String> = setOf("warning", "error", "charging")
+
+    /** Resolve day/night scheme chrome + feedback roles. */
     fun colorScheme(scheme: CabinColorScheme): CabinColorSchemeColors = Color.scheme(scheme)
 
     object Color {
@@ -39,8 +42,28 @@ object CabinTokens {
             val scrim: CabinColor = CabinColor(argb = -1728053248, hex = "#99000000", resourceName = "cabin_color_semantic_scrim", lock = null)
         }
 
-        private val schemeDay = CabinColorSchemeColors(surface = CabinColor(argb = -657931, hex = "#F5F5F5", resourceName = "cabin_color_scheme_surface"), onSurface = CabinColor(argb = -15592942, hex = "#121212", resourceName = "cabin_color_scheme_onSurface"))
-        private val schemeNight = CabinColorSchemeColors(surface = CabinColor(argb = -15592942, hex = "#121212", resourceName = "cabin_color_scheme_surface"), onSurface = CabinColor(argb = -855310, hex = "#F2F2F2", resourceName = "cabin_color_scheme_onSurface"))
+        private val schemeDay = CabinColorSchemeColors(
+            surface = CabinColor(argb = -657931, hex = "#F5F5F5", resourceName = "cabin_color_scheme_surface", lock = null),
+            onSurface = CabinColor(argb = -15592942, hex = "#121212", resourceName = "cabin_color_scheme_onSurface", lock = null),
+            surfaceVariant = CabinColor(argb = -1513240, hex = "#E8E8E8", resourceName = "cabin_color_scheme_surfaceVariant", lock = null),
+            outline = CabinColor(argb = -9079435, hex = "#757575", resourceName = "cabin_color_scheme_outline", lock = null),
+            container = CabinColor(argb = -1, hex = "#FFFFFF", resourceName = "cabin_color_scheme_container", lock = null),
+            onContainer = CabinColor(argb = -15592942, hex = "#121212", resourceName = "cabin_color_scheme_onContainer", lock = null),
+            warning = CabinColor(argb = -415707, hex = "#F9A825", resourceName = "cabin_color_scheme_warning", lock = "safety-adjacent"),
+            error = CabinColor(argb = -2937041, hex = "#D32F2F", resourceName = "cabin_color_scheme_error", lock = "safety-adjacent"),
+            charging = CabinColor(argb = -16742021, hex = "#00897B", resourceName = "cabin_color_scheme_charging", lock = null),
+        )
+        private val schemeNight = CabinColorSchemeColors(
+            surface = CabinColor(argb = -15592942, hex = "#121212", resourceName = "cabin_color_scheme_surface", lock = null),
+            onSurface = CabinColor(argb = -855310, hex = "#F2F2F2", resourceName = "cabin_color_scheme_onSurface", lock = null),
+            surfaceVariant = CabinColor(argb = -14803426, hex = "#1E1E1E", resourceName = "cabin_color_scheme_surfaceVariant", lock = null),
+            outline = CabinColor(argb = -7697782, hex = "#8A8A8A", resourceName = "cabin_color_scheme_outline", lock = null),
+            container = CabinColor(argb = -15066598, hex = "#1A1A1A", resourceName = "cabin_color_scheme_container", lock = null),
+            onContainer = CabinColor(argb = -855310, hex = "#F2F2F2", resourceName = "cabin_color_scheme_onContainer", lock = null),
+            warning = CabinColor(argb = -19712, hex = "#FFB300", resourceName = "cabin_color_scheme_warning", lock = "safety-adjacent"),
+            error = CabinColor(argb = -44462, hex = "#FF5252", resourceName = "cabin_color_scheme_error", lock = "safety-adjacent"),
+            charging = CabinColor(argb = -14816842, hex = "#1DE9B6", resourceName = "cabin_color_scheme_charging", lock = "safety-adjacent"),
+        )
 
         fun scheme(scheme: CabinColorScheme): CabinColorSchemeColors = when (scheme) {
             CabinColorScheme.Day -> schemeDay

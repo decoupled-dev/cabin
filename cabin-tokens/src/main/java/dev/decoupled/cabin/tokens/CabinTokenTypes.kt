@@ -55,7 +55,21 @@ enum class CabinColorScheme {
     Night,
 }
 
+/**
+ * Resolved day/night chrome + feedback roles from `cabin.color.scheme.*`.
+ *
+ * Body-text roles (`onSurface`, `onContainer`) stay neutral — never domain
+ * accents (`charging`, `climate`, `mediaAccent`). Night `warning` / `error` /
+ * `charging` keep locked high contrast (no soft-wash).
+ */
 data class CabinColorSchemeColors(
     val surface: CabinColor,
     val onSurface: CabinColor,
+    val surfaceVariant: CabinColor,
+    val outline: CabinColor,
+    val container: CabinColor,
+    val onContainer: CabinColor,
+    val warning: CabinColor,
+    val error: CabinColor,
+    val charging: CabinColor,
 )

@@ -44,9 +44,13 @@ Slots are data-driven — OEMs configure without forking the widget
 | `cabin.component.systemBar.itemMinSize` | Touch minimum |
 | `cabin.component.systemBar.gap` | Inter-item gap |
 | `cabin.type.role.label` | Optional short labels |
-| `cabin.color.semantic.surface` / `onSurface` | Chrome colors |
+| `cabin.color.scheme.*.container` / `onContainer` | Bar chrome fill + content |
+| `cabin.color.scheme.*.outline` | Separators / unselected chrome |
+| `cabin.color.scheme.*.surface` / `onSurface` | Surrounding surface roles |
 
 Stub file: [`tokens/cabin.tokens.json`](../../../tokens/cabin.tokens.json).
+Day/night schemes also carry locked `warning` / `error` / `charging` for
+adjacent Status chrome — see [token-schema](../../design-language/token-schema.md).
 
 ## Compliance gates
 
