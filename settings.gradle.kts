@@ -18,3 +18,4 @@ rootProject.name = "cabin"
 
 include(":cabin-tokens")
 include(":cabin-compliance")
+include(":cabin-views")

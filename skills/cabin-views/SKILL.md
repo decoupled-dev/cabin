@@ -25,23 +25,29 @@ Compose is **not** a gate for SystemUI.
 
 ## Planned artifacts
 
-- Maven: `dev.decoupled.cabin:cabin-views`
-- Soong: `CabinViews`
+- Maven: `dev.decoupled.cabin:cabin-views` (Alpha — Theme Kit; bars next)
+- Soong: `CabinViews` (`cabin-views/Android.bp`)
 
-No dependency on Compose modules.
+No dependency on Compose modules. No AppCompat/Material for Theme Kit.
+
+## Theme Kit (Alpha)
+
+- `Theme.Cabin` / `ThemeOverlay.Cabin` bind `cabin_*` attrs → token colors
+- Day/night scheme roles via CabinTokens `values` / `values-night`
+- `CabinThemeResolver` for widgets; OEM overlay / RRO without forks
+- Docs: [docs/adoption/theme-kit.md](../../docs/adoption/theme-kit.md)
 
 ## Guidelines
 
 - Styleables map to token roles, not raw colors
 - Explicit `bind()` / adapters; no hidden theme singletons
 - Focus / rotary paths; large touch minima from tokens
-- `CabinComplianceHost` (planned) for gating
+- `CabinComplianceHost` (planned with bars) for gating
 - Day/night and config changes without losing vehicle state
 - Prefer **RROs** for OEM brand on images
 
 → [docs/platforms/views.md](../../docs/platforms/views.md) ·
 [docs/adoption/build-tree.md](../../docs/adoption/build-tree.md)
-
 ## Parity with Compose
 
 Shared state/action fixtures; same gating and unavailable UI.

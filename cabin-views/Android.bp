@@ -1,0 +1,15 @@
+// Planned Soong module — sketch for AOSP build-tree consumers.
+// Same sources as the Gradle module. See docs/adoption/build-tree.md (ADR 0001 / 0002).
+// Theme Kit lives here; System/Status bar widgets land later in this module.
+// Theme Kit Alpha depends on CabinTokens only — add CabinCompliance when bars land.
+// Exact sdk_version / Kotlin flags finalize per host Android branch.
+
+android_library {
+    name: "CabinViews",
+    srcs: ["src/main/java/**/*.kt"],
+    resource_dirs: ["src/main/res"],
+    manifest: "src/main/AndroidManifest.xml",
+    static_libs: ["CabinTokens"],
+    sdk_version: "system_current",
+    min_sdk_version: "29",
+}

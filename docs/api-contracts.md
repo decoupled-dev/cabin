@@ -11,7 +11,7 @@ Group: `dev.decoupled.cabin` (illustrative; finalize at first publish).
 | --- | --- | --- |
 | Tokens | `dev.decoupled.cabin:cabin-tokens` | **Yes** |
 | Compliance | `dev.decoupled.cabin:cabin-compliance` | **Yes** |
-| Views | `dev.decoupled.cabin:cabin-views` | **Yes** (System/Status bars) |
+| Views | `dev.decoupled.cabin:cabin-views` | **Yes** (Theme Kit Alpha; System/Status bars next) |
 | Compose | `dev.decoupled.cabin:cabin-compose` | No (post-MVP) |
 
 ## Soong module names (build-tree)
@@ -34,8 +34,9 @@ See [build-tree](adoption/build-tree.md).
 | `cabin-views` | `dev.decoupled.cabin.views` |
 | `cabin-compose` | `dev.decoupled.cabin.compose` |
 
-Views chrome types: `dev.decoupled.cabin.views.CabinSystemBarView`,
-`…CabinStatusBarView`, etc.
+Views Theme Kit types: `dev.decoupled.cabin.views.theme.CabinThemes`,
+`…CabinThemeResolver`. Views chrome types (next):
+`dev.decoupled.cabin.views.CabinSystemBarView`, `…CabinStatusBarView`, etc.
 
 ## Stability
 
@@ -64,12 +65,16 @@ cabin-tokens
      ▲
 cabin-compliance
      ▲
-cabin-views     cabin-compose
+cabin-views     cabin-compose   (bars / Compose kits — planned)
 ```
+
+Theme Kit Alpha in `cabin-views` depends on **tokens only**; wire
+`cabin-compliance` when restriction-aware chrome lands.
 
 - Tokens & compliance: **no** UI toolkit deps
 - Views ⊀ Compose and Compose ⊀ Views
-- SystemUI static_libs: tokens + compliance + views only
+- SystemUI static_libs: tokens + compliance + views only (compliance is a
+  direct product dep until `CabinViews` bars require it)
 
 ## Related
 

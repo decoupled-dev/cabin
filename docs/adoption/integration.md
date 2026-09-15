@@ -58,12 +58,12 @@ dependencies {
 ```
 
 ```xml
-<!-- Planned -->
-<application android:theme="@style/Theme.Cabin.Oem">
+<application android:theme="@style/Theme.Cabin">
 ```
 
-For SystemUI and other build-tree targets, use Soong — not this Gradle block.
-
+Theme Kit resolves token roles; OEM overlays / RROs brand without forking —
+[theme-kit](theme-kit.md). For SystemUI and other build-tree targets, use Soong
+— not this Gradle block.
 ## Wire vehicle state
 
 Cabin does not replace Car APIs. Provide an adapter:
@@ -77,13 +77,15 @@ Inject the resulting compliance policy into theme/host.
 
 ## OEM overlay
 
-1. **Apps (Gradle):** create `oem-tokens` depending only on `cabin-tokens`.
+1. **Apps (Gradle):** theme overlay remapping `cabin_colorPrimary` (etc.), or a
+   thin module depending only on `cabin-tokens`.
 2. **Platform (Soong):** prefer RROs + optional `OemCabinTokens`-style module
-   ([build-tree](build-tree.md)).
+   ([build-tree](build-tree.md), [RRO sketch](sketches/oem-cabin-rro/README.md)).
 3. Map brand colors/type to semantic roles at the theme boundary — not inside
    feature screens.
 4. Keep safety semantic locks intact ([tokens](../design-language/tokens.md)).
 
+Full Theme Kit guide: [theme-kit](theme-kit.md).
 ## Minimal footprint checklist
 
 - [ ] No dependency on `samples` or `catalog`

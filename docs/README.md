@@ -3,8 +3,8 @@
 Authoritative documentation for **Cabin**, an open-source AAOS design language
 and dual UI component library (Jetpack Compose + legacy Views).
 
-> Library source code is not in this repository yet. These docs define the
-> contracts implementers will code against. Planned APIs are marked as such.
+> Library Alpha: `cabin-tokens`, `cabin-compliance`, and Theme Kit in
+> `cabin-views`. Planned APIs beyond that are marked as such.
 
 ## Table of contents
 
@@ -86,6 +86,7 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | Document | Description |
 | --- | --- |
 | [Integration](adoption/integration.md) | Add Cabin to an existing AAOS/app repo |
+| [Theme Kit](adoption/theme-kit.md) | Views Theme Kit + OEM overlay / RRO path (MVP #3) |
 | [Build-tree / Soong](adoption/build-tree.md) | SystemUI, CarLauncher, platform media via Soong |
 | [Migration](adoption/migration.md) | From stock Material / AAOS widgets |
 | [Packaging](adoption/packaging.md) | Maven vs Soong dual distribution, minimal footprint |

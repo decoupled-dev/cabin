@@ -2,11 +2,15 @@
 agp = "8.5.2"
 kotlin = "2.0.21"
 junit = "4.13.2"
+robolectric = "4.13"
+androidxAnnotation = "1.8.2"
 androidCompileSdk = "34"
 androidMinSdk = "29"
 
 [libraries]
 junit = { module = "junit:junit", version.ref = "junit" }
+robolectric = { module = "org.robolectric:robolectric", version.ref = "robolectric" }
+androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "androidxAnnotation" }
 
 [plugins]
 android-library = { id = "com.android.library", version.ref = "agp" }

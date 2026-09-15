@@ -38,7 +38,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Run unit tests
-        run: ./gradlew :cabin-tokens:test :cabin-compliance:test --stacktrace
+        run: ./gradlew :cabin-tokens:test :cabin-compliance:test :cabin-views:test --stacktrace
 
       - name: Upload test reports
         if: failure()

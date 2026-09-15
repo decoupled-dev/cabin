@@ -14,7 +14,7 @@ Shared meaning before chrome or apps. **Included in frozen [MVP v0.1](../mvp.md)
 | --- | --- | --- |
 | **Cabin Tokens** | Semantic + component tokens; OEM overlay without fork | [tokens](../design-language/tokens.md), [token schema](../design-language/token-schema.md), `tokens/cabin.tokens.json` |
 | **Restriction Engine** | Driving / UX / safety policy as injectable gates | [restriction-states](../compliance/restriction-states.md), `cabin-compliance` |
-| **Theme Kit** | Day/night schemes resolving tokens into Views themes (Compose mirror optional) | [foundations](../design-language/foundations.md), Views-first |
+| **Theme Kit** | Day/night schemes resolving tokens into Views themes (Compose mirror optional) | [theme-kit](../adoption/theme-kit.md), [foundations](../design-language/foundations.md) — **Alpha** |
 
 **Exit for Layer 0:** Theme Kit can resolve tokens; Restriction Engine answers
 allow/substitute/block for chrome interactions.

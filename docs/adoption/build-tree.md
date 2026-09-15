@@ -5,8 +5,8 @@ platform media, and vendor chrome — via **Soong** (`Android.bp`), not Gradle.
 Gradle Maven AARs remain the path for app developers. Both paths compile the
 **same** Kotlin/Java/resources source of truth.
 
-> Module names, paths, and `Android.bp` sketches below are **planned**. No
-> real `Android.bp` files ship in this docs phase.
+> Module names and `Android.bp` sketches below include **Alpha** Theme Kit in
+> `cabin-views`. Full SystemUI bar wiring remains planned.
 
 ## Problem statement
 
