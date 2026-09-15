@@ -45,15 +45,19 @@ npm run serve
 
 ## Deploy
 
-Typical options:
+GitHub Pages publish is handled by
+[`.github/workflows/website.yml`](../.github/workflows/website.yml)
+(isolated from Android `unit-tests.yml`). It builds from `website/` with
+`npm ci` / `npm run build` and deploys via `actions/upload-pages-artifact` +
+`actions/deploy-pages`.
 
 | Target | Notes |
 | --- | --- |
-| **GitHub Pages** | `organizationName` / `projectName` are set in `docusaurus.config.ts`. From `website/`: `GIT_USER=<user> npm run deploy` (or wire `peaceiris/actions-gh-pages` in CI). `baseUrl` is `/cabin/`. |
+| **GitHub Pages** | Live URL: [https://decoupled-dev.github.io/cabin/](https://decoupled-dev.github.io/cabin/). One-time repo setting: **Settings → Pages → Source = GitHub Actions**. |
 | **Custom host** | Serve `website/build/` as static files. Change `url` / `baseUrl` if the site is not under `/cabin/`. |
 
-CI publish is not required for this shell PR; keep Android library workflows
-independent of website install/build.
+Triggers: push to `main` touching `website/**` or `docs/**`, plus
+`workflow_dispatch`. Android library workflows stay independent.
 
 ## Information architecture
 
