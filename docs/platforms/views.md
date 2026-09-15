@@ -19,13 +19,13 @@ it — but Compose is **not** a gate for SystemUI adoption
 
 | Path | Identifier | Status |
 | --- | --- | --- |
-| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-views:<version>` | Alpha (Theme Kit); bars next |
+| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-views:<version>` | Alpha (Theme Kit + System/Status bars) |
 | Soong (build-tree) | `CabinViews` | Alpha sketch `cabin-views/Android.bp` |
 
-Theme Kit Alpha depends on `cabin-tokens` / `CabinTokens` only. Add
-`cabin-compliance` / `CabinCompliance` when System/Status bars land. Does
-**not** depend on `cabin-compose` / `CabinCompose`. No AppCompat / Material
-(platform DayNight parent).
+Depends on `cabin-tokens` / `CabinTokens` and `cabin-compliance` /
+`CabinCompliance` for restriction-aware bars. Does **not** depend on
+`cabin-compose` / `CabinCompose`. No AppCompat / Material (platform DayNight
+parent).
 ## Theme and attributes
 
 Theme Kit (Alpha) lives in `cabin-views` — see
@@ -45,7 +45,7 @@ Theme Kit (Alpha) lives in `cabin-views` — see
 </style>
 ```
 
-System/Status bar styleables land with those widgets (next MVP slice).
+System/Status bar widgets: `CabinSystemBarView`, `CabinStatusBarView` (Alpha).
 ## Implementation guidelines
 
 | Topic | Cabin rule |
@@ -61,12 +61,10 @@ System/Status bar styleables land with those widgets (next MVP slice).
 ## Compliance wiring
 
 ```kotlin
-// Planned
-class CabinComplianceHost(context: Context) {
-    fun attach(policy: CabinCompliance) { /* … */ }
-}
-
-// Widgets query host / context theme for allow/deny
+val host = CabinComplianceHost(initialState = VehicleUiState.parked())
+systemBar.setCompliance(host)
+statusBar.setCompliance(host)
+host.updateState(adapterState) // map CarUxRestrictions → VehicleUiState
 ```
 
 Gated click listeners disable or substitute interactions consistently with

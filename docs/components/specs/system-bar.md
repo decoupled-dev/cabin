@@ -66,7 +66,6 @@ exclusively here.
 ## Planned Views API (MVP primary)
 
 ```kotlin
-// Planned
 class CabinSystemBarView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -74,31 +73,10 @@ class CabinSystemBarView @JvmOverloads constructor(
     fun setSlots(slots: CabinSystemBarSlots) { /* … */ }
     fun setCompliance(host: CabinComplianceHost) { /* … */ }
 }
-
-data class CabinSystemBarSlots(
-    val leading: List<CabinSystemBarEntry>,
-    val center: List<CabinSystemBarEntry> = emptyList(),
-    val trailing: List<CabinSystemBarEntry>,
-)
-
-data class CabinSystemBarEntry(
-    val id: String,
-    val icon: Drawable?,
-    val label: CharSequence?,
-    val contentDescription: String,
-    val interaction: CabinInteraction,
-    val onActivate: () -> Unit,
-)
 ```
 
-```xml
-<!-- Planned -->
-<dev.decoupled.cabin.views.CabinSystemBarView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
-```
-
-Soong: part of `CabinViews` (**planned**).
+Alpha implementation: `dev.decoupled.cabin.views.CabinSystemBarView` in
+`cabin-views` / `CabinViews`.
 
 ## Planned Compose API (parity later; not MVP-required)
 
@@ -113,12 +91,12 @@ fun CabinSystemBar(
 
 ## Acceptance criteria (MVP)
 
-- [ ] Slot configuration without core fork
-- [ ] Matrix behavior matches restriction-states for System Bar
-- [ ] Touch minima from tokens
-- [ ] Day/night via Theme Kit
-- [ ] Content descriptions on icon-only entries
-- [ ] No dependency on `cabin-compose`
+- [x] Slot configuration without core fork
+- [x] Matrix behavior matches restriction-states for System Bar
+- [x] Touch minima from tokens
+- [x] Day/night via Theme Kit
+- [x] Content descriptions on icon-only entries
+- [x] No dependency on `cabin-compose`
 
 ## Related
 

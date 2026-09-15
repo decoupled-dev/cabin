@@ -25,7 +25,7 @@ Compose is **not** a gate for SystemUI.
 
 ## Planned artifacts
 
-- Maven: `dev.decoupled.cabin:cabin-views` (Alpha — Theme Kit; bars next)
+- Maven: `dev.decoupled.cabin:cabin-views` (Alpha — Theme Kit + System/Status bars)
 - Soong: `CabinViews` (`cabin-views/Android.bp`)
 
 No dependency on Compose modules. No AppCompat/Material for Theme Kit.
@@ -37,12 +37,19 @@ No dependency on Compose modules. No AppCompat/Material for Theme Kit.
 - `CabinThemeResolver` for widgets; OEM overlay / RRO without forks
 - Docs: [docs/adoption/theme-kit.md](../../docs/adoption/theme-kit.md)
 
+## System / Status bars (Alpha)
+
+- `CabinSystemBarView` — slotted leading/center/trailing; token sizes
+- `CabinStatusBarView` — ordered glyphs; exhaustive `Signal` presentation
+- `CabinComplianceHost` — Restriction Engine gating (allow/substitute/block)
+- Depends on `cabin-compliance` / `CabinCompliance` (thin; no Compose)
+
 ## Guidelines
 
 - Styleables map to token roles, not raw colors
 - Explicit `bind()` / adapters; no hidden theme singletons
 - Focus / rotary paths; large touch minima from tokens
-- `CabinComplianceHost` (planned with bars) for gating
+- `CabinComplianceHost` for gating — never hardcode driving policy in widgets
 - Day/night and config changes without losing vehicle state
 - Prefer **RROs** for OEM brand on images
 

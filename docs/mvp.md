@@ -11,8 +11,8 @@ and [roadmap](roadmap.md).
 | **Cabin Tokens** | `cabin-tokens` / `CabinTokens` | N/A (no UI toolkit) | Source stub: [`tokens/cabin.tokens.json`](../tokens/cabin.tokens.json) |
 | **Restriction Engine** | `cabin-compliance` / `CabinCompliance` | N/A (no UI toolkit) | States + matrix: [restriction-states.md](compliance/restriction-states.md) |
 | **Theme Kit** | Part of `cabin-views` / `CabinViews` (optional Compose mirror later) | **Views-first** | Alpha: resolves tokens → theme attrs / day-night; [theme-kit](adoption/theme-kit.md) |
-| **System Bar** | `cabin-views` / `CabinViews` | **Views-first** | Spec: [specs/system-bar.md](components/specs/system-bar.md) |
-| **Status Bar** | `cabin-views` / `CabinViews` | **Views-first** | Spec: [specs/status-bar.md](components/specs/status-bar.md) |
+| **System Bar** | `cabin-views` / `CabinViews` | **Views-first** | Alpha: [specs/system-bar.md](components/specs/system-bar.md) |
+| **Status Bar** | `cabin-views` / `CabinViews` | **Views-first** | Alpha: [specs/status-bar.md](components/specs/status-bar.md) |
 
 Dual distribution remains required: Gradle (Maven) **and** Soong
 ([api-contracts.md](api-contracts.md), [build-tree](adoption/build-tree.md)).

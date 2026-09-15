@@ -6,9 +6,9 @@ It targets OEMs, Tier-1 suppliers, and app developers who need a
 Material Design 3–class platform purpose-built for the vehicle cabin —
 not a phone UI stretched onto a bigger screen.
 
-> **Library Alpha (in progress):** `cabin-tokens` + `cabin-compliance` + Theme Kit
-> in `cabin-views` (Views day/night theme resolution, OEM overlay/RRO path).
-> System/Status bar widgets are **next**. See [MVP v0.1](docs/mvp.md) ·
+> **Library Alpha (in progress):** `cabin-tokens` + `cabin-compliance` +
+> `cabin-views` (Theme Kit + System/Status bar Views chrome). Packaging /
+> Maven publish notes remain. See [MVP v0.1](docs/mvp.md) ·
 > [theme-kit](docs/adoption/theme-kit.md).
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
@@ -44,7 +44,7 @@ Soong sketches: `cabin-tokens/Android.bp` (`CabinTokens`),
 
 Clear the [pre-implementation gate](docs/pre-implementation.md) and read the
 frozen [MVP v0.1](docs/mvp.md) before expanding beyond tokens + compliance +
-Theme Kit. Token stub: [`tokens/cabin.tokens.json`](tokens/cabin.tokens.json).
+Theme Kit + Views bars. Token stub: [`tokens/cabin.tokens.json`](tokens/cabin.tokens.json).
 
 ---
 ## Why Cabin?

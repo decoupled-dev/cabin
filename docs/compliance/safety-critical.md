@@ -46,7 +46,6 @@ Informational EV range estimates are **not** automatically safety-critical;
 ### Planned API sketch
 
 ```kotlin
-// Planned
 sealed interface Signal<out T> {
     data class Value<T>(val value: T, val atMillis: Long) : Signal<T>
     data object Unavailable : Signal<Nothing>
@@ -54,6 +53,8 @@ sealed interface Signal<out T> {
     data class Fault(val code: String) : Signal<Nothing>
 }
 ```
+
+Alpha: `dev.decoupled.cabin.compliance.Signal` in `cabin-compliance`.
 
 Components render `Signal` exhaustively — compile-time when using sealed types.
 

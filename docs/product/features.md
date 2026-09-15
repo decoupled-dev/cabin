@@ -26,8 +26,8 @@ only.** Overlay & Toast full pack is later.
 
 | Feature | Intent | Primary docs | MVP |
 | --- | --- | --- | --- |
-| **System Bar** | Wayfinding slots, large targets, restriction-aware entries | [spec](../components/specs/system-bar.md) | **Yes** |
-| **Status Bar** | Glanceable vehicle/system status; honest unavailable/fault | [spec](../components/specs/status-bar.md) | **Yes** |
+| **System Bar** | Wayfinding slots, large targets, restriction-aware entries | [spec](../components/specs/system-bar.md) — **Alpha** | **Yes** |
+| **Status Bar** | Glanceable vehicle/system status; honest unavailable/fault | [spec](../components/specs/status-bar.md) — **Alpha** | **Yes** |
 | **Overlay & Toast** | Transient feedback that does not trap drivers | Patterns + safety docs | Later |
 
 **Exit for Layer 1 (MVP):** OEM can slot brand chrome via tokens/RRO without

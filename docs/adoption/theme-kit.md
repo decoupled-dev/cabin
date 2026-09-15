@@ -5,8 +5,8 @@ Alpha **Theme Kit** lives in `cabin-views` / `CabinViews`. It resolves
 widgets never hardcode hex and OEMs brand without forking chrome
 ([ADR 0003](../adr/0003-tokens-via-overlay-rro.md)).
 
-> System Bar / Status Bar widgets are **not** in this drop — Theme Kit only
-> (MVP success criterion #3). Bars come next on the Views path.
+> System Bar / Status Bar Views chrome also lives in `cabin-views` and consumes
+> Theme Kit for day/night container / outline / safety roles (MVP #4).
 
 ## Artifacts
 
@@ -16,9 +16,9 @@ widgets never hardcode hex and OEMs brand without forking chrome
 | Soong | `CabinViews` |
 | Package | `dev.decoupled.cabin.views.theme` |
 
-Depends on `cabin-tokens` / `CabinTokens` only (thin-by-design). Add
-`cabin-compliance` when System/Status bars land. **No** AppCompat, Material,
-or Compose.
+Theme Kit itself needs `cabin-tokens` / `CabinTokens` only. Full Views chrome
+(bars) also depends on `cabin-compliance` / `CabinCompliance`. **No** AppCompat,
+Material, or Compose.
 
 ## What resolves
 
@@ -122,13 +122,14 @@ See [token-schema](../design-language/token-schema.md).
 
 ## Thin deps
 
-Theme Kit consumers need tokens + views only:
+SystemUI-shaped targets pull tokens + compliance + views:
 
 ```bp
-static_libs: ["CabinTokens", "CabinViews"]
-// Add CabinCompliance when restriction-aware bars land
+static_libs: ["CabinTokens", "CabinCompliance", "CabinViews"]
 // Do NOT add CabinCompose, catalog, or samples
 ```
+
+Theme-only experiments can omit `CabinCompliance`; restriction-aware bars need it.
 
 ## Verification
 

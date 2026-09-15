@@ -3,7 +3,8 @@
 > Open-source AAOS design language and dual UI kit (Jetpack Compose + Views) with compliance-first gates and dual Gradle/Soong distribution.
 
 Cabin targets OEMs, Tier-1s, and app developers. Library Alpha: tokens,
-compliance, Theme Kit (`cabin-views`). Bars and broader kits remain planned.
+compliance, Theme Kit + System/Status bar Views chrome (`cabin-views`).
+Compose kits and catalog remain planned.
 
 ## Priority reading
 

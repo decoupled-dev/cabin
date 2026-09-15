@@ -28,8 +28,9 @@ android {
 }
 
 dependencies {
-    // Theme Kit Alpha: tokens only. Add cabin-compliance when System/Status bars land.
+    // System/Status bars: tokens + Restriction Engine (thin-by-design; no Compose).
     api(project(":cabin-tokens"))
+    api(project(":cabin-compliance"))
     implementation(libs.androidx.annotation)
 
     testImplementation(libs.junit)
