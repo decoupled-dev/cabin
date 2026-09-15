@@ -1,0 +1,36 @@
+/**
+ * Cabin docs shell — restrained, production-minded palette.
+ * Not a Material visual clone; day/night via Docusaurus color mode.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --ifm-color-primary: #1f5f7a;
+  --ifm-color-primary-dark: #1b556e;
+  --ifm-color-primary-darker: #195068;
+  --ifm-color-primary-darkest: #154255;
+  --ifm-color-primary-light: #24698a;
+  --ifm-color-primary-lighter: #277092;
+  --ifm-color-primary-lightest: #3183aa;
+  --ifm-code-font-size: 95%;
+  --ifm-font-family-base: 'IBM Plex Sans', 'Segoe UI', Helvetica, Arial, sans-serif;
+  --ifm-heading-font-family: 'IBM Plex Sans', 'Segoe UI', Helvetica, Arial,
+    sans-serif;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.06);
+  --cabin-hero-bg: #f6f8fa;
+  --cabin-muted-bg: #eef2f5;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #6cb4d4;
+  --ifm-color-primary-dark: #54a8cd;
+  --ifm-color-primary-darker: #48a2ca;
+  --ifm-color-primary-darkest: #3486ab;
+  --ifm-color-primary-light: #84c0db;
+  --ifm-color-primary-lighter: #90c6de;
+  --ifm-color-primary-lightest: #b4d9e9;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --cabin-hero-bg: #161a1e;
+  --cabin-muted-bg: #1b2127;
+}

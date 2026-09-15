@@ -82,16 +82,22 @@ Modeled on Material’s discoverability, adapted for automotive:
 - Mark unimplemented demos clearly during early phases.
 - American English.
 
-## Technical preferences (non-binding)
+## Technical preferences
 
-Static site (e.g. Docusaurus, MkDocs, or custom) with:
+**Stack (chosen for the early docs shell):** Docusaurus in top-level
+`website/`, fully decoupled from Android library modules. See
+[website/README.md](https://github.com/decoupled-dev/cabin/blob/main/website/README.md)
+for install / start / build / deploy.
+
+Planned capabilities as the site matures:
 
 - Versioned routes (`/1.0/…`)
 - Search
 - Dark/light matching Cabin day/night where helpful
 - Fast CI publish from `website/` + `docs/`
 
-Final stack chosen in Phase 7.
+> Maintainer override: thin public docs shell may ship before the original
+> Phase 7 / catalog milestone. Full interactive catalog remains later.
 
 ## Launch milestones
 

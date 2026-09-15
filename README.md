@@ -89,6 +89,7 @@ build-tree apps — same source, Views-first on platform
 | [Compose](docs/platforms/compose.md) / [Views](docs/platforms/views.md) / [Soong](docs/platforms/soong.md) | Platform guidelines and parity |
 | [Adoption](docs/adoption/integration.md) | Integrate with minimal footprint |
 | [Build-tree](docs/adoption/build-tree.md) | SystemUI / Soong adoption |
+| [Website](website/README.md) | Public docs site (Docusaurus shell under `website/`) |
 | [Website plan](docs/website/site-plan.md) | Public docs site IA (Material-style) |
 | [Roadmap](docs/roadmap.md) | Phased delivery plan |
 | [Contributing](docs/contributing.md) | How to contribute |

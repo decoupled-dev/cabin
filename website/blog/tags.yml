@@ -1,0 +1,9 @@
+website:
+  label: Website
+  permalink: /website
+  description: Public docs site updates
+
+docs:
+  label: Docs
+  permalink: /docs-tag
+  description: Documentation notes
