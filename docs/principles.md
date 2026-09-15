@@ -80,6 +80,11 @@ relevant android/skills modules for Compose, architecture, and testing — and
 prefer those patterns unless automotive constraints require a documented
 exception.
 
+Cabin also ships **in-repo Agent Skills** (`skills/*/SKILL.md`) and
+[AGENTS.md](../AGENTS.md) so coding agents stay aligned with these principles
+(thin modules, compliance-first, dual-stack, Views-first SystemUI). See
+[docs/agents](agents/README.md).
+
 ## 7. Dual-stack parity
 
 Parity is a principle, not a backlog item:
@@ -114,3 +119,4 @@ Until code exists, docs must be implementable:
 - [Architecture](architecture.md)
 - [Contributing](contributing.md)
 - [Compliance](compliance/README.md)
+- [Agents](agents/README.md) · [AGENTS.md](../AGENTS.md)

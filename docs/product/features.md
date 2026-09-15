@@ -68,12 +68,14 @@ How the product is built, verified, taught, and adopted into OEM images.
 | **Compose Kit** | `cabin-compose` / `CabinCompose` theme + components | [compose](../platforms/compose.md) |
 | **Views Kit** | `cabin-views` / `CabinViews` theme + components (SystemUI primary) | [views](../platforms/views.md) |
 | **Build-tree / Soong distribution** | Same sources as Maven AARs; Soong modules for SystemUI, CarLauncher, platform media; RROs for brand; thin Views-first deps | [build-tree](../adoption/build-tree.md), [soong](../platforms/soong.md), [packaging](../adoption/packaging.md) |
+| **Agent skills + AGENTS.md** | Modular Agent Skills and hard rules so coding agents implement thin, compliant, dual-stack Cabin correctly | [AGENTS.md](../../AGENTS.md), [docs/agents](../agents/README.md), [skills/](../../skills/) |
 | **Catalog app** | Interactive reference for parity and adoption | [site plan](../website/site-plan.md) |
 | **Docs site** | Public Material-class IA | [site plan](../website/site-plan.md) |
 
 Catalog and docs site ship after enough Layer 1–2 surface exists to showcase
 honestly — not as empty shells. Build-tree distribution is required for OEM
-chrome adoption; Gradle-only packaging is insufficient for SystemUI.
+chrome adoption; Gradle-only packaging is insufficient for SystemUI. Agent
+affordances ship in Phase 1 docs so later implementation stays aligned.
 
 ## Explicitly not in v1
 

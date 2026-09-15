@@ -147,6 +147,22 @@ Details: [principles](docs/principles.md) · [architecture](docs/architecture.md
 
 ---
 
+## Agent-friendly
+
+Cabin ships instructions so coding agents stay aligned with humans:
+
+| Artifact | Purpose |
+| --- | --- |
+| [AGENTS.md](AGENTS.md) | Hard rules for any AI agent in this repo |
+| [llms.txt](llms.txt) | Concise LLM doc map and reading order |
+| [skills/](skills/) | Modular Agent Skills (tokens, compliance, Compose, Views, Soong, …) |
+| [docs/agents/](docs/agents/README.md) | How to use agent affordances |
+
+Cursor loads [.cursor/rules/cabin.mdc](.cursor/rules/cabin.mdc). Skills follow
+the [Agent Skills](https://agentskills.io) layout.
+
+---
+
 ## License
 
 Apache License 2.0 — see [LICENSE](LICENSE).

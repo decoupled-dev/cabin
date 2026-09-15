@@ -30,6 +30,19 @@ Contributions should align with [principles](principles.md):
   [android/skills](https://github.com/android/skills) patterns
 - American English; precise, production-minded tone — not marketing fluff
 
+## AI-assisted contributions
+
+Agents (Cursor, Gemini, Claude, etc.) are welcome **when** they follow:
+
+1. [AGENTS.md](../AGENTS.md) hard rules
+2. Relevant modular skills under [skills/](../skills/) (see
+   [docs/agents](agents/README.md))
+3. Existing architecture, compliance, and build-tree docs — do not invent a
+   parallel packaging story
+
+Humans still review PRs for pillars, thin deps, dual-stack parity, and
+planned-vs-implemented labeling. Agent output is not a substitute for review.
+
 ## Doc contributions
 
 1. Fork and branch from `main` (`docs/<short-description>`).

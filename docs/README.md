@@ -75,6 +75,15 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | [Migration](adoption/migration.md) | From stock Material / AAOS widgets |
 | [Packaging](adoption/packaging.md) | Maven vs Soong dual distribution, minimal footprint |
 
+### Agents
+
+| Document | Description |
+| --- | --- |
+| [Agents index](agents/README.md) | AGENTS.md, skills/, Cursor rules, android/skills relationship |
+| [AGENTS.md](../AGENTS.md) | Hard rules for coding agents (repo root) |
+| [llms.txt](../llms.txt) | LLM-oriented doc map |
+| [skills/](../skills/) | Modular Agent Skills (`SKILL.md` per concern) |
+
 ### Website (future)
 
 | Document | Description |

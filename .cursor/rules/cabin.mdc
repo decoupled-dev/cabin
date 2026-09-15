@@ -1,0 +1,33 @@
+---
+description: Cabin AAOS design system hard rules — thin modules, dual stack, compliance, Views-first SystemUI, planned vs implemented
+alwaysApply: true
+---
+
+# Cabin
+
+You are working in **Cabin**: AAOS design language + dual UI (Compose + Views),
+compliance-first, dual Gradle/Soong distribution. Repo may be **docs-only**;
+mark unimplemented APIs **planned**.
+
+## Hard constraints
+
+- Thin by design: no umbrella modules; no samples/catalog/website in product deps
+- `cabin-tokens` / `cabin-compliance`: no Compose or Views widget deps
+- `cabin-compose` and `cabin-views` must not depend on each other
+- SystemUI / build-tree: **Soong** + **Views-first** (`CabinViews` + tokens + compliance). Never Gradle-`implementation` Cabin into SystemUI
+- Do not hardcode driving/UX policy inside widgets — use compliance / Restriction Engine
+- OEM brand via tokens / RROs / extension slots — not core forks
+- Compose + Views parity for components; shared states/actions
+- American English; restrained, production-minded docs
+
+## Read
+
+- [AGENTS.md](../../AGENTS.md)
+- [docs/README.md](../../docs/README.md)
+- [llms.txt](../../llms.txt)
+- Skills under [skills/](../../skills/) — pick by task (tokens, compliance, compose, views, soong, component-spec)
+
+## Product pillars
+
+Glanceable · Quiet · Safe by default · One language two skins · Thin by design
+→ [docs/product/pillars.md](../../docs/product/pillars.md)
