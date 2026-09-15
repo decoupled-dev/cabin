@@ -65,12 +65,16 @@ cabin-tokens
      ▲
 cabin-compliance
      ▲
-cabin-views     cabin-compose
+cabin-views     cabin-compose   (bars / Compose kits — planned)
 ```
+
+Theme Kit Alpha in `cabin-views` depends on **tokens only**; wire
+`cabin-compliance` when restriction-aware chrome lands.
 
 - Tokens & compliance: **no** UI toolkit deps
 - Views ⊀ Compose and Compose ⊀ Views
-- SystemUI static_libs: tokens + compliance + views only
+- SystemUI static_libs: tokens + compliance + views only (compliance is a
+  direct product dep until `CabinViews` bars require it)
 
 ## Related
 

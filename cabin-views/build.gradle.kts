@@ -28,8 +28,8 @@ android {
 }
 
 dependencies {
+    // Theme Kit Alpha: tokens only. Add cabin-compliance when System/Status bars land.
     api(project(":cabin-tokens"))
-    api(project(":cabin-compliance"))
     implementation(libs.androidx.annotation)
 
     testImplementation(libs.junit)

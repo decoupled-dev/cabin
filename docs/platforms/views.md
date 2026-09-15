@@ -22,9 +22,10 @@ it — but Compose is **not** a gate for SystemUI adoption
 | Maven (Gradle apps) | `dev.decoupled.cabin:cabin-views:<version>` | Alpha (Theme Kit); bars next |
 | Soong (build-tree) | `CabinViews` | Alpha sketch `cabin-views/Android.bp` |
 
-Depends on `cabin-tokens` / `CabinTokens` and `cabin-compliance` /
-`CabinCompliance`. Does **not** depend on `cabin-compose` / `CabinCompose`.
-No AppCompat / Material (platform DayNight parent).
+Theme Kit Alpha depends on `cabin-tokens` / `CabinTokens` only. Add
+`cabin-compliance` / `CabinCompliance` when System/Status bars land. Does
+**not** depend on `cabin-compose` / `CabinCompose`. No AppCompat / Material
+(platform DayNight parent).
 ## Theme and attributes
 
 Theme Kit (Alpha) lives in `cabin-views` — see

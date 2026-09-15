@@ -16,8 +16,9 @@ widgets never hardcode hex and OEMs brand without forking chrome
 | Soong | `CabinViews` |
 | Package | `dev.decoupled.cabin.views.theme` |
 
-Depends on `cabin-tokens` / `CabinTokens` and `cabin-compliance` /
-`CabinCompliance`. **No** AppCompat, Material, or Compose.
+Depends on `cabin-tokens` / `CabinTokens` only (thin-by-design). Add
+`cabin-compliance` when System/Status bars land. **No** AppCompat, Material,
+or Compose.
 
 ## What resolves
 
@@ -121,8 +122,11 @@ See [token-schema](../design-language/token-schema.md).
 
 ## Thin deps
 
+Theme Kit consumers need tokens + views only:
+
 ```bp
-static_libs: ["CabinTokens", "CabinCompliance", "CabinViews"]
+static_libs: ["CabinTokens", "CabinViews"]
+// Add CabinCompliance when restriction-aware bars land
 // Do NOT add CabinCompose, catalog, or samples
 ```
 
