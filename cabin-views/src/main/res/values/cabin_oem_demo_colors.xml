@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Demo brand colors for ThemeOverlay.Cabin.OemBrandDemo (not a product default). -->
+<resources>
+    <color name="cabin_views_oem_demo_primary">#1565C0</color>
+    <color name="cabin_views_oem_demo_on_primary">#FFFFFF</color>
+</resources>

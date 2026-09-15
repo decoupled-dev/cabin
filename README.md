@@ -6,10 +6,10 @@ It targets OEMs, Tier-1 suppliers, and app developers who need a
 Material Design 3–class platform purpose-built for the vehicle cabin —
 not a phone UI stretched onto a bigger screen.
 
-> **Library Alpha (in progress):** `cabin-tokens` + `cabin-compliance` (Restriction
-> Engine) are scaffolding toward frozen [MVP v0.1](docs/mvp.md). Theme Kit and
-> Views System/Status bars are **not** in this drop yet.
-> Docs + contracts: [pre-implementation pack](docs/pre-implementation.md).
+> **Library Alpha (in progress):** `cabin-tokens` + `cabin-compliance` + Theme Kit
+> in `cabin-views` (Views day/night theme resolution, OEM overlay/RRO path).
+> System/Status bar widgets are **next**. See [MVP v0.1](docs/mvp.md) ·
+> [theme-kit](docs/adoption/theme-kit.md).
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-AAOS-green.svg)](docs/vision.md)
@@ -23,7 +23,7 @@ not a phone UI stretched onto a bigger screen.
 Requires JDK 17+ and an Android SDK (`local.properties` → `sdk.dir=`).
 
 ```bash
-./gradlew :cabin-tokens:test :cabin-compliance:test
+./gradlew :cabin-tokens:test :cabin-compliance:test :cabin-views:test
 ```
 
 Regenerate tokens from the stub after editing [`tokens/cabin.tokens.json`](tokens/cabin.tokens.json):
@@ -35,15 +35,16 @@ python3 tools/generate_cabin_tokens.py
 
 Maven coordinates / Soong names: [api-contracts](docs/api-contracts.md).
 Soong sketches: `cabin-tokens/Android.bp` (`CabinTokens`),
-`cabin-compliance/Android.bp` (`CabinCompliance`).
+`cabin-compliance/Android.bp` (`CabinCompliance`),
+`cabin-views/Android.bp` (`CabinViews`).
 
 ---
 
 ## Before implementation
 
 Clear the [pre-implementation gate](docs/pre-implementation.md) and read the
-frozen [MVP v0.1](docs/mvp.md) before expanding beyond tokens + compliance.
-Token stub: [`tokens/cabin.tokens.json`](tokens/cabin.tokens.json).
+frozen [MVP v0.1](docs/mvp.md) before expanding beyond tokens + compliance +
+Theme Kit. Token stub: [`tokens/cabin.tokens.json`](tokens/cabin.tokens.json).
 
 ---
 ## Why Cabin?
@@ -106,7 +107,7 @@ build-tree apps — same source, Views-first on platform
 cabin/
 ├── cabin-tokens          # Alpha — design tokens (codegen from tokens/cabin.tokens.json)
 ├── cabin-compliance      # Alpha — Restriction Engine (System/Status bar matrix)
-├── cabin-views           # Planned — Theme Kit + System/Status bars (Views-first)
+├── cabin-views           # Alpha — Theme Kit (Views); System/Status bars next
 ├── cabin-compose         # Planned — post-MVP for chrome parity
 ├── apps/www              # Marketing site (Next.js) — not the docs shell
 ├── samples/              # Planned — reference apps
@@ -205,6 +206,6 @@ Apache License 2.0 — see [LICENSE](LICENSE).
 
 ## Status
 
-This repository currently contains the **documentation foundation** only.
-No Android library source is published yet. Track progress on the
-[roadmap](docs/roadmap.md).
+Library **Alpha** source modules ship in-tree (tokens, compliance, Theme Kit).
+Maven publish is not configured yet. System/Status bars and broader kits remain
+on the [roadmap](docs/roadmap.md).

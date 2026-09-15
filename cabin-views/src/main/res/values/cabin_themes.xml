@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Cabin Theme Kit (Views-first, Alpha).
+
+  Resolves cabin-tokens roles onto theme attributes. Day/night scheme chrome
+  (surface, outline, container, locked feedback) flips via values / values-night
+  from CabinTokens — not by forking widgets (ADR 0003).
+
+  Parent is platform DayNight (no AppCompat/Material) so SystemUI / Soong stays thin.
+-->
+<resources>
+
+    <!-- Attribute bindings shared by all Cabin themes. -->
+    <style name="Base.Theme.Cabin" parent="@android:style/Theme.DeviceDefault.DayNight">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+
+        <!-- Brand / semantic (not scheme-flipped in the stub). -->
+        <item name="cabin_colorPrimary">@color/cabin_color_semantic_primary</item>
+        <item name="cabin_colorOnPrimary">@color/cabin_color_semantic_onPrimary</item>
+        <item name="cabin_colorSecondary">@color/cabin_color_semantic_secondary</item>
+        <item name="cabin_colorOnSecondary">@color/cabin_color_semantic_onSecondary</item>
+        <item name="cabin_colorSuccess">@color/cabin_color_semantic_success</item>
+        <item name="cabin_colorClimate">@color/cabin_color_semantic_climate</item>
+        <item name="cabin_colorMediaAccent">@color/cabin_color_semantic_mediaAccent</item>
+        <item name="cabin_colorScrim">@color/cabin_color_semantic_scrim</item>
+
+        <!-- Scheme chrome + feedback (day/night via CabinTokens values-night). -->
+        <item name="cabin_colorSurface">@color/cabin_color_scheme_surface</item>
+        <item name="cabin_colorOnSurface">@color/cabin_color_scheme_onSurface</item>
+        <item name="cabin_colorSurfaceVariant">@color/cabin_color_scheme_surfaceVariant</item>
+        <item name="cabin_colorOutline">@color/cabin_color_scheme_outline</item>
+        <item name="cabin_colorContainer">@color/cabin_color_scheme_container</item>
+        <item name="cabin_colorOnContainer">@color/cabin_color_scheme_onContainer</item>
+        <item name="cabin_colorWarning">@color/cabin_color_scheme_warning</item>
+        <item name="cabin_colorError">@color/cabin_color_scheme_error</item>
+        <item name="cabin_colorCharging">@color/cabin_color_scheme_charging</item>
+    </style>
+
+    <!-- Default product theme: DayNight UiMode selects scheme resources. -->
+    <style name="Theme.Cabin" parent="Base.Theme.Cabin" />
+
+    <!-- Explicit alias — same as Theme.Cabin; documents DayNight contract. -->
+    <style name="Theme.Cabin.DayNight" parent="Theme.Cabin" />
+
+    <!--
+      Theme overlay: apply Cabin token attrs on top of an existing host theme
+      (e.g. SystemUI) without replacing the entire theme tree.
+    -->
+    <style name="ThemeOverlay.Cabin" parent="@android:style/ThemeOverlay">
+        <item name="cabin_colorPrimary">@color/cabin_color_semantic_primary</item>
+        <item name="cabin_colorOnPrimary">@color/cabin_color_semantic_onPrimary</item>
+        <item name="cabin_colorSecondary">@color/cabin_color_semantic_secondary</item>
+        <item name="cabin_colorOnSecondary">@color/cabin_color_semantic_onSecondary</item>
+        <item name="cabin_colorSuccess">@color/cabin_color_semantic_success</item>
+        <item name="cabin_colorClimate">@color/cabin_color_semantic_climate</item>
+        <item name="cabin_colorMediaAccent">@color/cabin_color_semantic_mediaAccent</item>
+        <item name="cabin_colorScrim">@color/cabin_color_semantic_scrim</item>
+        <item name="cabin_colorSurface">@color/cabin_color_scheme_surface</item>
+        <item name="cabin_colorOnSurface">@color/cabin_color_scheme_onSurface</item>
+        <item name="cabin_colorSurfaceVariant">@color/cabin_color_scheme_surfaceVariant</item>
+        <item name="cabin_colorOutline">@color/cabin_color_scheme_outline</item>
+        <item name="cabin_colorContainer">@color/cabin_color_scheme_container</item>
+        <item name="cabin_colorOnContainer">@color/cabin_color_scheme_onContainer</item>
+        <item name="cabin_colorWarning">@color/cabin_color_scheme_warning</item>
+        <item name="cabin_colorError">@color/cabin_color_scheme_error</item>
+        <item name="cabin_colorCharging">@color/cabin_color_scheme_charging</item>
+    </style>
+
+    <!--
+      Illustrative OEM brand overlay — remaps brand primary only.
+      Does NOT touch warning / error / charging (safety / contrast locks).
+      Products ship their own overlay or RRO; this style is a demoable pattern.
+    -->
+    <style name="ThemeOverlay.Cabin.OemBrandDemo" parent="">
+        <item name="cabin_colorPrimary">@color/cabin_views_oem_demo_primary</item>
+        <item name="cabin_colorOnPrimary">@color/cabin_views_oem_demo_on_primary</item>
+    </style>
+
+</resources>

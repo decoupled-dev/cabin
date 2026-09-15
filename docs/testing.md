@@ -24,6 +24,14 @@ unit tests and Views chrome verification. Compose golden parity is **later**.
 - Night contrast locked for `warning` / `error` / `charging` (no soft-wash)
 - Body-text roles (`onSurface`, `onContainer`) stay off domain accents
 
+### Theme Kit (Views)
+
+- Robolectric (or instrumentation): `Theme.Cabin` resolves scheme roles day/night
+- OEM theme overlay remaps brand (`primary`) without changing locked
+  `warning` / `error` / `charging` ([theme-kit](adoption/theme-kit.md),
+  [ADR 0003](adr/0003-tokens-via-overlay-rro.md))
+- No AppCompat/Material required in the Theme Kit module graph for resolution
+
 ### Views System Bar / Status Bar
 
 - Instrumentation or Robolectric: slot/item binding
@@ -31,6 +39,7 @@ unit tests and Views chrome verification. Compose golden parity is **later**.
 - Content descriptions set on icon-only entries
 - Signal unavailable / stale / fault rendering for status items
 - Theme overlay / RRO smoke (manual or automated) without forking widgets
+  (Theme Kit overlay tests cover the brand path ahead of bar widgets)
 
 ### Packaging / thin deps
 
@@ -51,7 +60,7 @@ unit tests and Views chrome verification. Compose golden parity is **later**.
 
 | Lane | v0.1 |
 | --- | --- |
-| **Gradle CI** (GitHub/etc.) | Unit tests for compliance + tokens; Views module tests; lint/format as added |
+| **Gradle CI** (GitHub/etc.) | Unit tests for compliance + tokens + Theme Kit (`cabin-views`); Views bar tests as added; lint/format as added |
 | **Platform / Soong** | Manual or partner tree verification that `Cabin*` modules build and SystemUI-shaped target links thinly; full AAOS image CI is partner-owned |
 
 Cabin does not require hosting a full AAOS tree in this repo for MVP.

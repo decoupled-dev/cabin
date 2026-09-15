@@ -34,10 +34,10 @@ Glanceable · Quiet · Safe by default · One language, two skins · Thin by des
 
 | Module | Role |
 | --- | --- |
-| `cabin-tokens` / `CabinTokens` | Design tokens only |
-| `cabin-compliance` / `CabinCompliance` | Restriction Engine / policies |
-| `cabin-compose` / `CabinCompose` | Compose UI |
-| `cabin-views` / `CabinViews` | Views UI (SystemUI primary) |
+| `cabin-tokens` / `CabinTokens` | Design tokens only (Alpha) |
+| `cabin-compliance` / `CabinCompliance` | Restriction Engine / policies (Alpha) |
+| `cabin-compose` / `CabinCompose` | Compose UI (planned) |
+| `cabin-views` / `CabinViews` | Views UI — Theme Kit Alpha; bars next |
 
 Samples, catalog, website: **not** product runtime deps.
 

@@ -17,30 +17,34 @@ it — but Compose is **not** a gate for SystemUI adoption
 
 ## Planned artifacts
 
-| Path | Identifier |
-| --- | --- |
-| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-views:<version>` (**planned**) |
-| Soong (build-tree) | `CabinViews` (**planned**) |
+| Path | Identifier | Status |
+| --- | --- | --- |
+| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-views:<version>` | Alpha (Theme Kit); bars next |
+| Soong (build-tree) | `CabinViews` | Alpha sketch `cabin-views/Android.bp` |
 
 Depends on `cabin-tokens` / `CabinTokens` and `cabin-compliance` /
 `CabinCompliance`. Does **not** depend on `cabin-compose` / `CabinCompose`.
-
+No AppCompat / Material (platform DayNight parent).
 ## Theme and attributes
 
-- Expose styleables for core widgets (`CabinButton`, `MediaNowPlayingView`, …).
-- Map attributes to token roles, not raw colors, whenever possible.
-- Support OEM overlays via Android theme overlay mechanisms + Cabin token
-  bridge ([tokens](../design-language/tokens.md)).
-- On platform images, prefer **RROs** for brand without forking
-  ([build-tree](../adoption/build-tree.md)).
+Theme Kit (Alpha) lives in `cabin-views` — see
+[theme-kit](../adoption/theme-kit.md).
+
+- Styles: `Theme.Cabin` / `Theme.Cabin.DayNight`, `ThemeOverlay.Cabin`
+- Attrs (`cabin_color*`) defined in `cabin-tokens`; Theme Kit binds them to
+  semantic + scheme color resources (day/night via `values-night`)
+- Resolve in code with `CabinThemeResolver` — no hardcoded hex in widgets
+- OEM brand via theme overlay / **RRO** without forking
+  ([ADR 0003](../adr/0003-tokens-via-overlay-rro.md),
+  [build-tree](../adoption/build-tree.md))
 
 ```xml
-<!-- Planned -->
-<style name="Theme.Cabin" parent="Theme.AppCompat.DayNight.NoActionBar">
-    <!-- Token-backed attributes -->
+<style name="Theme.Cabin" parent="@android:style/Theme.DeviceDefault.DayNight">
+    <!-- Token-backed cabin_* attributes (see cabin-views res); NoActionBar via window flags -->
 </style>
 ```
 
+System/Status bar styleables land with those widgets (next MVP slice).
 ## Implementation guidelines
 
 | Topic | Cabin rule |

@@ -10,7 +10,7 @@ and [roadmap](roadmap.md).
 | --- | --- | --- | --- |
 | **Cabin Tokens** | `cabin-tokens` / `CabinTokens` | N/A (no UI toolkit) | Source stub: [`tokens/cabin.tokens.json`](../tokens/cabin.tokens.json) |
 | **Restriction Engine** | `cabin-compliance` / `CabinCompliance` | N/A (no UI toolkit) | States + matrix: [restriction-states.md](compliance/restriction-states.md) |
-| **Theme Kit** | Part of views (and optional compose mirror) | **Views-first** | Resolves tokens → theme attrs / day-night |
+| **Theme Kit** | Part of `cabin-views` / `CabinViews` (optional Compose mirror later) | **Views-first** | Alpha: resolves tokens → theme attrs / day-night; [theme-kit](adoption/theme-kit.md) |
 | **System Bar** | `cabin-views` / `CabinViews` | **Views-first** | Spec: [specs/system-bar.md](components/specs/system-bar.md) |
 | **Status Bar** | `cabin-views` / `CabinViews` | **Views-first** | Spec: [specs/status-bar.md](components/specs/status-bar.md) |
 
@@ -40,11 +40,11 @@ MVP is complete when **all** of the following hold:
    ([testing.md](testing.md)).
 3. **Theme Kit** — Views theme resolves token roles; OEM overlay / RRO path
    documented and demoable without forking widgets
-   ([ADR 0003](adr/0003-tokens-via-overlay-rro.md)).
+   ([ADR 0003](adr/0003-tokens-via-overlay-rro.md),
+   [theme-kit](adoption/theme-kit.md)). **Alpha in `cabin-views`.**
 4. **System Bar + Status Bar (Views)** — match
    [specs](components/specs/system-bar.md); restriction-aware; thin Soong
-   modules consumable by a SystemUI-shaped target.
-5. **Packaging** — Maven coordinates and Soong names per
+   modules consumable by a SystemUI-shaped target. **Not started** (next).5. **Packaging** — Maven coordinates and Soong names per
    [api-contracts.md](api-contracts.md); SystemUI cannot pull Compose/catalog/
    samples through Cabin deps.
 6. **Support** — builds against [support-matrix.md](support-matrix.md) targets.
