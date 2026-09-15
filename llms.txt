@@ -1,0 +1,70 @@
+# Cabin
+
+> Open-source AAOS design language and dual UI kit (Jetpack Compose + Views) with compliance-first gates and dual Gradle/Soong distribution.
+
+Cabin targets OEMs, Tier-1s, and app developers. Docs Phase 1 — library APIs are planned, not shipped.
+
+## Priority reading
+
+### Before library code
+
+1. [Pre-implementation gate](docs/pre-implementation.md)
+2. [MVP v0.1](docs/mvp.md)
+3. [Token schema](docs/design-language/token-schema.md) · [tokens/cabin.tokens.json](tokens/cabin.tokens.json)
+4. [Restriction states](docs/compliance/restriction-states.md)
+5. [System Bar spec](docs/components/specs/system-bar.md) · [Status Bar spec](docs/components/specs/status-bar.md)
+6. [API contracts](docs/api-contracts.md) · [ADRs](docs/adr/README.md)
+
+### Implementers (library / app code — future)
+
+1. [AGENTS.md](AGENTS.md) — hard rules for coding agents
+2. [Architecture](docs/architecture.md) — modules, dependency rules, dual build
+3. [Tokens](docs/design-language/tokens.md) — semantic + component tokens
+4. [Compliance](docs/compliance/README.md) — Restriction Engine overview
+5. [Compose](docs/platforms/compose.md) or [Views](docs/platforms/views.md) — stack of choice
+6. [Component inventory](docs/components/README.md) — what to build
+
+### Designers / product
+
+1. [Vision](docs/vision.md)
+2. [Product stance](docs/product/stance.md)
+3. [Pillars](docs/product/pillars.md)
+4. [Feature plan](docs/product/features.md)
+5. [Foundations](docs/design-language/foundations.md)
+
+### Platform / OEM engineers
+
+1. [Build-tree / Soong](docs/adoption/build-tree.md)
+2. [Soong notes](docs/platforms/soong.md)
+3. [Packaging](docs/adoption/packaging.md)
+4. [Views (SystemUI)](docs/platforms/views.md)
+5. [Integration](docs/adoption/integration.md)
+
+## Key docs
+
+- [Docs index](docs/README.md)
+- [Roadmap](docs/roadmap.md)
+- [Principles](docs/principles.md)
+- [Driving restrictions](docs/compliance/driving-restrictions.md)
+- [UX restrictions](docs/compliance/ux-restrictions.md)
+- [Safety-critical](docs/compliance/safety-critical.md)
+- [System bars](docs/components/system-bars.md) · [Status bars](docs/components/status-bars.md)
+- [Media](docs/components/media.md) · [HVAC](docs/components/hvac.md) · [EV](docs/components/ev.md) · [Vehicle controls](docs/components/vehicle-controls.md)
+- [Extension model](docs/components/extension-model.md)
+- [Website plan](docs/website/site-plan.md)
+- [Contributing](docs/contributing.md)
+- [Agents index](docs/agents/README.md)
+
+## Skills
+
+- [cabin-overview](skills/cabin-overview/SKILL.md)
+- [cabin-tokens](skills/cabin-tokens/SKILL.md)
+- [cabin-compliance](skills/cabin-compliance/SKILL.md)
+- [cabin-compose](skills/cabin-compose/SKILL.md)
+- [cabin-views](skills/cabin-views/SKILL.md)
+- [cabin-soong](skills/cabin-soong/SKILL.md)
+- [cabin-component-spec](skills/cabin-component-spec/SKILL.md)
+
+## Optional
+
+- [llms-full style expansion](docs/README.md) — use the docs TOC for exhaustive coverage
