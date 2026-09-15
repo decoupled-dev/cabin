@@ -25,11 +25,11 @@ jobs:
           java-version: "17"
           cache: gradle
 
+      # Avoid default "tools" package (removed from sdkmanager); install only what we need.
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
-
-      - name: Install Android SDK platform
-        run: sdkmanager "platforms;android-34"
+        with:
+          packages: "platform-tools platforms;android-34"
 
       - name: Write local.properties
         run: echo "sdk.dir=$ANDROID_HOME" > local.properties
