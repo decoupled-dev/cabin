@@ -67,6 +67,12 @@ class CabinStatusBarView @JvmOverloads constructor(
         rebuildChildren()
     }
 
+    /**
+     * Attach Restriction Engine host; widgets re-evaluate gates on state changes.
+     *
+     * Null host is fail-closed: activating deep links resolve to
+     * [GateDisposition.Block] so chrome cannot ship ungated by accident.
+     */
     fun setCompliance(host: CabinComplianceHost?) {
         complianceHost?.removeOnChangeListener(onComplianceChanged)
         complianceHost = host
@@ -95,6 +101,20 @@ class CabinStatusBarView @JvmOverloads constructor(
         for (i in 0 until view.childCount) {
             val child = view.getChildAt(i)
             if (child is TextView) return child.text
+        }
+        return null
+    }
+
+    @VisibleForTesting
+    internal fun itemTone(id: String): StatusTone? =
+        findItemView(id)?.getTag(R.id.cabin_status_bar_tone_tag) as? StatusTone
+
+    @VisibleForTesting
+    internal fun itemPrimaryTextColor(id: String): Int? {
+        val view = findItemView(id) as? ViewGroup ?: return null
+        for (i in 0 until view.childCount) {
+            val child = view.getChildAt(i)
+            if (child is TextView) return child.currentTextColor
         }
         return null
     }
@@ -219,7 +239,7 @@ class CabinStatusBarView @JvmOverloads constructor(
             return StatusPresentation(
                 text = item.text ?: "",
                 contentDescription = item.contentDescription,
-                tone = StatusTone.Normal,
+                tone = toneForLiveEmphasis(item.emphasis),
                 showIconPlaceholder = false,
             )
         }
@@ -227,7 +247,7 @@ class CabinStatusBarView @JvmOverloads constructor(
             is Signal.Value -> StatusPresentation(
                 text = item.text ?: signal.value.toString(),
                 contentDescription = item.contentDescription,
-                tone = StatusTone.Normal,
+                tone = toneForLiveEmphasis(item.emphasis),
                 showIconPlaceholder = false,
             )
             is Signal.Unavailable -> StatusPresentation(
@@ -236,6 +256,7 @@ class CabinStatusBarView @JvmOverloads constructor(
                     R.string.cabin_status_unavailable_a11y,
                     item.contentDescription,
                 ),
+                // Honest degradation wins over warning/charging emphasis.
                 tone = StatusTone.Degraded,
                 showIconPlaceholder = true,
             )
@@ -264,6 +285,13 @@ class CabinStatusBarView @JvmOverloads constructor(
         }
     }
 
+    private fun toneForLiveEmphasis(emphasis: CabinStatusEmphasis): StatusTone =
+        when (emphasis) {
+            CabinStatusEmphasis.None -> StatusTone.Normal
+            CabinStatusEmphasis.Warning -> StatusTone.Warning
+            CabinStatusEmphasis.Charging -> StatusTone.Charging
+        }
+
     private fun applyComplianceToChildren() {
         applyChromeColors()
         for (i in 0 until row.childCount) {
@@ -281,7 +309,8 @@ class CabinStatusBarView @JvmOverloads constructor(
     }
 
     private fun dispositionFor(interaction: CabinInteraction): GateDisposition {
-        val host = complianceHost ?: return GateDisposition.Allow
+        // Safe by default: missing host must not fail-open to Allow.
+        val host = complianceHost ?: return GateDisposition.Block
         return host.disposition(interaction)
     }
 
@@ -348,6 +377,8 @@ sealed interface CabinStatusItem {
  * Glyph + optional text / signal / deep link.
  *
  * When [signal] is set, presentation is derived exhaustively from its state.
+ * [emphasis] applies Theme Kit warning / charging colors for live values;
+ * unavailable / stale / fault always override emphasis for honest degradation.
  */
 data class CabinStatusGlyph(
     override val id: String,
@@ -356,7 +387,20 @@ data class CabinStatusGlyph(
     val text: CharSequence? = null,
     val signal: Signal<*>? = null,
     val deepLink: StatusDeepLink? = null,
+    val emphasis: CabinStatusEmphasis = CabinStatusEmphasis.None,
 ) : CabinStatusItem
+
+/**
+ * Live-value presentation emphasis for Status Bar glyphs.
+ *
+ * Warning / Charging map to Theme Kit safety and charging colors (night
+ * contrast locked). Not used when [Signal] is unavailable, stale, or faulted.
+ */
+enum class CabinStatusEmphasis {
+    None,
+    Warning,
+    Charging,
+}
 
 /**
  * Optional deep link from a status item.

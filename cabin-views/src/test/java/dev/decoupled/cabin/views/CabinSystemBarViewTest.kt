@@ -221,4 +221,27 @@ class CabinSystemBarViewTest {
         bar.findEntryView("apps")!!.performClick()
         assertEquals(0, apps)
     }
+
+    @Test
+    fun nullComplianceHost_failClosed_blocksActivation() {
+        var apps = 0
+        bar.setCompliance(null)
+        bar.setSlots(
+            CabinSystemBarSlots(
+                trailing = listOf(
+                    CabinSystemBarEntry(
+                        id = "apps",
+                        contentDescription = "App grid",
+                        interaction = CabinInteraction.OpenComplexApp,
+                        onActivate = { apps++ },
+                    ),
+                ),
+            ),
+        )
+
+        val view = bar.findEntryView("apps")!!
+        assertFalse(view.isEnabled)
+        view.performClick()
+        assertEquals(0, apps)
+    }
 }

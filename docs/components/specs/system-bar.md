@@ -63,6 +63,9 @@ adjacent Status chrome — see [token-schema](../../design-language/token-schema
 Safety class: **Convenience** chrome — do not bury safety-critical controls
 exclusively here.
 
+Missing `CabinComplianceHost` is **fail-closed** (`GateDisposition.Block`)
+for activating slot entries.
+
 ## Planned Views API (MVP primary)
 
 ```kotlin
