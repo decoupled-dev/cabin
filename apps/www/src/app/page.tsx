@@ -33,37 +33,41 @@ export default function HomePage() {
         {/* Full-bleed atmosphere */}
         <div className="pointer-events-none absolute inset-0 -z-10">
           <div className="absolute inset-0 bg-background" />
-          <div className="absolute -left-1/4 top-[-10%] h-[70vmin] w-[70vmin] animate-ambient-drift rounded-full bg-[radial-gradient(circle,var(--hero-glow-a),transparent_70%)] blur-3xl" />
+          <div className="absolute inset-0 bg-[linear-gradient(160deg,transparent_40%,rgba(42,212,143,0.06)_100%)]" />
+          <div className="absolute -left-1/4 top-[-10%] h-[75vmin] w-[75vmin] animate-ambient-drift rounded-full bg-[radial-gradient(circle,var(--hero-glow-a),transparent_68%)] blur-3xl" />
           <div
-            className="absolute -right-1/5 bottom-[-5%] h-[55vmin] w-[55vmin] animate-ambient-drift rounded-full bg-[radial-gradient(circle,var(--hero-glow-b),transparent_70%)] blur-3xl"
-            style={{ animationDelay: "-6s" }}
+            className="absolute -right-[12%] top-[20%] h-[50vmin] w-[50vmin] animate-soft-pulse rounded-full bg-[radial-gradient(circle,var(--hero-glow-c),transparent_70%)] blur-3xl"
           />
-          <div className="absolute inset-0 cabin-grid opacity-50" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-background to-transparent" />
+          <div
+            className="absolute -right-1/5 bottom-[-5%] h-[58vmin] w-[58vmin] animate-ambient-drift rounded-full bg-[radial-gradient(circle,var(--hero-glow-b),transparent_70%)] blur-3xl"
+            style={{ animationDelay: "-5s" }}
+          />
+          <div className="absolute inset-0 cabin-grid opacity-40" />
+          <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
         </div>
 
-        <div className="mx-auto flex max-w-6xl flex-col gap-12 px-5 pb-20 pt-14 sm:px-8 sm:pt-20 lg:gap-16">
+        <div className="mx-auto flex max-w-6xl flex-col gap-14 px-5 pb-24 pt-16 sm:px-8 sm:pt-24 lg:gap-20">
           <div className="max-w-3xl">
-            <h1 className="font-display text-display text-on-surface animate-fade-rise">
+            <h1 className="font-display text-display font-extrabold text-on-surface animate-brand-in">
               Cabin
             </h1>
             <p
-              className="mt-5 max-w-2xl font-display text-headline text-on-surface animate-fade-rise text-balance"
-              style={{ animationDelay: "80ms" }}
+              className="mt-6 max-w-2xl font-display text-headline text-on-surface animate-fade-rise text-balance"
+              style={{ animationDelay: "120ms" }}
             >
               The design platform for the automobile cabin
             </p>
             <p
               className="mt-5 max-w-xl text-body text-on-surface-variant animate-fade-rise text-balance"
-              style={{ animationDelay: "140ms" }}
+              style={{ animationDelay: "220ms" }}
             >
               Material Design 3–class craft for Android Automotive OS — calm,
               legible, inevitable. Dual-stack UI with compliance as design
               material.
             </p>
             <div
-              className="mt-9 flex flex-wrap items-center gap-3 animate-fade-rise"
-              style={{ animationDelay: "220ms" }}
+              className="mt-10 flex flex-wrap items-center gap-3 animate-fade-rise"
+              style={{ animationDelay: "320ms" }}
             >
               <ButtonLink href="/develop">Get started</ButtonLink>
               <ButtonLink href="/foundations" variant="secondary">

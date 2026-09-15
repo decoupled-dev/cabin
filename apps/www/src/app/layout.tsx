@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
-import { Outfit, Source_Sans_3 } from "next/font/google";
+import { Syne, Source_Sans_3 } from "next/font/google";
 import { SchemeProvider } from "@/components/scheme-provider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
-const display = Outfit({
+const display = Syne({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
+  weight: ["600", "700", "800"],
 });
 
 const body = Source_Sans_3({

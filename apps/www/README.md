@@ -58,9 +58,10 @@ keep docs on `decoupled-dev.github.io/cabin/`.
 
 - Night-leaning default with Day/Night toggle (Cabin day/night story)
 - Semantic color roles aligned with Cabin (primary green, charging, climate)
-- Typography: Outfit (display) + Source Sans 3 (body)
+- Typography: Syne (display) + Source Sans 3 (body)
 - Hero visual: illustrative cabin HMI chrome (status + content + system bar)
-- Motion: ambient glow drift, staggered hero entrance, scroll reveals
+- Motion: brand entrance, ambient glow drift, staggered reveals, progress lines
+- Palette: night cabin black + forest/teal accents — safety warning/error stay crisp; no purple brand wash
 
 ## Explicit non-goals
 
