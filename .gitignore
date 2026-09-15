@@ -1,0 +1,91 @@
+# Built application files
+*.apk
+*.ap_
+*.aab
+
+# Files for the ART/Dalvik VM
+*.dex
+
+# Java class files
+*.class
+
+# Generated files
+bin/
+gen/
+out/
+build/
+captures/
+
+# Gradle files
+.gradle/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+local.properties
+
+# Android Studio / IntelliJ
+*.iml
+.idea/
+*.ipr
+*.iws
+.navigation/
+
+# Kotlin
+.kotlin/
+
+# NDK
+obj/
+.externalNativeBuild/
+.cxx/
+
+# Signing
+*.jks
+*.keystore
+!debug.keystore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs and temp
+*.log
+*.tmp
+*.swp
+*~
+
+# Test / coverage
+coverage/
+*.exec
+*.ec
+jacoco.exec
+test-results/
+.cxx/
+
+# Compose compiler metrics / reports (local)
+compose_metrics/
+compose_reports/
+
+# Node / website tooling (future docs site)
+node_modules/
+dist/
+.cache/
+.parcel-cache/
+.next/
+.docusaurus/
+.vitepress/cache/
+.vuepress/dist/
+
+# Python (docs tooling, scripts)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Misc local env
+.env
+.env.*
+!.env.example
+
+# Generated catalogs / snapshots
+**/snapshot-output/
+**/paparazzi/
+**/roborazzi/
