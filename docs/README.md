@@ -128,7 +128,7 @@ and dual UI component library (Jetpack Compose + legacy Views).
 
 Every component and pattern is specified for **both**:
 
-- Jetpack Compose (`cabin-compose`, planned)
+- Jetpack Compose (`cabin-compose`, Experimental Theme + bars)
 - Legacy Views / XML (`cabin-views`, planned)
 
 Shared tokens and compliance live outside both UI stacks so OEMs can theme

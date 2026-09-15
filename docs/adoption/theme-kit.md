@@ -7,6 +7,8 @@ widgets never hardcode hex and OEMs brand without forking chrome
 
 > System Bar / Status Bar Views chrome also lives in `cabin-views` and consumes
 > Theme Kit for day/night container / outline / safety roles (MVP #4).
+> Compose mirrors the same roles via `resolveCabinColors` / `CabinTheme` in
+> `cabin-compose` (**Experimental**; no Views theme attrs).
 
 ## Artifacts
 

@@ -44,7 +44,7 @@ Platform chrome is Views/XML today. Cabin’s primary build-tree surface is:
 CabinTokens + CabinCompliance + CabinViews
 ```
 
-Compose (`CabinCompose`, **planned**) remains first-class for:
+Compose (`CabinCompose`, **Experimental** Theme + bars) remains first-class for:
 
 - Gradle app developers
 - Platform apps that already ship Compose

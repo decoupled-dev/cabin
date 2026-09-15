@@ -4,7 +4,8 @@
 
 Cabin targets OEMs, Tier-1s, and app developers. Library Alpha: tokens,
 compliance, Theme Kit + System/Status bar Views chrome (`cabin-views`).
-Compose kits and catalog remain planned.
+Compose Theme + System/Status bars are **Experimental** (`cabin-compose`).
+Catalog remains planned.
 
 ## Priority reading
 

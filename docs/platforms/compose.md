@@ -10,30 +10,62 @@ apps, settings screens, and OEM feature apps. System UI and build-tree
 components may still require Views ([views](views.md)); Cabin treats both as
 first-class.
 
-## Planned artifact
+Compose bar parity is **Experimental** and does **not** replace Views for
+SystemUI Soong adoption ([ADR 0002](../adr/0002-views-first-platform.md)).
+
+## Artifact
 
 ```text
 dev.decoupled.cabin:cabin-compose:<version>
 ```
 
+| Path | Identifier | Status |
+| --- | --- | --- |
+| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-compose` | **Experimental** (Theme + System/Status bars) |
+| Soong | `CabinCompose` | Sketch only — **do not** link from SystemUI |
+
 Depends on `cabin-tokens` and `cabin-compliance` ([architecture](../architecture.md)).
+Must **not** depend on `cabin-views`.
 
 ## Theme
 
+Compose Theme Kit mirror — same token **roles** as Views Theme Kit (day/night
+`outline` / `container` / safety feedback), resolved from `CabinTokens` into
+Compose `Color` values (no Android Views theme attrs).
+
 ```kotlin
-// Planned
 @Composable
 fun CabinTheme(
-    tokens: CabinTokens = CabinTokens.Default,
-    compliance: CabinCompliance = CabinCompliance.Default,
+    colorScheme: CabinColorScheme = /* DayNight from UiMode */,
+    brand: CabinBrandOverrides = CabinBrandOverrides.None,
+    compliance: CabinCompliance = CabinRestrictionEngine.Default,
+    vehicleState: VehicleUiState = VehicleUiState.unknown(),
     content: @Composable () -> Unit,
 )
 ```
 
-- Provide tokens and compliance via composition locals.
-- Do not read OEM hardcodes inside components.
-- Support day/night through scheme tokens, synced with system UiMode when
-  product requests it.
+- Provide colors + compliance via composition locals
+  (`LocalCabinColors`, `LocalCabinComplianceState`).
+- OEM brand via [CabinBrandOverrides] (primary / onPrimary) — do not remap
+  warning / error / charging for decoration ([ADR 0003](../adr/0003-tokens-via-overlay-rro.md)).
+- Missing compliance local is **fail-closed** (`GateDisposition.Block`).
+
+## System Bar + Status Bar (Experimental)
+
+Parity with Views Alpha chrome ([system-bar](../components/specs/system-bar.md),
+[status-bar](../components/specs/status-bar.md)):
+
+```kotlin
+@Composable
+fun CabinSystemBar(slots: CabinSystemBarSlots, modifier: Modifier = Modifier)
+
+@Composable
+fun CabinStatusBar(items: List<CabinStatusItem>, modifier: Modifier = Modifier)
+```
+
+Package: `dev.decoupled.cabin.compose`. Same Restriction Engine gates, Signal
+exhaustiveness, and tone roles as Views — API shape differs (`Composable` vs
+`View`).
 
 ## Implementation guidelines
 
@@ -48,22 +80,19 @@ Aligned with modern Compose practice and
 | Theming | Colors/type/space from tokens only |
 | Accessibility | Semantics and content descriptions mandatory for icon-only controls |
 | Performance | Avoid expensive work in composition; large gauges use draw-efficient paths |
-| Testing | Screenshot + behavior tests; parity fixtures shared with Views |
+| Testing | Behavior + gate/Signal/tone parity with Views; screenshot later |
 
 ## Compliance wiring
 
 ```kotlin
-// Planned
-val compliance = LocalCabinCompliance.current
-CabinGated(
-    interaction = CabinInteraction.OpenKeyboard,
-    onDenied = { /* substitute UI */ },
-) {
-    /* allowed UI */
+CabinTheme(vehicleState = adapterState) {
+    CabinSystemBar(slots = …)
+    CabinStatusBar(items = …)
 }
 ```
 
-Driving and UX gates are not optional “if the app remembers.”
+Driving and UX gates are not optional “if the app remembers.” Absent
+`CabinTheme` / compliance local → fail-closed Block.
 
 ## Parity contracts with Views
 
@@ -80,18 +109,8 @@ For each stable component:
 
 API **shape** differs (`Composable` vs `View`); behavior must not.
 
-### Shared fixture example (planned)
-
-```kotlin
-// Planned test fixture used by both stacks
-val PlayingMedia = MediaUiState(
-    title = "Example Track",
-    artist = "Example Artist",
-    isPlaying = true,
-    positionMs = 12_000,
-    durationMs = 200_000,
-)
-```
+Views System/Status bars are **Alpha**. Compose counterparts are
+**Experimental** until parity fixtures harden further.
 
 ## Interop
 
@@ -100,16 +119,19 @@ val PlayingMedia = MediaUiState(
   mandates.
 - Embedding Views in Compose: `AndroidView` with Cabin View themes when
   reusing legacy widgets.
+- Never create a Gradle/Soong cycle between `cabin-compose` and `cabin-views`.
 
 ## Do not
 
 - Depend on `cabin-views` from `cabin-compose`.
 - Ship sample-only dependencies into the AAR.
+- Force Compose into SystemUI `static_libs`.
 - Bypass compliance locals in “debug” builds without a clear debug policy API.
 
 ## Related
 
 - [Views](views.md)
 - [Architecture](../architecture.md)
+- [Theme Kit](../adoption/theme-kit.md)
 - [Components](../components/README.md)
 - [Principles](../principles.md)

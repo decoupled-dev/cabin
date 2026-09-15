@@ -51,7 +51,8 @@ MVP is complete when **all** of the following hold:
 
 Compose parity for the two bars may trail as **experimental** and is **not**
 required to call MVP done — Views-first is the gate
-([ADR 0002](adr/0002-views-first-platform.md)).
+([ADR 0002](adr/0002-views-first-platform.md)). Experimental Compose Theme +
+bars live in `cabin-compose` (post-MVP track).
 
 ## After MVP
 

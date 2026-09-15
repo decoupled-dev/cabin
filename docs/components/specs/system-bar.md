@@ -81,16 +81,19 @@ class CabinSystemBarView @JvmOverloads constructor(
 Alpha implementation: `dev.decoupled.cabin.views.CabinSystemBarView` in
 `cabin-views` / `CabinViews`.
 
-## Planned Compose API (parity later; not MVP-required)
+## Compose API (Experimental parity)
 
 ```kotlin
-// Planned — experimental until post-MVP
 @Composable
 fun CabinSystemBar(
     slots: CabinSystemBarSlots,
     modifier: Modifier = Modifier,
 )
 ```
+
+Experimental implementation: `dev.decoupled.cabin.compose.CabinSystemBar` in
+`cabin-compose` / `CabinCompose`. Same Restriction Engine gates and token
+roles as Views; wrap with `CabinTheme`. **Not** for SystemUI Soong adoption.
 
 ## Acceptance criteria (MVP)
 
@@ -105,4 +108,5 @@ fun CabinSystemBar(
 
 - [Status Bar spec](status-bar.md)
 - [Views](../../platforms/views.md)
+- [Compose](../../platforms/compose.md) (Experimental parity)
 - [Build-tree](../../adoption/build-tree.md)
