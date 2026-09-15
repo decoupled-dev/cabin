@@ -38,6 +38,11 @@ Both stacks share the same [design tokens](docs/design-language/tokens.md),
 [compliance layer](docs/compliance/README.md), and component contracts so
 parity is enforceable — not aspirational.
 
+Cabin also supports **dual consumption**: Gradle/Maven AARs for app developers
+and AOSP **Soong** (`Android.bp`) modules for SystemUI, CarLauncher, and other
+build-tree apps — same source, Views-first on platform
+([build-tree](docs/adoption/build-tree.md)).
+
 ---
 
 ## Quick links
@@ -51,8 +56,9 @@ parity is enforceable — not aspirational.
 | [Compliance](docs/compliance/README.md) | Driving, UX, accessibility, safety-critical patterns |
 | [Design language](docs/design-language/README.md) | Foundations and tokens |
 | [Components](docs/components/README.md) | System bars, media, EV, HVAC, vehicle controls |
-| [Compose](docs/platforms/compose.md) / [Views](docs/platforms/views.md) | Platform guidelines and parity |
+| [Compose](docs/platforms/compose.md) / [Views](docs/platforms/views.md) / [Soong](docs/platforms/soong.md) | Platform guidelines and parity |
 | [Adoption](docs/adoption/integration.md) | Integrate with minimal footprint |
+| [Build-tree](docs/adoption/build-tree.md) | SystemUI / Soong adoption |
 | [Website plan](docs/website/site-plan.md) | Public docs site IA (Material-style) |
 | [Roadmap](docs/roadmap.md) | Phased delivery plan |
 | [Contributing](docs/contributing.md) | How to contribute |
@@ -90,20 +96,24 @@ Adopt only what you need — see [packaging](docs/adoption/packaging.md).
 ## Adoption teaser
 
 ```kotlin
-// Planned — Compose
+// Planned — Compose (Gradle apps)
 dependencies {
     implementation("dev.decoupled.cabin:cabin-compose:<version>")
     implementation("dev.decoupled.cabin:cabin-compliance:<version>")
 }
 
-// Planned — Views (system UI / legacy)
+// Planned — Views (Gradle-built apps only — not SystemUI)
 dependencies {
     implementation("dev.decoupled.cabin:cabin-views:<version>")
     implementation("dev.decoupled.cabin:cabin-compliance:<version>")
 }
 ```
 
+SystemUI and other AOSP build-tree apps consume Cabin via **Soong** modules
+(`CabinViews`, …) — see [build-tree](docs/adoption/build-tree.md).
+
 Full guidance: [integration](docs/adoption/integration.md) ·
+[build-tree](docs/adoption/build-tree.md) ·
 [migration](docs/adoption/migration.md) ·
 [packaging](docs/adoption/packaging.md).
 

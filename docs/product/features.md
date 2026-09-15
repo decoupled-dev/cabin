@@ -61,17 +61,19 @@ Patterns compose Layer 0–2 pieces; they do not bypass the Restriction Engine.
 
 ## Layer 4 — Craft & platform
 
-How the product is built, verified, and taught.
+How the product is built, verified, taught, and adopted into OEM images.
 
 | Feature | Intent | Primary docs / modules |
 | --- | --- | --- |
-| **Compose Kit** | `cabin-compose` theme + components | [compose](../platforms/compose.md) |
-| **Views Kit** | `cabin-views` theme + components | [views](../platforms/views.md) |
+| **Compose Kit** | `cabin-compose` / `CabinCompose` theme + components | [compose](../platforms/compose.md) |
+| **Views Kit** | `cabin-views` / `CabinViews` theme + components (SystemUI primary) | [views](../platforms/views.md) |
+| **Build-tree / Soong distribution** | Same sources as Maven AARs; Soong modules for SystemUI, CarLauncher, platform media; RROs for brand; thin Views-first deps | [build-tree](../adoption/build-tree.md), [soong](../platforms/soong.md), [packaging](../adoption/packaging.md) |
 | **Catalog app** | Interactive reference for parity and adoption | [site plan](../website/site-plan.md) |
 | **Docs site** | Public Material-class IA | [site plan](../website/site-plan.md) |
 
 Catalog and docs site ship after enough Layer 1–2 surface exists to showcase
-honestly — not as empty shells.
+honestly — not as empty shells. Build-tree distribution is required for OEM
+chrome adoption; Gradle-only packaging is insufficient for SystemUI.
 
 ## Explicitly not in v1
 

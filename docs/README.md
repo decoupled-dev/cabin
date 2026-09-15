@@ -63,15 +63,17 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | Document | Description |
 | --- | --- |
 | [Compose](platforms/compose.md) | Compose guidelines and Views parity contracts |
-| [Views](platforms/views.md) | View/XML for system and build-tree apps |
+| [Views](platforms/views.md) | View/XML for SystemUI and build-tree apps |
+| [Soong](platforms/soong.md) | Platform Soong engineering notes (`Android.bp`) |
 
 ### Adoption
 
 | Document | Description |
 | --- | --- |
 | [Integration](adoption/integration.md) | Add Cabin to an existing AAOS/app repo |
+| [Build-tree / Soong](adoption/build-tree.md) | SystemUI, CarLauncher, platform media via Soong |
 | [Migration](adoption/migration.md) | From stock Material / AAOS widgets |
-| [Packaging](adoption/packaging.md) | Gradle modules, artifacts, minimal footprint |
+| [Packaging](adoption/packaging.md) | Maven vs Soong dual distribution, minimal footprint |
 
 ### Website (future)
 
@@ -87,7 +89,8 @@ and dual UI component library (Jetpack Compose + legacy Views).
 3. Internalize [compliance](compliance/README.md) — it constrains every component.
 4. Learn [tokens](design-language/tokens.md) before implementing UI.
 5. Pick a platform ([Compose](platforms/compose.md) or [Views](platforms/views.md))
-   and keep parity contracts in mind.
+   and keep parity contracts in mind. Platform chrome uses Soong —
+   [build-tree](adoption/build-tree.md).
 6. Use [architecture](architecture.md) and [packaging](adoption/packaging.md)
    when wiring modules into a product.
 

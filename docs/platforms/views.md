@@ -1,23 +1,29 @@
 # Views platform
 
 Guidelines for implementing and consuming Cabin with Android Views / XML —
-essential for **system UI**, **status bar**, **build-tree apps**, and legacy
-surfaces that cannot yet adopt Compose.
+essential for **SystemUI**, **status bar**, **CarLauncher**, other **AOSP
+build-tree** apps, and legacy surfaces that cannot yet adopt Compose.
 
 ## Role of Views in Cabin
 
-Views are not a compatibility afterthought. Many AAOS images still deliver
-chrome and vendor apps as View hierarchies. Cabin’s Views stack must be as
-intentional as Compose: tokenized, compliance-aware, and parity-tested.
+Views are not a compatibility afterthought. They are the **primary** stack for
+platform chrome. Many AAOS images deliver SystemUI and vendor apps as View
+hierarchies built with **Soong**. Cabin’s Views stack must be as intentional as
+Compose: tokenized, compliance-aware, and parity-tested.
 
-## Planned artifact
+Compose remains first-class for apps and for platform apps that already use
+it — but Compose is **not** a gate for SystemUI adoption
+([build-tree](../adoption/build-tree.md)).
 
-```text
-dev.decoupled.cabin:cabin-views:<version>
-```
+## Planned artifacts
 
-Depends on `cabin-tokens` and `cabin-compliance`. Does **not** depend on
-`cabin-compose`.
+| Path | Identifier |
+| --- | --- |
+| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-views:<version>` (**planned**) |
+| Soong (build-tree) | `CabinViews` (**planned**) |
+
+Depends on `cabin-tokens` / `CabinTokens` and `cabin-compliance` /
+`CabinCompliance`. Does **not** depend on `cabin-compose` / `CabinCompose`.
 
 ## Theme and attributes
 
@@ -25,6 +31,8 @@ Depends on `cabin-tokens` and `cabin-compliance`. Does **not** depend on
 - Map attributes to token roles, not raw colors, whenever possible.
 - Support OEM overlays via Android theme overlay mechanisms + Cabin token
   bridge ([tokens](../design-language/tokens.md)).
+- On platform images, prefer **RROs** for brand without forking
+  ([build-tree](../adoption/build-tree.md)).
 
 ```xml
 <!-- Planned -->
@@ -43,7 +51,7 @@ Depends on `cabin-tokens` and `cabin-compliance`. Does **not** depend on
 | Focus / rotary | `focusable`, orderly `nextFocus*`, visible focus from tokens |
 | Accessibility | `contentDescription`, important-for-accessibility set correctly |
 | Performance | Avoid overdraw in persistent chrome; flatten where practical |
-| Testing | Robolectric/instrumentation + screenshot; shared fixtures with Compose |
+| Testing | Robolectric/instrumentation + screenshot; shared fixtures with Compose; on-image tests for SystemUI |
 
 ## Compliance wiring
 
@@ -68,15 +76,28 @@ swap) but outcomes must match Compose substitutes.
 
 ## System UI and build-tree adoption
 
-- Prefer `cabin-views` for status/system bars in system images.
+Primary Views consumers:
+
+| Target | Consumption |
+| --- | --- |
+| SystemUI / status + system bars | Soong: `CabinTokens` + `CabinCompliance` + `CabinViews` |
+| CarLauncher | Soong Views path; Compose only if that subtree already uses it |
+| Platform media (Views) | Soong `CabinViews` |
+| Gradle-built legacy apps | Maven `cabin-views` |
+
+Rules:
+
 - Keep dependencies minimal — tokens + compliance + views only
-  ([packaging](../adoption/packaging.md)).
-- Avoid pulling Media/Compose app samples into the system partition.
+  ([packaging](../adoption/packaging.md), [build-tree](../adoption/build-tree.md)).
+- Never pull `CabinCompose`, catalog, or samples into SystemUI.
+- Prefer source-in-tree over AAR prebuilts for privileged chrome.
+- Soong engineering notes: [soong](soong.md).
 
 ## Interop
 
-- Host Compose islands via `ComposeView` when a subtree is Compose-first.
-- Do not create a cyclic Gradle dependency between stacks.
+- Host Compose islands via `ComposeView` when a subtree is Compose-first
+  (apps / Compose-capable platform modules only).
+- Do not create a cyclic Gradle or Soong dependency between stacks.
 
 ## Do not
 
@@ -84,9 +105,13 @@ swap) but outcomes must match Compose substitutes.
   Cabin style overlays.
 - Encode OEM brand in widget source.
 - Skip unavailable/stale signal UI because “Views make it hard.”
+- Document or implement SystemUI adoption as a Gradle `implementation` of
+  Cabin AARs.
 
 ## Related
 
+- [Build-tree](../adoption/build-tree.md)
+- [Soong](soong.md)
 - [Compose](compose.md)
 - [System bars](../components/system-bars.md)
 - [Status bars](../components/status-bars.md)
