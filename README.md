@@ -89,6 +89,7 @@ build-tree apps — same source, Views-first on platform
 | [Compose](docs/platforms/compose.md) / [Views](docs/platforms/views.md) / [Soong](docs/platforms/soong.md) | Platform guidelines and parity |
 | [Adoption](docs/adoption/integration.md) | Integrate with minimal footprint |
 | [Build-tree](docs/adoption/build-tree.md) | SystemUI / Soong adoption |
+| [Marketing site](apps/www/README.md) | User-facing marketing app (`apps/www`) — separate from docs |
 | [Website](website/README.md) | Public docs site (Docusaurus shell under `website/`) |
 | [Website plan](docs/website/site-plan.md) | Public docs site IA (Material-style) |
 | [Roadmap](docs/roadmap.md) | Phased delivery plan |
@@ -107,9 +108,10 @@ cabin/
 ├── cabin-compliance      # Alpha — Restriction Engine (System/Status bar matrix)
 ├── cabin-views           # Planned — Theme Kit + System/Status bars (Views-first)
 ├── cabin-compose         # Planned — post-MVP for chrome parity
+├── apps/www              # Marketing site (Next.js) — not the docs shell
 ├── samples/              # Planned — reference apps
 ├── catalog/              # Planned — interactive component catalog
-└── website/              # Planned — public docs site
+└── website/              # Docs site (Docusaurus) → GitHub Pages
 ```
 
 **Maven coordinates** (illustrative; publish later):

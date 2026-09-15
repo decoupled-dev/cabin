@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Marketing design tokens — inspired by Cabin semantic roles
+  (tokens/cabin.tokens.json). This app does NOT depend on Android
+  cabin-tokens / cabin-compliance modules.
+*/
+
+:root,
+[data-scheme="night"] {
+  color-scheme: dark;
+
+  --background: #0a0b0c;
+  --surface: #121212;
+  --surface-variant: #1a1c1e;
+  --surface-high: #22262a;
+  --on-surface: #f2f2f2;
+  --on-surface-variant: #b8bdc4;
+  --primary: #1f9a6e;
+  --primary-container: #0b6e4f;
+  --on-primary: #ffffff;
+  --secondary: #6e8e8f;
+  --outline: #5c5c5c;
+  --outline-subtle: rgba(242, 242, 242, 0.1);
+  --charging: #26a69a;
+  --climate: #42a5f5;
+  --media: #9575cd;
+  --success: #66bb6a;
+  --warning: #f9a825;
+  --error: #ef5350;
+  --scrim: rgba(0, 0, 0, 0.55);
+  --hero-glow-a: rgba(11, 110, 79, 0.38);
+  --hero-glow-b: rgba(2, 136, 209, 0.18);
+  --hero-glow-c: rgba(0, 137, 123, 0.22);
+  --hmi-bezel: #0e1012;
+  --hmi-glass: rgba(255, 255, 255, 0.04);
+  --elev-1: 0 1px 0 rgba(255, 255, 255, 0.04), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --elev-2: 0 1px 0 rgba(255, 255, 255, 0.06), 0 16px 40px rgba(0, 0, 0, 0.45);
+  --nav-bg: rgba(10, 11, 12, 0.72);
+}
+
+[data-scheme="day"] {
+  color-scheme: light;
+
+  --background: #eceff1;
+  --surface: #f5f5f5;
+  --surface-variant: #e4e7ea;
+  --surface-high: #ffffff;
+  --on-surface: #121212;
+  --on-surface-variant: #4a5158;
+  --primary: #0b6e4f;
+  --primary-container: #0d805c;
+  --on-primary: #ffffff;
+  --secondary: #3d5a5b;
+  --outline: #8a9096;
+  --outline-subtle: rgba(18, 18, 18, 0.1);
+  --charging: #00897b;
+  --climate: #0288d1;
+  --media: #7e57c2;
+  --success: #2e7d32;
+  --warning: #f9a825;
+  --error: #d32f2f;
+  --scrim: rgba(255, 255, 255, 0.45);
+  --hero-glow-a: rgba(11, 110, 79, 0.2);
+  --hero-glow-b: rgba(2, 136, 209, 0.12);
+  --hero-glow-c: rgba(0, 137, 123, 0.14);
+  --hmi-bezel: #d7d8db;
+  --hmi-glass: rgba(18, 18, 18, 0.03);
+  --elev-1: 0 1px 0 rgba(255, 255, 255, 0.8), 0 8px 24px rgba(18, 18, 18, 0.08);
+  --elev-2: 0 1px 0 rgba(255, 255, 255, 0.9), 0 16px 40px rgba(18, 18, 18, 0.12);
+  --nav-bg: rgba(245, 245, 245, 0.78);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--on-surface);
+  font-family: var(--font-body), system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 40%, transparent);
+  color: var(--on-surface);
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .cabin-grid {
+    background-image:
+      linear-gradient(var(--outline-subtle) 1px, transparent 1px),
+      linear-gradient(90deg, var(--outline-subtle) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(16px);
+    transition:
+      opacity 700ms cubic-bezier(0.2, 0, 0, 1),
+      transform 700ms cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
