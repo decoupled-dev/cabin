@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- GENERATED from tokens/cabin.tokens.json. Do not edit. -->
+<resources>
+    <string name="cabin_type_family_plain" translatable="false">CabinSans</string>
+</resources>

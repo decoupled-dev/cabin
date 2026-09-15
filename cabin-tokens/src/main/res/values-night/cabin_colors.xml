@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- GENERATED from tokens/cabin.tokens.json. Night scheme surfaces. Do not edit. -->
+<resources>
+    <color name="cabin_color_scheme_surface">#121212</color>
+    <color name="cabin_color_scheme_onSurface">#F2F2F2</color>
+</resources>

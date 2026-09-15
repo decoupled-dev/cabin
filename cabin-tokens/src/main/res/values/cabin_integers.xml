@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- GENERATED from tokens/cabin.tokens.json. Do not edit. -->
+<resources>
+    <integer name="cabin_type_role_display_weight">600</integer>
+    <integer name="cabin_type_role_headline_weight">600</integer>
+    <integer name="cabin_type_role_title_weight">600</integer>
+    <integer name="cabin_type_role_body_weight">400</integer>
+    <integer name="cabin_type_role_label_weight">600</integer>
+    <integer name="cabin_type_role_status_weight">500</integer>
+    <integer name="cabin_motion_fast_duration">100</integer>
+    <integer name="cabin_motion_medium_duration">200</integer>
+    <integer name="cabin_motion_slow_duration">300</integer>
+</resources>

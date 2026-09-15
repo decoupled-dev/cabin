@@ -6,22 +6,44 @@ It targets OEMs, Tier-1 suppliers, and app developers who need a
 Material Design 3–class platform purpose-built for the vehicle cabin —
 not a phone UI stretched onto a bigger screen.
 
-> **Phase 1:** Documentation foundation + [pre-implementation pack](docs/pre-implementation.md).
-> Library modules are planned — frozen [MVP v0.1](docs/mvp.md) is tokens +
-> Restriction Engine + Theme Kit + System/Status bars (Views-first).
+> **Library Alpha (in progress):** `cabin-tokens` + `cabin-compliance` (Restriction
+> Engine) are scaffolding toward frozen [MVP v0.1](docs/mvp.md). Theme Kit and
+> Views System/Status bars are **not** in this drop yet.
+> Docs + contracts: [pre-implementation pack](docs/pre-implementation.md).
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-AAOS-green.svg)](docs/vision.md)
 [![UI](https://img.shields.io/badge/UI-Compose%20%2B%20Views-orange.svg)](docs/platforms/compose.md)
-[![Status](https://img.shields.io/badge/status-docs%20phase-lightgrey.svg)](docs/roadmap.md)
+[![Status](https://img.shields.io/badge/status-library%20alpha-yellow.svg)](docs/mvp.md)
+
+---
+
+## Build (library modules)
+
+Requires JDK 17+ and an Android SDK (`local.properties` → `sdk.dir=`).
+
+```bash
+./gradlew :cabin-tokens:test :cabin-compliance:test
+```
+
+Regenerate tokens from the stub after editing [`tokens/cabin.tokens.json`](tokens/cabin.tokens.json):
+
+```bash
+python3 tools/generate_cabin_tokens.py
+# or: ./gradlew :cabin-tokens:generateCabinTokens
+```
+
+Maven coordinates / Soong names: [api-contracts](docs/api-contracts.md).
+Soong sketches: `cabin-tokens/Android.bp` (`CabinTokens`),
+`cabin-compliance/Android.bp` (`CabinCompliance`).
 
 ---
 
 ## Before implementation
 
 Clear the [pre-implementation gate](docs/pre-implementation.md) and read the
-frozen [MVP v0.1](docs/mvp.md) before writing library code. Token stub:
-[`tokens/cabin.tokens.json`](tokens/cabin.tokens.json).
+frozen [MVP v0.1](docs/mvp.md) before expanding beyond tokens + compliance.
+Token stub: [`tokens/cabin.tokens.json`](tokens/cabin.tokens.json).
 
 ---
 ## Why Cabin?
@@ -73,22 +95,23 @@ build-tree apps — same source, Views-first on platform
 
 ---
 
-## Planned module map
+## Module map
 
-> Coordinates and artifacts below are **planned**, not published yet.
+> Maven publish is not configured yet (Alpha source modules). Soong names match
+> [api-contracts](docs/api-contracts.md).
 
 ```
 cabin/
-├── cabin-tokens          # Design tokens (color, type, space, motion)
-├── cabin-compliance      # Driving / UX / a11y / safety gates
-├── cabin-compose         # Jetpack Compose components
-├── cabin-views           # View / XML components
-├── samples/              # Reference apps (media, EV, HVAC, …)
-├── catalog/              # Interactive component catalog
-└── website/              # Public docs site (future)
+├── cabin-tokens          # Alpha — design tokens (codegen from tokens/cabin.tokens.json)
+├── cabin-compliance      # Alpha — Restriction Engine (System/Status bar matrix)
+├── cabin-views           # Planned — Theme Kit + System/Status bars (Views-first)
+├── cabin-compose         # Planned — post-MVP for chrome parity
+├── samples/              # Planned — reference apps
+├── catalog/              # Planned — interactive component catalog
+└── website/              # Planned — public docs site
 ```
 
-**Planned Maven coordinates** (illustrative):
+**Maven coordinates** (illustrative; publish later):
 
 ```text
 dev.decoupled.cabin:cabin-tokens:<version>

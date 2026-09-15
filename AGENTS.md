@@ -6,12 +6,12 @@ Cabin is an open-source **AAOS design language** and dual UI kit
 (**Jetpack Compose + legacy Views**), with **compliance-first** gates and
 **dual distribution** (Gradle/Maven for apps, Soong for AOSP build-tree).
 
-This repo is currently **docs Phase 1** (including the
-[pre-implementation pack](docs/pre-implementation.md)). Library source is not
-published yet. Treat APIs, module coordinates, and `Android.bp` names as
-**planned** unless code exists.
+**Alpha library modules present:** `cabin-tokens` / `CabinTokens` and
+`cabin-compliance` / `CabinCompliance` (Restriction Engine). Theme Kit,
+`cabin-views` chrome, Compose kits, and catalog are **not** implemented yet —
+treat those APIs as **planned**. See [docs/mvp.md](docs/mvp.md).
 
-**Before writing library code, satisfy [docs/pre-implementation.md](docs/pre-implementation.md)
+**Before expanding library scope, satisfy [docs/pre-implementation.md](docs/pre-implementation.md)
 and respect the frozen [MVP v0.1](docs/mvp.md)** (tokens + Restriction Engine +
 Theme Kit + System/Status bars, Views-first). Do not start Compose media/HVAC/EV
 screens until MVP success criteria pass.
@@ -54,7 +54,8 @@ Full map: [docs/README.md](docs/README.md) · LLM map: [llms.txt](llms.txt).
 6. **Mark planned vs implemented.** Never invent “shipped” APIs. Label sketches **planned**.
 7. **Compliance is not optional.** Do not hardcode driving policy inside widgets; use the Restriction Engine / compliance APIs ([docs/compliance](docs/compliance/README.md)).
 8. **OEM brand without forks.** Tokens + RROs + extension slots — not core edits ([docs/components/extension-model.md](docs/components/extension-model.md)).
-9. **Docs-only until asked.** Do not add Android library source in Phase 1 unless maintainers explicitly request it.
+9. **Stay in MVP scope.** Do not add Theme Kit / Views bars / Compose domain
+   screens / catalog unless maintainers request that next slice.
 10. **American English**; restrained, production-minded tone.
 
 ## Soong vs Gradle
