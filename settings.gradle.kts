@@ -20,3 +20,5 @@ include(":cabin-tokens")
 include(":cabin-compliance")
 include(":cabin-views")
 include(":cabin-compose")
+// Sample only — never a cabin-* publish / SystemUI dependency.
+include(":catalog")

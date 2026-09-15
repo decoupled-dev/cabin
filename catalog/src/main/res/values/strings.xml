@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="catalog_app_name">Cabin Catalog</string>
+    <string name="catalog_tagline">Tokens + chrome demos (sample)</string>
+    <string name="catalog_last_action_none">No activations yet</string>
+    <string name="catalog_last_action">Last: %1$s</string>
+    <string name="catalog_section_theme">Theme Kit</string>
+    <string name="catalog_section_restriction">Restriction Engine</string>
+    <string name="catalog_section_compose">Compose chrome (Experimental)</string>
+    <string name="catalog_section_views">Views chrome (Alpha)</string>
+    <string name="catalog_section_signals">Signals + tones</string>
+    <string name="catalog_day">Day</string>
+    <string name="catalog_night">Night</string>
+    <string name="catalog_locked_note">warning / error / charging stay contrast-locked — never remap for brand.</string>
+    <string name="catalog_home">Home</string>
+    <string name="catalog_apps">Apps</string>
+    <string name="catalog_settings">Settings</string>
+    <string name="catalog_media">Media</string>
+</resources>

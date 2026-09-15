@@ -24,7 +24,14 @@ not a phone UI stretched onto a bigger screen.
 Requires JDK 17+ and an Android SDK (`local.properties` → `sdk.dir=`).
 
 ```bash
-./gradlew :cabin-tokens:test :cabin-compliance:test :cabin-views:test :cabin-compose:test
+./gradlew :cabin-tokens:test :cabin-compliance:test :cabin-views:test :cabin-compose:test :catalog:test
+```
+
+Catalog (sample) — installable demo APK, not a publish artifact:
+
+```bash
+./gradlew :catalog:installDebug
+# see catalog/README.md
 ```
 
 Regenerate tokens from the stub after editing [`tokens/cabin.tokens.json`](tokens/cabin.tokens.json):
@@ -109,11 +116,11 @@ build-tree apps — same source, Views-first on platform
 cabin/
 ├── cabin-tokens          # Alpha — design tokens (codegen from tokens/cabin.tokens.json)
 ├── cabin-compliance      # Alpha — Restriction Engine (System/Status bar matrix)
-├── cabin-views           # Alpha — Theme Kit (Views); System/Status bars next
-├── cabin-compose         # Planned — post-MVP for chrome parity
+├── cabin-views           # Alpha — Theme Kit + System/Status bars (Views-first)
+├── cabin-compose         # Experimental — Theme + System/Status bar parity
+├── catalog/              # Sample — thin chrome catalog (not a product dep)
 ├── apps/www              # Marketing site (Next.js) — not the docs shell
 ├── samples/              # Planned — reference apps
-├── catalog/              # Planned — interactive component catalog
 └── website/              # Docs site (Docusaurus) → GitHub Pages
 ```
 

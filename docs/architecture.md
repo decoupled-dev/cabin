@@ -35,7 +35,7 @@ cabin/                          # synced to Android tree via repo manifest (futu
 │   ├── sample-ev/
 │   ├── sample-hvac/
 │   └── sample-vehicle-controls/
-├── catalog/                    # interactive component browser
+├── catalog/                    # thin chrome catalog sample (not product dep)
 ├── website/                    # public docs site
 └── docs/                       # this documentation set (present now)
 ```
