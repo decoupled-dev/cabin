@@ -44,20 +44,13 @@ const planned = [
 
 export default function ComponentsPage() {
   return (
-    <div className="relative isolate overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-background" />
-        <div className="absolute bottom-[-10%] right-[-5%] h-[50vmin] w-[50vmin] rounded-full bg-[radial-gradient(circle,var(--hero-glow-a),transparent_70%)] blur-3xl opacity-60" />
-      </div>
-
+    <div className="bg-background">
       <div className="mx-auto max-w-6xl px-5 pb-24 pt-16 sm:px-8 sm:pt-24">
         <Reveal>
-          <div className="inline-flex items-center gap-2 rounded-md border border-[var(--outline-subtle)] bg-surface px-3 py-1.5">
+          <p className="inline-flex items-center gap-2 text-status text-on-surface-variant">
             <span className="h-1.5 w-1.5 rounded-full bg-warning" />
-            <span className="text-status text-on-surface-variant">
-              Planned — no interactive catalog in v1
-            </span>
-          </div>
+            Planned — no interactive catalog in v1
+          </p>
           <h1 className="mt-6 max-w-3xl font-display text-display text-on-surface text-balance">
             Components
           </h1>
@@ -68,10 +61,10 @@ export default function ComponentsPage() {
           </p>
         </Reveal>
 
-        <ul className="mt-16 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {planned.map((item, i) => (
-            <Reveal key={item.name} delayMs={i * 50}>
-              <li className="h-full rounded-xl border border-[var(--outline-subtle)] bg-surface/80 p-5">
+            <Reveal key={item.name} delayMs={Math.min(i * 30, 90)}>
+              <li className="border-t border-[var(--outline-subtle)] pt-5">
                 <p className="text-status uppercase tracking-[0.12em] text-on-surface-variant">
                   {item.domain}
                 </p>

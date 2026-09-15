@@ -63,8 +63,8 @@ layout, color, motion, or copy (anti-vibecode).
 - Semantic color roles aligned with Cabin (primary green, charging, climate)
 - Typography: Syne (display) + Source Sans 3 (body)
 - Hero visual: illustrative cabin HMI chrome (status + content + system bar)
-- Motion: brand entrance, ambient glow drift, staggered reveals, progress lines
-- Palette: night cabin black + forest/teal accents — safety warning/error stay crisp; no purple brand wash
+- Motion: short Material-like brand/entrance and reveals — no ambient blob loops
+- Palette: night cabin black + forest/teal accents — safety warning/error/charging stay crisp at night; domain accents off body copy; no purple brand wash
 
 ## Explicit non-goals
 

@@ -30,12 +30,7 @@ const layers = [
 
 export default function CompliancePage() {
   return (
-    <div className="relative isolate overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-background" />
-        <div className="absolute left-[-15%] top-[10%] h-[45vmin] w-[45vmin] rounded-full bg-[radial-gradient(circle,var(--hero-glow-b),transparent_70%)] blur-3xl opacity-80" />
-      </div>
-
+    <div className="bg-background">
       <div className="mx-auto max-w-6xl px-5 pb-24 pt-16 sm:px-8 sm:pt-24">
         <Reveal>
           <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
@@ -51,8 +46,8 @@ export default function CompliancePage() {
           </p>
         </Reveal>
 
-        <Reveal className="mt-14" delayMs={80}>
-          <div className="overflow-hidden rounded-2xl border border-[var(--outline-subtle)] bg-surface shadow-elev1">
+        <Reveal className="mt-14" delayMs={40}>
+          <div className="overflow-hidden border border-[var(--outline-subtle)] bg-surface">
             <div className="grid border-b border-[var(--outline-subtle)] sm:grid-cols-3">
               {[
                 { label: "Vehicle state", value: "Driving · 48 km/h" },
@@ -73,7 +68,7 @@ export default function CompliancePage() {
               ))}
             </div>
             <div className="flex items-center gap-3 px-5 py-4">
-              <span className="h-2 w-2 rounded-full bg-warning" />
+              <span className="h-2 w-2 shrink-0 rounded-full bg-warning" />
               <p className="text-status text-on-surface-variant">
                 Illustrative restriction path — widgets query policy; they do
                 not hardcode OEM if/else trees.
@@ -84,7 +79,7 @@ export default function CompliancePage() {
 
         <div className="mt-16 grid gap-10 md:grid-cols-2">
           {layers.map((layer, i) => (
-            <Reveal key={layer.title} delayMs={i * 70}>
+            <Reveal key={layer.title} delayMs={Math.min(i * 40, 80)}>
               <article className="h-full border-t border-primary/35 pt-6">
                 <h2 className="font-display text-title text-on-surface">
                   {layer.title}

@@ -18,6 +18,7 @@ const foundations = [
       { name: "Charging", varName: "var(--charging)" },
       { name: "Climate", varName: "var(--climate)" },
       { name: "Warning", varName: "var(--warning)" },
+      { name: "Error", varName: "var(--error)" },
     ],
   },
   {
@@ -36,12 +37,7 @@ const foundations = [
 
 export default function FoundationsPage() {
   return (
-    <div className="relative isolate overflow-hidden">
-      <div className="pointer-events-none absolute inset-0 -z-10">
-        <div className="absolute inset-0 bg-background" />
-        <div className="absolute right-[-10%] top-0 h-[50vmin] w-[50vmin] rounded-full bg-[radial-gradient(circle,var(--hero-glow-a),transparent_70%)] blur-3xl opacity-70" />
-      </div>
-
+    <div className="bg-background">
       <div className="mx-auto max-w-6xl px-5 pb-24 pt-16 sm:px-8 sm:pt-24">
         <Reveal>
           <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
@@ -58,7 +54,7 @@ export default function FoundationsPage() {
 
         <div className="mt-16 grid gap-12 lg:grid-cols-2">
           {foundations.map((item, i) => (
-            <Reveal key={item.title} delayMs={i * 70}>
+            <Reveal key={item.title} delayMs={Math.min(i * 40, 80)}>
               <article className="border-t border-[var(--outline-subtle)] pt-6">
                 <h2 className="font-display text-headline text-on-surface">
                   {item.title}
@@ -87,14 +83,15 @@ export default function FoundationsPage() {
         </div>
 
         <Reveal className="mt-20">
-          <div className="flex flex-col gap-6 rounded-2xl border border-[var(--outline-subtle)] bg-surface p-8 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-6 border-t border-[var(--outline-subtle)] pt-8 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <h2 className="font-display text-title text-on-surface">
                 Day and night are product decisions
               </h2>
               <p className="mt-2 max-w-xl text-status text-on-surface-variant">
                 Toggle the scheme in the header. Night keeps luminance for
-                signals; day holds contrast under glare assumptions.
+                signals; day holds contrast under glare assumptions. Domain
+                accents stay off body copy.
               </p>
             </div>
             <ButtonLink href={`${DOCS_URL}design-language/foundations`} external>

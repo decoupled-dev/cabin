@@ -31,16 +31,17 @@ export default {
         sans: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       fontSize: {
+        /* Brand-first: display dominates; headline supports, never competes */
         display: [
-          "clamp(3.5rem, 9vw, 6.5rem)",
-          { lineHeight: "0.95", letterSpacing: "-0.045em", fontWeight: "700" },
+          "clamp(3.25rem, 8vw, 5.75rem)",
+          { lineHeight: "0.96", letterSpacing: "-0.04em", fontWeight: "700" },
         ],
         headline: [
-          "clamp(1.85rem, 3.4vw, 2.65rem)",
-          { lineHeight: "1.15", letterSpacing: "-0.025em", fontWeight: "600" },
+          "clamp(1.5rem, 2.6vw, 2.125rem)",
+          { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" },
         ],
-        title: ["1.375rem", { lineHeight: "1.3", fontWeight: "600" }],
-        body: ["1.125rem", { lineHeight: "1.55", fontWeight: "400" }],
+        title: ["1.25rem", { lineHeight: "1.3", fontWeight: "600" }],
+        body: ["1.0625rem", { lineHeight: "1.55", fontWeight: "400" }],
         label: ["0.9375rem", { lineHeight: "1.3", fontWeight: "600" }],
         status: ["0.8125rem", { lineHeight: "1.3", fontWeight: "500" }],
       },
@@ -54,49 +55,34 @@ export default {
       },
       keyframes: {
         "fade-rise": {
-          from: { opacity: "0", transform: "translateY(28px)" },
+          from: { opacity: "0", transform: "translateY(10px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
         "brand-in": {
           from: {
             opacity: "0",
-            transform: "translateY(36px) scale(0.97)",
-            filter: "blur(6px)",
+            transform: "translateY(12px)",
           },
           to: {
             opacity: "1",
-            transform: "translateY(0) scale(1)",
-            filter: "blur(0)",
+            transform: "translateY(0)",
           },
         },
         "fade-in": {
           from: { opacity: "0" },
           to: { opacity: "1" },
         },
-        "ambient-drift": {
-          "0%, 100%": { transform: "translate3d(0,0,0) scale(1)" },
-          "50%": { transform: "translate3d(3%, -2%, 0) scale(1.08)" },
-        },
-        "soft-pulse": {
-          "0%, 100%": { opacity: "0.4" },
-          "50%": { opacity: "0.85" },
-        },
         "hmi-line": {
-          from: { transform: "scaleX(0)", opacity: "0" },
-          to: { transform: "scaleX(1)", opacity: "1" },
-        },
-        "sheen": {
-          "0%": { backgroundPosition: "0% 50%" },
-          "100%": { backgroundPosition: "100% 50%" },
+          from: { transform: "scaleX(0)" },
+          to: { transform: "scaleX(1)" },
         },
       },
       animation: {
-        "fade-rise": "fade-rise 900ms cubic-bezier(0.16, 1, 0.3, 1) both",
-        "brand-in": "brand-in 1100ms cubic-bezier(0.16, 1, 0.3, 1) both",
-        "fade-in": "fade-in 700ms cubic-bezier(0.16, 1, 0.3, 1) both",
-        "ambient-drift": "ambient-drift 14s ease-in-out infinite",
-        "soft-pulse": "soft-pulse 4.5s ease-in-out infinite",
-        "hmi-line": "hmi-line 1100ms cubic-bezier(0.16, 1, 0.3, 1) both",
+        /* Short Material-like entrance only — no bounce / elastic / ambient loops */
+        "fade-rise": "fade-rise 420ms cubic-bezier(0.2, 0, 0, 1) both",
+        "brand-in": "brand-in 480ms cubic-bezier(0.2, 0, 0, 1) both",
+        "fade-in": "fade-in 360ms cubic-bezier(0.2, 0, 0, 1) both",
+        "hmi-line": "hmi-line 500ms cubic-bezier(0.2, 0, 0, 1) both",
       },
     },
   },

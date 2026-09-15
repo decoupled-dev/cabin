@@ -4,7 +4,7 @@ import { useScheme } from "@/components/scheme-provider";
 
 /**
  * Stylized cabin HMI preview — product visual for the hero.
- * Illustrative only; not a live catalog.
+ * Chrome roles: status / content / system. Illustrative only; not a live catalog.
  */
 export function CabinHmiPreview() {
   const { scheme } = useScheme();
@@ -12,97 +12,86 @@ export function CabinHmiPreview() {
   return (
     <div
       className="relative mx-auto w-full max-w-xl animate-fade-rise lg:max-w-none"
-      style={{ animationDelay: "180ms" }}
+      style={{ animationDelay: "80ms" }}
       aria-hidden
     >
-      <div className="absolute -inset-8 rounded-[2rem] bg-[radial-gradient(ellipse_at_center,var(--hero-glow-a),transparent_65%)] opacity-80 blur-2xl" />
-      <div className="relative overflow-hidden rounded-[1.35rem] border border-[var(--outline-subtle)] bg-[var(--hmi-bezel)] shadow-elev2">
-        {/* Status bar */}
-        <div className="flex h-11 items-center justify-between border-b border-[var(--outline-subtle)] bg-[var(--surface)] px-4">
-          <div className="flex items-center gap-3">
-            <span className="h-2 w-2 rounded-full bg-success" />
-            <span className="font-display text-status tracking-wide text-on-surface">
-              72° · Park
+      <div className="relative overflow-hidden rounded-xl border border-[var(--outline-subtle)] bg-[var(--hmi-bezel)] shadow-elev2">
+        {/* Status bar — glance chrome */}
+        <div className="flex h-10 items-center justify-between bg-[var(--surface-variant)] px-3.5">
+          <div className="flex items-center gap-2.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-success" />
+            <span className="text-status tabular-nums tracking-wide text-on-surface">
+              P · 72°F
+            </span>
+            <span className="hidden h-3 w-px bg-[var(--outline-subtle)] sm:block" />
+            <span className="hidden items-center gap-1.5 sm:inline-flex">
+              <span className="h-1.5 w-1.5 rounded-full bg-warning" />
+              <span className="text-status text-warning">Lane assist</span>
             </span>
           </div>
-          <div className="flex items-center gap-3 text-on-surface-variant">
+          <div className="flex items-center gap-2.5 text-on-surface-variant">
             <SignalBars />
-            <span className="text-status tabular-nums">12:41</span>
+            <span className="text-status tabular-nums text-on-surface">12:41</span>
             <Battery />
           </div>
         </div>
 
-        {/* Content plane */}
-        <div className="relative min-h-[240px] bg-[var(--surface)] sm:min-h-[280px] lg:min-h-[300px]">
-          <div className="absolute inset-0 cabin-grid opacity-40" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,var(--hero-glow-c),transparent_50%),radial-gradient(ellipse_at_80%_70%,var(--hero-glow-b),transparent_45%)]" />
-
-          <div className="relative grid gap-4 p-5 sm:grid-cols-[1.1fr_0.9fr] sm:p-6">
-            <div
-              className="rounded-xl border border-[var(--outline-subtle)] bg-[var(--hmi-glass)] p-5 backdrop-blur-sm animate-fade-rise"
-              style={{ animationDelay: "320ms" }}
-            >
-              <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
+        {/* Content plane — flat high-contrast layers, no glass stack */}
+        <div className="min-h-[248px] bg-[var(--surface)] sm:min-h-[288px] lg:min-h-[304px]">
+          <div className="grid gap-3 p-3.5 sm:grid-cols-[1.15fr_0.85fr] sm:gap-3.5 sm:p-4">
+            <div className="rounded-lg border border-[var(--outline-subtle)] bg-[var(--surface-high)] p-4 sm:p-5">
+              <p className="text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
                 Now playing
               </p>
-              <p className="mt-3 font-display text-headline text-on-surface">
+              <p className="mt-2.5 font-display text-title text-on-surface">
                 Quiet roads
               </p>
               <p className="mt-1 text-status text-on-surface-variant">
                 Cabin Media · glance layout
               </p>
-              <div className="mt-6 h-1.5 overflow-hidden rounded-full bg-[var(--surface-variant)]">
+              <div className="mt-5 h-1 overflow-hidden rounded-sm bg-[var(--surface-variant)]">
                 <div
-                  className="h-full w-[62%] origin-left rounded-full bg-[var(--media)] animate-hmi-line"
-                  style={{ animationDelay: "500ms" }}
+                  className="h-full w-[62%] origin-left rounded-sm bg-[var(--media)] animate-hmi-line"
+                  style={{ animationDelay: "200ms" }}
                 />
               </div>
-              <div className="mt-5 flex items-center gap-3">
+              <div className="mt-4 flex items-center gap-2">
                 <ControlChip label="Prev" />
                 <ControlChip label="Play" accent="media" />
                 <ControlChip label="Next" />
               </div>
             </div>
 
-            <div className="grid gap-4">
-              <div
-                className="rounded-xl border border-[var(--outline-subtle)] bg-[var(--hmi-glass)] p-5 animate-fade-rise"
-                style={{ animationDelay: "420ms" }}
-              >
-                <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
-                  Climate
-                </p>
-                <div className="mt-3 flex items-end justify-between">
-                  <p className="font-display text-[2.75rem] leading-none tabular-nums text-on-surface">
-                    21°
+            <div className="grid gap-3 sm:gap-3.5">
+              <div className="rounded-lg border border-[var(--outline-subtle)] bg-[var(--surface-high)] p-4">
+                <div className="flex items-center justify-between">
+                  <p className="text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
+                    Climate
                   </p>
-                  <span
-                    className="mb-1 h-2.5 w-2.5 rounded-full bg-climate"
-                    style={{ boxShadow: "0 0 16px var(--climate)" }}
-                  />
+                  <span className="h-2 w-2 rounded-full bg-climate" />
                 </div>
+                <p className="mt-2 font-display text-[2.25rem] leading-none tabular-nums text-on-surface">
+                  21°
+                </p>
                 <p className="mt-2 text-status text-on-surface-variant">
-                  Driver zone · locked meaning
+                  Driver zone
                 </p>
               </div>
 
-              <div
-                className="rounded-xl border border-[var(--outline-subtle)] bg-[var(--hmi-glass)] p-5 animate-fade-rise"
-                style={{ animationDelay: "520ms" }}
-              >
-                <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
+              <div className="rounded-lg border border-[var(--outline-subtle)] bg-[var(--surface-high)] p-4">
+                <p className="text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
                   Charge
                 </p>
-                <div className="mt-3 flex items-baseline gap-2">
-                  <p className="font-display text-headline tabular-nums text-on-surface">
+                <div className="mt-2 flex items-baseline gap-2">
+                  <p className="font-display text-title tabular-nums text-on-surface">
                     78%
                   </p>
                   <span className="text-status text-charging">Charging</span>
                 </div>
-                <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-[var(--surface-variant)]">
+                <div className="mt-3 h-1 overflow-hidden rounded-sm bg-[var(--surface-variant)]">
                   <div
-                    className="h-full w-[78%] origin-left rounded-full bg-charging animate-hmi-line"
-                    style={{ animationDelay: "640ms" }}
+                    className="h-full w-[78%] origin-left rounded-sm bg-charging animate-hmi-line"
+                    style={{ animationDelay: "260ms" }}
                   />
                 </div>
               </div>
@@ -110,37 +99,42 @@ export function CabinHmiPreview() {
           </div>
         </div>
 
-        {/* System bar */}
-        <div className="flex h-16 items-center justify-around border-t border-[var(--outline-subtle)] bg-[var(--surface-variant)] px-2">
-          {["Home", "Maps", "Media", "HVAC", "Apps"].map((label, i) => (
-            <div
-              key={label}
-              className="flex min-h-[48px] min-w-[56px] flex-col items-center justify-center gap-1 rounded-lg px-2"
-              style={{
-                background:
-                  i === 2 ? "color-mix(in srgb, var(--primary) 18%, transparent)" : undefined,
-              }}
-            >
-              <span
-                className="h-2 w-2 rounded-sm"
+        {/* System bar — AAOS-like dock */}
+        <div className="flex h-14 items-stretch justify-around border-t border-[var(--outline-subtle)] bg-[var(--surface-variant)] px-1">
+          {["Home", "Maps", "Media", "HVAC", "Apps"].map((label, i) => {
+            const active = i === 2;
+            return (
+              <div
+                key={label}
+                className="flex min-h-[48px] min-w-[52px] flex-1 flex-col items-center justify-center gap-1 rounded-md"
                 style={{
-                  background:
-                    i === 2 ? "var(--primary)" : "var(--on-surface-variant)",
+                  background: active
+                    ? "color-mix(in srgb, var(--primary) 16%, transparent)"
+                    : undefined,
                 }}
-              />
-              <span
-                className={`text-[0.6875rem] ${
-                  i === 2 ? "text-on-surface" : "text-on-surface-variant"
-                }`}
               >
-                {label}
-              </span>
-            </div>
-          ))}
+                <span
+                  className="h-1.5 w-4 rounded-sm"
+                  style={{
+                    background: active
+                      ? "var(--primary)"
+                      : "var(--on-surface-variant)",
+                  }}
+                />
+                <span
+                  className={`text-[0.6875rem] leading-none ${
+                    active ? "text-on-surface" : "text-on-surface-variant"
+                  }`}
+                >
+                  {label}
+                </span>
+              </div>
+            );
+          })}
         </div>
       </div>
 
-      <p className="mt-4 text-center text-status text-on-surface-variant">
+      <p className="mt-3 text-center text-status text-on-surface-variant">
         {scheme === "night" ? "Night scheme" : "Day scheme"} · illustrative HMI
         chrome
       </p>
@@ -157,10 +151,10 @@ function ControlChip({
 }) {
   const bg =
     accent === "media"
-      ? "bg-[var(--media)] text-white"
+      ? "bg-[var(--media)] text-[var(--on-primary)]"
       : "bg-[var(--surface-variant)] text-on-surface";
   return (
-    <span className={`rounded-md px-3 py-2 text-status ${bg}`}>{label}</span>
+    <span className={`rounded-md px-3 py-1.5 text-status ${bg}`}>{label}</span>
   );
 }
 
