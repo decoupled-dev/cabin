@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Theme / RRO attribute hooks for Cabin semantic roles. Alpha; Theme Kit binds these. -->
+<resources>
+    <attr name="cabin_colorPrimary" format="color|reference" />
+    <attr name="cabin_colorOnPrimary" format="color|reference" />
+    <attr name="cabin_colorSecondary" format="color|reference" />
+    <attr name="cabin_colorOnSecondary" format="color|reference" />
+    <attr name="cabin_colorSurface" format="color|reference" />
+    <attr name="cabin_colorOnSurface" format="color|reference" />
+    <attr name="cabin_colorSurfaceVariant" format="color|reference" />
+    <attr name="cabin_colorOutline" format="color|reference" />
+    <attr name="cabin_colorSuccess" format="color|reference" />
+    <attr name="cabin_colorWarning" format="color|reference" />
+    <attr name="cabin_colorError" format="color|reference" />
+    <attr name="cabin_colorCharging" format="color|reference" />
+    <attr name="cabin_colorClimate" format="color|reference" />
+    <attr name="cabin_colorMediaAccent" format="color|reference" />
+    <attr name="cabin_colorScrim" format="color|reference" />
+</resources>

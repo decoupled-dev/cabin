@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- GENERATED from tokens/cabin.tokens.json. Day baseline + semantic colors. Do not edit. -->
+<resources>
+    <color name="cabin_color_semantic_primary">#0B6E4F</color>
+    <color name="cabin_color_semantic_onPrimary">#FFFFFF</color>
+    <color name="cabin_color_semantic_secondary">#3D5A5B</color>
+    <color name="cabin_color_semantic_onSecondary">#FFFFFF</color>
+    <color name="cabin_color_semantic_surface">#121212</color>
+    <color name="cabin_color_semantic_onSurface">#F2F2F2</color>
+    <color name="cabin_color_semantic_surfaceVariant">#1E1E1E</color>
+    <color name="cabin_color_semantic_outline">#5C5C5C</color>
+    <color name="cabin_color_semantic_success">#2E7D32</color>
+    <color name="cabin_color_semantic_warning">#F9A825</color>
+    <color name="cabin_color_semantic_error">#D32F2F</color>
+    <color name="cabin_color_semantic_charging">#00897B</color>
+    <color name="cabin_color_semantic_climate">#0288D1</color>
+    <color name="cabin_color_semantic_mediaAccent">#7E57C2</color>
+    <color name="cabin_color_semantic_scrim">#99000000</color>
+    <color name="cabin_color_scheme_surface">#F5F5F5</color>
+    <color name="cabin_color_scheme_onSurface">#121212</color>
+</resources>
