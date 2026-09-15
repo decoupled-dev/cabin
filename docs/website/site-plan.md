@@ -89,6 +89,11 @@ Modeled on Material’s discoverability, adapted for automotive:
 [website/README.md](https://github.com/decoupled-dev/cabin/blob/main/website/README.md)
 for install / start / build / deploy.
 
+**Marketing site (separate):** User-facing product marketing lives in
+[`apps/www`](../../apps/www/README.md) (Next.js). It does **not** replace
+`website/` — docs remain the developer reference on GitHub Pages; marketing
+deep-links to that docs host.
+
 Planned capabilities as the site matures:
 
 - Versioned routes (`/1.0/…`)
