@@ -105,6 +105,7 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | --- | --- |
 | [website/](https://github.com/decoupled-dev/cabin/tree/main/website) | Public docs shell (Docusaurus) — run/build/deploy |
 | [Site plan](website/site-plan.md) | Public docs IA modeled on m3.material.io |
+| [Marketing craft](website/marketing-craft.md) | Docs vs marketing roles; points to `apps/www/DESIGN.md` |
 
 ## How to read these docs
 
