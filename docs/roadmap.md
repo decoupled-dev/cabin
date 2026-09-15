@@ -31,7 +31,7 @@ MVP; Views-first platform chrome remains the SystemUI path
 | **2 — MVP v0.1** | `cabin-tokens`, Restriction Engine, Theme Kit, System + Status bars (Views), dual Gradle/Soong | Layer 0–1 (frozen) | Shippable thin chrome |
 | **3 — Media + HVAC** | Domain screens on dual stack as needed | Layer 2 (first) | First core domains |
 | **4 — EV + Vehicle Controls** | Energy + body controls | Layer 2 (second) | Energy + vehicle domains |
-| **5 — Catalog** | Interactive catalog | Layer 4 | Browseable reference |
+| **5 — Catalog** | Interactive catalog (thin chrome sample early under `catalog/`) | Layer 4 | Browseable reference |
 | **6 — Website** | Public docs site | Layer 4 | Public showcase |
 
 > **Early start:** a thin Docusaurus shell under

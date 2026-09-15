@@ -10,7 +10,8 @@ Cabin is an open-source **AAOS design language** and dual UI kit
 `cabin-compliance` / `CabinCompliance` (Restriction Engine + `Signal`), and
 `cabin-views` / `CabinViews` (Theme Kit + System/Status bar Views chrome).
 **Experimental:** `cabin-compose` / `CabinCompose` (Theme + System/Status bar
-parity). Catalog remains **planned**. See [docs/mvp.md](docs/mvp.md) ·
+parity). **Sample:** [`catalog/`](catalog/README.md) demos tokens + chrome
+(not a product / SystemUI dep). See [docs/mvp.md](docs/mvp.md) ·
 [theme-kit](docs/adoption/theme-kit.md) · [compose](docs/platforms/compose.md).
 
 **Before expanding library scope, satisfy [docs/pre-implementation.md](docs/pre-implementation.md)
@@ -57,9 +58,9 @@ Full map: [docs/README.md](docs/README.md) · LLM map: [llms.txt](llms.txt).
 6. **Mark planned vs implemented.** Never invent “shipped” APIs. Label sketches **planned**.
 7. **Compliance is not optional.** Do not hardcode driving policy inside widgets; use the Restriction Engine / compliance APIs ([docs/compliance](docs/compliance/README.md)).
 8. **OEM brand without forks.** Tokens + RROs + extension slots — not core edits ([docs/components/extension-model.md](docs/components/extension-model.md)).
-9. **Stay in MVP scope.** Theme Kit is in progress in `cabin-views`. Do not add
-   System/Status bar widgets / Compose domain screens / catalog unless
-   maintainers request that next slice.
+9. **Stay in MVP scope.** Do not add Compose domain screens (media/HVAC/EV)
+   unless maintainers request that next slice. Thin `catalog/` chrome demos
+   are allowed; keep them out of the `cabin-*` publish graph.
 10. **American English**; restrained, production-minded tone.
 11. **When editing `apps/www`**, follow [`apps/www/DESIGN.md`](apps/www/DESIGN.md)
     (anti-vibecode craft brief). Do not treat the marketing site as generic AI

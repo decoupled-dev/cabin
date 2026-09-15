@@ -71,9 +71,11 @@ Modeled on Material’s discoverability, adapted for automotive:
 
 ## Catalog
 
-- Interactive Compose catalog app linked from Components.
-- Filters: stack, domain, safety class, compliance relevance.
-- Deep links from site component pages to catalog destinations.
+- Thin sample APK under [`catalog/`](../../catalog/README.md) demos Theme Kit
+  day/night, Views + Compose System/Status bars, Restriction Engine modes, and
+  signal / tone states (no domain screens). Linked from Components later.
+- Filters (later): stack, domain, safety class, compliance relevance.
+- Deep links from site component pages to catalog destinations (later).
 
 ## Content principles
 

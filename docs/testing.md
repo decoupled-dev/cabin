@@ -55,7 +55,7 @@ unit tests and Views chrome verification. Compose bar parity is
 | Compose System/Status bars | **Experimental** — gate / Signal / tone parity tests in `cabin-compose` (shipped); screenshot/golden later |
 | Screenshot / golden | Paparazzi (or equiv.) for Views; Compose parity screenshots |
 | Dual-stack parity | Shared fixtures for System/Status bar state |
-| Catalog | Visual QA harness off production images |
+| Catalog | Thin sample tests in `catalog/` (fixtures + packaging guard); visual QA later |
 | Platform image CI | Optional userdebug jobs consuming Soong modules |
 
 ## Gradle CI vs platform / Soong
