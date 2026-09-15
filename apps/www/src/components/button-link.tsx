@@ -6,7 +6,7 @@ const styles: Record<Variant, string> = {
   primary:
     "bg-primary text-on-primary hover:opacity-90 px-6 py-3.5 text-label",
   secondary:
-    "border border-outline/40 bg-transparent text-on-surface hover:border-outline hover:bg-[var(--surface-high)] px-6 py-3.5 text-label",
+    "border border-outline bg-transparent text-on-surface hover:bg-[var(--surface-high)] px-6 py-3.5 text-label",
   ghost:
     "text-on-surface-variant hover:text-on-surface underline-offset-4 hover:underline",
 };
