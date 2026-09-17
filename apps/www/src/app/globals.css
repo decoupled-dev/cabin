@@ -20,15 +20,15 @@
   --surface-high: color-mix(in srgb, var(--surface) 88%, var(--on-surface));
   --on-surface-variant: color-mix(in srgb, var(--on-surface) 62%, var(--surface));
   --outline-subtle: color-mix(in srgb, var(--on-surface) 9%, transparent);
-  /* Night brand lift from semantic primary (still generated-linked) */
-  --primary: color-mix(in srgb, var(--cabin-color-semantic-primary) 52%, white);
+  /* Night brand: quiet forest lift from semantic primary — glanceable, not neon */
+  --primary: color-mix(in srgb, var(--cabin-color-semantic-primary) 72%, white);
   --primary-container: var(--cabin-color-semantic-primary);
-  --on-primary: color-mix(in srgb, var(--cabin-color-semantic-on-primary) 8%, black);
-  --hmi-bezel: color-mix(in srgb, var(--surface) 55%, black);
-  --elev-1: 0 1px 0 color-mix(in srgb, var(--on-surface) 4%, transparent),
-    0 6px 16px color-mix(in srgb, black 35%, transparent);
-  --elev-2: 0 1px 0 color-mix(in srgb, var(--on-surface) 5%, transparent),
-    0 12px 28px color-mix(in srgb, black 40%, transparent);
+  --on-primary: color-mix(in srgb, var(--cabin-color-semantic-on-primary) 12%, black);
+  --hmi-bezel: color-mix(in srgb, var(--surface) 62%, black);
+  --elev-1: 0 1px 0 color-mix(in srgb, var(--on-surface) 3%, transparent),
+    0 4px 12px color-mix(in srgb, black 28%, transparent);
+  --elev-2: 0 1px 0 color-mix(in srgb, var(--on-surface) 4%, transparent),
+    0 10px 22px color-mix(in srgb, black 34%, transparent);
   --nav-bg: color-mix(in srgb, var(--background) 92%, transparent);
   --foreground: var(--on-surface);
 }

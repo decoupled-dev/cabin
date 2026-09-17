@@ -32,8 +32,8 @@ default · one language two skins · thin by design**
 
 ## Brand
 
-- **Mood:** night-leaning cabin HMI — instrument black, restrained glow, real
-  chrome hierarchy (status / content / system bar).
+- **Mood:** calm cabin luxury — forest night, instrument black, glanceable type,
+  inevitable HMI chrome (status / content / system). Not loud vibecode wow.
 - **Primary:** forest green family. Anchor container ≈ `#0B6E4F`; night primary
   reads as a brighter forest/teal on dark surfaces (see `globals.css`).
 - **Never:** Material purple, indigo, or violet as brand or hero wash.

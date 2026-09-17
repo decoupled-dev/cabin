@@ -52,6 +52,13 @@ python3 tools/generate_cabin_tokens.py --check
 | Compose | `CabinComposeTokens.Semantic.primary` |
 | CSS | `--cabin-color-semantic-primary` (+ web alias `--primary`) |
 
+## Craft lock
+
+Generated outputs should read as **calm cabin luxury**: forest primary on night
+instrument surfaces, glanceable type roles, inevitable HMI chrome — not loud
+marketing gradients or vibecode glow. Safety feedback stays high-chroma at night;
+brand never remaps `warning` / `error` / `charging`.
+
 ## Safety locks
 
 Codegen requires `extensions["cabin.lock"] = "safety-adjacent"` on:
