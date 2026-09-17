@@ -1,12 +1,16 @@
-// Planned Soong module — sketch for AOSP build-tree consumers.
-// Same sources as the Gradle module. See docs/adoption/build-tree.md (ADR 0001 / 0004).
-// Exact sdk_version / Kotlin flags finalize per host Android branch.
+// CabinCompliance — Restriction Engine + Signal (Alpha).
+// Same sources as the Gradle module (:cabin-compliance).
+// See docs/adoption/build-tree.md · ADR 0001 / 0004 · docs/api-contracts.md.
+//
+// Hard rule: no Compose UI or View widgets. Tokens only.
 
 android_library {
     name: "CabinCompliance",
+    defaults: ["CabinAndroidLibraryDefaults"],
+    visibility: ["//visibility:public"],
     srcs: ["src/main/java/**/*.kt"],
     manifest: "src/main/AndroidManifest.xml",
-    static_libs: ["CabinTokens"],
-    sdk_version: "system_current",
-    min_sdk_version: "29",
+    static_libs: [
+        "CabinTokens",
+    ],
 }

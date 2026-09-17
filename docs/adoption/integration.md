@@ -21,8 +21,9 @@ SystemUI, CarLauncher, platform media, and other AOSP targets use **Soong**
 (`Android.bp`), not Gradle `implementation(...)`.
 
 1. Sync Cabin into the Android tree via repo manifest (e.g. `external/cabin`).
-2. Depend on planned Soong modules: `CabinTokens`, `CabinCompliance`,
-   `CabinViews` (Views-first; Compose is not required for SystemUI).
+2. Depend on Soong modules (`CabinTokens`, `CabinCompliance`, `CabinViews`) —
+   Views-first; Compose is not required for SystemUI. Copy from
+   [systemui-cabin sketch](sketches/systemui-cabin/).
 3. Brand with RROs and optional token overlay modules — do not fork Cabin core.
 
 Full guide: [build-tree](build-tree.md) · engineering notes:

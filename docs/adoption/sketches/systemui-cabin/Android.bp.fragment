@@ -1,0 +1,16 @@
+// Illustrative SystemUI-shaped wiring — NOT a Cabin product module.
+// Copy static_libs into the host SystemUI (or vendor chrome) Android.bp.
+// File extension .fragment keeps Soong from loading this under docs/.
+//
+// Thin Views path only (ADR 0002). Upcoming Button / ListItem stay in CabinViews.
+
+android_library {
+    name: "SystemUI-Cabin-sketch",
+    // Host owns srcs, manifest, and existing platform static_libs.
+    static_libs: [
+        "CabinTokens",
+        "CabinCompliance",
+        "CabinViews",
+        // Do NOT add CabinCompose, catalog, or samples
+    ],
+}

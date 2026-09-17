@@ -58,7 +58,9 @@ publish.
 | `CabinViews` | `cabin-views` | **Primary** for SystemUI / chrome |
 | `CabinCompose` | `cabin-compose` | Opt-in only |
 
-Full guide: [build-tree](build-tree.md).
+Alpha `Android.bp` scaffolding is co-located with each module. Full guide:
+[build-tree](build-tree.md). SystemUI fragment:
+[sketches/systemui-cabin](sketches/systemui-cabin/).
 
 ## What is not shipped on product images
 
@@ -118,7 +120,7 @@ Use sparingly in a single APK; prefer split across system vs app partitions.
 ## Selecting modules — Soong (platform)
 
 ```bp
-// Planned — SystemUI / chrome: thin Views path only
+// SystemUI / chrome: thin Views path only
 static_libs: [
     "CabinTokens",
     "CabinCompliance",
@@ -126,8 +128,9 @@ static_libs: [
 ]
 ```
 
-Do not add `CabinCompose`, catalog, or samples to SystemUI. Details and
-manifest sync: [build-tree](build-tree.md).
+Do not add `CabinCompose`, catalog, or samples to SystemUI. Sketch + manifest
+sync: [build-tree](build-tree.md) ·
+[systemui-cabin](sketches/systemui-cabin/).
 
 ## Versioning (planned)
 

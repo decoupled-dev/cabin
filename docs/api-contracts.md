@@ -16,12 +16,16 @@ Group: `dev.decoupled.cabin` (illustrative; finalize at first publish).
 
 ## Soong module names (build-tree)
 
-| Module | MVP SystemUI |
-| --- | --- |
-| `CabinTokens` | Required |
-| `CabinCompliance` | Required |
-| `CabinViews` | Required |
-| `CabinCompose` | **Do not** depend from SystemUI |
+| Module | MVP SystemUI | In-repo scaffolding |
+| --- | --- | --- |
+| `CabinTokens` | Required | `cabin-tokens/Android.bp` |
+| `CabinCompliance` | Required | `cabin-compliance/Android.bp` |
+| `CabinViews` | Required | `cabin-views/Android.bp` |
+| `CabinCompose` | **Do not** depend from SystemUI | `cabin-compose/Android.bp` (opt-in) |
+
+Shared defaults: root `Android.bp` → `CabinAndroidLibraryDefaults` (not an
+umbrella library). SystemUI wiring sketch:
+[sketches/systemui-cabin](adoption/sketches/systemui-cabin/).
 
 See [build-tree](adoption/build-tree.md).
 

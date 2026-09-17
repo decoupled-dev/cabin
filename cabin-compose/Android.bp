@@ -1,17 +1,27 @@
-// Planned Soong module — sketch for Compose-capable platform apps only.
-// Same sources as the Gradle module. See docs/adoption/build-tree.md.
-// Do NOT add CabinCompose to SystemUI static_libs (Views-first; ADR 0002).
+// CabinCompose — Experimental Theme + System/Status bar parity.
+// Same sources as the Gradle module (:cabin-compose).
+// See docs/adoption/build-tree.md · ADR 0002 · docs/platforms/compose.md.
+//
+// Opt-in for Compose-capable platform apps / Gradle-parity only.
+// Do NOT add CabinCompose to SystemUI static_libs (Views-first).
+// Must NOT depend on CabinViews.
 
 android_library {
     name: "CabinCompose",
+    defaults: ["CabinAndroidLibraryDefaults"],
+    visibility: ["//visibility:public"],
     srcs: ["src/main/java/**/*.kt"],
     resource_dirs: ["src/main/res"],
     manifest: "src/main/AndroidManifest.xml",
     static_libs: [
         "CabinTokens",
         "CabinCompliance",
-        // Compose runtime / UI libs come from the host tree when linked.
+        "androidx.annotation_annotation",
+        // Compose runtime / UI libs come from the host tree. Uncomment and
+        // align names to the Android branch when linking CabinCompose into a
+        // Compose-capable platform app (never SystemUI):
+        // "androidx.compose.runtime_runtime",
+        // "androidx.compose.ui_ui",
+        // "androidx.compose.foundation_foundation",
     ],
-    sdk_version: "system_current",
-    min_sdk_version: "29",
 }

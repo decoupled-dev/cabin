@@ -16,20 +16,34 @@ metadata:
 ## Dual consumption
 
 Same sources: Gradle for apps, Soong for platform. Co-locate `Android.bp` with
-`build.gradle.kts` per module (**planned**).
+`build.gradle.kts` per module (**Alpha scaffolding** in-repo).
 
-## Planned Soong names
+Root [`Android.bp`](../../Android.bp) defines `CabinAndroidLibraryDefaults`
+only — never an umbrella `CabinAll`.
+
+## Soong names
 
 `CabinTokens` · `CabinCompliance` · `CabinViews` · `CabinCompose` (opt-in)
+
+Upcoming Views primitives (Button, ListItem, …) stay inside **`CabinViews`** —
+do not add per-widget Soong modules.
 
 ## SystemUI thin deps
 
 ```bp
-// Planned — only these for chrome
+// Host SystemUI / chrome — only these
 static_libs: ["CabinTokens", "CabinCompliance", "CabinViews"]
 ```
 
+Sketch: [docs/adoption/sketches/systemui-cabin](../../docs/adoption/sketches/systemui-cabin/).
+
 **Never** add `CabinCompose`, catalog, or samples to SystemUI.
+
+## Guard
+
+```bash
+python3 tools/check_soong_thin_deps.py
+```
 
 ## Manifest
 

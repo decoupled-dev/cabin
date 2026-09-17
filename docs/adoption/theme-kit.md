@@ -131,6 +131,9 @@ static_libs: ["CabinTokens", "CabinCompliance", "CabinViews"]
 // Do NOT add CabinCompose, catalog, or samples
 ```
 
+Copy-ready fragment:
+[sketches/systemui-cabin](sketches/systemui-cabin/).
+
 Theme-only experiments can omit `CabinCompliance`; restriction-aware bars need it.
 
 ## Verification

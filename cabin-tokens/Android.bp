@@ -1,12 +1,14 @@
-// Planned Soong module — sketch for AOSP build-tree consumers.
-// Same sources as the Gradle module. See docs/adoption/build-tree.md (ADR 0001).
-// Exact sdk_version / Kotlin flags finalize per host Android branch.
+// CabinTokens — design tokens only (Alpha).
+// Same sources as the Gradle module (:cabin-tokens).
+// See docs/adoption/build-tree.md · ADR 0001 · docs/api-contracts.md.
+//
+// Hard rule: no Compose, Views widgets, AppCompat, or Material deps.
 
 android_library {
     name: "CabinTokens",
+    defaults: ["CabinAndroidLibraryDefaults"],
+    visibility: ["//visibility:public"],
     srcs: ["src/main/java/**/*.kt"],
     resource_dirs: ["src/main/res"],
     manifest: "src/main/AndroidManifest.xml",
-    sdk_version: "system_current",
-    min_sdk_version: "29",
 }
