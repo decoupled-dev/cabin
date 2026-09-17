@@ -17,7 +17,7 @@ function MeasureRow({ token }: { token: TokenEntry }) {
     isSpace && value.endsWith("px") ? Number.parseFloat(value) : undefined;
 
   return (
-    <li className="flex flex-col gap-3 border-t border-[var(--outline-subtle)] py-5 first:border-t-0 first:pt-0 sm:flex-row sm:items-center sm:justify-between sm:gap-8">
+    <li className="flex flex-col gap-2 border-t border-[var(--outline-subtle)] py-3.5 first:border-t-0 first:pt-0 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
           <p className="text-label text-on-surface">{token.name}</p>
@@ -59,7 +59,7 @@ function MeasureRow({ token }: { token: TokenEntry }) {
 
 export function TypeScaleDemo() {
   return (
-    <ul className="flex flex-col gap-6">
+    <ul className="flex flex-col gap-4">
       {TYPE_TOKENS.map((role) => (
         <TypeRoleRow key={role.name} role={role} />
       ))}
@@ -75,7 +75,7 @@ function TypeRoleRow({ role }: { role: TokenEntry }) {
   const weight = useCssVar(weightVar);
 
   return (
-    <li className="border-t border-[var(--outline-subtle)] pt-5 first:border-t-0 first:pt-0">
+    <li className="border-t border-[var(--outline-subtle)] pt-3.5 first:border-t-0 first:pt-0">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
         <p className="text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
           {role.name}
@@ -85,7 +85,7 @@ function TypeRoleRow({ role }: { role: TokenEntry }) {
         </code>
       </div>
       <p
-        className="mt-3 max-w-2xl text-on-surface text-balance"
+        className="mt-2 max-w-2xl text-on-surface text-balance"
         style={{
           fontSize: `var(${sizeVar})`,
           fontWeight: `var(${weightVar})`,

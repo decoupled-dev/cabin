@@ -4,6 +4,7 @@ import {
   SpaceScaleDemo,
   TypeScaleDemo,
 } from "@/components/foundations-demos";
+import { DemoStage } from "@/components/demo-stage";
 import {
   GalleryHeader,
   GalleryNav,
@@ -21,14 +22,14 @@ export const metadata: Metadata = {
 
 export default function FoundationsPage() {
   return (
-    <div className="bg-background">
+    <div className="bg-background" data-gallery="foundations">
       <GalleryHeader
         title="Foundations"
-        summary="Color, type, space, and motion — live from generated tokens. Day and night resolve the same roles."
+        summary="Color, type, space, and motion — live from generated tokens. Flip Night / Day in the header."
       />
       <GalleryNav label="Foundations sections" items={FOUNDATIONS_NAV} />
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-5 py-12 sm:px-8 sm:py-14">
+      <div className="mx-auto flex max-w-6xl flex-col gap-14 px-5 py-10 sm:px-8 sm:py-12">
         <GallerySection
           id="color"
           title="Color"
@@ -49,52 +50,62 @@ export default function FoundationsPage() {
 
         <GallerySection
           id="type"
-          title="Type"
-          body="Glance roles from display to status. Sizes and weights are cabin type-role tokens — flip day/night above to confirm contrast."
+          title="Type & Space"
+          body="Glance type roles beside spacing steps. Sizes resolve from cabin type and space tokens."
         >
-          <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface px-5 py-6 sm:px-6">
-            <TypeScaleDemo />
+          <div className="grid gap-3 lg:grid-cols-2 lg:gap-4">
+            <DemoStage>
+              <div className="rounded-lg bg-surface px-5 py-5 sm:px-6">
+                <p className="mb-4 text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
+                  Type
+                </p>
+                <TypeScaleDemo />
+              </div>
+            </DemoStage>
+            <DemoStage>
+              <div className="rounded-lg bg-surface px-5 py-5 sm:px-6">
+                <p className="mb-4 text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
+                  Space
+                </p>
+                <SpaceScaleDemo />
+              </div>
+            </DemoStage>
           </div>
         </GallerySection>
 
-        <GallerySection
-          id="space"
-          title="Space"
-          body="Spacing steps and touch minimum from tokens. Automotive density floor stays fixed across schemes."
-        >
-          <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface px-5 py-2 sm:px-6">
-            <SpaceScaleDemo />
-          </div>
-        </GallerySection>
+        {/* Keep #space for deep links */}
+        <div id="space" className="sr-only" aria-hidden />
 
         <GallerySection
           id="motion"
           title="Motion"
           body="Fast, medium, slow durations from tokens. Mechanical and precise — decorative motion yields while driving."
         >
-          <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface px-5 py-2 sm:px-6">
-            <MotionDemo />
-          </div>
+          <DemoStage>
+            <div className="rounded-lg bg-surface px-5 py-4 sm:px-6">
+              <MotionDemo />
+            </div>
+          </DemoStage>
         </GallerySection>
 
-        <footer className="border-t border-[var(--outline-subtle)] pt-6">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-status text-on-surface-variant">
-            <a
-              href="/components"
-              className="text-on-surface underline-offset-4 hover:underline"
-            >
-              Components
-            </a>
-            <span aria-hidden>·</span>
-            <a
-              href={`${DOCS_URL}${DOCS_FOUNDATIONS}`}
-              className="underline-offset-4 hover:underline"
-              rel="noreferrer"
-            >
-              Foundations docs
-            </a>
-          </div>
-        </footer>
+        <p className="border-t border-[var(--outline-subtle)] pt-5 text-status text-on-surface-variant">
+          <a
+            href="/components"
+            className="text-on-surface underline-offset-4 hover:underline"
+          >
+            Components
+          </a>
+          <span aria-hidden className="mx-2">
+            ·
+          </span>
+          <a
+            href={`${DOCS_URL}${DOCS_FOUNDATIONS}`}
+            className="underline-offset-4 hover:underline"
+            rel="noreferrer"
+          >
+            Foundations docs
+          </a>
+        </p>
       </div>
     </div>
   );

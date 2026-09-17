@@ -111,8 +111,7 @@ function mmss(ms: number): string {
 
 export const COMPONENTS_NAV = [
   { href: "#bars", label: "Bars" },
-  { href: "#climate", label: "Climate" },
-  { href: "#media", label: "Media" },
+  { href: "#climate", label: "Climate & Media" },
 ] as const;
 
 export const DOCS_SYSTEM_BAR = "components/specs/system-bar";
