@@ -135,16 +135,15 @@ Each section: **one purpose**, **one headline**, usually **one short supporting
 sentence**. If a section needs cards to make sense as interaction, keep them
 minimal; default is no decorative cards.
 
-Good section jobs: pitch, pillars, foundations gallery / token explorer,
-components gallery (chrome + ClimateTile + MediaNowPlaying demos), compliance
-story, develop / get started. Bad: “stats strip + logos + testimonials +
-feature bingo” in one fold.
+Good section jobs: pitch, pillars, foundations gallery (color / type / space /
+motion), components gallery (Bars / Climate / Media), compliance story, develop
+/ get started. Bad: “stats strip + logos + testimonials + feature bingo” in one
+fold.
 
-**Foundations + Components paths (`/foundations`, `/components`):** unfrozen for
-M3-class gallery demos driven by generated CSS vars. Keep calm cabin luxury —
-no purple brand wash, no blob/mesh, one composition per section. Domain tiles
-mirror Android specs (honest Signals, RE-quiet). Do not turn the rest of the
-marketing site into a kitchen-sink catalog.
+**Foundations + Components (`/foundations`, `/components`):** calm cabin chrome
+galleries — quiet page titles, sticky IA + day/night, live demos from generated
+CSS vars. No marketing hero noise on those routes. Domain tiles mirror Android
+specs (honest Signals, RE-quiet). Do not kitchen-sink the rest of the site.
 
 ---
 

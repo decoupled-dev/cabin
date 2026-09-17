@@ -83,7 +83,7 @@ function ColorSwatch({ token }: { token: TokenEntry }) {
 
 /**
  * Live token explorer — values resolve from generated CSS vars under data-scheme.
- * No hand hex; day/night toggle uses the site SchemeProvider.
+ * No hand hex. Day/night also available on the gallery sticky bar.
  */
 export function TokenExplorer() {
   const { scheme, setScheme } = useScheme();
@@ -92,13 +92,10 @@ export function TokenExplorer() {
   const activeHint = TABS.find((t) => t.id === tab)?.hint ?? "";
 
   return (
-    <div className="rounded-xl border border-[var(--outline-subtle)] bg-surface">
-      <div className="flex flex-col gap-4 border-b border-[var(--outline-subtle)] px-5 py-5 sm:flex-row sm:items-end sm:justify-between sm:px-6">
+    <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface">
+      <div className="flex flex-col gap-4 border-b border-[var(--outline-subtle)] px-5 py-4 sm:flex-row sm:items-end sm:justify-between sm:px-6">
         <div>
-          <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
-            Live · from codegen
-          </p>
-          <h3 className="mt-2 font-display text-title text-on-surface">
+          <h3 className="font-display text-title text-on-surface">
             Token explorer
           </h3>
           <p className="mt-1 max-w-md text-status text-on-surface-variant">
@@ -107,7 +104,7 @@ export function TokenExplorer() {
         </div>
 
         <div
-          className="inline-flex rounded-lg border border-[var(--outline-subtle)] p-1"
+          className="inline-flex rounded-md border border-[var(--outline-subtle)] p-0.5"
           role="group"
           aria-label="Color scheme"
         >
@@ -117,7 +114,7 @@ export function TokenExplorer() {
               type="button"
               onClick={() => setScheme(s)}
               aria-pressed={scheme === s}
-              className={`rounded-md px-3.5 py-2 text-status capitalize transition-colors duration-200 ease-cabin ${
+              className={`rounded px-2.5 py-1.5 text-status capitalize transition-colors duration-200 ease-cabin ${
                 scheme === s
                   ? "bg-[var(--surface-high)] text-on-surface"
                   : "text-on-surface-variant hover:text-on-surface"
@@ -142,7 +139,7 @@ export function TokenExplorer() {
               role="tab"
               aria-selected={tab === t.id}
               onClick={() => setTab(t.id)}
-              className={`shrink-0 rounded-md px-3.5 py-2 text-status transition-colors duration-200 ease-cabin ${
+              className={`shrink-0 rounded-md px-3 py-2 text-status transition-colors duration-200 ease-cabin ${
                 tab === t.id
                   ? "bg-primary text-on-primary"
                   : "text-on-surface-variant hover:bg-[var(--surface-high)] hover:text-on-surface"
@@ -163,10 +160,8 @@ export function TokenExplorer() {
         ))}
       </ul>
 
-      <p className="border-t border-[var(--outline-subtle)] px-5 py-4 text-status text-on-surface-variant sm:px-6">
-        Values resolve from{" "}
-        <code className="text-on-surface">cabin.tokens.css</code> generated from{" "}
-        <code className="text-on-surface">tokens/cabin.tokens.json</code>. Night
+      <p className="border-t border-[var(--outline-subtle)] px-5 py-3 text-status text-on-surface-variant sm:px-6">
+        From <code className="text-on-surface">cabin.tokens.css</code>. Night
         warning, error, and charging stay safety-locked.
       </p>
     </div>

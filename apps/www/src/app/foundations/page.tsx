@@ -1,245 +1,100 @@
 import type { Metadata } from "next";
-import { ButtonLink } from "@/components/button-link";
 import {
-  ElevationDemo,
   MotionDemo,
   SpaceScaleDemo,
   TypeScaleDemo,
 } from "@/components/foundations-demos";
-import { Reveal } from "@/components/reveal";
+import {
+  GalleryHeader,
+  GalleryNav,
+  GallerySection,
+} from "@/components/gallery-chrome";
 import { TokenExplorer } from "@/components/token-explorer";
 import { DOCS_URL } from "@/lib/site";
-import {
-  DOCS_FOUNDATIONS,
-  DOCS_TOKENS,
-  FOUNDATIONS_NAV,
-} from "@/lib/tokens";
+import { DOCS_FOUNDATIONS, DOCS_TOKENS, FOUNDATIONS_NAV } from "@/lib/tokens";
 
 export const metadata: Metadata = {
   title: "Foundations",
   description:
-    "Cabin foundations gallery — live token explorer, color roles, type, space, elevation, and motion from generated design tokens.",
+    "Cabin foundations — color, type, space, and motion from generated design tokens. Live day/night demos.",
 };
-
-function SectionIntro({
-  id,
-  eyebrow,
-  title,
-  body,
-}: {
-  id: string;
-  eyebrow: string;
-  title: string;
-  body: string;
-}) {
-  return (
-    <div id={id} className="scroll-mt-28">
-      <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
-        {eyebrow}
-      </p>
-      <h2 className="mt-3 max-w-2xl font-display text-headline text-on-surface text-balance">
-        {title}
-      </h2>
-      <p className="mt-3 max-w-2xl text-body text-on-surface-variant text-balance">
-        {body}
-      </p>
-    </div>
-  );
-}
 
 export default function FoundationsPage() {
   return (
     <div className="bg-background">
-      {/* One composition: brand-adjacent foundations pitch + explorer CTA */}
-      <section className="border-b border-[var(--outline-subtle)]">
-        <div className="mx-auto max-w-6xl px-5 pb-14 pt-16 sm:px-8 sm:pb-16 sm:pt-24">
-          <Reveal>
-            <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
-              Foundations
-            </p>
-            <h1 className="mt-4 max-w-3xl font-display text-display text-on-surface text-balance">
-              The grammar of the cabin
-            </h1>
-            <p className="mt-5 max-w-2xl text-body text-on-surface-variant text-balance">
-              Color, type, space, elevation, and motion — packaged as tokens so
-              Compose and Views resolve the same meaning. Explore the live
-              scheme below; docs stay one click away.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <ButtonLink href="#explorer">Open token explorer</ButtonLink>
-              <ButtonLink
-                href={`${DOCS_URL}${DOCS_FOUNDATIONS}`}
-                variant="secondary"
-                external
-              >
-                Foundations docs
-              </ButtonLink>
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      <GalleryHeader
+        title="Foundations"
+        summary="Color, type, space, and motion — live from generated tokens. Day and night resolve the same roles."
+      />
+      <GalleryNav label="Foundations sections" items={FOUNDATIONS_NAV} />
 
-      {/* Quiet in-page anchors — one job: orient within foundations */}
-      <nav
-        aria-label="Foundations sections"
-        className="sticky top-16 z-30 border-b border-[var(--outline-subtle)] bg-[var(--nav-bg)] backdrop-blur-md"
-      >
-        <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-5 py-2.5 sm:px-8">
-          {FOUNDATIONS_NAV.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="shrink-0 rounded-md px-3 py-2 text-status text-on-surface-variant transition-colors duration-200 ease-cabin hover:bg-[var(--surface-high)] hover:text-on-surface"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </nav>
-
-      <div className="mx-auto max-w-6xl px-5 pb-24 pt-14 sm:px-8 sm:pt-16">
-        <Reveal>
-          <SectionIntro
-            id="explorer"
-            eyebrow="Live tokens"
-            title="Scheme roles update with day and night"
-            body="Toggle the scheme to see outline, container, and safety-locked warning, error, and charging resolve from generated CSS — no hand hex."
-          />
-          <div className="mt-10">
-            <TokenExplorer />
-          </div>
-        </Reveal>
-
-        <Reveal className="mt-24">
-          <SectionIntro
-            id="color"
-            eyebrow="Color"
-            title="Semantic meaning before brand paint"
-            body="Primary carries forest brand. Outline and container keep chrome legible. Warning, error, and charging stay locked at night — never soft-washed into primary."
-          />
-          <ul className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {(
-              [
-                {
-                  label: "Primary",
-                  css: "var(--primary)",
-                  on: "var(--on-primary)",
-                },
-                {
-                  label: "Container",
-                  css: "var(--container)",
-                  on: "var(--on-container)",
-                },
-                {
-                  label: "Outline",
-                  css: "var(--outline)",
-                  on: "var(--on-surface)",
-                },
-                {
-                  label: "Warning · locked",
-                  css: "var(--warning)",
-                  on: "var(--on-surface)",
-                },
-              ] as const
-            ).map((swatch) => (
-              <li
-                key={swatch.label}
-                className="overflow-hidden rounded-lg border border-[var(--outline-subtle)]"
-              >
-                <div
-                  className="flex h-24 items-end p-3"
-                  style={{ background: swatch.css, color: swatch.on }}
-                >
-                  <span className="text-status font-semibold">{swatch.label}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-6 text-status text-on-surface-variant">
-            Domain accents (charging, climate, media) stay off body copy. See{" "}
+      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-5 py-12 sm:px-8 sm:py-14">
+        <GallerySection
+          id="color"
+          title="Color"
+          body="Scheme and semantic roles from cabin.tokens.css. Outline, container, and safety-locked warning / error / charging update with day and night — no hand hex."
+        >
+          <TokenExplorer />
+          <p className="mt-4 text-status text-on-surface-variant">
+            Domain accents stay off body copy.{" "}
             <a
               href={`${DOCS_URL}${DOCS_TOKENS}`}
               className="text-primary underline-offset-4 hover:underline"
               rel="noreferrer"
             >
-              tokens docs
+              Tokens docs
             </a>
-            .
           </p>
-        </Reveal>
+        </GallerySection>
 
-        <Reveal className="mt-24">
-          <SectionIntro
-            id="type"
-            eyebrow="Typography"
-            title="Glance roles from display to status"
-            body="Sizes and weights come from cabin type-role tokens. Tabular figures for range, speed, and temperature. Marketing display type sits on top; token scale drives product UI."
-          />
-          <div className="mt-10 rounded-xl border border-[var(--outline-subtle)] bg-surface px-5 py-6 sm:px-6">
+        <GallerySection
+          id="type"
+          title="Type"
+          body="Glance roles from display to status. Sizes and weights are cabin type-role tokens — flip day/night above to confirm contrast."
+        >
+          <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface px-5 py-6 sm:px-6">
             <TypeScaleDemo />
           </div>
-        </Reveal>
+        </GallerySection>
 
-        <Reveal className="mt-24">
-          <SectionIntro
-            id="space"
-            eyebrow="Space & touch"
-            title="Steps that preserve automotive minima"
-            body="Spacing tokens keep driver-zone separation generous. Touch minimum stays a hard floor — dense chrome never shrinks targets below compliance baselines."
-          />
-          <div className="mt-10 rounded-xl border border-[var(--outline-subtle)] bg-surface px-5 py-2 sm:px-6">
+        <GallerySection
+          id="space"
+          title="Space"
+          body="Spacing steps and touch minimum from tokens. Automotive density floor stays fixed across schemes."
+        >
+          <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface px-5 py-2 sm:px-6">
             <SpaceScaleDemo />
           </div>
-        </Reveal>
+        </GallerySection>
 
-        <Reveal className="mt-24">
-          <SectionIntro
-            id="elevation"
-            eyebrow="Elevation"
-            title="Flat layers over deep shadow stacks"
-            body="Cabin prefers high-contrast planes. Elevation tokens are spare; presentation shadows on this site mix from surface roles — not decorative glass."
-          />
-          <div className="mt-10">
-            <ElevationDemo />
-          </div>
-        </Reveal>
-
-        <Reveal className="mt-24">
-          <SectionIntro
-            id="motion"
-            eyebrow="Motion"
-            title="Mechanical and precise"
-            body="Fast for press, medium for park transitions, slow only when earned. Decorative motion yields while driving — compliance shapes the timeline."
-          />
-          <div className="mt-10 rounded-xl border border-[var(--outline-subtle)] bg-surface px-5 py-2 sm:px-6">
+        <GallerySection
+          id="motion"
+          title="Motion"
+          body="Fast, medium, slow durations from tokens. Mechanical and precise — decorative motion yields while driving."
+        >
+          <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface px-5 py-2 sm:px-6">
             <MotionDemo />
           </div>
-        </Reveal>
+        </GallerySection>
 
-        <Reveal className="mt-24">
-          <div className="flex flex-col gap-6 border-t border-[var(--outline-subtle)] pt-8 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h2 className="font-display text-title text-on-surface">
-                Same names in Android, Compose, and CSS
-              </h2>
-              <p className="mt-2 max-w-xl text-status text-on-surface-variant">
-                Codegen keeps semantic parity. Regenerate with{" "}
-                <code className="text-on-surface">
-                  python3 tools/generate_cabin_tokens.py
-                </code>
-                .
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-3">
-              <ButtonLink href="/components" variant="secondary">
-                Components gallery
-              </ButtonLink>
-              <ButtonLink href={`${DOCS_URL}${DOCS_FOUNDATIONS}`} external>
-                Read foundations docs
-              </ButtonLink>
-            </div>
+        <footer className="border-t border-[var(--outline-subtle)] pt-6">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-status text-on-surface-variant">
+            <a
+              href="/components"
+              className="text-on-surface underline-offset-4 hover:underline"
+            >
+              Components
+            </a>
+            <span aria-hidden>·</span>
+            <a
+              href={`${DOCS_URL}${DOCS_FOUNDATIONS}`}
+              className="underline-offset-4 hover:underline"
+              rel="noreferrer"
+            >
+              Foundations docs
+            </a>
           </div>
-        </Reveal>
+        </footer>
       </div>
     </div>
   );

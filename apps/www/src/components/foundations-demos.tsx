@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  ELEVATION_TOKENS,
   MOTION_TOKENS,
   SPACE_TOKENS,
   TYPE_TOKENS,
@@ -105,35 +104,6 @@ export function SpaceScaleDemo() {
     <ul>
       {SPACE_TOKENS.map((token) => (
         <MeasureRow key={token.cssVar} token={token} />
-      ))}
-    </ul>
-  );
-}
-
-export function ElevationDemo() {
-  return (
-    <ul className="grid gap-4 sm:grid-cols-3">
-      {ELEVATION_TOKENS.map((token) => (
-        <li key={token.cssVar}>
-          <div
-            className="flex h-28 items-end rounded-lg border border-[var(--outline-subtle)] bg-[var(--container)] p-4 text-on-container"
-            style={{
-              boxShadow:
-                token.name === "Level 0"
-                  ? "none"
-                  : token.name === "Level 1"
-                    ? "var(--elev-1)"
-                    : "var(--elev-2)",
-            }}
-          >
-            <div>
-              <p className="text-label">{token.name}</p>
-              <code className="mt-1 block text-status text-on-surface-variant">
-                {token.cssVar}
-              </code>
-            </div>
-          </div>
-        </li>
       ))}
     </ul>
   );
