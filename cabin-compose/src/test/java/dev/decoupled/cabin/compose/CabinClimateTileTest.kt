@@ -92,6 +92,7 @@ class CabinClimateTileTest {
         composeRule.onNodeWithTag("climate_seat_value").assertIsDisplayed()
         assertEquals("—", formatTemp(Signal.Unavailable))
         assertEquals("—", formatLevel(Signal.Unavailable, 5))
+        assertEquals("21° · stale", formatTemp(Signal.Stale(21, atMillis = 1L)))
     }
 
     private fun liveState() = CabinClimateTileState(

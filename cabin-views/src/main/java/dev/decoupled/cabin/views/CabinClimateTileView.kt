@@ -5,6 +5,7 @@ import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.VisibleForTesting
@@ -21,8 +22,8 @@ import dev.decoupled.cabin.views.theme.CabinThemeResolver
  *
  * Spec: docs/components/specs/climate-tile.md
  *
- * Adjustments declare [CabinInteraction.HvacAdjust] — Block while Moving /
- * Restricted / Unknown. Missing compliance host is fail-closed.
+ * Craft: cabin density (76dp), climate accent as mark only (not body copy /
+ * washes), RE-quiet while Moving, honest empty/stale, not a Material card.
  */
 class CabinClimateTileView @JvmOverloads constructor(
     context: Context,
@@ -34,10 +35,14 @@ class CabinClimateTileView @JvmOverloads constructor(
     private var complianceHost: CabinComplianceHost? = null
     private var actionListener: ((CabinClimateTileAction) -> Unit)? = null
 
+    /** Thin climate accent mark — accent role only, not body wash. */
+    private val accentMark = View(context).apply { tag = "climate_accent_mark" }
     private val zoneLabelView = TextView(context)
     private val tempValueView = TextView(context)
     private val fanValueView = TextView(context)
     private val seatValueView = TextView(context)
+    private val fanLabelView = TextView(context)
+    private val seatLabelView = TextView(context)
 
     private val tempDown = controlButton("−", "Decrease temperature") {
         emit(CabinClimateTileAction.TempDown)
@@ -81,12 +86,16 @@ class CabinClimateTileView @JvmOverloads constructor(
     private val paddingPx: Int
         get() = resources.getDimensionPixelSize(TokensR.dimen.cabin_component_climate_tile_padding)
 
+    private val accentMarkWidthPx: Int
+        get() = resources.getDimensionPixelSize(TokensR.dimen.cabin_space_xs)
+
     init {
         orientation = VERTICAL
         importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_YES
+        // Flat cabin surface — no Material card fill / elevation wash.
+        setBackgroundColor(android.graphics.Color.TRANSPARENT)
         val pad = paddingPx
-        setPadding(pad, pad, pad, pad)
-        dividerPadding = gapPx
+        setPadding(pad, pad / 2, pad, pad / 2)
 
         zoneLabelView.apply {
             setTextSize(
@@ -94,6 +103,14 @@ class CabinClimateTileView @JvmOverloads constructor(
                 resources.getDimension(TokensR.dimen.cabin_type_role_label_size),
             )
         }
+        listOf(fanLabelView, seatLabelView).forEach { label ->
+            label.setTextSize(
+                TypedValue.COMPLEX_UNIT_PX,
+                resources.getDimension(TokensR.dimen.cabin_type_role_status_size),
+            )
+        }
+        fanLabelView.text = "Fan"
+        seatLabelView.text = "Seat"
         tempValueView.apply {
             gravity = Gravity.CENTER
             setTextSize(
@@ -122,10 +139,24 @@ class CabinClimateTileView @JvmOverloads constructor(
             tag = "climate_seat_value"
         }
 
-        addView(zoneLabelView, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
+        val header = LinearLayout(context).apply {
+            orientation = HORIZONTAL
+            gravity = Gravity.CENTER_VERTICAL
+            addView(
+                accentMark,
+                LayoutParams(accentMarkWidthPx, controlMinPx / 3).apply {
+                    marginEnd = gapPx
+                },
+            )
+            addView(
+                zoneLabelView,
+                LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT),
+            )
+        }
+        addView(header, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
         addView(row(tempDown, tempValueView, tempUp))
-        addView(labeledRow("Fan", fanDown, fanValueView, fanUp))
-        addView(labeledRow("Seat", seatDown, seatValueView, seatUp))
+        addView(labeledRow(fanLabelView, fanDown, fanValueView, fanUp))
+        addView(labeledRow(seatLabelView, seatDown, seatValueView, seatUp))
 
         applyChrome()
         bind(state)
@@ -134,9 +165,9 @@ class CabinClimateTileView @JvmOverloads constructor(
     fun bind(state: CabinClimateTileState) {
         this.state = state
         zoneLabelView.text = state.zoneLabel
-        tempValueView.text = formatTemp(state.temperatureC)
-        fanValueView.text = formatLevel(state.fanLevel, state.fanMax)
-        seatValueView.text = formatLevel(state.seatHeatLevel, state.seatHeatMax)
+        bindSignal(tempValueView, state.temperatureC, ::formatTemp)
+        bindSignal(fanValueView, state.fanLevel) { formatLevel(it, state.fanMax) }
+        bindSignal(seatValueView, state.seatHeatLevel) { formatLevel(it, state.seatHeatMax) }
         applyCompliance()
     }
 
@@ -158,7 +189,7 @@ class CabinClimateTileView @JvmOverloads constructor(
     internal fun currentState(): CabinClimateTileState = state
 
     @VisibleForTesting
-    internal fun findControl(tag: String): TextView? {
+    internal fun findControl(tag: String): View? {
         return when (tag) {
             "climate_temp_down" -> tempDown
             "climate_temp_up" -> tempUp
@@ -169,6 +200,7 @@ class CabinClimateTileView @JvmOverloads constructor(
             "climate_temp_value" -> tempValueView
             "climate_fan_value" -> fanValueView
             "climate_seat_value" -> seatValueView
+            "climate_accent_mark" -> accentMark
             else -> null
         }
     }
@@ -211,43 +243,59 @@ class CabinClimateTileView @JvmOverloads constructor(
     private fun applyCompliance() {
         val disposition = dispositionFor(CabinInteraction.HvacAdjust)
         val power = state.powerOn
-        GateVisuals.apply(tempDown, power && state.temperatureC is Signal.Value, disposition)
-        GateVisuals.apply(tempUp, power && state.temperatureC is Signal.Value, disposition)
-        GateVisuals.apply(fanDown, power && state.fanLevel is Signal.Value, disposition)
-        GateVisuals.apply(fanUp, power && state.fanLevel is Signal.Value, disposition)
-        GateVisuals.apply(seatDown, power && state.seatHeatLevel is Signal.Value, disposition)
-        GateVisuals.apply(seatUp, power && state.seatHeatLevel is Signal.Value, disposition)
+        // RE-quiet: soft-disable steppers; values stay full opacity (glance).
+        GateVisuals.applyQuiet(tempDown, power && state.temperatureC is Signal.Value, disposition)
+        GateVisuals.applyQuiet(tempUp, power && state.temperatureC is Signal.Value, disposition)
+        GateVisuals.applyQuiet(fanDown, power && state.fanLevel is Signal.Value, disposition)
+        GateVisuals.applyQuiet(fanUp, power && state.fanLevel is Signal.Value, disposition)
+        GateVisuals.applyQuiet(seatDown, power && state.seatHeatLevel is Signal.Value, disposition)
+        GateVisuals.applyQuiet(seatUp, power && state.seatHeatLevel is Signal.Value, disposition)
+        tempValueView.alpha = 1f
+        fanValueView.alpha = 1f
+        seatValueView.alpha = 1f
         applyChrome()
     }
 
     private fun applyChrome() {
         try {
             val colors = CabinThemeResolver.resolveColors(context)
-            val radius = resources.getDimension(TokensR.dimen.cabin_component_climate_tile_cornerRadius)
-            background = GradientDrawable().apply {
-                setColor(colors.surfaceVariant)
-                setStroke(
-                    resources.getDimensionPixelSize(TokensR.dimen.cabin_space_xs) / 2,
-                    colors.outline,
-                )
-                cornerRadius = radius
-            }
+            // Flat — no card wash / Material elevation clone.
+            setBackgroundColor(android.graphics.Color.TRANSPARENT)
+            accentMark.setBackgroundColor(colors.climate)
             zoneLabelView.setTextColor(colors.onSurface)
-            tempValueView.setTextColor(colors.climate)
+            // Body / title stay onSurface — climate accent is mark-only.
+            tempValueView.setTextColor(colors.onSurface)
             fanValueView.setTextColor(colors.onSurface)
             seatValueView.setTextColor(colors.onSurface)
+            fanLabelView.setTextColor(colors.onSurface)
+            seatLabelView.setTextColor(colors.onSurface)
             listOf(tempDown, tempUp, fanDown, fanUp, seatDown, seatUp).forEach {
                 it.setTextColor(colors.onSurface)
+                // Quiet outline affordance — not filled Material buttons.
                 it.background = GradientDrawable().apply {
+                    setColor(android.graphics.Color.TRANSPARENT)
                     setStroke(
                         resources.getDimensionPixelSize(TokensR.dimen.cabin_space_xs) / 2,
                         colors.outline,
                     )
-                    cornerRadius = radius / 2f
                 }
             }
         } catch (_: IllegalArgumentException) {
             // Host may not yet apply Theme.Cabin.
+        }
+    }
+
+    private fun <T> bindSignal(
+        view: TextView,
+        signal: Signal<T>,
+        formatter: (Signal<T>) -> String,
+    ) {
+        view.text = formatter(signal)
+        view.contentDescription = when (signal) {
+            is Signal.Value -> view.text.toString()
+            is Signal.Stale -> "${formatter(signal)} (stale)"
+            Signal.Unavailable -> "Unavailable"
+            is Signal.Fault -> "Fault ${signal.code}"
         }
     }
 
@@ -290,7 +338,7 @@ class CabinClimateTileView @JvmOverloads constructor(
     }
 
     private fun labeledRow(
-        label: String,
+        label: TextView,
         down: TextView,
         value: TextView,
         up: TextView,
@@ -301,18 +349,10 @@ class CabinClimateTileView @JvmOverloads constructor(
             val lp = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
             lp.topMargin = gapPx
             layoutParams = lp
-            addView(
-                TextView(context).apply {
-                    text = label
-                    setTextSize(
-                        TypedValue.COMPLEX_UNIT_PX,
-                        resources.getDimension(TokensR.dimen.cabin_type_role_label_size),
-                    )
-                    val labelLp = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
-                    labelLp.marginEnd = gapPx
-                    layoutParams = labelLp
-                },
-            )
+            val labelLp = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+            labelLp.marginEnd = gapPx
+            label.layoutParams = labelLp
+            addView(label)
             addView(down)
             addView(value)
             addView(up)
@@ -320,18 +360,19 @@ class CabinClimateTileView @JvmOverloads constructor(
     }
 
     companion object {
+        /** Honest signal text — stale labeled; unavailable never invented. */
         internal fun formatTemp(signal: Signal<Int>): String = when (signal) {
             is Signal.Value -> "${signal.value}°"
-            is Signal.Stale -> "${signal.last}°"
+            is Signal.Stale -> "${signal.last}° · stale"
             Signal.Unavailable -> "—"
-            is Signal.Fault -> "!"
+            is Signal.Fault -> "Fault"
         }
 
         internal fun formatLevel(signal: Signal<Int>, max: Int): String = when (signal) {
             is Signal.Value -> "${signal.value}/$max"
-            is Signal.Stale -> "${signal.last}/$max"
+            is Signal.Stale -> "${signal.last}/$max · stale"
             Signal.Unavailable -> "—"
-            is Signal.Fault -> "!"
+            is Signal.Fault -> "Fault"
         }
     }
 }

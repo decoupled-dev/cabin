@@ -15,6 +15,13 @@ internal object GateVisuals {
         GateDisposition.Block -> 0.4f
     }
 
+    /** Domain-tile RE-quiet disable (no heavy wash while Moving). */
+    fun quietAlpha(disposition: GateDisposition): Float = when (disposition) {
+        GateDisposition.Allow -> 1f
+        GateDisposition.Substitute -> 0.75f
+        GateDisposition.Block -> 0.7f
+    }
+
     fun activatable(enabled: Boolean, disposition: GateDisposition): Boolean =
         enabled && disposition == GateDisposition.Allow
 }

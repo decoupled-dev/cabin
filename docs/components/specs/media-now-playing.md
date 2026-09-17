@@ -32,18 +32,36 @@ telemetry**.
 | Transport | Previous / play-pause / next |
 | Progress | Display-only when position + duration are live |
 
+## Craft constraints
+
+@sora craft locked for this slice:
+
+1. **Cabin density** — 76dp transport minima; quiet metadata hierarchy.
+2. **Media accent as accent only** — thin mark beside source; never body copy
+   color and never a large mediaAccent wash on artwork / chrome.
+3. **RE-quiet while Moving** — title/artist/art stay glanceable; complex source
+   soft-disables quietly; transport remains Allow.
+4. **Honest empty / stale** — unavailable metadata uses honest fallbacks; stale
+   appends `· stale`; progress omitted unless both Signals are live — never
+   invent telemetry.
+5. **Not a Material media card** — flat cabin surface, outline artwork well, no
+   elevated card fill.
+
+Night `warning` / `error` / `charging` stay locked — unused as MediaNowPlaying
+chrome decoration.
+
 ## States
 
 | State | Behavior |
 | --- | --- |
 | Playing / paused | Transport reflects `isPlaying` |
 | No source | Honest empty copy; transport non-activatable |
-| Artwork unavailable | Tokenized placeholder — never chaotic blank |
+| Artwork unavailable | Outline well + em dash — never chaotic blank / accent wash |
 | Position / duration unavailable | Hide progress numbers — **do not invent** |
-| Stale metadata | Show last with stale labeling when product wires it |
-| Fault | Source / playback fault presentation |
-| Restricted (gate) | Complex actions Block/Substitute; transport per matrix |
-| Day / Night | Theme Kit; `mediaAccent` for domain emphasis only |
+| Stale metadata | Last value + `· stale` |
+| Fault | `Fault` presentation |
+| Restricted (gate) | Complex actions Block/Substitute RE-quiet; transport per matrix |
+| Day / Night | Theme Kit; mediaAccent mark only |
 
 ## Sizes & type (from tokens)
 
@@ -53,8 +71,9 @@ telemetry**.
 | `cabin.component.mediaNowPlaying.transportMinSize` | 76dp transport targets |
 | `cabin.component.mediaNowPlaying.gap` / `padding` | Spacing |
 | `cabin.component.mediaNowPlaying.cornerRadius` | Modest radius |
-| `cabin.color.semantic.mediaAccent` | Domain accent (not body text) |
-| `cabin.color.scheme.*.outline` | Quiet rules / placeholder |
+| `cabin.color.semantic.mediaAccent` | Thin accent mark only (not body text / washes) |
+| `cabin.color.scheme.*.outline` | Artwork well / transport outlines |
+| `cabin.color.scheme.*.onSurface` | Title / artist / source / progress body copy |
 | `cabin.type.role.title` / `body` / `label` | Metadata hierarchy |
 
 Stub: [`tokens/cabin.tokens.json`](../../../tokens/cabin.tokens.json).
@@ -142,10 +161,11 @@ fabricate elapsed / remaining.
 - [x] Automotive MediaNowPlaying (not Material media card clone)
 - [x] Views-first Alpha + Compose Experimental parity
 - [x] Transport via `MediaTransport`; source/seek via `MediaComplex` (Block while Moving)
-- [x] Fail-closed when compliance host / local absent
-- [x] Honest media numbers — no fake position / duration / telemetry
-- [x] Artwork unavailable → stable placeholder
-- [x] 76dp transport minima; Theme Kit forest/outline; locked night safety unused as chrome
+- [x] RE-quiet complex while Moving; fail-closed when host / local absent
+- [x] Honest media numbers + empty/stale — no fake telemetry
+- [x] Media accent as mark only (not body copy / not large washes)
+- [x] Artwork unavailable → stable outline placeholder
+- [x] 76dp cabin density; Theme Kit outline; locked night safety unused as chrome
 - [x] Unit tests for RE + states on both stacks
 - [x] No catalog reverse deps; marketing/docs sites frozen
 

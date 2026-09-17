@@ -115,6 +115,29 @@ class CabinMediaNowPlayingViewTest {
     }
 
     @Test
+    fun staleMetadata_labelHonestly() {
+        view.bind(
+            liveState().copy(
+                title = Signal.Stale("Old track", atMillis = 1L),
+                artist = Signal.Stale("Old artist", atMillis = 1L),
+            ),
+        )
+        val title = view.findControl("media_title") as android.widget.TextView
+        assertEquals("Old track · stale", title.text.toString())
+        assertTrue(title.contentDescription.toString().contains("stale"))
+    }
+
+    @Test
+    fun moving_sourceQuiet_titleStaysGlanceable() {
+        host.updateState(VehicleUiState.moving())
+        val source = view.findControl("media_source")!!
+        val title = view.findControl("media_title")!!
+        assertFalse(source.isEnabled)
+        assertEquals(1f, title.alpha)
+        assertTrue(source.alpha >= 0.65f)
+    }
+
+    @Test
     fun touchMinimum_is76dp() {
         assertEquals(76f, CabinMediaNowPlayingTokens.transportMinSizeDp)
         assertTrue(view.findControl("media_play_pause")!!.minimumHeight >= dp(76))

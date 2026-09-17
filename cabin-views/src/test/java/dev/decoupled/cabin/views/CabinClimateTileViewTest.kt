@@ -94,11 +94,39 @@ class CabinClimateTileViewTest {
             ),
         )
 
-        assertEquals("—", tile.findControl("climate_temp_value")!!.text.toString())
-        assertEquals("—", tile.findControl("climate_fan_value")!!.text.toString())
-        assertEquals("—", tile.findControl("climate_seat_value")!!.text.toString())
+        assertEquals("—", (tile.findControl("climate_temp_value") as android.widget.TextView).text.toString())
+        assertEquals("—", (tile.findControl("climate_fan_value") as android.widget.TextView).text.toString())
+        assertEquals("—", (tile.findControl("climate_seat_value") as android.widget.TextView).text.toString())
         tile.findControl("climate_temp_up")!!.performClick()
         assertTrue(actions.isEmpty())
+    }
+
+    @Test
+    fun staleSignals_labelHonestly() {
+        tile.bind(
+            CabinClimateTileState(
+                zoneLabel = "Driver",
+                temperatureC = Signal.Stale(21, atMillis = 1L),
+                fanLevel = Signal.Stale(2, atMillis = 1L),
+                seatHeatLevel = Signal.Stale(1, atMillis = 1L),
+            ),
+        )
+        val temp = tile.findControl("climate_temp_value") as android.widget.TextView
+        val fan = tile.findControl("climate_fan_value") as android.widget.TextView
+        assertEquals("21° · stale", temp.text.toString())
+        assertEquals("2/5 · stale", fan.text.toString())
+        assertTrue(temp.contentDescription.toString().contains("stale"))
+    }
+
+    @Test
+    fun moving_valuesStayGlanceable_controlsQuiet() {
+        host.updateState(VehicleUiState.moving())
+        val tempUp = tile.findControl("climate_temp_up")!!
+        val tempValue = tile.findControl("climate_temp_value")!!
+        assertFalse(tempUp.isEnabled)
+        assertEquals(1f, tempValue.alpha)
+        // RE-quiet soft-disable — not the heavy chrome Block wash (0.4).
+        assertTrue(tempUp.alpha >= 0.65f)
     }
 
     @Test

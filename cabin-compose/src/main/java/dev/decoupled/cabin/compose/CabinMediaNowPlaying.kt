@@ -1,6 +1,5 @@
 package dev.decoupled.cabin.compose
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -13,7 +12,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.background
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -43,9 +42,8 @@ import dev.decoupled.cabin.tokens.CabinTokens
  *
  * Spec: docs/components/specs/media-now-playing.md
  *
- * **Experimental** Compose parity with Views `CabinMediaNowPlayingView` (Alpha).
- * Transport → [CabinInteraction.MediaTransport]; source → [CabinInteraction.MediaComplex].
- * Progress numbers only when both Signals are live — no fake telemetry.
+ * Craft: cabin density, mediaAccent as mark only, RE-quiet complex while
+ * Moving, honest empty/stale — not a Material media card.
  */
 @Composable
 fun CabinMediaNowPlaying(
@@ -59,7 +57,6 @@ fun CabinMediaNowPlaying(
     val complexGate = dispositionOf(compliance, CabinInteraction.MediaComplex)
     val padding = CabinTokens.Component.MediaNowPlaying.padding.dp.dp
     val gap = CabinTokens.Component.MediaNowPlaying.gap.dp.dp
-    val radius = CabinTokens.Component.MediaNowPlaying.cornerRadius.dp.dp
     val artworkSize = CabinTokens.Component.MediaNowPlaying.artworkSize.dp.dp
     val transportMin = maxOf(
         CabinTokens.Component.MediaNowPlaying.transportMinSize.dp.dp,
@@ -71,19 +68,17 @@ fun CabinMediaNowPlaying(
     val statusSize = CabinTokens.Type.Role.Status.size.sp.sp
 
     Column(
+        // Flat cabin surface — no Material card fill / elevation wash.
         modifier = modifier
             .fillMaxWidth()
-            .background(colors.surfaceVariant, RoundedCornerShape(radius))
-            .border(1.dp, colors.outline, RoundedCornerShape(radius))
-            .padding(padding)
+            .padding(horizontal = padding, vertical = padding / 2)
             .testTag("cabin_media_now_playing"),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Box(
                 modifier = Modifier
                     .size(artworkSize)
-                    .background(colors.container, RoundedCornerShape(radius / 2))
-                    .border(1.dp, colors.outline, RoundedCornerShape(radius / 2))
+                    .border(1.dp, colors.outline)
                     .testTag("media_artwork")
                     .semantics {
                         contentDescription = if (state.artworkAvailable) {
@@ -94,48 +89,82 @@ fun CabinMediaNowPlaying(
                     },
                 contentAlignment = Alignment.Center,
             ) {
-                BasicText(
-                    text = if (state.artworkAvailable) "ART" else "—",
-                    style = TextStyle(color = colors.mediaAccent, fontSize = labelSize),
-                )
+                if (!state.artworkAvailable) {
+                    // Neutral placeholder — not a mediaAccent wash.
+                    BasicText(
+                        text = "—",
+                        style = TextStyle(color = colors.onSurface, fontSize = statusSize),
+                    )
+                }
             }
             Spacer(Modifier.width(gap))
             Column(modifier = Modifier.weight(1f)) {
+                val titleText = formatMediaText(state.title, fallback = "No title")
                 BasicText(
-                    text = formatMediaText(state.title, fallback = "No title"),
+                    text = titleText,
                     style = TextStyle(
                         color = colors.onSurface,
                         fontSize = titleSize,
                         fontWeight = FontWeight.SemiBold,
                     ),
-                    modifier = Modifier.testTag("media_title"),
+                    modifier = Modifier
+                        .testTag("media_title")
+                        .semantics {
+                            contentDescription = signalDescription(state.title, titleText)
+                        },
                 )
+                val artistText = formatMediaText(state.artist, fallback = "—")
                 BasicText(
-                    text = formatMediaText(state.artist, fallback = "—"),
+                    text = artistText,
                     style = TextStyle(color = colors.onSurface, fontSize = bodySize),
-                    modifier = Modifier.testTag("media_artist"),
+                    modifier = Modifier
+                        .testTag("media_artist")
+                        .semantics {
+                            contentDescription = signalDescription(state.artist, artistText)
+                        },
                 )
                 val sourceActivatable =
                     GateVisuals.activatable(state.hasSource, complexGate)
-                BasicText(
-                    text = formatMediaText(state.sourceLabel, fallback = "No source"),
-                    style = TextStyle(color = colors.mediaAccent, fontSize = labelSize),
-                    modifier = Modifier
-                        .alpha(
-                            if (!state.hasSource) 0.4f else GateVisuals.alpha(complexGate),
-                        )
-                        .testTag("media_source")
-                        .semantics { contentDescription = "Media source" }
-                        .then(
-                            if (sourceActivatable) {
-                                Modifier.clickable {
-                                    onAction(CabinMediaNowPlayingAction.OpenSource)
-                                }
-                            } else {
-                                Modifier
-                            },
-                        ),
-                )
+                val sourceText = formatMediaText(state.sourceLabel, fallback = "No source")
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Box(
+                        modifier = Modifier
+                            .width(CabinTokens.Space.xs.dp.dp)
+                            .height(gap)
+                            .background(colors.mediaAccent)
+                            .testTag("media_accent_mark"),
+                    )
+                    Spacer(Modifier.width(gap / 2))
+                    BasicText(
+                        text = sourceText,
+                        // Body stays onSurface — mediaAccent is mark-only.
+                        style = TextStyle(color = colors.onSurface, fontSize = labelSize),
+                        modifier = Modifier
+                            .alpha(
+                                if (!state.hasSource) {
+                                    GateVisuals.quietAlpha(GateDisposition.Block)
+                                } else {
+                                    GateVisuals.quietAlpha(complexGate)
+                                },
+                            )
+                            .testTag("media_source")
+                            .semantics {
+                                contentDescription = signalDescription(
+                                    state.sourceLabel,
+                                    sourceText,
+                                )
+                            }
+                            .then(
+                                if (sourceActivatable) {
+                                    Modifier.clickable {
+                                        onAction(CabinMediaNowPlayingAction.OpenSource)
+                                    }
+                                } else {
+                                    Modifier
+                                },
+                            ),
+                    )
+                }
             }
         }
         Spacer(Modifier.height(gap))
@@ -210,8 +239,11 @@ private fun MediaTransportControl(
     Box(
         modifier = Modifier
             .size(transportMin)
-            .alpha(if (!enabled) 0.4f else GateVisuals.alpha(disposition))
-            .border(1.dp, outlineColor, RoundedCornerShape(4.dp))
+            .alpha(
+                if (!enabled) GateVisuals.quietAlpha(GateDisposition.Block)
+                else GateVisuals.quietAlpha(disposition),
+            )
+            .border(1.dp, outlineColor)
             .testTag(tag)
             .semantics { contentDescription = description }
             .then(if (canActivate) Modifier.clickable(onClick = onClick) else Modifier),
@@ -226,9 +258,9 @@ private fun MediaTransportControl(
 
 internal fun formatMediaText(signal: Signal<String>, fallback: String): String = when (signal) {
     is Signal.Value -> signal.value
-    is Signal.Stale -> signal.last
+    is Signal.Stale -> "${signal.last} · stale"
     Signal.Unavailable -> fallback
-    is Signal.Fault -> "!"
+    is Signal.Fault -> "Fault"
 }
 
 /**

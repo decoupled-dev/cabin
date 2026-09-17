@@ -3,7 +3,6 @@ package dev.decoupled.cabin.compose
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -12,8 +11,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -43,9 +42,8 @@ import dev.decoupled.cabin.tokens.CabinTokens
  *
  * Spec: docs/components/specs/climate-tile.md
  *
- * **Experimental** Compose parity with Views `CabinClimateTileView` (Alpha).
- * Adjustments gate via [CabinInteraction.HvacAdjust] (fail-closed when Moving
- * or when compliance local is absent).
+ * Craft: cabin density, climate accent as mark only, RE-quiet while Moving,
+ * honest empty/stale — not a Material card clone.
  */
 @Composable
 fun CabinClimateTile(
@@ -58,34 +56,45 @@ fun CabinClimateTile(
     val disposition = dispositionOf(compliance, CabinInteraction.HvacAdjust)
     val padding = CabinTokens.Component.ClimateTile.padding.dp.dp
     val gap = CabinTokens.Component.ClimateTile.gap.dp.dp
-    val radius = CabinTokens.Component.ClimateTile.cornerRadius.dp.dp
     val controlMin = maxOf(
         CabinTokens.Component.ClimateTile.controlMinSize.dp.dp,
         compliance.touchTargetMinDp().dp,
     )
     val titleSize = CabinTokens.Type.Role.Title.size.sp.sp
     val labelSize = CabinTokens.Type.Role.Label.size.sp.sp
+    val statusSize = CabinTokens.Type.Role.Status.size.sp.sp
 
     Column(
+        // Flat cabin surface — no Material card fill / elevation wash.
         modifier = modifier
             .fillMaxWidth()
-            .background(colors.surfaceVariant, RoundedCornerShape(radius))
-            .border(1.dp, colors.outline, RoundedCornerShape(radius))
-            .padding(padding)
+            .padding(horizontal = padding, vertical = padding / 2)
             .testTag("cabin_climate_tile"),
     ) {
-        BasicText(
-            text = state.zoneLabel,
-            style = TextStyle(
-                color = colors.onSurface,
-                fontSize = labelSize,
-                fontWeight = FontWeight.SemiBold,
-            ),
-        )
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .width(CabinTokens.Space.xs.dp.dp)
+                    .height(controlMin / 3)
+                    .background(colors.climate)
+                    .testTag("climate_accent_mark"),
+            )
+            Spacer(Modifier.width(gap))
+            BasicText(
+                text = state.zoneLabel,
+                style = TextStyle(
+                    color = colors.onSurface,
+                    fontSize = labelSize,
+                    fontWeight = FontWeight.SemiBold,
+                ),
+            )
+        }
         Spacer(Modifier.height(gap))
         ClimateStepperRow(
             valueText = formatTemp(state.temperatureC),
-            valueColor = colors.climate,
+            valueDescription = signalDescription(state.temperatureC, formatTemp(state.temperatureC)),
+            // Body stays onSurface — climate is mark-only.
+            valueColor = colors.onSurface,
             valueTag = "climate_temp_value",
             downTag = "climate_temp_down",
             upTag = "climate_temp_up",
@@ -104,13 +113,17 @@ fun CabinClimateTile(
         ClimateLabeledStepper(
             label = "Fan",
             valueText = formatLevel(state.fanLevel, state.fanMax),
+            valueDescription = signalDescription(
+                state.fanLevel,
+                formatLevel(state.fanLevel, state.fanMax),
+            ),
             valueTag = "climate_fan_value",
             downTag = "climate_fan_down",
             upTag = "climate_fan_up",
             downDescription = "Decrease fan",
             upDescription = "Increase fan",
             controlMin = controlMin,
-            labelSize = labelSize,
+            labelSize = statusSize,
             textSize = labelSize,
             contentColor = colors.onSurface,
             outlineColor = colors.outline,
@@ -123,13 +136,17 @@ fun CabinClimateTile(
         ClimateLabeledStepper(
             label = "Seat",
             valueText = formatLevel(state.seatHeatLevel, state.seatHeatMax),
+            valueDescription = signalDescription(
+                state.seatHeatLevel,
+                formatLevel(state.seatHeatLevel, state.seatHeatMax),
+            ),
             valueTag = "climate_seat_value",
             downTag = "climate_seat_down",
             upTag = "climate_seat_up",
             downDescription = "Decrease seat heat",
             upDescription = "Increase seat heat",
             controlMin = controlMin,
-            labelSize = labelSize,
+            labelSize = statusSize,
             textSize = labelSize,
             contentColor = colors.onSurface,
             outlineColor = colors.outline,
@@ -145,6 +162,7 @@ fun CabinClimateTile(
 private fun ClimateLabeledStepper(
     label: String,
     valueText: String,
+    valueDescription: String,
     valueTag: String,
     downTag: String,
     upTag: String,
@@ -172,6 +190,7 @@ private fun ClimateLabeledStepper(
         )
         ClimateStepperRow(
             valueText = valueText,
+            valueDescription = valueDescription,
             valueColor = contentColor,
             valueTag = valueTag,
             downTag = downTag,
@@ -193,7 +212,8 @@ private fun ClimateLabeledStepper(
 @Composable
 private fun ClimateStepperRow(
     valueText: String,
-    valueColor: androidx.compose.ui.graphics.Color,
+    valueDescription: String,
+    valueColor: Color,
     valueTag: String,
     downTag: String,
     upTag: String,
@@ -228,9 +248,11 @@ private fun ClimateStepperRow(
                 fontSize = textSize,
                 fontWeight = FontWeight.SemiBold,
             ),
+            // Values stay full opacity while Moving (RE-quiet / glanceable).
             modifier = Modifier
                 .widthIn(min = controlMin)
-                .testTag(valueTag),
+                .testTag(valueTag)
+                .semantics { contentDescription = valueDescription },
         )
         ClimateControl(
             label = "+",
@@ -264,8 +286,11 @@ private fun ClimateControl(
     Box(
         modifier = Modifier
             .size(controlMin)
-            .alpha(if (!enabled) 0.4f else GateVisuals.alpha(disposition))
-            .border(1.dp, outlineColor, RoundedCornerShape(4.dp))
+            .alpha(
+                if (!enabled) GateVisuals.quietAlpha(GateDisposition.Block)
+                else GateVisuals.quietAlpha(disposition),
+            )
+            .border(1.dp, outlineColor)
             .testTag(tag)
             .semantics { contentDescription = description }
             .then(if (canActivate) Modifier.clickable(onClick = onClick) else Modifier),
@@ -280,16 +305,16 @@ private fun ClimateControl(
 
 internal fun formatTemp(signal: Signal<Int>): String = when (signal) {
     is Signal.Value -> "${signal.value}°"
-    is Signal.Stale -> "${signal.last}°"
+    is Signal.Stale -> "${signal.last}° · stale"
     Signal.Unavailable -> "—"
-    is Signal.Fault -> "!"
+    is Signal.Fault -> "Fault"
 }
 
 internal fun formatLevel(signal: Signal<Int>, max: Int): String = when (signal) {
     is Signal.Value -> "${signal.value}/$max"
-    is Signal.Stale -> "${signal.last}/$max"
+    is Signal.Stale -> "${signal.last}/$max · stale"
     Signal.Unavailable -> "—"
-    is Signal.Fault -> "!"
+    is Signal.Fault -> "Fault"
 }
 
 /** ClimateTile presentation state (parity with Views). */

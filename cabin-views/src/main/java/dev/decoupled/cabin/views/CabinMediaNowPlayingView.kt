@@ -22,10 +22,9 @@ import dev.decoupled.cabin.views.theme.CabinThemeResolver
  *
  * Spec: docs/components/specs/media-now-playing.md
  *
- * Transport uses [CabinInteraction.MediaTransport]. Source open uses
- * [CabinInteraction.MediaComplex] (Block while Moving). Progress numbers
- * render only from live Signals — never invent telemetry. Missing compliance
- * host is fail-closed.
+ * Craft: cabin density (76dp transport), mediaAccent as mark only (not body /
+ * washes), RE-quiet on complex while Moving, honest empty/stale, not a
+ * Material media card.
  */
 class CabinMediaNowPlayingView @JvmOverloads constructor(
     context: Context,
@@ -37,6 +36,8 @@ class CabinMediaNowPlayingView @JvmOverloads constructor(
     private var complianceHost: CabinComplianceHost? = null
     private var actionListener: ((CabinMediaNowPlayingAction) -> Unit)? = null
 
+    /** Thin media accent mark — accent role only. */
+    private val accentMark = View(context).apply { tag = "media_accent_mark" }
     private val artworkView = TextView(context).apply {
         gravity = Gravity.CENTER
         tag = "media_artwork"
@@ -100,11 +101,16 @@ class CabinMediaNowPlayingView @JvmOverloads constructor(
             TokensR.dimen.cabin_component_media_now_playing_padding,
         )
 
+    private val accentMarkWidthPx: Int
+        get() = resources.getDimensionPixelSize(TokensR.dimen.cabin_space_xs)
+
     init {
         orientation = VERTICAL
         importantForAccessibility = IMPORTANT_FOR_ACCESSIBILITY_YES
+        // Flat cabin surface — no Material card wash.
+        setBackgroundColor(android.graphics.Color.TRANSPARENT)
         val pad = paddingPx
-        setPadding(pad, pad, pad, pad)
+        setPadding(pad, pad / 2, pad, pad / 2)
 
         titleView.setTextSize(
             TypedValue.COMPLEX_UNIT_PX,
@@ -124,15 +130,24 @@ class CabinMediaNowPlayingView @JvmOverloads constructor(
         )
         artworkView.setTextSize(
             TypedValue.COMPLEX_UNIT_PX,
-            resources.getDimension(TokensR.dimen.cabin_type_role_label_size),
+            resources.getDimension(TokensR.dimen.cabin_type_role_status_size),
         )
 
+        val sourceRow = LinearLayout(context).apply {
+            orientation = HORIZONTAL
+            gravity = Gravity.CENTER_VERTICAL
+            addView(
+                accentMark,
+                LayoutParams(accentMarkWidthPx, gapPx * 2).apply { marginEnd = gapPx / 2 },
+            )
+            addView(sourceView)
+        }
         val meta = LinearLayout(context).apply {
             orientation = VERTICAL
             layoutParams = LayoutParams(0, LayoutParams.WRAP_CONTENT, 1f)
             addView(titleView)
             addView(artistView)
-            addView(sourceView)
+            addView(sourceRow)
         }
         val header = LinearLayout(context).apply {
             orientation = HORIZONTAL
@@ -171,10 +186,10 @@ class CabinMediaNowPlayingView @JvmOverloads constructor(
 
     fun bind(state: CabinMediaNowPlayingState) {
         this.state = state
-        titleView.text = formatText(state.title, fallback = "No title")
-        artistView.text = formatText(state.artist, fallback = "—")
-        sourceView.text = formatText(state.sourceLabel, fallback = "No source")
-        artworkView.text = if (state.artworkAvailable) "ART" else "—"
+        bindText(titleView, state.title, fallback = "No title")
+        bindText(artistView, state.artist, fallback = "—")
+        bindText(sourceView, state.sourceLabel, fallback = "No source")
+        artworkView.text = if (state.artworkAvailable) "" else "—"
         artworkView.contentDescription = if (state.artworkAvailable) {
             "Album artwork"
         } else {
@@ -210,6 +225,7 @@ class CabinMediaNowPlayingView @JvmOverloads constructor(
         "media_title" -> titleView
         "media_artist" -> artistView
         "media_artwork" -> artworkView
+        "media_accent_mark" -> accentMark
         else -> null
     }
 
@@ -239,10 +255,13 @@ class CabinMediaNowPlayingView @JvmOverloads constructor(
         val transport = dispositionFor(CabinInteraction.MediaTransport)
         val complex = dispositionFor(CabinInteraction.MediaComplex)
         val hasSource = state.hasSource
-        GateVisuals.apply(previous, hasSource, transport)
-        GateVisuals.apply(playPause, hasSource, transport)
-        GateVisuals.apply(next, hasSource, transport)
-        GateVisuals.apply(sourceView, hasSource, complex)
+        // Transport stays Allow while Moving; complex is RE-quiet when blocked.
+        GateVisuals.applyQuiet(previous, hasSource, transport)
+        GateVisuals.applyQuiet(playPause, hasSource, transport)
+        GateVisuals.applyQuiet(next, hasSource, transport)
+        GateVisuals.applyQuiet(sourceView, hasSource, complex)
+        titleView.alpha = 1f
+        artistView.alpha = 1f
         applyChrome()
     }
 
@@ -259,41 +278,43 @@ class CabinMediaNowPlayingView @JvmOverloads constructor(
         }
     }
 
+    private fun bindText(view: TextView, signal: Signal<String>, fallback: String) {
+        view.text = formatText(signal, fallback)
+        view.contentDescription = when (signal) {
+            is Signal.Value -> signal.value
+            is Signal.Stale -> "${signal.last} (stale)"
+            Signal.Unavailable -> fallback
+            is Signal.Fault -> "Fault ${signal.code}"
+        }
+    }
+
     private fun applyChrome() {
         try {
             val colors = CabinThemeResolver.resolveColors(context)
-            val radius = resources.getDimension(
-                TokensR.dimen.cabin_component_media_now_playing_cornerRadius,
-            )
-            background = GradientDrawable().apply {
-                setColor(colors.surfaceVariant)
-                setStroke(
-                    resources.getDimensionPixelSize(TokensR.dimen.cabin_space_xs) / 2,
-                    colors.outline,
-                )
-                cornerRadius = radius
-            }
+            setBackgroundColor(android.graphics.Color.TRANSPARENT)
             artworkView.background = GradientDrawable().apply {
-                setColor(colors.container)
+                // Neutral well — not a mediaAccent wash.
+                setColor(android.graphics.Color.TRANSPARENT)
                 setStroke(
                     resources.getDimensionPixelSize(TokensR.dimen.cabin_space_xs) / 2,
                     colors.outline,
                 )
-                cornerRadius = radius / 2f
             }
-            artworkView.setTextColor(colors.mediaAccent)
+            accentMark.setBackgroundColor(colors.mediaAccent)
+            // Body copy stays onSurface; accent mark only.
+            artworkView.setTextColor(colors.onSurface)
             titleView.setTextColor(colors.onSurface)
             artistView.setTextColor(colors.onSurface)
-            sourceView.setTextColor(colors.mediaAccent)
+            sourceView.setTextColor(colors.onSurface)
             progressView.setTextColor(colors.onSurface)
             listOf(previous, playPause, next).forEach {
                 it.setTextColor(colors.onSurface)
                 it.background = GradientDrawable().apply {
+                    setColor(android.graphics.Color.TRANSPARENT)
                     setStroke(
                         resources.getDimensionPixelSize(TokensR.dimen.cabin_space_xs) / 2,
                         colors.outline,
                     )
-                    cornerRadius = radius / 2f
                 }
             }
         } catch (_: IllegalArgumentException) {
@@ -328,9 +349,9 @@ class CabinMediaNowPlayingView @JvmOverloads constructor(
     companion object {
         internal fun formatText(signal: Signal<String>, fallback: String): String = when (signal) {
             is Signal.Value -> signal.value
-            is Signal.Stale -> signal.last
+            is Signal.Stale -> "${signal.last} · stale"
             Signal.Unavailable -> fallback
-            is Signal.Fault -> "!"
+            is Signal.Fault -> "Fault"
         }
 
         /**

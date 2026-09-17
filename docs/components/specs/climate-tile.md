@@ -28,17 +28,35 @@ Display remains honest under unavailable / stale / fault signals.
 | Fan stepper | ± with discrete level glyphs |
 | Seat heat | Discrete level cycle / steps (0–max) |
 
+## Craft constraints
+
+@sora craft locked for this slice:
+
+1. **Cabin density** — 76dp control minima; low-density zone layout (not phone
+   card packing).
+2. **Climate accent as accent only** — thin domain mark; never body copy color
+   and never a large climate wash fill.
+3. **RE-quiet while Moving** — values stay full opacity / glanceable; steppers
+   soft-disable (`quietAlpha`) without a heavy grey wash or “restricted” banner.
+4. **Honest empty / stale** — unavailable → `—`; stale → last value + `· stale`
+   (and a11y “(stale)”); fault → `Fault` — never invent numbers.
+5. **Not a Material tile clone** — flat cabin surface, outline affordances, no
+   elevated card fill / radius wash.
+
+Night `warning` / `error` / `charging` stay locked — unused as ClimateTile
+chrome.
+
 ## States
 
 | State | Behavior |
 | --- | --- |
 | Live | `Signal.Value` for temp / fan / seat heat |
-| Unavailable | Show em dash / empty glyphs — **never invent** values |
-| Stale | Show last value with stale labeling when product wires it |
-| Fault | Fault code presentation; controls non-activatable for that channel |
+| Unavailable | Em dash — **never invent** values |
+| Stale | Last value + `· stale` label |
+| Fault | `Fault` presentation; controls non-activatable for that channel |
 | Power off | Show off affordance; large target to power on when allowed |
-| Restricted (gate) | Adjustments Block → visible, non-activatable |
-| Day / Night | Theme Kit scheme; climate accent for domain emphasis only |
+| Restricted (gate) | Adjustments Block → RE-quiet soft-disable; values stay glanceable |
+| Day / Night | Theme Kit; climate accent mark only |
 
 ## Sizes & type (from tokens)
 
@@ -48,9 +66,10 @@ Display remains honest under unavailable / stale / fault signals.
 | `cabin.component.climateTile.gap` | Inter-control gap |
 | `cabin.component.climateTile.padding` | Tile inset |
 | `cabin.component.climateTile.cornerRadius` | Modest radius |
-| `cabin.color.semantic.climate` | Domain accent (not body text) |
-| `cabin.color.scheme.*.outline` | Quiet separators |
-| `cabin.type.role.title` / `label` | Temp numeral / labels |
+| `cabin.color.semantic.climate` | Thin accent mark only (not body text / washes) |
+| `cabin.color.scheme.*.outline` | Quiet control outlines |
+| `cabin.color.scheme.*.onSurface` | Zone / temp / fan / seat body copy |
+| `cabin.type.role.title` / `label` / `status` | Temp numeral / labels |
 
 Stub: [`tokens/cabin.tokens.json`](../../../tokens/cabin.tokens.json).
 
@@ -128,11 +147,13 @@ Identical contracts on Compose and Views (duplicated types; same fields).
 
 ## Acceptance criteria
 
-- [x] Automotive ClimateTile (not Material Button/List clone)
+- [x] Automotive ClimateTile (not Material tile/card clone)
 - [x] Views-first Alpha + Compose Experimental parity
 - [x] `HvacAdjust` Block while Moving / Restricted / Unknown; fail-closed null host
-- [x] Exhaustive `Signal` for temp / fan / seat heat — no invented values
-- [x] 76dp touch minima from tokens; forest/outline Theme Kit; locked night safety unused as chrome
+- [x] RE-quiet while Moving (values glanceable; soft-disable steppers)
+- [x] Exhaustive `Signal` for temp / fan / seat heat — honest empty/stale
+- [x] Climate accent as mark only (not body copy / not large washes)
+- [x] 76dp cabin density; Theme Kit outline; locked night safety unused as chrome
 - [x] Unit tests for RE + states on both stacks
 - [x] No catalog / marketing / docs-site edits as product deps
 
