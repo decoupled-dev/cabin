@@ -1,3 +1,5 @@
+@import "../styles/cabin.tokens.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,8 +10,6 @@
   Do not hand-edit cabin roles — regenerate: python3 tools/generate_cabin_tokens.py
   This app does NOT depend on Android cabin-* modules.
 */
-
-@import "../styles/cabin.tokens.css";
 
 :root,
 [data-scheme="night"] {
@@ -85,5 +85,17 @@ body {
   .reveal.is-visible {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Foundations motion demo — duration comes from token var inline */
+@keyframes cabin-pulse {
+  from {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }

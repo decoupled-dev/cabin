@@ -16,7 +16,7 @@ This package has **zero** dependency on Android `cabin-tokens` /
 ## Pages (v1)
 
 - `/` — Home hero + pillars
-- `/foundations` — Foundations teaser
+- `/foundations` — Foundations gallery + live token explorer (codegen CSS)
 - `/compliance` — Safety-by-default story
 - `/develop` — Get started → docs
 - `/components` — Planned components teaser (no interactive catalog)

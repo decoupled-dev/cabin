@@ -135,9 +135,14 @@ Each section: **one purpose**, **one headline**, usually **one short supporting
 sentence**. If a section needs cards to make sense as interaction, keep them
 minimal; default is no decorative cards.
 
-Good section jobs: pitch, pillars, foundations teaser, compliance story,
-develop / get started. Bad: “stats strip + logos + testimonials + feature bingo”
-in one fold.
+Good section jobs: pitch, pillars, foundations gallery / token explorer,
+compliance story, develop / get started. Bad: “stats strip + logos +
+testimonials + feature bingo” in one fold.
+
+**Foundations path (`/foundations`):** may expand into an M3-class gallery and
+live token explorer driven by generated CSS vars. Keep calm cabin luxury — no
+purple brand wash, no blob/mesh, one composition per section. Do not turn the
+rest of the marketing site into a kitchen-sink catalog.
 
 ---
 
