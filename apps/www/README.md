@@ -11,7 +11,7 @@ developer docs shell.
 
 This package has **zero** dependency on Android `cabin-tokens` /
 `cabin-compliance` Gradle modules. Visual tokens here are CSS inspired by
-[`tokens/cabin.tokens.json`](../../tokens/cabin.tokens.json).
+[`tokens/cabin.tokens.json` (generated CSS: `src/styles/cabin.tokens.css`)](../../tokens/cabin.tokens.json).
 
 ## Pages (v1)
 

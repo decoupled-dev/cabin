@@ -39,7 +39,11 @@ Regenerate tokens from the stub after editing [`tokens/cabin.tokens.json`](token
 ```bash
 python3 tools/generate_cabin_tokens.py
 # or: ./gradlew :cabin-tokens:generateCabinTokens
+python3 tools/generate_cabin_tokens.py --check   # CI drift gate
 ```
+Emits Android resources, Compose theme mappings, and CSS
+(`apps/www/src/styles/cabin.tokens.css`). See
+[token codegen](docs/design-language/token-codegen.md).
 
 Maven coordinates / Soong names: [api-contracts](docs/api-contracts.md).
 Soong sketches: `cabin-tokens/Android.bp` (`CabinTokens`),

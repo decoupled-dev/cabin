@@ -1,0 +1,134 @@
+/*
+ * GENERATED from tokens/cabin.tokens.json — do not edit by hand.
+ * Stub version: 0.1.1-stub
+ * Run: python3 tools/generate_cabin_tokens.py
+ *
+ * Same semantic names as Android (cabin_color_*) and Compose (CabinTokens).
+ * Night warning / error / charging are safety-locked — do not soft-wash.
+ */
+
+:root {
+  --cabin-tokens-version: "0.1.1-stub";
+  --cabin-type-family-plain: CabinSans, system-ui, sans-serif;
+
+  /* Semantic colors */
+  --cabin-color-semantic-primary: #0B6E4F;
+  --cabin-color-semantic-on-primary: #FFFFFF;
+  --cabin-color-semantic-secondary: #3D5A5B;
+  --cabin-color-semantic-on-secondary: #FFFFFF;
+  --cabin-color-semantic-surface: #121212;
+  --cabin-color-semantic-on-surface: #F2F2F2;
+  --cabin-color-semantic-surface-variant: #1E1E1E;
+  --cabin-color-semantic-outline: #5C5C5C;
+  --cabin-color-semantic-success: #2E7D32;
+  --cabin-color-semantic-warning: #F9A825; /* lock:safety-adjacent */
+  --cabin-color-semantic-error: #D32F2F; /* lock:safety-adjacent */
+  --cabin-color-semantic-charging: #00897B;
+  --cabin-color-semantic-climate: #0288D1;
+  --cabin-color-semantic-media-accent: #7E57C2;
+  --cabin-color-semantic-scrim: rgba(0, 0, 0, 0.6);
+
+  /* Space / size / type / elevation / motion */
+  --cabin-type-role-display-size: 40px;
+  --cabin-type-role-display-weight: 600;
+  --cabin-type-role-display-line-height: 48px;
+  --cabin-type-role-headline-size: 28px;
+  --cabin-type-role-headline-weight: 600;
+  --cabin-type-role-headline-line-height: 36px;
+  --cabin-type-role-title-size: 22px;
+  --cabin-type-role-title-weight: 600;
+  --cabin-type-role-title-line-height: 28px;
+  --cabin-type-role-body-size: 18px;
+  --cabin-type-role-body-weight: 400;
+  --cabin-type-role-body-line-height: 24px;
+  --cabin-type-role-label-size: 16px;
+  --cabin-type-role-label-weight: 600;
+  --cabin-type-role-label-line-height: 20px;
+  --cabin-type-role-status-size: 14px;
+  --cabin-type-role-status-weight: 500;
+  --cabin-type-role-status-line-height: 18px;
+  --cabin-space-xs: 4px;
+  --cabin-space-sm: 8px;
+  --cabin-space-md: 16px;
+  --cabin-space-lg: 24px;
+  --cabin-space-xl: 32px;
+  --cabin-size-touch-minimum: 76px;
+  --cabin-size-icon-status: 24px;
+  --cabin-size-icon-system-bar: 28px;
+  --cabin-elevation-level0: 0px;
+  --cabin-elevation-level1: 1px;
+  --cabin-elevation-level2: 3px;
+  --cabin-motion-fast-duration: 100ms;
+  --cabin-motion-medium-duration: 200ms;
+  --cabin-motion-slow-duration: 300ms;
+  --cabin-component-system-bar-height: 80px;
+  --cabin-component-system-bar-icon-size: 28px;
+  --cabin-component-system-bar-item-min-size: 76px;
+  --cabin-component-system-bar-gap: 8px;
+  --cabin-component-status-bar-height: 48px;
+  --cabin-component-status-bar-icon-size: 24px;
+  --cabin-component-status-bar-item-gap: 8px;
+}
+
+/* Night scheme (default) — locked warning / error / charging contrast */
+:root,
+[data-scheme="night"] {
+  --cabin-color-scheme-surface: #121212;
+  --cabin-color-scheme-on-surface: #F2F2F2;
+  --cabin-color-scheme-surface-variant: #1E1E1E;
+  --cabin-color-scheme-outline: #8A8A8A;
+  --cabin-color-scheme-container: #1A1A1A;
+  --cabin-color-scheme-on-container: #F2F2F2;
+  --cabin-color-scheme-warning: #FFB300; /* lock:safety-adjacent — no soft-wash */
+  --cabin-color-scheme-error: #FF5252; /* lock:safety-adjacent — no soft-wash */
+  --cabin-color-scheme-charging: #1DE9B6; /* lock:safety-adjacent — no soft-wash */
+
+  /* Web aliases (Tailwind / globals) — same roles */
+  --surface: var(--cabin-color-scheme-surface);
+  --on-surface: var(--cabin-color-scheme-on-surface);
+  --surface-variant: var(--cabin-color-scheme-surface-variant);
+  --outline: var(--cabin-color-scheme-outline);
+  --container: var(--cabin-color-scheme-container);
+  --on-container: var(--cabin-color-scheme-on-container);
+  --warning: var(--cabin-color-scheme-warning);
+  --error: var(--cabin-color-scheme-error);
+  --charging: var(--cabin-color-scheme-charging);
+  --primary: var(--cabin-color-semantic-primary);
+  --on-primary: var(--cabin-color-semantic-on-primary);
+  --secondary: var(--cabin-color-semantic-secondary);
+  --success: var(--cabin-color-semantic-success);
+  --climate: var(--cabin-color-semantic-climate);
+  --media: var(--cabin-color-semantic-media-accent);
+  --scrim: var(--cabin-color-semantic-scrim);
+}
+
+/* Day scheme — glare-legible chrome + feedback */
+[data-scheme="day"] {
+  --cabin-color-scheme-surface: #F5F5F5;
+  --cabin-color-scheme-on-surface: #121212;
+  --cabin-color-scheme-surface-variant: #E8E8E8;
+  --cabin-color-scheme-outline: #757575;
+  --cabin-color-scheme-container: #FFFFFF;
+  --cabin-color-scheme-on-container: #121212;
+  --cabin-color-scheme-warning: #F9A825;
+  --cabin-color-scheme-error: #D32F2F;
+  --cabin-color-scheme-charging: #00897B;
+
+  /* Web aliases (Tailwind / globals) — same roles */
+  --surface: var(--cabin-color-scheme-surface);
+  --on-surface: var(--cabin-color-scheme-on-surface);
+  --surface-variant: var(--cabin-color-scheme-surface-variant);
+  --outline: var(--cabin-color-scheme-outline);
+  --container: var(--cabin-color-scheme-container);
+  --on-container: var(--cabin-color-scheme-on-container);
+  --warning: var(--cabin-color-scheme-warning);
+  --error: var(--cabin-color-scheme-error);
+  --charging: var(--cabin-color-scheme-charging);
+  --primary: var(--cabin-color-semantic-primary);
+  --on-primary: var(--cabin-color-semantic-on-primary);
+  --secondary: var(--cabin-color-semantic-secondary);
+  --success: var(--cabin-color-semantic-success);
+  --climate: var(--cabin-color-semantic-climate);
+  --media: var(--cabin-color-semantic-media-accent);
+  --scrim: var(--cabin-color-semantic-scrim);
+}

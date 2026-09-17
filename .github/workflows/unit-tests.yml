@@ -40,6 +40,12 @@ jobs:
       - name: Check Soong thin deps
         run: python3 tools/check_soong_thin_deps.py
 
+      - name: Check token codegen drift
+        run: python3 tools/generate_cabin_tokens.py --check
+
+      - name: Token codegen unit tests
+        run: python3 tools/test_generate_cabin_tokens.py
+
       - name: Run unit tests
         run: ./gradlew :cabin-tokens:test :cabin-compliance:test :cabin-views:test :cabin-compose:test :catalog:test --stacktrace
 

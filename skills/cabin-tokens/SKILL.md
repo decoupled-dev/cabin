@@ -33,8 +33,10 @@ Components bind to component/semantic tokens only.
 
 ## Dual stack
 
-One token source feeds Compose theme and Views attrs/resources
-([docs/design-language/tokens.md](../../docs/design-language/tokens.md)).
+One token source (`tokens/cabin.tokens.json`) feeds Compose theme, Views
+attrs/resources, and CSS via `tools/generate_cabin_tokens.py`
+([token-codegen](../../docs/design-language/token-codegen.md),
+[tokens.md](../../docs/design-language/tokens.md)). CI runs `--check` for drift.
 
 ## Platform theming
 

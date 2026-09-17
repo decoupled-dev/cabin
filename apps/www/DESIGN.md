@@ -122,8 +122,9 @@ reject it before merge.
 ### Dependencies
 
 - Do **not** add Android `cabin-tokens` / `cabin-compliance` (or other `cabin-*`)
-  as runtime deps of this Next app. CSS may stay *inspired by*
-  `tokens/cabin.tokens.json`.
+  as runtime deps of this Next app. Cabin color roles come from generated
+  `src/styles/cabin.tokens.css` (from `tokens/cabin.tokens.json`).
+  Presentation-only vars may use `color-mix` — no hand hex for cabin roles.
 - Do not fold samples, catalog, or docs-site packages into marketing deps.
 
 ---
