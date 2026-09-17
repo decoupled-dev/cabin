@@ -109,10 +109,10 @@ Parity tests assert identical resolved values for a fixture overlay.
 
 ## Acceptance criteria (Phase 2)
 
-- [ ] Single source generates Compose and Views consumables
+- [x] Single source generates Compose, Views, and CSS consumables
 - [ ] Overlay mechanism documented and sampled
-- [ ] Safety color lock enforced in validation
-- [ ] Day/night schemes complete for core roles
+- [x] Safety color lock enforced in codegen validation
+- [x] Day/night schemes complete for core roles
 
 ## Related
 

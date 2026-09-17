@@ -18,6 +18,8 @@ unit tests and Views chrome verification. Compose bar parity is
 
 - Codegen or resource packaging produces expected keys from
   [`tokens/cabin.tokens.json`](../tokens/cabin.tokens.json)
+- CI drift gate: `python3 tools/generate_cabin_tokens.py --check`
+  (Android + Compose + CSS)
 - Safety-lock metadata preserved for `warning` / `error`
 - Day/night scheme roles present: `surface`, `onSurface`, `surfaceVariant`,
   `outline`, `container`, `onContainer`, plus feedback (`warning` / `error` /

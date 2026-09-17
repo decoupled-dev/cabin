@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Theme / RRO attribute hooks for Cabin semantic / scheme roles. Alpha; Theme Kit binds these. -->
+<!-- GENERATED from tokens/cabin.tokens.json. Theme / RRO attr hooks. Do not edit. -->
 <resources>
     <attr name="cabin_colorPrimary" format="color|reference" />
     <attr name="cabin_colorOnPrimary" format="color|reference" />

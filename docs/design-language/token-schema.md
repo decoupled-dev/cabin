@@ -8,15 +8,16 @@ Documents the machine-readable token stub and how it becomes `cabin-tokens`.
 | --- | --- |
 | [`tokens/cabin.tokens.json`](../../tokens/cabin.tokens.json) | **Stub** source of truth for semantic + component tokens |
 
-This JSON is **not** a runtime Android format. It is intended as input to
-**Style Dictionary** (or equivalent codegen) that emits:
+This JSON is **not** a runtime Android format. Codegen
+(`tools/generate_cabin_tokens.py`) emits:
 
 - Android resources (`values` / `values-night`, dimens, attrs)
-- Kotlin token objects for `cabin-tokens` (**planned**)
-- Optional Compose `CabinTokens` mirror later
+- Kotlin token objects for `cabin-tokens`
+- Compose theme Color mappings for `CabinTheme`
+- CSS variables for `apps/www` (+ `tokens/generated/`)
 
-Until codegen lands, treat values as **illustrative baselines** — OEMs overlay
-brand; programs may tune touch minima via compliance profiles.
+Values are baseline defaults — OEMs overlay brand; programs may tune touch
+minima via compliance profiles. See [token-codegen.md](token-codegen.md).
 
 ## Naming
 
@@ -114,6 +115,7 @@ resolves schemes. Night `warning` / `error` / `charging` keep
 
 ## Related
 
+- [Token codegen](token-codegen.md) — regenerate, drift check, add a token
 - [Foundations](foundations.md)
 - [Tokens overview](tokens.md)
 - [MVP](../mvp.md)

@@ -36,7 +36,15 @@ dependencies {
  */
 tasks.register<Exec>("generateCabinTokens") {
     group = "cabin"
-    description = "Codegen cabin-tokens from tokens/cabin.tokens.json"
+    description = "Codegen Android + Compose + CSS tokens from tokens/cabin.tokens.json"
     workingDir = rootProject.projectDir
     commandLine("python3", "tools/generate_cabin_tokens.py")
+}
+
+
+tasks.register<Exec>("checkCabinTokenDrift") {
+    group = "verification"
+    description = "Fail if Android/Compose/CSS token outputs drift from cabin.tokens.json"
+    workingDir = rootProject.projectDir
+    commandLine("python3", "tools/generate_cabin_tokens.py", "--check")
 }

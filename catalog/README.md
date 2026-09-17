@@ -57,3 +57,14 @@ packaging guard that product modules do not depend on `:catalog`.
 Compose shell hosts both stacks in one activity (cleaner than two APKs for this
 thin slice). Views chrome is embedded with `AndroidView` under
 `Theme.Cabin` + explicit day/night `Configuration`.
+
+## Tokens
+
+Catalog binds **generated** `CabinTokens` (Kotlin / Theme Kit). After editing
+[`tokens/cabin.tokens.json`](../tokens/cabin.tokens.json), regenerate:
+
+```bash
+python3 tools/generate_cabin_tokens.py
+```
+
+See [token codegen](../docs/design-language/token-codegen.md).

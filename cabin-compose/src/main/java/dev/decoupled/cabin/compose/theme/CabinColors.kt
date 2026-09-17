@@ -4,7 +4,6 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 import dev.decoupled.cabin.tokens.CabinColor
 import dev.decoupled.cabin.tokens.CabinColorScheme
-import dev.decoupled.cabin.tokens.CabinTokens
 
 /**
  * Resolved Compose colors mirroring Views Theme Kit roles.
@@ -53,32 +52,15 @@ data class CabinBrandOverrides(
     }
 }
 
-/** Resolve Theme Kit–equivalent colors from cabin-tokens for [scheme]. */
+/**
+ * Resolve Theme Kit–equivalent colors from cabin-tokens for [scheme].
+ *
+ * Delegates to [CabinComposeTokens.resolveColors] so Compose mappings stay
+ * generated from `tokens/cabin.tokens.json` (same names as Android / CSS).
+ */
 fun resolveCabinColors(
     scheme: CabinColorScheme,
     brand: CabinBrandOverrides = CabinBrandOverrides.None,
-): CabinColors {
-    val semantic = CabinTokens.Color.Semantic
-    val schemeColors = CabinTokens.colorScheme(scheme)
-    return CabinColors(
-        primary = brand.primary ?: semantic.primary.toComposeColor(),
-        onPrimary = brand.onPrimary ?: semantic.onPrimary.toComposeColor(),
-        secondary = semantic.secondary.toComposeColor(),
-        onSecondary = semantic.onSecondary.toComposeColor(),
-        surface = schemeColors.surface.toComposeColor(),
-        onSurface = schemeColors.onSurface.toComposeColor(),
-        surfaceVariant = schemeColors.surfaceVariant.toComposeColor(),
-        outline = schemeColors.outline.toComposeColor(),
-        container = schemeColors.container.toComposeColor(),
-        onContainer = schemeColors.onContainer.toComposeColor(),
-        success = semantic.success.toComposeColor(),
-        warning = schemeColors.warning.toComposeColor(),
-        error = schemeColors.error.toComposeColor(),
-        charging = schemeColors.charging.toComposeColor(),
-        climate = semantic.climate.toComposeColor(),
-        mediaAccent = semantic.mediaAccent.toComposeColor(),
-        scrim = semantic.scrim.toComposeColor(),
-    )
-}
+): CabinColors = CabinComposeTokens.resolveColors(scheme, brand)
 
 internal fun CabinColor.toComposeColor(): Color = Color(argb)

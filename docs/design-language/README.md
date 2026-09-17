@@ -21,6 +21,7 @@ Views.
 | Foundations | [foundations.md](foundations.md) — color, type, space, elevation, motion, iconography |
 | Tokens | [tokens.md](tokens.md) — semantic + component tokens, OEM overlays |
 | Token schema | [token-schema.md](token-schema.md) — JSON stub + codegen notes |
+| Token codegen | [token-codegen.md](token-codegen.md) — Android + Compose + CSS + CI drift |
 
 ## Relationship to Material Design 3
 
