@@ -1,3 +1,5 @@
+@import "../styles/cabin.tokens.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -8,8 +10,6 @@
   Do not hand-edit cabin roles — regenerate: python3 tools/generate_cabin_tokens.py
   This app does NOT depend on Android cabin-* modules.
 */
-
-@import "../styles/cabin.tokens.css";
 
 :root,
 [data-scheme="night"] {
