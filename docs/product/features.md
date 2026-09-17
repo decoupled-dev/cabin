@@ -40,10 +40,10 @@ start until [mvp.md](../mvp.md) success criteria pass.
 
 | Feature | Intent | Primary docs |
 | --- | --- | --- |
-| **Media** | Now-playing, transport, restriction-aware browse | [media](../components/media.md) |
-| **HVAC** | Zones, steppers, defrost always available | [hvac](../components/hvac.md) |
-| **EV Energy** | SOC, range, charge session, charge faults | [ev](../components/ev.md) |
-| **Vehicle Controls** | Locks, lights, drive modes, hazards; extension tiles | [vehicle controls](../components/vehicle-controls.md) |
+| **Media** | Now-playing, transport, restriction-aware browse | [media](../components/media.md) · [MediaNowPlaying spec](../components/specs/media-now-playing.md) — **Alpha/Experimental now-playing** |
+| **HVAC** | Zones, steppers, defrost always available | [hvac](../components/hvac.md) · [ClimateTile spec](../components/specs/climate-tile.md) — **Alpha/Experimental ClimateTile** |
+| **EV Energy** | SOC, range, charge session, charge faults | [ev](../components/ev.md) — EvEnergyGlance later |
+| **Vehicle Controls** | Locks, lights, drive modes, hazards; extension tiles | [vehicle controls](../components/vehicle-controls.md) — VehicleQuickControls later |
 
 **Exit for Layer 2:** Each domain has Compose + Views contracts, compliance
 hooks, and dual-stack parity for critical states.

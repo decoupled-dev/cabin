@@ -161,5 +161,18 @@ object CabinTokens {
             val iconSize: CabinMeasure = CabinMeasure(24f, CabinUnit.DP, "cabin_component_status_bar_iconSize")
             val itemGap: CabinMeasure = CabinMeasure(8f, CabinUnit.DP, "cabin_component_status_bar_itemGap")
         }
+        object ClimateTile {
+            val controlMinSize: CabinMeasure = CabinMeasure(76f, CabinUnit.DP, "cabin_component_climate_tile_controlMinSize")
+            val gap: CabinMeasure = CabinMeasure(8f, CabinUnit.DP, "cabin_component_climate_tile_gap")
+            val padding: CabinMeasure = CabinMeasure(16f, CabinUnit.DP, "cabin_component_climate_tile_padding")
+            val cornerRadius: CabinMeasure = CabinMeasure(8f, CabinUnit.DP, "cabin_component_climate_tile_cornerRadius")
+        }
+        object MediaNowPlaying {
+            val artworkSize: CabinMeasure = CabinMeasure(120f, CabinUnit.DP, "cabin_component_media_now_playing_artworkSize")
+            val transportMinSize: CabinMeasure = CabinMeasure(76f, CabinUnit.DP, "cabin_component_media_now_playing_transportMinSize")
+            val gap: CabinMeasure = CabinMeasure(16f, CabinUnit.DP, "cabin_component_media_now_playing_gap")
+            val padding: CabinMeasure = CabinMeasure(16f, CabinUnit.DP, "cabin_component_media_now_playing_padding")
+            val cornerRadius: CabinMeasure = CabinMeasure(8f, CabinUnit.DP, "cabin_component_media_now_playing_cornerRadius")
+        }
     }
 }

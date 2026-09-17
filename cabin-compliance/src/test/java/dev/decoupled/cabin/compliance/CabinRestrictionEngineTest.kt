@@ -159,6 +159,54 @@ class CabinRestrictionEngineTest {
     }
 
     @Test
+    fun hvacAdjust_blocksWhileMovingRestrictedUnknown() {
+        assertEquals(
+            GateDisposition.Allow,
+            engine.disposition(CabinInteraction.HvacAdjust, VehicleUiState.parked()),
+        )
+        assertEquals(
+            GateDisposition.Allow,
+            engine.disposition(CabinInteraction.HvacAdjust, VehicleUiState.idling()),
+        )
+        assertEquals(
+            GateDisposition.Block,
+            engine.disposition(CabinInteraction.HvacAdjust, VehicleUiState.moving()),
+        )
+        assertEquals(
+            GateDisposition.Block,
+            engine.disposition(CabinInteraction.HvacAdjust, VehicleUiState.restricted()),
+        )
+        assertEquals(
+            GateDisposition.Block,
+            engine.disposition(CabinInteraction.HvacAdjust, VehicleUiState.unknown()),
+        )
+    }
+
+    @Test
+    fun mediaComplex_blocksWhileMoving_substitutesIdling() {
+        assertEquals(
+            GateDisposition.Allow,
+            engine.disposition(CabinInteraction.MediaComplex, VehicleUiState.parked()),
+        )
+        assertEquals(
+            GateDisposition.Substitute,
+            engine.disposition(CabinInteraction.MediaComplex, VehicleUiState.idling()),
+        )
+        assertEquals(
+            GateDisposition.Block,
+            engine.disposition(CabinInteraction.MediaComplex, VehicleUiState.moving()),
+        )
+        assertEquals(
+            GateDisposition.Block,
+            engine.disposition(CabinInteraction.MediaComplex, VehicleUiState.restricted()),
+        )
+        assertEquals(
+            GateDisposition.Block,
+            engine.disposition(CabinInteraction.MediaComplex, VehicleUiState.unknown()),
+        )
+    }
+
+    @Test
     fun touchTargetMinDp_fromTokens() {
         assertEquals(76, engine.touchTargetMinDp(VehicleUiState.parked()))
     }
@@ -201,6 +249,16 @@ class SystemBarMatrixTest(
                 arrayOf(CabinInteraction.HvacPeek, idling, GateDisposition.Allow),
                 arrayOf(CabinInteraction.HvacPeek, moving, GateDisposition.Allow),
                 arrayOf(CabinInteraction.HvacPeek, restricted, GateDisposition.Allow),
+                // HvacAdjust (ClimateTile) — A / A / B / B
+                arrayOf(CabinInteraction.HvacAdjust, parked, GateDisposition.Allow),
+                arrayOf(CabinInteraction.HvacAdjust, idling, GateDisposition.Allow),
+                arrayOf(CabinInteraction.HvacAdjust, moving, GateDisposition.Block),
+                arrayOf(CabinInteraction.HvacAdjust, restricted, GateDisposition.Block),
+                // MediaComplex — A / S / B / B
+                arrayOf(CabinInteraction.MediaComplex, parked, GateDisposition.Allow),
+                arrayOf(CabinInteraction.MediaComplex, idling, GateDisposition.Substitute),
+                arrayOf(CabinInteraction.MediaComplex, moving, GateDisposition.Block),
+                arrayOf(CabinInteraction.MediaComplex, restricted, GateDisposition.Block),
                 // OpenComplexApp — A / S / B / B
                 arrayOf(CabinInteraction.OpenComplexApp, parked, GateDisposition.Allow),
                 arrayOf(CabinInteraction.OpenComplexApp, idling, GateDisposition.Substitute),

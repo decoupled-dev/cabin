@@ -102,6 +102,9 @@ class CabinTokensTest {
         assertEquals(76f, CabinTokens.Size.Touch.minimum.dp)
         assertEquals(80f, CabinTokens.Component.SystemBar.height.dp)
         assertEquals(48f, CabinTokens.Component.StatusBar.height.dp)
+        assertEquals(76f, CabinTokens.Component.ClimateTile.controlMinSize.dp)
+        assertEquals(120f, CabinTokens.Component.MediaNowPlaying.artworkSize.dp)
+        assertEquals(76f, CabinTokens.Component.MediaNowPlaying.transportMinSize.dp)
     }
 
     @Test
@@ -117,6 +120,14 @@ class CabinTokensTest {
         assertEquals(
             CabinTokens.Space.sm.dp,
             CabinTokens.Component.SystemBar.gap.dp,
+        )
+        assertEquals(
+            CabinTokens.Size.Touch.minimum.dp,
+            CabinTokens.Component.ClimateTile.controlMinSize.dp,
+        )
+        assertEquals(
+            CabinTokens.Size.Touch.minimum.dp,
+            CabinTokens.Component.MediaNowPlaying.transportMinSize.dp,
         )
     }
 }
