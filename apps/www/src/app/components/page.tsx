@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import { StatusBarDemo, SystemBarDemo } from "@/components/demo-chrome-bars";
+import { BarsBezelDemo } from "@/components/demo-chrome-bars";
 import { ClimateTileDemo } from "@/components/demo-climate-tile";
 import { MediaNowPlayingDemo } from "@/components/demo-media-now-playing";
+import { TwoUpStage } from "@/components/demo-stage";
 import {
   GalleryHeader,
   GalleryNav,
@@ -19,102 +20,86 @@ import {
 export const metadata: Metadata = {
   title: "Components",
   description:
-    "Cabin components — Bars, ClimateTile, and MediaNowPlaying live demos from generated tokens. Day and night.",
+    "Cabin components — Bars, ClimateTile, and MediaNowPlaying live demos from generated tokens.",
 };
 
 export default function ComponentsPage() {
   return (
-    <div className="bg-background">
+    <div className="bg-background" data-gallery="components">
       <GalleryHeader
         title="Components"
-        summary="Bars, Climate, and Media first — web HMI demos on generated tokens. Day and night in the gallery bar."
+        summary="Bars, Climate, and Media — denser HMI stages on generated tokens. One scheme toggle in the header."
       />
       <GalleryNav label="Components sections" items={COMPONENTS_NAV} />
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-5 py-12 sm:px-8 sm:py-14">
+      <div className="mx-auto flex max-w-6xl flex-col gap-14 px-5 py-10 sm:px-8 sm:py-12">
         <GallerySection
           id="bars"
           title="Bars"
-          body="Status and System bars. Container / outline / onContainer from the scheme. Warning and charging stay safety-locked at night."
+          body="Status and System in instrument bezel. Container / outline / onContainer from the scheme. Warning and charging stay safety-locked at night."
         >
-          <div className="grid gap-12 lg:grid-cols-2">
-            <div>
-              <h3 className="mb-4 text-label text-on-surface">Status bar</h3>
-              <StatusBarDemo />
-              <a
-                href={`${DOCS_URL}${DOCS_STATUS_BAR}`}
-                className="mt-4 inline-block text-status text-primary underline-offset-4 hover:underline"
-                rel="noreferrer"
-              >
-                Status bar spec
-              </a>
-            </div>
-            <div>
-              <h3 className="mb-4 text-label text-on-surface">System bar</h3>
-              <SystemBarDemo />
-              <a
-                href={`${DOCS_URL}${DOCS_SYSTEM_BAR}`}
-                className="mt-4 inline-block text-status text-primary underline-offset-4 hover:underline"
-                rel="noreferrer"
-              >
-                System bar spec
-              </a>
-            </div>
-          </div>
+          <BarsBezelDemo />
+          <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-status text-on-surface-variant">
+            <a
+              href={`${DOCS_URL}${DOCS_STATUS_BAR}`}
+              className="text-primary underline-offset-4 hover:underline"
+              rel="noreferrer"
+            >
+              Status bar spec
+            </a>
+            <a
+              href={`${DOCS_URL}${DOCS_SYSTEM_BAR}`}
+              className="text-primary underline-offset-4 hover:underline"
+              rel="noreferrer"
+            >
+              System bar spec
+            </a>
+          </p>
         </GallerySection>
 
         <GallerySection
           id="climate"
-          title="Climate"
-          body="ClimateTile — temp, fan, seat heat. Climate accent as mark only. Adjustments Block while Moving; values stay glanceable (RE-quiet)."
+          title="Climate & Media"
+          body="Two-up cabin density. Climate accent and mediaAccent as marks only — never washes. Transport uses cabin control glyphs."
         >
-          <div className="max-w-xl">
-            <ClimateTileDemo />
-          </div>
-          <a
-            href={`${DOCS_URL}${DOCS_CLIMATE_TILE}`}
-            className="mt-6 inline-block text-status text-primary underline-offset-4 hover:underline"
-            rel="noreferrer"
-          >
-            ClimateTile Android spec
-          </a>
-        </GallerySection>
-
-        <GallerySection
-          id="media"
-          title="Media"
-          body="MediaNowPlaying — artwork well, metadata, transport, source. Progress only when both Signals are live. Media accent marks source only."
-        >
-          <div className="max-w-2xl">
-            <MediaNowPlayingDemo />
-          </div>
-          <a
-            href={`${DOCS_URL}${DOCS_MEDIA_NOW}`}
-            className="mt-6 inline-block text-status text-primary underline-offset-4 hover:underline"
-            rel="noreferrer"
-          >
-            MediaNowPlaying Android spec
-          </a>
-        </GallerySection>
-
-        <footer className="border-t border-[var(--outline-subtle)] pt-6">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-status text-on-surface-variant">
+          <TwoUpStage
+            left={
+              <div>
+                <p className="mb-3 px-1 text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
+                  ClimateTile
+                </p>
+                <ClimateTileDemo />
+              </div>
+            }
+            right={
+              <div>
+                <p className="mb-3 px-1 text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
+                  MediaNowPlaying
+                </p>
+                <MediaNowPlayingDemo />
+              </div>
+            }
+          />
+          <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-status text-on-surface-variant">
             <a
-              href="/foundations#color"
-              className="text-on-surface underline-offset-4 hover:underline"
-            >
-              Foundations
-            </a>
-            <span aria-hidden>·</span>
-            <a
-              href={`${DOCS_URL}components/`}
-              className="underline-offset-4 hover:underline"
+              href={`${DOCS_URL}${DOCS_CLIMATE_TILE}`}
+              className="text-primary underline-offset-4 hover:underline"
               rel="noreferrer"
             >
-              Component specs
+              ClimateTile spec
             </a>
-          </div>
-        </footer>
+            <a
+              href={`${DOCS_URL}${DOCS_MEDIA_NOW}`}
+              className="text-primary underline-offset-4 hover:underline"
+              rel="noreferrer"
+            >
+              MediaNowPlaying spec
+            </a>
+          </p>
+        </GallerySection>
+
+        {/* Keep #media anchor for deep links from prior nav */}
+        <div id="media" className="sr-only" aria-hidden />
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useScheme } from "@/components/scheme-provider";
 import {
   DOMAIN_COLOR_TOKENS,
   SCHEME_COLOR_TOKENS,
@@ -47,7 +46,7 @@ function ColorSwatch({ token }: { token: TokenEntry }) {
   return (
     <li className="group flex flex-col">
       <div
-        className="relative h-20 w-full overflow-hidden rounded-md border border-[var(--outline-subtle)] transition-[border-color] duration-200 ease-cabin group-hover:border-outline"
+        className="relative h-16 w-full overflow-hidden rounded-md border border-[var(--outline-subtle)] transition-[border-color] duration-200 ease-cabin group-hover:border-outline"
         style={{ background: `var(${token.cssVar})` }}
         role="img"
         aria-label={`${token.name} swatch`}
@@ -58,7 +57,7 @@ function ColorSwatch({ token }: { token: TokenEntry }) {
           </span>
         ) : null}
       </div>
-      <div className="mt-3 flex flex-col gap-1">
+      <div className="mt-2.5 flex flex-col gap-0.5">
         <div className="flex items-baseline justify-between gap-2">
           <p className="text-label text-on-surface">{token.name}</p>
           {token.locked ? (
@@ -83,47 +82,22 @@ function ColorSwatch({ token }: { token: TokenEntry }) {
 
 /**
  * Live token explorer — values resolve from generated CSS vars under data-scheme.
- * No hand hex. Day/night also available on the gallery sticky bar.
+ * Scheme toggle lives in the site header only.
  */
 export function TokenExplorer() {
-  const { scheme, setScheme } = useScheme();
   const [tab, setTab] = useState<ExplorerTab>("scheme");
   const tokens = tokensFor(tab);
   const activeHint = TABS.find((t) => t.id === tab)?.hint ?? "";
 
   return (
     <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface">
-      <div className="flex flex-col gap-4 border-b border-[var(--outline-subtle)] px-5 py-4 sm:flex-row sm:items-end sm:justify-between sm:px-6">
-        <div>
-          <h3 className="font-display text-title text-on-surface">
-            Token explorer
-          </h3>
-          <p className="mt-1 max-w-md text-status text-on-surface-variant">
-            {activeHint}
-          </p>
-        </div>
-
-        <div
-          className="inline-flex rounded-md border border-[var(--outline-subtle)] p-0.5"
-          role="group"
-          aria-label="Color scheme"
-        >
-          {(["night", "day"] as const).map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => setScheme(s)}
-              aria-pressed={scheme === s}
-              className={`rounded px-2.5 py-1.5 text-status capitalize transition-colors duration-200 ease-cabin ${
-                scheme === s
-                  ? "bg-[var(--surface-high)] text-on-surface"
-                  : "text-on-surface-variant hover:text-on-surface"
-              }`}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
+      <div className="border-b border-[var(--outline-subtle)] px-5 py-4 sm:px-6">
+        <h3 className="font-display text-title text-on-surface">
+          Token explorer
+        </h3>
+        <p className="mt-1 max-w-xl text-status text-on-surface-variant">
+          {activeHint}. Use Night / Day in the header to flip schemes.
+        </p>
       </div>
 
       <div className="border-b border-[var(--outline-subtle)] px-5 sm:px-6">
@@ -152,7 +126,7 @@ export function TokenExplorer() {
       </div>
 
       <ul
-        className="grid gap-6 p-5 sm:grid-cols-2 sm:p-6 lg:grid-cols-3"
+        className="grid gap-5 p-5 sm:grid-cols-2 sm:p-6 lg:grid-cols-3 xl:grid-cols-4"
         role="tabpanel"
       >
         {tokens.map((token) => (

@@ -276,8 +276,7 @@ export const MOTION_TOKENS: TokenEntry[] = [
 
 export const FOUNDATIONS_NAV = [
   { href: "#color", label: "Color" },
-  { href: "#type", label: "Type" },
-  { href: "#space", label: "Space" },
+  { href: "#type", label: "Type & Space" },
   { href: "#motion", label: "Motion" },
 ] as const;
 

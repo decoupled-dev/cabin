@@ -92,8 +92,20 @@ reject it before merge.
 
 - Keep forest primary; no purple brand remap.
 - Day/night schemes stay token-driven (`data-scheme`). Test both before merge.
+- **One scheme toggle only** (site header). Do not duplicate Night/Day on gallery
+  sticky bars or token explorers.
 - Warning / error / charging: verify night contrast stays locked and readable.
 - Domain accents stay off body copy and off large text blocks.
+
+### Gallery routes (`/foundations`, `/components`)
+
+- Dense two-up / full-bleed demo stages — no sparse right-column void.
+- Real SVG glyphs and art wells — no dash icon stubs, no hyphen artwork, no
+  emoji transport.
+- Bars render inside instrument bezel chrome (status · content · system).
+- Transport uses cabin control surfaces; mediaAccent / climate accents are
+  mark-only.
+- Quiet gallery footer — strip marketing copy from Foundations / Components.
 
 ### HMI preview
 
