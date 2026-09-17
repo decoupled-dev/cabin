@@ -1,104 +1,100 @@
 import type { Metadata } from "next";
-import { ButtonLink } from "@/components/button-link";
-import { Reveal } from "@/components/reveal";
+import {
+  MotionDemo,
+  SpaceScaleDemo,
+  TypeScaleDemo,
+} from "@/components/foundations-demos";
+import {
+  GalleryHeader,
+  GalleryNav,
+  GallerySection,
+} from "@/components/gallery-chrome";
+import { TokenExplorer } from "@/components/token-explorer";
 import { DOCS_URL } from "@/lib/site";
+import { DOCS_FOUNDATIONS, DOCS_TOKENS, FOUNDATIONS_NAV } from "@/lib/tokens";
 
 export const metadata: Metadata = {
   title: "Foundations",
   description:
-    "Cabin foundations — color roles, type, space, elevation, and motion for glanceable cabin HMI.",
+    "Cabin foundations — color, type, space, and motion from generated design tokens. Live day/night demos.",
 };
-
-const foundations = [
-  {
-    title: "Color",
-    body: "Semantic roles for brand, surface, feedback, and domain accents (charging, climate, media). Day and night schemes stay legible; safety-adjacent warning and error meanings stay locked.",
-    swatches: [
-      { name: "Primary", varName: "var(--primary)" },
-      { name: "Charging", varName: "var(--charging)" },
-      { name: "Climate", varName: "var(--climate)" },
-      { name: "Warning", varName: "var(--warning)" },
-      { name: "Error", varName: "var(--error)" },
-    ],
-  },
-  {
-    title: "Typography",
-    body: "Glance roles from display to status. Tabular figures for range, speed, and temperature. Highly legible grotesques at cabin distance — OEM-overridable via tokens.",
-  },
-  {
-    title: "Space & touch",
-    body: "Spacing steps preserve automotive touch minima. Driver-zone separation stays generous; dense chrome never shrinks targets below compliance baselines.",
-  },
-  {
-    title: "Elevation & motion",
-    body: "Flat, high-contrast layers over deep shadow stacks. Motion is mechanical and precise — press feedback and park transitions, not entertainment while driving.",
-  },
-] as const;
 
 export default function FoundationsPage() {
   return (
     <div className="bg-background">
-      <div className="mx-auto max-w-6xl px-5 pb-24 pt-16 sm:px-8 sm:pt-24">
-        <Reveal>
-          <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
-            Foundations
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-display text-on-surface text-balance">
-            The grammar of the cabin
-          </h1>
-          <p className="mt-5 max-w-2xl text-body text-on-surface-variant text-balance">
-            Color, type, space, elevation, motion, and iconography — packaged as
-            tokens so Compose and Views resolve the same meaning at theme time.
-          </p>
-        </Reveal>
+      <GalleryHeader
+        title="Foundations"
+        summary="Color, type, space, and motion — live from generated tokens. Day and night resolve the same roles."
+      />
+      <GalleryNav label="Foundations sections" items={FOUNDATIONS_NAV} />
 
-        <div className="mt-16 grid gap-12 lg:grid-cols-2">
-          {foundations.map((item, i) => (
-            <Reveal key={item.title} delayMs={Math.min(i * 40, 80)}>
-              <article className="border-t border-[var(--outline-subtle)] pt-6">
-                <h2 className="font-display text-headline text-on-surface">
-                  {item.title}
-                </h2>
-                <p className="mt-4 text-body text-on-surface-variant">
-                  {item.body}
-                </p>
-                {"swatches" in item && item.swatches ? (
-                  <ul className="mt-6 flex flex-wrap gap-3">
-                    {item.swatches.map((s) => (
-                      <li key={s.name} className="flex items-center gap-2">
-                        <span
-                          className="h-8 w-8 rounded-md border border-[var(--outline-subtle)]"
-                          style={{ background: s.varName }}
-                        />
-                        <span className="text-status text-on-surface-variant">
-                          {s.name}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                ) : null}
-              </article>
-            </Reveal>
-          ))}
-        </div>
+      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-5 py-12 sm:px-8 sm:py-14">
+        <GallerySection
+          id="color"
+          title="Color"
+          body="Scheme and semantic roles from cabin.tokens.css. Outline, container, and safety-locked warning / error / charging update with day and night — no hand hex."
+        >
+          <TokenExplorer />
+          <p className="mt-4 text-status text-on-surface-variant">
+            Domain accents stay off body copy.{" "}
+            <a
+              href={`${DOCS_URL}${DOCS_TOKENS}`}
+              className="text-primary underline-offset-4 hover:underline"
+              rel="noreferrer"
+            >
+              Tokens docs
+            </a>
+          </p>
+        </GallerySection>
 
-        <Reveal className="mt-20">
-          <div className="flex flex-col gap-6 border-t border-[var(--outline-subtle)] pt-8 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <h2 className="font-display text-title text-on-surface">
-                Day and night are product decisions
-              </h2>
-              <p className="mt-2 max-w-xl text-status text-on-surface-variant">
-                Toggle the scheme in the header. Night keeps luminance for
-                signals; day holds contrast under glare assumptions. Domain
-                accents stay off body copy.
-              </p>
-            </div>
-            <ButtonLink href={`${DOCS_URL}design-language/foundations`} external>
-              Read foundations docs
-            </ButtonLink>
+        <GallerySection
+          id="type"
+          title="Type"
+          body="Glance roles from display to status. Sizes and weights are cabin type-role tokens — flip day/night above to confirm contrast."
+        >
+          <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface px-5 py-6 sm:px-6">
+            <TypeScaleDemo />
           </div>
-        </Reveal>
+        </GallerySection>
+
+        <GallerySection
+          id="space"
+          title="Space"
+          body="Spacing steps and touch minimum from tokens. Automotive density floor stays fixed across schemes."
+        >
+          <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface px-5 py-2 sm:px-6">
+            <SpaceScaleDemo />
+          </div>
+        </GallerySection>
+
+        <GallerySection
+          id="motion"
+          title="Motion"
+          body="Fast, medium, slow durations from tokens. Mechanical and precise — decorative motion yields while driving."
+        >
+          <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface px-5 py-2 sm:px-6">
+            <MotionDemo />
+          </div>
+        </GallerySection>
+
+        <footer className="border-t border-[var(--outline-subtle)] pt-6">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-status text-on-surface-variant">
+            <a
+              href="/components"
+              className="text-on-surface underline-offset-4 hover:underline"
+            >
+              Components
+            </a>
+            <span aria-hidden>·</span>
+            <a
+              href={`${DOCS_URL}${DOCS_FOUNDATIONS}`}
+              className="underline-offset-4 hover:underline"
+              rel="noreferrer"
+            >
+              Foundations docs
+            </a>
+          </div>
+        </footer>
       </div>
     </div>
   );

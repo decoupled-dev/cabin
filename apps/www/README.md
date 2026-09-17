@@ -16,10 +16,10 @@ This package has **zero** dependency on Android `cabin-tokens` /
 ## Pages (v1)
 
 - `/` — Home hero + pillars
-- `/foundations` — Foundations teaser
+- `/foundations` — Color / Type / Space / Motion (live day/night, codegen CSS)
+- `/components` — Bars / Climate / Media live HMI demos
 - `/compliance` — Safety-by-default story
 - `/develop` — Get started → docs
-- `/components` — Planned components teaser (no interactive catalog)
 
 ## Local development
 

@@ -20,6 +20,8 @@ export default {
         "on-primary": "var(--on-primary)",
         secondary: "var(--secondary)",
         outline: "var(--outline)",
+        container: "var(--container)",
+        "on-container": "var(--on-container)",
         charging: "var(--charging)",
         climate: "var(--climate)",
         warning: "var(--warning)",

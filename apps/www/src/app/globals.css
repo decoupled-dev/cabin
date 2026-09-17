@@ -87,3 +87,15 @@ body {
     transform: translateY(0);
   }
 }
+
+/* Foundations motion demo — duration comes from token var inline */
+@keyframes cabin-pulse {
+  from {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

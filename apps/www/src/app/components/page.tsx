@@ -1,94 +1,120 @@
 import type { Metadata } from "next";
-import { ButtonLink } from "@/components/button-link";
-import { Reveal } from "@/components/reveal";
+import { StatusBarDemo, SystemBarDemo } from "@/components/demo-chrome-bars";
+import { ClimateTileDemo } from "@/components/demo-climate-tile";
+import { MediaNowPlayingDemo } from "@/components/demo-media-now-playing";
+import {
+  GalleryHeader,
+  GalleryNav,
+  GallerySection,
+} from "@/components/gallery-chrome";
 import { DOCS_URL } from "@/lib/site";
+import {
+  COMPONENTS_NAV,
+  DOCS_CLIMATE_TILE,
+  DOCS_MEDIA_NOW,
+  DOCS_STATUS_BAR,
+  DOCS_SYSTEM_BAR,
+} from "@/lib/demo-signal";
 
 export const metadata: Metadata = {
   title: "Components",
   description:
-    "Cabin components — planned dual-stack chrome and cabin surfaces. Interactive catalog comes later.",
+    "Cabin components — Bars, ClimateTile, and MediaNowPlaying live demos from generated tokens. Day and night.",
 };
-
-const planned = [
-  {
-    name: "System bar",
-    domain: "Chrome",
-    note: "Views-first platform chrome · MVP",
-  },
-  {
-    name: "Status bar",
-    domain: "Chrome",
-    note: "Glance status · compliance-gated",
-  },
-  {
-    name: "Media now-playing",
-    domain: "Media",
-    note: "Post-MVP · Compose + Views parity",
-  },
-  {
-    name: "Climate zones",
-    domain: "HVAC",
-    note: "Planned · driving substitutes",
-  },
-  {
-    name: "Charge session",
-    domain: "EV",
-    note: "Planned · domain accent locked",
-  },
-  {
-    name: "Vehicle controls",
-    domain: "Controls",
-    note: "Planned · safety-critical paths",
-  },
-] as const;
 
 export default function ComponentsPage() {
   return (
     <div className="bg-background">
-      <div className="mx-auto max-w-6xl px-5 pb-24 pt-16 sm:px-8 sm:pt-24">
-        <Reveal>
-          <p className="inline-flex items-center gap-2 text-status text-on-surface-variant">
-            <span className="h-1.5 w-1.5 rounded-full bg-warning" />
-            Planned — no interactive catalog in v1
-          </p>
-          <h1 className="mt-6 max-w-3xl font-display text-display text-on-surface text-balance">
-            Components
-          </h1>
-          <p className="mt-5 max-w-2xl text-body text-on-surface-variant text-balance">
-            Dual-stack cabin surfaces with shared states, actions, and
-            compliance gates. Specs land in docs first; live demos follow MVP
-            chrome.
-          </p>
-        </Reveal>
+      <GalleryHeader
+        title="Components"
+        summary="Bars, Climate, and Media first — web HMI demos on generated tokens. Day and night in the gallery bar."
+      />
+      <GalleryNav label="Components sections" items={COMPONENTS_NAV} />
 
-        <ul className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {planned.map((item, i) => (
-            <Reveal key={item.name} delayMs={Math.min(i * 30, 90)}>
-              <li className="border-t border-[var(--outline-subtle)] pt-5">
-                <p className="text-status uppercase tracking-[0.12em] text-on-surface-variant">
-                  {item.domain}
-                </p>
-                <h2 className="mt-2 font-display text-title text-on-surface">
-                  {item.name}
-                </h2>
-                <p className="mt-2 text-status text-on-surface-variant">
-                  {item.note}
-                </p>
-              </li>
-            </Reveal>
-          ))}
-        </ul>
-
-        <Reveal className="mt-16">
-          <div className="flex flex-wrap gap-3">
-            <ButtonLink href={`${DOCS_URL}components/`} external>
-              Component specs
-            </ButtonLink>
-            <ButtonLink href="/foundations" variant="secondary">
-              Foundations teaser
-            </ButtonLink>
+      <div className="mx-auto flex max-w-6xl flex-col gap-16 px-5 py-12 sm:px-8 sm:py-14">
+        <GallerySection
+          id="bars"
+          title="Bars"
+          body="Status and System bars. Container / outline / onContainer from the scheme. Warning and charging stay safety-locked at night."
+        >
+          <div className="grid gap-12 lg:grid-cols-2">
+            <div>
+              <h3 className="mb-4 text-label text-on-surface">Status bar</h3>
+              <StatusBarDemo />
+              <a
+                href={`${DOCS_URL}${DOCS_STATUS_BAR}`}
+                className="mt-4 inline-block text-status text-primary underline-offset-4 hover:underline"
+                rel="noreferrer"
+              >
+                Status bar spec
+              </a>
+            </div>
+            <div>
+              <h3 className="mb-4 text-label text-on-surface">System bar</h3>
+              <SystemBarDemo />
+              <a
+                href={`${DOCS_URL}${DOCS_SYSTEM_BAR}`}
+                className="mt-4 inline-block text-status text-primary underline-offset-4 hover:underline"
+                rel="noreferrer"
+              >
+                System bar spec
+              </a>
+            </div>
           </div>
-        </Reveal>
+        </GallerySection>
+
+        <GallerySection
+          id="climate"
+          title="Climate"
+          body="ClimateTile — temp, fan, seat heat. Climate accent as mark only. Adjustments Block while Moving; values stay glanceable (RE-quiet)."
+        >
+          <div className="max-w-xl">
+            <ClimateTileDemo />
+          </div>
+          <a
+            href={`${DOCS_URL}${DOCS_CLIMATE_TILE}`}
+            className="mt-6 inline-block text-status text-primary underline-offset-4 hover:underline"
+            rel="noreferrer"
+          >
+            ClimateTile Android spec
+          </a>
+        </GallerySection>
+
+        <GallerySection
+          id="media"
+          title="Media"
+          body="MediaNowPlaying — artwork well, metadata, transport, source. Progress only when both Signals are live. Media accent marks source only."
+        >
+          <div className="max-w-2xl">
+            <MediaNowPlayingDemo />
+          </div>
+          <a
+            href={`${DOCS_URL}${DOCS_MEDIA_NOW}`}
+            className="mt-6 inline-block text-status text-primary underline-offset-4 hover:underline"
+            rel="noreferrer"
+          >
+            MediaNowPlaying Android spec
+          </a>
+        </GallerySection>
+
+        <footer className="border-t border-[var(--outline-subtle)] pt-6">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-status text-on-surface-variant">
+            <a
+              href="/foundations#color"
+              className="text-on-surface underline-offset-4 hover:underline"
+            >
+              Foundations
+            </a>
+            <span aria-hidden>·</span>
+            <a
+              href={`${DOCS_URL}components/`}
+              className="underline-offset-4 hover:underline"
+              rel="noreferrer"
+            >
+              Component specs
+            </a>
+          </div>
+        </footer>
       </div>
     </div>
   );
