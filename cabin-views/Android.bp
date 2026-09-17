@@ -1,17 +1,24 @@
-// Planned Soong module — sketch for AOSP build-tree consumers.
-// Same sources as the Gradle module. See docs/adoption/build-tree.md (ADR 0001 / 0002).
-// Theme Kit + System/Status bar Views chrome (MVP). Thin: tokens + compliance only.
-// Exact sdk_version / Kotlin flags finalize per host Android branch.
+// CabinViews — Theme Kit + System/Status bars (Alpha); upcoming Views
+// primitives (Button, ListItem, …) stay in this same Soong module.
+// Same sources as the Gradle module (:cabin-views).
+// See docs/adoption/build-tree.md · ADR 0001 / 0002 · docs/api-contracts.md.
+//
+// Thin deps: tokens + compliance (+ approved AndroidX support libs only).
+// Must NOT depend on CabinCompose. Primary SystemUI / build-tree surface.
 
 android_library {
     name: "CabinViews",
+    defaults: ["CabinAndroidLibraryDefaults"],
+    visibility: ["//visibility:public"],
     srcs: ["src/main/java/**/*.kt"],
     resource_dirs: ["src/main/res"],
     manifest: "src/main/AndroidManifest.xml",
     static_libs: [
         "CabinTokens",
         "CabinCompliance",
+        // Mirrors Gradle implementation(androidx.annotation).
+        // Soong name is stable on modern AndroidX trees; adjust if the host
+        // branch still uses a legacy alias.
+        "androidx.annotation_annotation",
     ],
-    sdk_version: "system_current",
-    min_sdk_version: "29",
 }

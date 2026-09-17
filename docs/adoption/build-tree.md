@@ -5,8 +5,11 @@ platform media, and vendor chrome — via **Soong** (`Android.bp`), not Gradle.
 Gradle Maven AARs remain the path for app developers. Both paths compile the
 **same** Kotlin/Java/resources source of truth.
 
-> Module names and `Android.bp` sketches below include **Alpha** Theme Kit in
-> `cabin-views`. Full SystemUI bar wiring remains planned.
+> **Alpha Soong scaffolding** lives co-located with each `cabin-*` module
+> (`Android.bp` → `CabinTokens` / `CabinCompliance` / `CabinViews` /
+> `CabinCompose`) plus root `CabinAndroidLibraryDefaults`. Full on-device
+> SystemUI bar wiring remains partner-tree work; see the
+> [SystemUI sketch](sketches/systemui-cabin/).
 
 ## Problem statement
 
@@ -28,7 +31,7 @@ platform. See [packaging](packaging.md) and [architecture](../architecture.md).
 | --- | --- | --- |
 | Who | App developers, OEM feature APKs built with Gradle | SystemUI, CarLauncher, platform media, vendor UI in the Android tree |
 | Build | `build.gradle.kts` → Maven AARs | `Android.bp` → `android_library` (and related) |
-| Depend on | Maven coordinates (`dev.decoupled.cabin:…`, **planned**) | Soong module names (`CabinViews`, …, **planned**) |
+| Depend on | Maven coordinates (`dev.decoupled.cabin:…`, **planned**) | Soong module names (`CabinViews`, …, **Alpha scaffolding**) |
 | Primary UI stack | Compose and/or Views | **Views-first** (`CabinViews` + tokens + compliance) |
 | Compose | First-class | Optional — only if the platform app already uses Compose; **not** a gate for SystemUI |
 | Sync into tree | Not required | Repo **manifest** project (e.g. `external/cabin`) |
@@ -59,10 +62,11 @@ sources:
 
 ```text
 cabin/                                    # synced into Android tree via manifest
+├── Android.bp                            # CabinAndroidLibraryDefaults only
 ├── cabin-tokens/
 │   ├── src/main/…                        # shared source
 │   ├── build.gradle.kts                  # Maven publishing (apps)
-│   └── Android.bp                        # Soong android_library (platform)
+│   └── Android.bp                        # Soong CabinTokens (platform)
 ├── cabin-compliance/
 │   ├── build.gradle.kts
 │   └── Android.bp
@@ -73,7 +77,7 @@ cabin/                                    # synced into Android tree via manifes
 │   ├── build.gradle.kts
 │   └── Android.bp
 ├── samples/                              # Gradle-oriented; not on device images
-├── catalog/
+├── catalog/                              # sample only — no Android.bp
 ├── website/
 └── docs/
 ```
@@ -81,17 +85,31 @@ cabin/                                    # synced into Android tree via manifes
 Illustrative tree paths after sync: `external/cabin` or
 `packages/apps/Cabin` (product choice).
 
-## Planned Soong module names
+## Soong module names (Alpha scaffolding)
 
-| Gradle module | Planned Soong `name` | Platform role |
-| --- | --- | --- |
-| `cabin-tokens` | `CabinTokens` | Always |
-| `cabin-compliance` | `CabinCompliance` | Always with UI |
-| `cabin-views` | `CabinViews` | **Primary** for SystemUI / chrome |
-| `cabin-compose` | `CabinCompose` | Opt-in; never required by SystemUI |
+| Gradle module | Soong `name` | Platform role | In-repo `Android.bp` |
+| --- | --- | --- | --- |
+| `cabin-tokens` | `CabinTokens` | Always | `cabin-tokens/Android.bp` |
+| `cabin-compliance` | `CabinCompliance` | Always with UI | `cabin-compliance/Android.bp` |
+| `cabin-views` | `CabinViews` | **Primary** for SystemUI / chrome | `cabin-views/Android.bp` |
+| `cabin-compose` | `CabinCompose` | Opt-in; never required by SystemUI | `cabin-compose/Android.bp` |
 
-Hard rule: `CabinViews` must not depend on `CabinCompose`. SystemUI bp must
-not list `CabinCompose`, catalog, samples, or website modules.
+Shared defaults: root [`Android.bp`](../../Android.bp) →
+`CabinAndroidLibraryDefaults` (sdk / min sdk only — **not** an umbrella lib).
+
+Hard rules:
+
+- `CabinViews` must not depend on `CabinCompose` (and vice versa).
+- SystemUI bp must not list `CabinCompose`, catalog, samples, or website.
+- Upcoming Views primitives (Button, ListItem, …) stay **inside** `CabinViews`
+  — do not invent per-widget Soong module names.
+- `catalog/` has **no** `Android.bp` (sample-only).
+
+Repo guard (no AAOS tree required):
+
+```bash
+python3 tools/check_soong_thin_deps.py
+```
 
 ## Manifest project (illustrative)
 
@@ -107,70 +125,43 @@ Products pin a revision/tag; platform `Android.bp` files `static_libs` /
 `libs` the Soong module names above. App developers continue to use Maven
 without cloning the full platform tree.
 
-## Planned `Android.bp` sketches
+## In-repo `Android.bp` (Alpha)
 
-### Library modules
+Authoritative scaffolding is the co-located module files (same `srcs` / `res`
+as Gradle). Condensed shape:
 
 ```bp
-// Planned — cabin-tokens/Android.bp
-android_library {
-    name: "CabinTokens",
-    srcs: ["src/main/java/**/*.kt"],
-    resource_dirs: ["src/main/res"],
-    sdk_version: "system_current", // product-specific; finalize per branch
+// Root Android.bp — defaults only (no CabinAll)
+java_defaults {
+    name: "CabinAndroidLibraryDefaults",
+    sdk_version: "system_current",
     min_sdk_version: "29",
 }
 
-// Planned — cabin-compliance/Android.bp
-android_library {
-    name: "CabinCompliance",
-    srcs: ["src/main/java/**/*.kt"],
-    static_libs: ["CabinTokens"],
-    sdk_version: "system_current",
-}
-
-// Planned — cabin-views/Android.bp
-android_library {
-    name: "CabinViews",
-    srcs: ["src/main/java/**/*.kt"],
-    resource_dirs: ["src/main/res"],
-    static_libs: [
-        "CabinTokens",
-        "CabinCompliance",
-    ],
-    sdk_version: "system_current",
-}
-
-// Planned — cabin-compose/Android.bp (opt-in; not for SystemUI)
-android_library {
-    name: "CabinCompose",
-    srcs: ["src/main/java/**/*.kt"],
-    static_libs: [
-        "CabinTokens",
-        "CabinCompliance",
-        // Compose runtime libs as required by the platform branch
-    ],
-    sdk_version: "system_current",
-}
+// cabin-tokens → CabinTokens (res + Kotlin; no UI toolkit deps)
+// cabin-compliance → CabinCompliance (static_libs: CabinTokens)
+// cabin-views → CabinViews (static_libs: CabinTokens, CabinCompliance,
+//               androidx.annotation_annotation)
+// cabin-compose → CabinCompose (static_libs: tokens + compliance + annotation;
+//                 Compose runtime libs uncommented per host branch — never SystemUI)
 ```
 
-Exact `sdk_version`, Kotlin flags, and Compose static_libs vary by Android
+Exact `sdk_version`, Kotlin flags, and Compose `static_libs` vary by Android
 branch — see [soong](../platforms/soong.md).
 
 ### SystemUI dependency (thin)
 
+Copy from the sketch
+[`sketches/systemui-cabin/`](sketches/systemui-cabin/README.md):
+
 ```bp
-// Planned — fragment inside SystemUI's Android.bp
-android_library {
-    name: "SystemUI-Cabin",
-    // …
-    static_libs: [
-        "CabinTokens",
-        "CabinCompliance",
-        "CabinViews",
-        // Do NOT add CabinCompose, catalog, or samples
-    ],
-}
+// Fragment for host SystemUI / chrome Android.bp
+static_libs: [
+    "CabinTokens",
+    "CabinCompliance",
+    "CabinViews",
+    // Do NOT add CabinCompose, catalog, or samples
+],
 ```
 
 ## Per-target guidance
@@ -255,10 +246,14 @@ Restriction Engine adapters — do not reimplement vehicle services inside Cabin
 - [ ] No catalog/samples on the image
 - [ ] Prebuilts only where source sync is impossible
 - [ ] Parity fixtures still apply when a second stack exists in apps
+- [ ] `python3 tools/check_soong_thin_deps.py` green in Cabin CI
+- [ ] Host bp matches [systemui-cabin sketch](sketches/systemui-cabin/)
 
 ## Related
 
 - [Soong engineering notes](../platforms/soong.md)
+- [SystemUI wiring sketch](sketches/systemui-cabin/)
+- [OEM RRO sketch](sketches/oem-cabin-rro/)
 - [Packaging](packaging.md)
 - [Integration](integration.md)
 - [Views](../platforms/views.md)

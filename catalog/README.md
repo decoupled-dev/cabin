@@ -24,6 +24,8 @@ catalog  →  cabin-compose
 
 `cabin-*` modules never depend on `catalog`. Do not install this APK on
 production user images ([packaging](../docs/adoption/packaging.md)).
+**No `Android.bp`** here — catalog must stay out of SystemUI `static_libs`
+and Soong product images ([build-tree](../docs/adoption/build-tree.md)).
 
 ## Run
 

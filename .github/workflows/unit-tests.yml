@@ -37,6 +37,9 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
+      - name: Check Soong thin deps
+        run: python3 tools/check_soong_thin_deps.py
+
       - name: Run unit tests
         run: ./gradlew :cabin-tokens:test :cabin-compliance:test :cabin-views:test :cabin-compose:test :catalog:test --stacktrace
 

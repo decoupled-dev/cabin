@@ -44,9 +44,11 @@ MVP is complete when **all** of the following hold:
    [theme-kit](adoption/theme-kit.md)). **Alpha in `cabin-views`.**
 4. **System Bar + Status Bar (Views)** — match
    [specs](components/specs/system-bar.md); restriction-aware; thin Soong
-   modules consumable by a SystemUI-shaped target. **Not started** (next).5. **Packaging** — Maven coordinates and Soong names per
+   modules consumable by a SystemUI-shaped target
+   ([systemui-cabin sketch](adoption/sketches/systemui-cabin/)).
+5. **Packaging** — Maven coordinates and Soong names per
    [api-contracts.md](api-contracts.md); SystemUI cannot pull Compose/catalog/
-   samples through Cabin deps.
+   samples through Cabin deps (`tools/check_soong_thin_deps.py`).
 6. **Support** — builds against [support-matrix.md](support-matrix.md) targets.
 
 Compose parity for the two bars may trail as **experimental** and is **not**

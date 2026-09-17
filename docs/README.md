@@ -88,6 +88,7 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | [Integration](adoption/integration.md) | Add Cabin to an existing AAOS/app repo |
 | [Theme Kit](adoption/theme-kit.md) | Views Theme Kit + OEM overlay / RRO path (MVP #3) |
 | [Build-tree / Soong](adoption/build-tree.md) | SystemUI, CarLauncher, platform media via Soong |
+| [SystemUI wiring sketch](adoption/sketches/systemui-cabin/) | Thin `static_libs` fragment for host SystemUI |
 | [Migration](adoption/migration.md) | From stock Material / AAOS widgets |
 | [Packaging](adoption/packaging.md) | Maven vs Soong dual distribution, minimal footprint |
 

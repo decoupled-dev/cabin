@@ -17,25 +17,26 @@ coordinates and module names are **planned** contracts for implementers.
 ## Planned repository layout
 
 ```text
-cabin/                          # synced to Android tree via repo manifest (future)
+cabin/                          # synced to Android tree via repo manifest
+├── Android.bp                  # CabinAndroidLibraryDefaults only (no CabinAll)
 ├── cabin-tokens/               # design tokens only
 │   ├── build.gradle.kts        # Maven (apps)
-│   └── Android.bp              # Soong (platform) — planned
+│   └── Android.bp              # Soong CabinTokens (Alpha scaffolding)
 ├── cabin-compliance/           # driving / UX / a11y / safety policies
 │   ├── build.gradle.kts
-│   └── Android.bp              # planned
+│   └── Android.bp              # CabinCompliance
 ├── cabin-compose/              # Jetpack Compose components + theme
 │   ├── build.gradle.kts
-│   └── Android.bp              # planned; opt-in on platform
+│   └── Android.bp              # CabinCompose (opt-in; never SystemUI)
 ├── cabin-views/                # View/XML components + attrs (primary for SystemUI)
 │   ├── build.gradle.kts
-│   └── Android.bp              # planned
+│   └── Android.bp              # CabinViews
 ├── samples/
 │   ├── sample-media/
 │   ├── sample-ev/
 │   ├── sample-hvac/
 │   └── sample-vehicle-controls/
-├── catalog/                    # thin chrome catalog sample (not product dep)
+├── catalog/                    # thin chrome catalog sample (not product dep; no Android.bp)
 ├── website/                    # public docs site
 └── docs/                       # this documentation set (present now)
 ```
@@ -45,7 +46,7 @@ cabin/                          # synced to Android tree via repo manifest (futu
 | Path | Artifact | Primary consumers |
 | --- | --- | --- |
 | **Gradle / Maven** | `dev.decoupled.cabin:cabin-*` (**planned**) | App developers |
-| **Soong** | `CabinTokens`, `CabinCompliance`, `CabinViews`, `CabinCompose` (**planned**) | SystemUI, CarLauncher, platform media |
+| **Soong** | `CabinTokens`, `CabinCompliance`, `CabinViews`, `CabinCompose` (**Alpha scaffolding**) | SystemUI, CarLauncher, platform media |
 
 Same Kotlin/Java/resources; two build graphs. Prefer source-in-tree Soong for
 SystemUI; AAR prebuilts are secondary ([build-tree](adoption/build-tree.md)).

@@ -1,0 +1,16 @@
+// Cabin Soong package defaults (Alpha scaffolding).
+// Synced into the Android tree (e.g. external/cabin) via repo manifest.
+//
+// This file intentionally does NOT define an umbrella CabinAll / fat library.
+// Platform targets must static_libs thin modules only — see docs/adoption/build-tree.md.
+//
+// Catalog, samples, apps/www, and website/ have no Android.bp and must stay
+// off SystemUI / product images.
+
+java_defaults {
+    name: "CabinAndroidLibraryDefaults",
+    sdk_version: "system_current",
+    min_sdk_version: "29",
+    // Exact sdk_version / Java level finalize per host Android branch.
+    // Prefer matching the tree's Kotlin / Java defaults over forcing here.
+}

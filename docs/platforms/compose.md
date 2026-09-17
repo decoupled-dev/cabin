@@ -22,7 +22,7 @@ dev.decoupled.cabin:cabin-compose:<version>
 | Path | Identifier | Status |
 | --- | --- | --- |
 | Maven (Gradle apps) | `dev.decoupled.cabin:cabin-compose` | **Experimental** (Theme + System/Status bars) |
-| Soong | `CabinCompose` | Sketch only — **do not** link from SystemUI |
+| Soong | `CabinCompose` | Alpha scaffolding — **do not** link from SystemUI |
 
 Depends on `cabin-tokens` and `cabin-compliance` ([architecture](../architecture.md)).
 Must **not** depend on `cabin-views`.
