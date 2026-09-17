@@ -30,6 +30,8 @@ Each component documents one of:
 | --- | --- | --- |
 | System bars | [system-bars.md](system-bars.md) · **[MVP spec](specs/system-bar.md)** | **MVP** (Views-first) |
 | Status bars | [status-bars.md](status-bars.md) · **[MVP spec](specs/status-bar.md)** | **MVP** (Views-first) |
+| Button / IconButton | **[spec](specs/button.md)** | Post-MVP primitive (Alpha Views / Experimental Compose) |
+| ListItem | **[spec](specs/list-item.md)** | Post-MVP primitive (Alpha Views / Experimental Compose) |
 | Media | [media.md](media.md) | After MVP |
 | EV / energy | [ev.md](ev.md) | After MVP |
 | HVAC | [hvac.md](hvac.md) | After MVP |
@@ -53,6 +55,7 @@ Every component page includes (or will include at implementation):
 | Component family | Primary modules |
 | --- | --- |
 | Chrome (system/status) | `cabin-views` first; Compose mirrors for apps |
+| Primitives (Button, IconButton, ListItem) | `cabin-views` first; Compose parity in `cabin-compose` |
 | Media / EV / HVAC / controls | `cabin-compose` + `cabin-views` |
 | Shared banners, buttons | both |
 

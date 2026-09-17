@@ -11,8 +11,8 @@ Group: `dev.decoupled.cabin` (illustrative; finalize at first publish).
 | --- | --- | --- |
 | Tokens | `dev.decoupled.cabin:cabin-tokens` | **Yes** |
 | Compliance | `dev.decoupled.cabin:cabin-compliance` | **Yes** |
-| Views | `dev.decoupled.cabin:cabin-views` | **Yes** (Theme Kit + System/Status bars Alpha) |
-| Compose | `dev.decoupled.cabin:cabin-compose` | Post-MVP (**Experimental** Theme + bars) |
+| Views | `dev.decoupled.cabin:cabin-views` | **Yes** (Theme Kit + System/Status bars Alpha; Button / IconButton / ListItem Alpha) |
+| Compose | `dev.decoupled.cabin:cabin-compose` | Post-MVP (**Experimental** Theme + bars + Button / IconButton / ListItem) |
 
 ## Soong module names (build-tree)
 
@@ -40,10 +40,12 @@ See [build-tree](adoption/build-tree.md).
 
 Views Theme Kit types: `dev.decoupled.cabin.views.theme.CabinThemes`,
 `…CabinThemeResolver`. Views chrome: `…CabinSystemBarView`,
-`…CabinStatusBarView` (Alpha).
+`…CabinStatusBarView` (Alpha). Views primitives: `…CabinButtonView`,
+`…CabinIconButtonView`, `…CabinListItemView` (Alpha).
 
-Compose Theme + bars (Experimental): `dev.decoupled.cabin.compose.theme.CabinTheme`,
-`…CabinSystemBar`, `…CabinStatusBar`.
+Compose Theme + bars + primitives (Experimental): `dev.decoupled.cabin.compose.theme.CabinTheme`,
+`…CabinSystemBar`, `…CabinStatusBar`, `…CabinButton`, `…CabinIconButton`,
+`…CabinListItem`.
 
 ## Stability
 
@@ -72,12 +74,12 @@ cabin-tokens
      ▲
 cabin-compliance
      ▲
-cabin-views     cabin-compose   (Views Alpha bars; Compose Experimental bars)
+cabin-views     cabin-compose   (Views Alpha bars + Button/ListItem; Compose Experimental parity)
 ```
 
-Theme Kit Alpha in `cabin-views` depends on **tokens only**; bars also wire
-`cabin-compliance`. Compose Theme + bars depend on tokens + compliance and
-must not depend on `cabin-views`.
+Theme Kit Alpha in `cabin-views` depends on **tokens only**; bars and primitives
+also wire `cabin-compliance`. Compose Theme + bars + primitives depend on
+tokens + compliance and must not depend on `cabin-views`.
 
 - Tokens & compliance: **no** UI toolkit deps
 - Views ⊀ Compose and Compose ⊀ Views

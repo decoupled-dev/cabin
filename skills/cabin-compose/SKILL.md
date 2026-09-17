@@ -25,8 +25,8 @@ metadata:
 `dev.decoupled.cabin:cabin-compose` → depends on tokens + compliance.
 Must **not** depend on `cabin-views`.
 
-**Status:** Experimental Theme + System/Status bars. Views bars remain Alpha
-and the SystemUI path.
+**Status:** Experimental Theme + System/Status bars + Button / IconButton /
+ListItem. Views bars and primitives remain Alpha and the SystemUI path.
 
 ## Guidelines
 
@@ -41,12 +41,15 @@ and the SystemUI path.
 
 → [docs/platforms/compose.md](../../docs/platforms/compose.md)
 
-## Experimental bar APIs
+## Experimental bar + primitive APIs
 
 ```kotlin
 CabinTheme(vehicleState = …) {
     CabinSystemBar(slots = …)
     CabinStatusBar(items = …)
+    CabinButton(state = …, onClick = …)
+    CabinIconButton(state = …, onClick = …)
+    CabinListItem(state = …, onClick = …)
 }
 ```
 

@@ -4,10 +4,10 @@
   "title": "Cabin design tokens (stub)",
   "description": "Source-of-truth stub for Cabin tokens. Intended for Style Dictionary / codegen into cabin-tokens (Android resources + Kotlin). Not a published runtime format yet. See docs/design-language/token-schema.md.",
   "meta": {
-    "version": "0.1.1-stub",
+    "version": "0.1.2-stub",
     "status": "planned-stub",
     "naming": "cabin.{category}.{tier}.{name}",
-    "notes": "Day/night schemes include chrome roles (outline, container) and locked night contrast for warning/error/charging. Domain accents stay off body-text roles (onSurface/onContainer)."
+    "notes": "Day/night schemes include chrome roles (outline, container) and locked night contrast for warning/error/charging. Domain accents stay off body-text roles (onSurface/onContainer). Component tokens cover Button / IconButton / ListItem primitives."
   },
   "cabin": {
     "color": {
@@ -103,7 +103,8 @@
       },
       "icon": {
         "status": { "value": "24", "type": "sizing", "unit": "dp" },
-        "systemBar": { "value": "28", "type": "sizing", "unit": "dp" }
+        "systemBar": { "value": "28", "type": "sizing", "unit": "dp" },
+        "action": { "value": "28", "type": "sizing", "unit": "dp", "comment": "Button / IconButton / ListItem leading icons" }
       }
     },
     "elevation": {
@@ -133,6 +134,26 @@
         "height": { "value": "48", "type": "sizing", "unit": "dp" },
         "iconSize": { "$ref": "#/cabin/size/icon/status" },
         "itemGap": { "$ref": "#/cabin/space/sm" }
+      },
+      "button": {
+        "minHeight": { "$ref": "#/cabin/size/touch/minimum" },
+        "horizontalPadding": { "$ref": "#/cabin/space/md" },
+        "iconSize": { "$ref": "#/cabin/size/icon/action" },
+        "gap": { "$ref": "#/cabin/space/sm" },
+        "cornerRadius": { "value": "8", "type": "sizing", "unit": "dp", "comment": "Modest cabin radius; OEM overlay later" }
+      },
+      "iconButton": {
+        "minSize": { "$ref": "#/cabin/size/touch/minimum" },
+        "iconSize": { "$ref": "#/cabin/size/icon/action" },
+        "cornerRadius": { "value": "8", "type": "sizing", "unit": "dp" }
+      },
+      "listItem": {
+        "minHeight": { "$ref": "#/cabin/size/touch/minimum" },
+        "horizontalPadding": { "$ref": "#/cabin/space/md" },
+        "verticalPadding": { "$ref": "#/cabin/space/sm" },
+        "gap": { "$ref": "#/cabin/space/md" },
+        "iconSize": { "$ref": "#/cabin/size/icon/action" },
+        "dividerInset": { "$ref": "#/cabin/space/md" }
       }
     }
   }

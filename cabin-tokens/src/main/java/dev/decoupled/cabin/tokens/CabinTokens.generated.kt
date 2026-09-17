@@ -6,12 +6,12 @@ package dev.decoupled.cabin.tokens
  * Public Cabin token constants generated from `tokens/cabin.tokens.json`.
  *
  * Do not edit by hand -- run `python3 tools/generate_cabin_tokens.py`.
- * Stub version: 0.1.1-stub
+ * Stub version: 0.1.2-stub
  *
  * This module has no Compose, Views widget, AppCompat, or Material dependencies.
  */
 object CabinTokens {
-    const val SOURCE_VERSION: String = "0.1.1-stub"
+    const val SOURCE_VERSION: String = "0.1.2-stub"
     const val SOURCE_PATH: String = "tokens/cabin.tokens.json"
 
     /** Semantic color role names locked as safety-adjacent. */
@@ -125,6 +125,7 @@ object CabinTokens {
         object Icon {
             val status: CabinMeasure = CabinMeasure(24f, CabinUnit.DP, "cabin_size_icon_status")
             val systemBar: CabinMeasure = CabinMeasure(28f, CabinUnit.DP, "cabin_size_icon_systemBar")
+            val action: CabinMeasure = CabinMeasure(28f, CabinUnit.DP, "cabin_size_icon_action")
         }
     }
 
@@ -160,6 +161,26 @@ object CabinTokens {
             val height: CabinMeasure = CabinMeasure(48f, CabinUnit.DP, "cabin_component_status_bar_height")
             val iconSize: CabinMeasure = CabinMeasure(24f, CabinUnit.DP, "cabin_component_status_bar_iconSize")
             val itemGap: CabinMeasure = CabinMeasure(8f, CabinUnit.DP, "cabin_component_status_bar_itemGap")
+        }
+        object Button {
+            val minHeight: CabinMeasure = CabinMeasure(76f, CabinUnit.DP, "cabin_component_button_minHeight")
+            val horizontalPadding: CabinMeasure = CabinMeasure(16f, CabinUnit.DP, "cabin_component_button_horizontalPadding")
+            val iconSize: CabinMeasure = CabinMeasure(28f, CabinUnit.DP, "cabin_component_button_iconSize")
+            val gap: CabinMeasure = CabinMeasure(8f, CabinUnit.DP, "cabin_component_button_gap")
+            val cornerRadius: CabinMeasure = CabinMeasure(8f, CabinUnit.DP, "cabin_component_button_cornerRadius")
+        }
+        object IconButton {
+            val minSize: CabinMeasure = CabinMeasure(76f, CabinUnit.DP, "cabin_component_icon_button_minSize")
+            val iconSize: CabinMeasure = CabinMeasure(28f, CabinUnit.DP, "cabin_component_icon_button_iconSize")
+            val cornerRadius: CabinMeasure = CabinMeasure(8f, CabinUnit.DP, "cabin_component_icon_button_cornerRadius")
+        }
+        object ListItem {
+            val minHeight: CabinMeasure = CabinMeasure(76f, CabinUnit.DP, "cabin_component_list_item_minHeight")
+            val horizontalPadding: CabinMeasure = CabinMeasure(16f, CabinUnit.DP, "cabin_component_list_item_horizontalPadding")
+            val verticalPadding: CabinMeasure = CabinMeasure(8f, CabinUnit.DP, "cabin_component_list_item_verticalPadding")
+            val gap: CabinMeasure = CabinMeasure(16f, CabinUnit.DP, "cabin_component_list_item_gap")
+            val iconSize: CabinMeasure = CabinMeasure(28f, CabinUnit.DP, "cabin_component_list_item_iconSize")
+            val dividerInset: CabinMeasure = CabinMeasure(16f, CabinUnit.DP, "cabin_component_list_item_dividerInset")
         }
     }
 }

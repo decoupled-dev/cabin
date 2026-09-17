@@ -36,8 +36,8 @@ Glanceable · Quiet · Safe by default · One language, two skins · Thin by des
 | --- | --- |
 | `cabin-tokens` / `CabinTokens` | Design tokens only (Alpha) |
 | `cabin-compliance` / `CabinCompliance` | Restriction Engine / policies (Alpha) |
-| `cabin-compose` / `CabinCompose` | Compose UI — Theme + System/Status bars (Experimental) |
-| `cabin-views` / `CabinViews` | Views UI — Theme Kit + System/Status bars (Alpha) |
+| `cabin-compose` / `CabinCompose` | Compose UI — Theme + System/Status bars + Button/ListItem (Experimental) |
+| `cabin-views` / `CabinViews` | Views UI — Theme Kit + System/Status bars + Button/ListItem (Alpha) |
 
 Samples, catalog, website: **not** product runtime deps.
 

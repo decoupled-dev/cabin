@@ -25,7 +25,7 @@ Compose is **not** a gate for SystemUI.
 
 ## Planned artifacts
 
-- Maven: `dev.decoupled.cabin:cabin-views` (Alpha — Theme Kit + System/Status bars)
+- Maven: `dev.decoupled.cabin:cabin-views` (Alpha — Theme Kit + System/Status bars + Button / IconButton / ListItem)
 - Soong: `CabinViews` (`cabin-views/Android.bp`)
 
 No dependency on Compose modules. No AppCompat/Material for Theme Kit.
@@ -37,10 +37,12 @@ No dependency on Compose modules. No AppCompat/Material for Theme Kit.
 - `CabinThemeResolver` for widgets; OEM overlay / RRO without forks
 - Docs: [docs/adoption/theme-kit.md](../../docs/adoption/theme-kit.md)
 
-## System / Status bars (Alpha)
+## System / Status bars + primitives (Alpha)
 
 - `CabinSystemBarView` — slotted leading/center/trailing; token sizes
 - `CabinStatusBarView` — ordered glyphs; exhaustive `Signal` presentation
+- `CabinButtonView` / `CabinIconButtonView` — Primary Action; Restriction Engine gated
+- `CabinListItemView` — cabin density; Restriction Engine on interactions
 - `CabinComplianceHost` — Restriction Engine gating (allow/substitute/block)
 - Depends on `cabin-compliance` / `CabinCompliance` (thin; no Compose)
 

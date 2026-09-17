@@ -9,7 +9,7 @@ class CabinTokensTest {
 
     @Test
     fun sourceMetadata_matchesStub() {
-        assertEquals("0.1.1-stub", CabinTokens.SOURCE_VERSION)
+        assertEquals("0.1.2-stub", CabinTokens.SOURCE_VERSION)
         assertEquals("tokens/cabin.tokens.json", CabinTokens.SOURCE_PATH)
     }
 
@@ -102,6 +102,9 @@ class CabinTokensTest {
         assertEquals(76f, CabinTokens.Size.Touch.minimum.dp)
         assertEquals(80f, CabinTokens.Component.SystemBar.height.dp)
         assertEquals(48f, CabinTokens.Component.StatusBar.height.dp)
+        assertEquals(76f, CabinTokens.Component.Button.minHeight.dp)
+        assertEquals(76f, CabinTokens.Component.IconButton.minSize.dp)
+        assertEquals(76f, CabinTokens.Component.ListItem.minHeight.dp)
     }
 
     @Test
@@ -117,6 +120,14 @@ class CabinTokensTest {
         assertEquals(
             CabinTokens.Space.sm.dp,
             CabinTokens.Component.SystemBar.gap.dp,
+        )
+        assertEquals(
+            CabinTokens.Size.Touch.minimum.dp,
+            CabinTokens.Component.Button.minHeight.dp,
+        )
+        assertEquals(
+            CabinTokens.Size.Icon.action.dp,
+            CabinTokens.Component.ListItem.iconSize.dp,
         )
     }
 }

@@ -21,7 +21,7 @@ dev.decoupled.cabin:cabin-compose:<version>
 
 | Path | Identifier | Status |
 | --- | --- | --- |
-| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-compose` | **Experimental** (Theme + System/Status bars) |
+| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-compose` | **Experimental** (Theme + System/Status bars + Button / IconButton / ListItem) |
 | Soong | `CabinCompose` | Alpha scaffolding — **do not** link from SystemUI |
 
 Depends on `cabin-tokens` and `cabin-compliance` ([architecture](../architecture.md)).
@@ -66,6 +66,25 @@ fun CabinStatusBar(items: List<CabinStatusItem>, modifier: Modifier = Modifier)
 Package: `dev.decoupled.cabin.compose`. Same Restriction Engine gates, Signal
 exhaustiveness, and tone roles as Views — API shape differs (`Composable` vs
 `View`).
+
+## Button / IconButton / ListItem (Experimental)
+
+Parity with Views Alpha primitives ([button](../components/specs/button.md),
+[list-item](../components/specs/list-item.md)):
+
+```kotlin
+@Composable
+fun CabinButton(state: CabinButtonState, onClick: () -> Unit, modifier: Modifier = Modifier)
+
+@Composable
+fun CabinIconButton(state: CabinIconButtonState, onClick: () -> Unit, modifier: Modifier = Modifier)
+
+@Composable
+fun CabinListItem(state: CabinListItemState, onClick: () -> Unit, modifier: Modifier = Modifier)
+```
+
+Gate via `LocalCabinComplianceState`; missing local is fail-closed. Does **not**
+depend on `cabin-views`.
 
 ## Implementation guidelines
 

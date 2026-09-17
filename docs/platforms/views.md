@@ -19,7 +19,7 @@ it — but Compose is **not** a gate for SystemUI adoption
 
 | Path | Identifier | Status |
 | --- | --- | --- |
-| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-views:<version>` | Alpha (Theme Kit + System/Status bars) |
+| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-views:<version>` | Alpha (Theme Kit + System/Status bars + Button / IconButton / ListItem) |
 | Soong (build-tree) | `CabinViews` | Alpha scaffolding `cabin-views/Android.bp` |
 
 Depends on `cabin-tokens` / `CabinTokens` and `cabin-compliance` /
@@ -46,6 +46,8 @@ Theme Kit (Alpha) lives in `cabin-views` — see
 ```
 
 System/Status bar widgets: `CabinSystemBarView`, `CabinStatusBarView` (Alpha).
+Primitives: `CabinButtonView`, `CabinIconButtonView`, `CabinListItemView` (Alpha)
+— see [button](../components/specs/button.md), [list-item](../components/specs/list-item.md).
 ## Implementation guidelines
 
 | Topic | Cabin rule |

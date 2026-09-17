@@ -1,4 +1,4 @@
-// CabinCompose — Experimental Theme + System/Status bar parity.
+// CabinCompose — Experimental Theme + System/Status bars + Button/IconButton/ListItem.
 // Same sources as the Gradle module (:cabin-compose).
 // See docs/adoption/build-tree.md · ADR 0002 · docs/platforms/compose.md.
 //
