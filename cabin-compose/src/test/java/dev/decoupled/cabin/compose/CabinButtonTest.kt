@@ -1,5 +1,6 @@
 package dev.decoupled.cabin.compose
 
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -8,7 +9,11 @@ import dev.decoupled.cabin.compliance.CabinInteraction
 import dev.decoupled.cabin.compliance.GateDisposition
 import dev.decoupled.cabin.compliance.VehicleUiState
 import dev.decoupled.cabin.compose.theme.CabinTheme
+import dev.decoupled.cabin.compose.theme.resolveCabinColors
+import dev.decoupled.cabin.tokens.CabinColorScheme
+import dev.decoupled.cabin.tokens.CabinTokens
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -133,5 +138,32 @@ class CabinButtonTest {
         assertEquals(76f, CabinIconButtonTokens.minSizeDp)
         assertEquals(28f, CabinIconButtonTokens.iconSizeDp)
         assertEquals(8f, CabinButtonTokens.cornerRadiusDp)
+    }
+
+    @Test
+    fun craft_filledUsesForestPrimary_outlinedUsesOutline_notSafety() {
+        val colors = resolveCabinColors(CabinColorScheme.Day)
+        assertEquals(Color(CabinTokens.Color.Semantic.primary.argb), colors.primary)
+        assertEquals(Color(CabinTokens.Color.Semantic.onPrimary.argb), colors.onPrimary)
+        assertEquals("#0B6E4F", CabinTokens.Color.Semantic.primary.hex)
+        assertNotEquals(colors.primary, colors.warning)
+        assertNotEquals(colors.primary, colors.error)
+        assertNotEquals(colors.outline, colors.warning)
+        assertNotEquals(colors.outline, colors.error)
+    }
+
+    @Test
+    fun craft_nightWarningErrorStayLocked() {
+        val night = resolveCabinColors(CabinColorScheme.Night)
+        val day = resolveCabinColors(CabinColorScheme.Day)
+        assertEquals(Color(CabinTokens.colorScheme(CabinColorScheme.Night).warning.argb), night.warning)
+        assertEquals(Color(CabinTokens.colorScheme(CabinColorScheme.Night).error.argb), night.error)
+        assertNotEquals(day.warning, night.warning)
+        assertNotEquals(day.error, night.error)
+        // Button chrome must not adopt locked safety roles.
+        assertNotEquals(night.primary, night.warning)
+        assertNotEquals(night.primary, night.error)
+        assertNotEquals(night.outline, night.warning)
+        assertNotEquals(night.outline, night.error)
     }
 }

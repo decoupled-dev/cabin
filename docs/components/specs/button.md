@@ -33,11 +33,24 @@ not embed driving policy.
 
 | Variant | Fill / stroke | Content color | Use |
 | --- | --- | --- | --- |
-| **Filled** | `primary` | `onPrimary` | The one primary action in a cluster |
-| **Outlined** | transparent + `outline` stroke | `onSurface` | Secondary / alternate |
+| **Filled** | forest `primary` (`#0B6E4F`) | `onPrimary` | The one primary action in a cluster |
+| **Outlined** | transparent + scheme `outline` stroke | `onSurface` | Secondary / alternate |
 | **Quiet** | transparent | `onSurface` | Tertiary; keep quiet |
 
 IconButton uses the same variants with icon-only chrome.
+
+## Craft constraints
+
+Production craft for this slice (no marketing flourish):
+
+1. **76dp touch minimum** — `cabin.component.button.minHeight` /
+   `iconButton.minSize` alias `cabin.size.touch.minimum` (76dp).
+2. **Forest primary / onPrimary** for Filled; **outline** stroke for Outlined
+   secondary — never invent a second brand fill.
+3. **Night `warning` / `error` stay locked** — Button chrome must not consume
+   safety feedback roles for decoration or brand.
+4. Specs and Restriction Engine gates before any chrome flourish; no vanity
+   motion, badges, or marketing-site copy in library surfaces.
 
 ## States
 
@@ -86,16 +99,16 @@ Missing compliance host / local is **fail-closed** (`GateDisposition.Block`).
 class CabinButtonView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-) : ViewGroup(context, attrs) {
-    fun bind(state: CabinButtonState) { /* … */ }
+) : LinearLayout(context, attrs) {
+    fun bind(state: CabinButtonState, onClick: (() -> Unit)? = null) { /* … */ }
     fun setCompliance(host: CabinComplianceHost?) { /* … */ }
 }
 
 class CabinIconButtonView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-) : View(context, attrs) {
-    fun bind(state: CabinIconButtonState) { /* … */ }
+) : FrameLayout(context, attrs) {
+    fun bind(state: CabinIconButtonState, onClick: (() -> Unit)? = null) { /* … */ }
     fun setCompliance(host: CabinComplianceHost?) { /* … */ }
 }
 ```
@@ -150,11 +163,12 @@ data class CabinIconButtonState(
 ## Acceptance criteria
 
 - [x] Views-first in `cabin-views`; Compose parity without compose→views edge
-- [x] Touch minima from tokens (≥ cabin touch minimum)
-- [x] Day/night via Theme Kit / `CabinTheme` (outline / container / primary)
+- [x] Touch minima **76dp** from tokens (`cabin.size.touch.minimum`)
+- [x] Filled → forest `primary` / `onPrimary`; Outlined secondary → `outline`
+- [x] Night `warning` / `error` locked; unused as Button chrome
 - [x] Restriction Engine gates activation; fail-closed without host/local
 - [x] IconButton requires content description
-- [x] No Dialog / Confirm / Toast in this slice
+- [x] Specs before chrome flourish; no Dialog / Confirm / Toast in this slice
 - [x] No catalog / `apps/www` / `website/` dependency from `cabin-*`
 
 ## Related

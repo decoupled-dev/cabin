@@ -8,7 +8,10 @@ import dev.decoupled.cabin.compliance.CabinInteraction
 import dev.decoupled.cabin.compliance.GateDisposition
 import dev.decoupled.cabin.compliance.VehicleUiState
 import dev.decoupled.cabin.compose.theme.CabinTheme
+import dev.decoupled.cabin.compose.theme.resolveCabinColors
+import dev.decoupled.cabin.tokens.CabinColorScheme
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertNotEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -131,5 +134,17 @@ class CabinListItemTest {
         assertEquals(8f, CabinListItemTokens.verticalPaddingDp)
         assertEquals(16f, CabinListItemTokens.gapDp)
         assertEquals(28f, CabinListItemTokens.iconSizeDp)
+    }
+
+    @Test
+    fun craft_selectionChromeAvoidsLockedSafety() {
+        val day = resolveCabinColors(CabinColorScheme.Day)
+        val night = resolveCabinColors(CabinColorScheme.Night)
+        assertNotEquals(day.outline, day.warning)
+        assertNotEquals(day.container, day.error)
+        assertNotEquals(night.outline, night.warning)
+        assertNotEquals(night.container, night.error)
+        assertNotEquals(day.warning, night.warning)
+        assertNotEquals(day.error, night.error)
     }
 }

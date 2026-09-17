@@ -20,6 +20,9 @@ import dev.decoupled.cabin.views.theme.CabinThemeResolver
 /**
  * Cabin Button — glance-sized Primary Action primitive.
  *
+ * Craft: 76dp touch min; Filled = forest primary/onPrimary; Outlined secondary
+ * uses outline; night warning/error stay locked (not Button chrome).
+ *
  * Activation is gated via [CabinComplianceHost]. Missing host is fail-closed.
  *
  * Spec: docs/components/specs/button.md

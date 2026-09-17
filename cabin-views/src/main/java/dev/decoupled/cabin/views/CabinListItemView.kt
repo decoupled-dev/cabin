@@ -20,6 +20,9 @@ import dev.decoupled.cabin.views.theme.CabinThemeResolver
 /**
  * Cabin ListItem — low-density, restriction-aware collection row.
  *
+ * Craft: 76dp density floor; Restriction Engine on activation; selection uses
+ * outline/container — not locked night warning/error.
+ *
  * Activation is gated via [CabinComplianceHost]. Missing host is fail-closed.
  *
  * Spec: docs/components/specs/list-item.md

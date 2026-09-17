@@ -1,13 +1,18 @@
 package dev.decoupled.cabin.views
 
+import android.content.res.Configuration
 import android.view.ContextThemeWrapper
 import android.view.View
 import dev.decoupled.cabin.compliance.CabinInteraction
 import dev.decoupled.cabin.compliance.VehicleUiState
+import dev.decoupled.cabin.tokens.CabinColorScheme
+import dev.decoupled.cabin.tokens.CabinTokens
 import dev.decoupled.cabin.views.compliance.CabinComplianceHost
+import dev.decoupled.cabin.views.theme.CabinThemeResolver
 import dev.decoupled.cabin.views.theme.CabinThemes
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -168,5 +173,82 @@ class CabinButtonViewTest {
         assertEquals(8f, CabinButtonTokens.cornerRadiusDp)
         assertEquals(76f, CabinIconButtonTokens.minSizeDp)
         assertEquals(28f, CabinIconButtonTokens.iconSizeDp)
+    }
+
+    @Test
+    fun craft_filledUsesForestPrimary_outlinedUsesOutline_notSafety() {
+        val colors = CabinThemeResolver.resolveColors(themedContext)
+        // Forest primary baseline (#0B6E4F) — OEM may overlay brand later.
+        assertEquals(
+            android.graphics.Color.parseColor("#0B6E4F"),
+            colors.primary,
+        )
+        assertEquals(
+            android.graphics.Color.parseColor("#FFFFFF"),
+            colors.onPrimary,
+        )
+        // Secondary Outlined stroke role is outline — not warning/error.
+        assertNotEquals(colors.outline, colors.warning)
+        assertNotEquals(colors.outline, colors.error)
+        assertNotEquals(colors.primary, colors.warning)
+        assertNotEquals(colors.primary, colors.error)
+
+        button.bind(
+            CabinButtonState(
+                label = "Primary",
+                interaction = CabinInteraction.NavigateSimple,
+                variant = CabinButtonVariant.Filled,
+            ),
+        )
+        assertEquals(CabinButtonVariant.Filled, button.currentState().variant)
+
+        button.bind(
+            CabinButtonState(
+                label = "Secondary",
+                interaction = CabinInteraction.NavigateSimple,
+                variant = CabinButtonVariant.Outlined,
+            ),
+        )
+        assertEquals(CabinButtonVariant.Outlined, button.currentState().variant)
+    }
+
+    @Test
+    @Config(qualifiers = "night")
+    fun craft_nightWarningErrorStayLocked_unusedAsButtonChrome() {
+        val base = RuntimeEnvironment.getApplication()
+        val config = Configuration(base.resources.configuration)
+        config.uiMode = (
+            config.uiMode and Configuration.UI_MODE_NIGHT_MASK.inv()
+            ) or Configuration.UI_MODE_NIGHT_YES
+        val nightContext = ContextThemeWrapper(
+            base.createConfigurationContext(config),
+            CabinThemes.ThemeCabin,
+        )
+        val colors = CabinThemeResolver.resolveColors(nightContext)
+        val night = CabinTokens.colorScheme(CabinColorScheme.Night)
+        val day = CabinTokens.colorScheme(CabinColorScheme.Day)
+
+        assertEquals(
+            android.graphics.Color.parseColor(night.warning.hex),
+            colors.warning,
+        )
+        assertEquals(
+            android.graphics.Color.parseColor(night.error.hex),
+            colors.error,
+        )
+        // Locked night contrast — not soft-washed toward day.
+        assertNotEquals(
+            android.graphics.Color.parseColor(day.warning.hex),
+            colors.warning,
+        )
+        assertNotEquals(
+            android.graphics.Color.parseColor(day.error.hex),
+            colors.error,
+        )
+        // Button chrome roles stay primary / outline / onSurface — not safety.
+        assertNotEquals(colors.primary, colors.warning)
+        assertNotEquals(colors.primary, colors.error)
+        assertNotEquals(colors.outline, colors.warning)
+        assertNotEquals(colors.outline, colors.error)
     }
 }

@@ -36,6 +36,9 @@ import dev.decoupled.cabin.tokens.CabinTokens
 /**
  * Cabin ListItem — low-density, restriction-aware collection row.
  *
+ * Craft: 76dp density floor; Restriction Engine on activation; selection uses
+ * outline/container — not locked night warning/error.
+ *
  * Activation is gated via [LocalCabinComplianceState] (fail-closed when absent).
  *
  * Spec: docs/components/specs/list-item.md

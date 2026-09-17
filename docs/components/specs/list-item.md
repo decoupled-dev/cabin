@@ -40,12 +40,22 @@ gating on activation. Not a phone-density list cell.
 
 Cabin density is **low**:
 
-- Row `minHeight` ≥ `cabin.size.touch.minimum` (via component token)
+- Row `minHeight` ≥ **76dp** (`cabin.size.touch.minimum` via
+  `cabin.component.listItem.minHeight`)
 - Generous horizontal padding; no dense multi-meta columns in the driver zone
 - One primary text column; supporting stays secondary
 
 Passenger / richer density profiles remain a compliance concern — do not bake
 phone density into the widget default ([ux-restrictions](../../compliance/ux-restrictions.md)).
+
+## Craft constraints
+
+1. **76dp** density floor (touch minimum) — not phone list density.
+2. **Restriction Engine** on every activatable row; fail-closed without host.
+3. Chrome from Theme Kit `surface` / `onSurface` / `outline` / `container` —
+   do not borrow locked night `warning` / `error` for selection flourish.
+4. Specs and gates before chrome flourish; sites (`apps/www`, `website/`) stay
+   frozen for this slice.
 
 ## Sizes & type (from tokens)
 
@@ -128,12 +138,13 @@ data class CabinListItemState(
 
 ## Acceptance criteria
 
-- [x] Cabin density: min height from touch token
+- [x] Cabin density: **76dp** min height from touch token
 - [x] Restriction Engine on interactions; fail-closed without host/local
 - [x] Theme Kit day/night roles (outline / container / surface)
+- [x] Night `warning` / `error` locked — not used as ListItem selection chrome
 - [x] Compose + Views parity for states / gating
 - [x] No compose→views edge; no `cabin-*` → catalog reverse dep
-- [x] No Dialog / Confirm / Toast in this slice
+- [x] Specs before chrome flourish; no Dialog / Confirm / Toast; sites frozen
 
 ## Related
 

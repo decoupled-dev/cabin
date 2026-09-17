@@ -50,6 +50,9 @@ enum class CabinButtonVariant {
 /**
  * Cabin Button — glance-sized Primary Action primitive.
  *
+ * Craft: 76dp touch min; Filled = forest primary/onPrimary; Outlined secondary
+ * uses outline; night warning/error stay locked (not Button chrome).
+ *
  * Activation is gated via [LocalCabinComplianceState] (fail-closed when absent).
  *
  * Spec: docs/components/specs/button.md

@@ -5,9 +5,11 @@ import android.view.View
 import dev.decoupled.cabin.compliance.CabinInteraction
 import dev.decoupled.cabin.compliance.VehicleUiState
 import dev.decoupled.cabin.views.compliance.CabinComplianceHost
+import dev.decoupled.cabin.views.theme.CabinThemeResolver
 import dev.decoupled.cabin.views.theme.CabinThemes
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotEquals
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -128,6 +130,24 @@ class CabinListItemViewTest {
         assertEquals(8f, CabinListItemTokens.verticalPaddingDp)
         assertEquals(16f, CabinListItemTokens.gapDp)
         assertEquals(28f, CabinListItemTokens.iconSizeDp)
+    }
+
+    @Test
+    fun craft_selectionUsesOutlineContainer_notLockedSafety() {
+        val colors = CabinThemeResolver.resolveColors(themedContext)
+        assertNotEquals(colors.outline, colors.warning)
+        assertNotEquals(colors.outline, colors.error)
+        assertNotEquals(colors.container, colors.warning)
+        assertNotEquals(colors.container, colors.error)
+
+        item.bind(
+            CabinListItemState(
+                title = "Selected",
+                interaction = CabinInteraction.NavigateSimple,
+                selected = true,
+            ),
+        )
+        assertTrue(item.currentState().selected)
     }
 
     @Test
