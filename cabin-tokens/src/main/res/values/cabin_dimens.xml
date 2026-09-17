@@ -31,4 +31,13 @@
     <dimen name="cabin_component_status_bar_height">48dp</dimen>
     <dimen name="cabin_component_status_bar_iconSize">24dp</dimen>
     <dimen name="cabin_component_status_bar_itemGap">8dp</dimen>
+    <dimen name="cabin_component_climate_tile_controlMinSize">76dp</dimen>
+    <dimen name="cabin_component_climate_tile_gap">8dp</dimen>
+    <dimen name="cabin_component_climate_tile_padding">16dp</dimen>
+    <dimen name="cabin_component_climate_tile_cornerRadius">8dp</dimen>
+    <dimen name="cabin_component_media_now_playing_artworkSize">120dp</dimen>
+    <dimen name="cabin_component_media_now_playing_transportMinSize">76dp</dimen>
+    <dimen name="cabin_component_media_now_playing_gap">16dp</dimen>
+    <dimen name="cabin_component_media_now_playing_padding">16dp</dimen>
+    <dimen name="cabin_component_media_now_playing_cornerRadius">8dp</dimen>
 </resources>

@@ -30,10 +30,11 @@ Each component documents one of:
 | --- | --- | --- |
 | System bars | [system-bars.md](system-bars.md) · **[MVP spec](specs/system-bar.md)** | **MVP** (Views-first) |
 | Status bars | [status-bars.md](status-bars.md) · **[MVP spec](specs/status-bar.md)** | **MVP** (Views-first) |
-| Media | [media.md](media.md) | After MVP |
-| EV / energy | [ev.md](ev.md) | After MVP |
-| HVAC | [hvac.md](hvac.md) | After MVP |
-| Vehicle controls | [vehicle-controls.md](vehicle-controls.md) | After MVP |
+| ClimateTile | [hvac.md](hvac.md) · **[spec](specs/climate-tile.md)** | Layer 2 (Alpha Views / Experimental Compose) |
+| MediaNowPlaying | [media.md](media.md) · **[spec](specs/media-now-playing.md)** | Layer 2 (Alpha Views / Experimental Compose) |
+| EV / energy | [ev.md](ev.md) | Later (EvEnergyGlance planned) |
+| HVAC (full pack) | [hvac.md](hvac.md) | After ClimateTile |
+| Vehicle controls | [vehicle-controls.md](vehicle-controls.md) | Later (VehicleQuickControls planned) |
 | OEM extensions | [extension-model.md](extension-model.md) | Continuous |
 
 ## Dual-stack contract template

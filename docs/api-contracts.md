@@ -40,10 +40,12 @@ See [build-tree](adoption/build-tree.md).
 
 Views Theme Kit types: `dev.decoupled.cabin.views.theme.CabinThemes`,
 `…CabinThemeResolver`. Views chrome: `…CabinSystemBarView`,
-`…CabinStatusBarView` (Alpha).
+`…CabinStatusBarView` (Alpha). Domain: `…CabinClimateTileView`,
+`…CabinMediaNowPlayingView` (Alpha).
 
 Compose Theme + bars (Experimental): `dev.decoupled.cabin.compose.theme.CabinTheme`,
-`…CabinSystemBar`, `…CabinStatusBar`.
+`…CabinSystemBar`, `…CabinStatusBar`. Domain (Experimental): `…CabinClimateTile`,
+`…CabinMediaNowPlaying`.
 
 ## Stability
 
@@ -72,12 +74,13 @@ cabin-tokens
      ▲
 cabin-compliance
      ▲
-cabin-views     cabin-compose   (Views Alpha bars; Compose Experimental bars)
+cabin-views     cabin-compose   (Views Alpha bars + ClimateTile/MediaNowPlaying;
+                                 Compose Experimental parity)
 ```
 
-Theme Kit Alpha in `cabin-views` depends on **tokens only**; bars also wire
-`cabin-compliance`. Compose Theme + bars depend on tokens + compliance and
-must not depend on `cabin-views`.
+Theme Kit Alpha in `cabin-views` depends on **tokens only**; bars and domain
+tiles also wire `cabin-compliance`. Compose Theme + components depend on tokens
++ compliance and must not depend on `cabin-views`.
 
 - Tokens & compliance: **no** UI toolkit deps
 - Views ⊀ Compose and Compose ⊀ Views

@@ -133,6 +133,19 @@
         "height": { "value": "48", "type": "sizing", "unit": "dp" },
         "iconSize": { "$ref": "#/cabin/size/icon/status" },
         "itemGap": { "$ref": "#/cabin/space/sm" }
+      },
+      "climateTile": {
+        "controlMinSize": { "$ref": "#/cabin/size/touch/minimum" },
+        "gap": { "$ref": "#/cabin/space/sm" },
+        "padding": { "$ref": "#/cabin/space/md" },
+        "cornerRadius": { "value": "8", "type": "borderRadius", "unit": "dp" }
+      },
+      "mediaNowPlaying": {
+        "artworkSize": { "value": "120", "type": "sizing", "unit": "dp" },
+        "transportMinSize": { "$ref": "#/cabin/size/touch/minimum" },
+        "gap": { "$ref": "#/cabin/space/md" },
+        "padding": { "$ref": "#/cabin/space/md" },
+        "cornerRadius": { "value": "8", "type": "borderRadius", "unit": "dp" }
       }
     }
   }

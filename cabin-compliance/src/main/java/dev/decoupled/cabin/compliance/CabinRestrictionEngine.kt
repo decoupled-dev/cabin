@@ -6,11 +6,16 @@ import dev.decoupled.cabin.tokens.CabinTokens
  * Default Cabin Restriction Engine for System Bar and Status Bar interaction
  * categories per docs/compliance/restriction-states.md.
  *
- * Policy notes (MVP Alpha):
+ * Policy notes (MVP Alpha + Layer 2 domain gates):
  * - [CabinUiMode.Unknown] is evaluated with the **Restricted** matrix
  *   (fail-safe for complex chrome entry).
  * - Restricted + [CabinInteraction.HvacPeek] defaults to [GateDisposition.Allow]
  *   for a limited climate peek; programs may tighten to Substitute.
+ * - [CabinInteraction.HvacAdjust] (ClimateTile) is **Block** while Moving /
+ *   Restricted / Unknown (fail-closed); Parked / Idling Allow.
+ * - [CabinInteraction.MediaComplex] is Block while Moving / Restricted /
+ *   Unknown; Idling Substitute; Parked Allow. [CabinInteraction.MediaTransport]
+ *   stays Allow.
  */
 class CabinRestrictionEngine(
     private val treatUnknownAs: CabinUiMode = CabinUiMode.Restricted,
@@ -83,6 +88,25 @@ class CabinRestrictionEngine(
             CabinInteraction.MediaTransport,
             CabinInteraction.HvacPeek,
             -> GateDisposition.Allow
+
+            CabinInteraction.HvacAdjust -> when (mode) {
+                CabinUiMode.Parked,
+                CabinUiMode.Idling,
+                -> GateDisposition.Allow
+                CabinUiMode.Moving,
+                CabinUiMode.Restricted,
+                CabinUiMode.Unknown,
+                -> GateDisposition.Block
+            }
+
+            CabinInteraction.MediaComplex -> when (mode) {
+                CabinUiMode.Parked -> GateDisposition.Allow
+                CabinUiMode.Idling -> GateDisposition.Substitute
+                CabinUiMode.Moving,
+                CabinUiMode.Restricted,
+                CabinUiMode.Unknown,
+                -> GateDisposition.Block
+            }
 
             CabinInteraction.OpenComplexApp -> when (mode) {
                 CabinUiMode.Parked -> GateDisposition.Allow

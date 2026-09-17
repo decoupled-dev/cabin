@@ -33,12 +33,13 @@ unit tests and Views chrome verification. Compose bar parity is
   [ADR 0003](adr/0003-tokens-via-overlay-rro.md))
 - No AppCompat/Material required in the Theme Kit module graph for resolution
 
-### Views System Bar / Status Bar
+### Views System Bar / Status Bar / ClimateTile / MediaNowPlaying
 
-- Instrumentation or Robolectric: slot/item binding
-- Gated clicks do not fire when Block
-- Content descriptions set on icon-only entries
-- Signal unavailable / stale / fault rendering for status items
+- Instrumentation or Robolectric: slot/item binding; ClimateTile / MediaNowPlaying bind
+- Gated clicks do not fire when Block (`HvacAdjust`, `MediaComplex`, chrome)
+- Content descriptions set on icon-only entries / transport
+- Signal unavailable / stale / fault rendering for status items and domain tiles
+- Media progress omitted when position/duration Signals are not live (no fake telemetry)
 - Theme overlay / RRO smoke (manual or automated) without forking widgets
   (Theme Kit overlay tests cover the brand path ahead of bar widgets)
 
@@ -54,7 +55,7 @@ unit tests and Views chrome verification. Compose bar parity is
 
 | Area | Expectation |
 | --- | --- |
-| Compose System/Status bars | **Experimental** — gate / Signal / tone parity tests in `cabin-compose` (shipped); screenshot/golden later |
+| Compose System/Status bars + ClimateTile / MediaNowPlaying | **Experimental** — gate / Signal / tone / honest-media parity tests in `cabin-compose` (shipped); screenshot/golden later |
 | Screenshot / golden | Paparazzi (or equiv.) for Views; Compose parity screenshots |
 | Dual-stack parity | Shared fixtures for System/Status bar state |
 | Catalog | Thin sample tests in `catalog/` (fixtures + packaging guard); visual QA later |
