@@ -34,6 +34,8 @@ Notes:
 | `FilterOrSort` | Dense collection controls |
 | `MediaTransport` | Play/pause peek (if slotted into system bar) |
 | `HvacPeek` | Climate shortcut (if slotted) |
+| `HvacAdjust` | ClimateTile temp / fan / seat-heat adjustments |
+| `MediaComplex` | Now-playing source picker, scrub/seek, queue entry |
 | `StatusDeepLink` | Tap status item → detail / settings |
 
 ## Allow matrix — System Bar & Status Bar
@@ -48,6 +50,8 @@ Legend: **A** = allow · **S** = substitute/disable (keep layout if possible) ·
 | `NavigateSimple` | A | A | A | A |
 | `MediaTransport` | A | A | A | A |
 | `HvacPeek` | A | A | A | A / S¹ |
+| `HvacAdjust` (ClimateTile) | A | A | B | B |
+| `MediaComplex` | A | S | B | B |
 | `OpenComplexApp` | A | S | B | B |
 | `OpenKeyboard` | A | B | B | B |
 | `FilterOrSort` | A | B | B | B |
@@ -81,6 +85,8 @@ enum class CabinInteraction {
     FilterOrSort,
     MediaTransport,
     HvacPeek,
+    HvacAdjust,
+    MediaComplex,
     StatusDeepLink,
 }
 

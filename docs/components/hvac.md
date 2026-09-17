@@ -9,18 +9,19 @@ vent, and visibility-critical actions (defrost).
 - Clear zone ownership (driver / passenger / rear).
 - Keep defrost and visibility actions available and obvious.
 
-## Component set (planned)
+## Component set
 
-| Component | Role | Safety class |
-| --- | --- | --- |
-| `HvacZonePanel` | Temp + fan for a zone | Convenience |
-| `HvacTempStepper` | Large ± temperature | Convenience |
-| `HvacFanControl` | Fan level / auto | Convenience |
-| `HvacModeSelector` | Face / foot / bi-level / etc. | Convenience |
-| `HvacSeatClimate` | Heat / vent levels | Convenience |
-| `HvacDefrostControls` | Front/rear defrost | **Safety-critical** (visibility) |
-| `HvacSyncToggle` | Sync zones | Convenience |
-| `HvacPeek` | System bar shortcut | Convenience |
+| Component | Role | Safety class | Status |
+| --- | --- | --- | --- |
+| `ClimateTile` | Zone temp / fan / seat heat | Convenience | **Alpha** Views · **Experimental** Compose — [spec](specs/climate-tile.md) |
+| `HvacZonePanel` | Temp + fan for a zone | Convenience | Planned |
+| `HvacTempStepper` | Large ± temperature | Convenience | Planned (folded into ClimateTile for now) |
+| `HvacFanControl` | Fan level / auto | Convenience | Planned (folded into ClimateTile for now) |
+| `HvacModeSelector` | Face / foot / bi-level / etc. | Convenience | Planned |
+| `HvacSeatClimate` | Heat / vent levels | Convenience | Planned (folded into ClimateTile for now) |
+| `HvacDefrostControls` | Front/rear defrost | **Safety-critical** (visibility) | Planned |
+| `HvacSyncToggle` | Sync zones | Convenience | Planned |
+| `HvacPeek` | System bar shortcut | Convenience | Alpha (System Bar slot) |
 
 ## States
 
@@ -35,7 +36,7 @@ vent, and visibility-critical actions (defrost).
 
 | Concern | Rule |
 | --- | --- |
-| Driving | Stepper and toggles allowed; deep HVAC settings may be limited ([driving](../compliance/driving-restrictions.md)) |
+| Driving | `HvacAdjust` on ClimateTile is **Block** while Moving / Restricted / Unknown (fail-closed). System bar `HvacPeek` stays limited Allow ([restriction-states](../compliance/restriction-states.md)) |
 | UX | Large steppers; generous spacing ([ux](../compliance/ux-restrictions.md)) |
 | Safety | Defrost always reachable; not behind setup ([safety](../compliance/safety-critical.md)) |
 | Glance | Numeric temp tabular; zone labels short |
@@ -43,11 +44,31 @@ vent, and visibility-critical actions (defrost).
 ## Token dependencies
 
 - `cabin.color.semantic.climate`
-- `cabin.component.hvac.zone.gap`
-- `cabin.component.hvac.stepper.minSize`
+- `cabin.component.climateTile.*`
 - Touch minima tokens
 
-## Planned Compose API
+## Compose API (Experimental — ClimateTile)
+
+```kotlin
+@Composable
+fun CabinClimateTile(
+    state: CabinClimateTileState,
+    onAction: (CabinClimateTileAction) -> Unit,
+    modifier: Modifier = Modifier,
+)
+```
+
+## Views API (Alpha — ClimateTile)
+
+```kotlin
+class CabinClimateTileView : /* … */ {
+    fun bind(state: CabinClimateTileState)
+    fun setOnActionListener(listener: ((CabinClimateTileAction) -> Unit)?)
+    fun setCompliance(host: CabinComplianceHost?)
+}
+```
+
+## Planned (later)
 
 ```kotlin
 // Planned
@@ -66,31 +87,22 @@ fun HvacDefrostControls(
 )
 ```
 
-## Planned Views API
-
-```xml
-<!-- Planned -->
-<dev.decoupled.cabin.views.hvac.HvacZonePanelView
-    android:layout_width="0dp"
-    android:layout_weight="1"
-    android:layout_height="match_parent" />
-```
-
 ## Parity notes
 
-Zone models and defrost latched states must match. Animation of temp changes
-should respect driving motion budgets on both stacks.
+Zone models and ClimateTile Signal honesty must match across stacks. Animation
+of temp changes should respect driving motion budgets on both stacks.
 
 ## Acceptance criteria
 
-- [ ] Defrost classified and always available
-- [ ] Zone panels meet touch minima
-- [ ] Unavailable zone signals handled
-- [ ] Sync behavior documented
-- [ ] Compose/Views parity for temp/fan/defrost
+- [x] ClimateTile dual-stack with RE fail-closed while Moving
+- [x] Unavailable zone signals handled (no invented values)
+- [ ] Defrost classified and always available (later)
+- [ ] Sync behavior documented (later)
+- [x] Compose/Views parity for temp/fan/seat heat
 
 ## Related
 
+- [ClimateTile spec](specs/climate-tile.md)
 - [System bars](system-bars.md) (HVAC peek)
 - [Vehicle controls](vehicle-controls.md)
 - [Safety-critical](../compliance/safety-critical.md)

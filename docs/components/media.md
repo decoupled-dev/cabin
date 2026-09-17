@@ -9,16 +9,16 @@ controls, and queue management under driving restrictions.
 - Provide restriction-aware browse/search substitutes.
 - Keep parity for Compose media apps and View-based OEM skins.
 
-## Component set (planned)
+## Component set
 
-| Component | Role | Safety class |
-| --- | --- | --- |
-| `MediaNowPlaying` | Title, artist, art, progress | Convenience |
-| `MediaTransport` | Play/pause, next, previous | Convenience |
-| `MediaBrowseList` | Hierarchy browse | Convenience (restricted) |
-| `MediaQueue` | Upcoming tracks | Convenience (restricted) |
-| `MediaMiniPlayer` | Chrome / system bar peek | Convenience |
-| `MediaErrorBanner` | Source errors | Informational / warning |
+| Component | Role | Safety class | Status |
+| --- | --- | --- | --- |
+| `MediaNowPlaying` | Title, artist, art, progress, transport, source | Convenience | **Alpha** Views · **Experimental** Compose — [spec](specs/media-now-playing.md) |
+| `MediaTransport` | Play/pause, next, previous | Convenience | Included in MediaNowPlaying |
+| `MediaBrowseList` | Hierarchy browse | Convenience (restricted) | Planned |
+| `MediaQueue` | Upcoming tracks | Convenience (restricted) | Planned |
+| `MediaMiniPlayer` | Chrome / system bar peek | Convenience | Planned |
+| `MediaErrorBanner` | Source errors | Informational / warning | Planned |
 
 ## States
 
@@ -31,29 +31,43 @@ controls, and queue management under driving restrictions.
 
 | Concern | Rule |
 | --- | --- |
-| Driving | Prefer transport + now-playing; limit browse complexity ([driving](../compliance/driving-restrictions.md)) |
+| Driving | Transport via `MediaTransport` (Allow). Source / scrub via `MediaComplex` (Block while Moving). Prefer transport + now-playing; limit browse complexity ([restriction-states](../compliance/restriction-states.md)) |
 | UX | Transport buttons ≥ touch minimum ([ux](../compliance/ux-restrictions.md)) |
 | Glance | Title one line; secondary artist recessed ([a11y](../compliance/accessibility-glanceability.md)) |
 | Motion | Progress updates without layout thrash; reduce decorative viz while driving |
+| Honesty | Position / duration only from live `Signal.Value` — **no fake telemetry** |
 
 ## Token dependencies
 
-- `cabin.component.media.transport.size`
-- `cabin.component.media.artwork.size`
+- `cabin.component.mediaNowPlaying.*`
 - `cabin.color.semantic.mediaAccent`
 - Type roles `title`, `body`, `label`
 
-## Planned Compose API
+## Compose API (Experimental — MediaNowPlaying)
+
+```kotlin
+@Composable
+fun CabinMediaNowPlaying(
+    state: CabinMediaNowPlayingState,
+    onAction: (CabinMediaNowPlayingAction) -> Unit,
+    modifier: Modifier = Modifier,
+)
+```
+
+## Views API (Alpha — MediaNowPlaying)
+
+```kotlin
+class CabinMediaNowPlayingView : /* … */ {
+    fun bind(state: CabinMediaNowPlayingState)
+    fun setOnActionListener(listener: ((CabinMediaNowPlayingAction) -> Unit)?)
+    fun setCompliance(host: CabinComplianceHost?)
+}
+```
+
+## Planned (later)
 
 ```kotlin
 // Planned
-@Composable
-fun MediaNowPlaying(
-    state: MediaUiState,
-    onAction: (MediaAction) -> Unit,
-    modifier: Modifier = Modifier,
-)
-
 @Composable
 fun MediaTransport(
     isPlaying: Boolean,
@@ -64,38 +78,23 @@ fun MediaTransport(
 )
 ```
 
-## Planned Views API
-
-```xml
-<!-- Planned -->
-<dev.decoupled.cabin.views.media.MediaNowPlayingView
-    android:id="@+id/nowPlaying"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" />
-```
-
-```kotlin
-// Planned
-mediaNowPlayingView.bind(MediaUiState(/* … */))
-mediaNowPlayingView.setOnMediaActionListener { action -> /* … */ }
-```
-
 ## Parity notes
 
-`MediaUiState` and `MediaAction` are shared models in a non-UI module or
-duplicated as identical contracts — implementations must accept the same state
-fixture and emit the same actions.
+`CabinMediaNowPlayingState` and `CabinMediaNowPlayingAction` are identical
+contracts on Compose and Views. Shared fixtures must emit the same actions.
 
 ## Acceptance criteria
 
-- [ ] Transport usable while driving
-- [ ] Browse has driving substitute
-- [ ] Error/no-source states specified
-- [ ] Artwork fallback stable
-- [ ] Compose/Views parity for transport + now-playing
+- [x] Transport usable while driving
+- [x] Complex source gated while Moving (fail-closed missing host)
+- [x] Error/no-source / unavailable progress specified — no invented numbers
+- [x] Artwork fallback stable
+- [x] Compose/Views parity for transport + now-playing
+- [ ] Browse driving substitute (later)
 
 ## Related
 
+- [MediaNowPlaying spec](specs/media-now-playing.md)
 - [Components inventory](README.md)
 - [Driving restrictions](../compliance/driving-restrictions.md)
 - [System bars](system-bars.md) (mini player slot)

@@ -28,6 +28,16 @@ enum class CabinInteraction {
     MediaTransport,
     HvacPeek,
     /**
+     * ClimateTile temp / fan / seat-heat adjustments (full tile, not bar peek).
+     * Fail-closed while Moving / Restricted / Unknown.
+     */
+    HvacAdjust,
+    /**
+     * Complex media interactions from now-playing: source picker, scrub/seek,
+     * queue / browse entry. Transport remains [MediaTransport].
+     */
+    MediaComplex,
+    /**
      * Status bar deep link to informational detail
      * (`StatusDeepLink → informational` in restriction-states.md).
      */

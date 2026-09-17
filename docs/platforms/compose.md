@@ -21,7 +21,7 @@ dev.decoupled.cabin:cabin-compose:<version>
 
 | Path | Identifier | Status |
 | --- | --- | --- |
-| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-compose` | **Experimental** (Theme + System/Status bars) |
+| Maven (Gradle apps) | `dev.decoupled.cabin:cabin-compose` | **Experimental** (Theme + System/Status bars + ClimateTile + MediaNowPlaying) |
 | Soong | `CabinCompose` | Alpha scaffolding — **do not** link from SystemUI |
 
 Depends on `cabin-tokens` and `cabin-compliance` ([architecture](../architecture.md)).
@@ -66,6 +66,31 @@ fun CabinStatusBar(items: List<CabinStatusItem>, modifier: Modifier = Modifier)
 Package: `dev.decoupled.cabin.compose`. Same Restriction Engine gates, Signal
 exhaustiveness, and tone roles as Views — API shape differs (`Composable` vs
 `View`).
+
+## ClimateTile + MediaNowPlaying (Experimental)
+
+Automotive domain components ([climate-tile](../components/specs/climate-tile.md),
+[media-now-playing](../components/specs/media-now-playing.md)):
+
+```kotlin
+@Composable
+fun CabinClimateTile(
+    state: CabinClimateTileState,
+    onAction: (CabinClimateTileAction) -> Unit,
+    modifier: Modifier = Modifier,
+)
+
+@Composable
+fun CabinMediaNowPlaying(
+    state: CabinMediaNowPlayingState,
+    onAction: (CabinMediaNowPlayingAction) -> Unit,
+    modifier: Modifier = Modifier,
+)
+```
+
+`HvacAdjust` Block while Moving; `MediaComplex` Block while Moving; transport
+stays `MediaTransport` Allow. Honest `Signal` — no invented climate or media
+numbers. Missing compliance local is fail-closed.
 
 ## Implementation guidelines
 

@@ -15,7 +15,7 @@ Thin sample catalog lives under [`catalog/`](catalog/README.md) (not a product d
 2. [MVP v0.1](docs/mvp.md)
 3. [Token schema](docs/design-language/token-schema.md) · [tokens/cabin.tokens.json](tokens/cabin.tokens.json)
 4. [Restriction states](docs/compliance/restriction-states.md)
-5. [Theme Kit](docs/adoption/theme-kit.md) · [System Bar spec](docs/components/specs/system-bar.md) · [Status Bar spec](docs/components/specs/status-bar.md)
+5. [Theme Kit](docs/adoption/theme-kit.md) · [System Bar spec](docs/components/specs/system-bar.md) · [Status Bar spec](docs/components/specs/status-bar.md) · [ClimateTile](docs/components/specs/climate-tile.md) · [MediaNowPlaying](docs/components/specs/media-now-playing.md)
 6. [API contracts](docs/api-contracts.md) · [ADRs](docs/adr/README.md)
 ### Implementers (library / app code — future)
 
