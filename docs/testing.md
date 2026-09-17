@@ -52,16 +52,11 @@ unit tests and Views chrome verification. Compose bar parity is
 ### Packaging / thin deps
 
 - Gradle module dependency tests (or lint) ensuring Views ⊀ Compose
-<<<<<<< HEAD
 - Soong thin-deps guard: `python3 tools/check_soong_thin_deps.py`
   (no `CabinCompose` / catalog in SystemUI-shaped sketch; no catalog bp)
 - Document Soong `static_libs` review against
   [systemui-cabin sketch](adoption/sketches/systemui-cabin/)
-=======
-- Document Soong `static_libs` review for SystemUI sample wiring
-  (no `CabinCompose`)
 - `cabin-*` must not depend on `catalog/` / `apps/www` / `website/`
->>>>>>> c98a668 (feat(views,compose): Button/IconButton + ListItem primitives)
 
 ## Later (post-MVP)
 
@@ -78,13 +73,8 @@ unit tests and Views chrome verification. Compose bar parity is
 
 | Lane | v0.1 |
 | --- | --- |
-<<<<<<< HEAD
-| **Gradle CI** (GitHub/etc.) | Unit tests for compliance + tokens + Theme Kit / Views bars (`cabin-views`) + Experimental Compose bars (`cabin-compose`); `tools/check_soong_thin_deps.py`; lint/format as added |
+| **Gradle CI** (GitHub/etc.) | Unit tests for compliance + tokens + Theme Kit / Views bars + Button/ListItem (`cabin-views`) + Experimental Compose bars + Button/ListItem (`cabin-compose`); `tools/check_soong_thin_deps.py`; lint/format as added |
 | **Platform / Soong** | Manual or partner tree verification that `Cabin*` modules build and SystemUI-shaped target links thinly ([sketch](adoption/sketches/systemui-cabin/)); full AAOS image CI is partner-owned |
-=======
-| **Gradle CI** (GitHub/etc.) | Unit tests for compliance + tokens + Theme Kit / Views bars + Button/ListItem (`cabin-views`) + Experimental Compose bars + Button/ListItem (`cabin-compose`); lint/format as added |
-| **Platform / Soong** | Manual or partner tree verification that `Cabin*` modules build and SystemUI-shaped target links thinly; full AAOS image CI is partner-owned |
->>>>>>> c98a668 (feat(views,compose): Button/IconButton + ListItem primitives)
 
 Cabin does not require hosting a full AAOS tree in this repo for MVP.
 
