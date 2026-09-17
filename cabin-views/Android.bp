@@ -1,5 +1,4 @@
-// CabinViews — Theme Kit + System/Status bars (Alpha); upcoming Views
-// primitives (Button, ListItem, …) stay in this same Soong module.
+// CabinViews — Theme Kit + System/Status bars + Button/IconButton/ListItem (Alpha).
 // Same sources as the Gradle module (:cabin-views).
 // See docs/adoption/build-tree.md · ADR 0001 / 0002 · docs/api-contracts.md.
 //

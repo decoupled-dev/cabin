@@ -168,12 +168,6 @@ private fun SystemBarEntry(
     }
 }
 
-internal fun gateAlpha(disposition: GateDisposition): Float = when (disposition) {
-    GateDisposition.Allow -> 1f
-    GateDisposition.Substitute -> 0.55f
-    GateDisposition.Block -> 0.4f
-}
-
 /** Slotted System Bar configuration (OEM-extensible without core forks). */
 @Immutable
 data class CabinSystemBarSlots(

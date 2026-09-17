@@ -21,6 +21,7 @@
     <dimen name="cabin_size_touch_minimum">76dp</dimen>
     <dimen name="cabin_size_icon_status">24dp</dimen>
     <dimen name="cabin_size_icon_systemBar">28dp</dimen>
+    <dimen name="cabin_size_icon_action">28dp</dimen>
     <dimen name="cabin_elevation_level0">0dp</dimen>
     <dimen name="cabin_elevation_level1">1dp</dimen>
     <dimen name="cabin_elevation_level2">3dp</dimen>
@@ -31,4 +32,18 @@
     <dimen name="cabin_component_status_bar_height">48dp</dimen>
     <dimen name="cabin_component_status_bar_iconSize">24dp</dimen>
     <dimen name="cabin_component_status_bar_itemGap">8dp</dimen>
+    <dimen name="cabin_component_button_minHeight">76dp</dimen>
+    <dimen name="cabin_component_button_horizontalPadding">16dp</dimen>
+    <dimen name="cabin_component_button_iconSize">28dp</dimen>
+    <dimen name="cabin_component_button_gap">8dp</dimen>
+    <dimen name="cabin_component_button_cornerRadius">8dp</dimen>
+    <dimen name="cabin_component_icon_button_minSize">76dp</dimen>
+    <dimen name="cabin_component_icon_button_iconSize">28dp</dimen>
+    <dimen name="cabin_component_icon_button_cornerRadius">8dp</dimen>
+    <dimen name="cabin_component_list_item_minHeight">76dp</dimen>
+    <dimen name="cabin_component_list_item_horizontalPadding">16dp</dimen>
+    <dimen name="cabin_component_list_item_verticalPadding">8dp</dimen>
+    <dimen name="cabin_component_list_item_gap">16dp</dimen>
+    <dimen name="cabin_component_list_item_iconSize">28dp</dimen>
+    <dimen name="cabin_component_list_item_dividerInset">16dp</dimen>
 </resources>

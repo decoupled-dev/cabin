@@ -33,7 +33,8 @@ android {
 }
 
 dependencies {
-    // Compose System/Status bars: tokens + Restriction Engine only (no cabin-views).
+    // Compose Theme + bars + Button/ListItem: tokens + Restriction Engine only
+    // (no cabin-views).
     api(project(":cabin-tokens"))
     api(project(":cabin-compliance"))
 
