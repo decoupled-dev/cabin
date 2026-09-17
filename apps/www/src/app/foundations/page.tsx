@@ -11,7 +11,6 @@ import { TokenExplorer } from "@/components/token-explorer";
 import { DOCS_URL } from "@/lib/site";
 import {
   DOCS_FOUNDATIONS,
-  DOCS_TOKEN_CODEGEN,
   DOCS_TOKENS,
   FOUNDATIONS_NAV,
 } from "@/lib/tokens";
@@ -232,12 +231,8 @@ export default function FoundationsPage() {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <ButtonLink
-                href={`${DOCS_URL}${DOCS_TOKEN_CODEGEN}`}
-                variant="secondary"
-                external
-              >
-                Token codegen
+              <ButtonLink href="/components" variant="secondary">
+                Components gallery
               </ButtonLink>
               <ButtonLink href={`${DOCS_URL}${DOCS_FOUNDATIONS}`} external>
                 Read foundations docs

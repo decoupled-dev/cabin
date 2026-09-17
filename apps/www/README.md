@@ -17,9 +17,9 @@ This package has **zero** dependency on Android `cabin-tokens` /
 
 - `/` — Home hero + pillars
 - `/foundations` — Foundations gallery + live token explorer (codegen CSS)
+- `/components` — Components gallery: System/Status bars, ClimateTile, MediaNowPlaying
 - `/compliance` — Safety-by-default story
 - `/develop` — Get started → docs
-- `/components` — Planned components teaser (no interactive catalog)
 
 ## Local development
 

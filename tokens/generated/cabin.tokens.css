@@ -68,6 +68,15 @@
   --cabin-component-status-bar-height: 48px;
   --cabin-component-status-bar-icon-size: 24px;
   --cabin-component-status-bar-item-gap: 8px;
+  --cabin-component-climate-tile-control-min-size: 76px;
+  --cabin-component-climate-tile-gap: 8px;
+  --cabin-component-climate-tile-padding: 16px;
+  --cabin-component-climate-tile-corner-radius: 8px;
+  --cabin-component-media-now-playing-artwork-size: 120px;
+  --cabin-component-media-now-playing-transport-min-size: 76px;
+  --cabin-component-media-now-playing-gap: 16px;
+  --cabin-component-media-now-playing-padding: 16px;
+  --cabin-component-media-now-playing-corner-radius: 8px;
 }
 
 /* Night scheme (default) — locked warning / error / charging contrast */
