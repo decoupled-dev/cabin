@@ -288,7 +288,7 @@ function ArtWell({ available }: { available: boolean }) {
         height: "var(--cabin-component-media-now-playing-artwork-size)",
         borderRadius: "var(--cabin-component-media-now-playing-corner-radius)",
         background: available
-          ? "color-mix(in srgb, var(--surface-variant) 78%, var(--primary))"
+          ? "color-mix(in srgb, var(--surface-variant) 70%, var(--primary))"
           : "var(--surface-variant)",
       }}
       role="img"
@@ -296,28 +296,33 @@ function ArtWell({ available }: { available: boolean }) {
     >
       {available ? (
         <div className="absolute inset-0" aria-hidden>
+          {/* Abstract album field — surface/primary mixes only; not a mediaAccent wash */}
           <div
-            className="absolute inset-0 opacity-40"
+            className="absolute inset-0"
             style={{
               background:
-                "radial-gradient(ellipse at 30% 28%, color-mix(in srgb, var(--on-surface) 18%, transparent), transparent 55%)",
+                "radial-gradient(circle at 32% 30%, color-mix(in srgb, var(--on-surface) 22%, transparent) 0%, transparent 42%), radial-gradient(circle at 78% 72%, color-mix(in srgb, var(--primary) 28%, transparent) 0%, transparent 48%), linear-gradient(145deg, color-mix(in srgb, var(--surface-high) 55%, transparent), transparent 60%)",
             }}
           />
           <div
-            className="absolute bottom-0 left-0 right-0 h-1/3"
+            className="absolute inset-x-0 bottom-0 flex items-end justify-between px-2.5 pb-2 pt-6"
             style={{
               background:
-                "linear-gradient(to top, color-mix(in srgb, var(--surface) 55%, transparent), transparent)",
+                "linear-gradient(to top, color-mix(in srgb, var(--surface) 72%, transparent), transparent)",
             }}
-          />
-          <span
-            className="absolute left-2.5 top-2.5 bg-[var(--media)]"
-            style={{
-              width: "var(--cabin-space-xs)",
-              height: "var(--cabin-space-md)",
-            }}
-            data-testid="media-art-accent-mark"
-          />
+          >
+            <span
+              className="bg-[var(--media)]"
+              style={{
+                width: "var(--cabin-space-xs)",
+                height: "var(--cabin-space-md)",
+              }}
+              data-testid="media-art-accent-mark"
+            />
+            <span className="text-[0.625rem] font-semibold uppercase tracking-[0.14em] text-on-surface/70">
+              Cabin
+            </span>
+          </div>
         </div>
       ) : (
         <ArtworkWellMark className="relative h-10 w-10 text-on-surface-variant" />
