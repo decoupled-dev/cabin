@@ -1,8 +1,8 @@
 package dev.decoupled.cabin.compose
 
-import androidx.compose.ui.test.assertDoesNotExist
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onAllNodesWithTag
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -90,7 +90,10 @@ class CabinMediaNowPlayingTest {
             }
         }
 
-        composeRule.onNodeWithTag("media_progress").assertDoesNotExist()
+        assertEquals(
+            0,
+            composeRule.onAllNodesWithTag("media_progress").fetchSemanticsNodes().size,
+        )
         assertNull(liveProgressText(Signal.Unavailable, Signal.Unavailable))
     }
 

@@ -89,7 +89,8 @@ class CabinClimateTileTest {
         }
 
         composeRule.onNodeWithTag("climate_temp_value").assertIsDisplayed()
-        composeRule.onNodeWithText("—").assertIsDisplayed()
+        composeRule.onNodeWithTag("climate_fan_value").assertIsDisplayed()
+        composeRule.onNodeWithTag("climate_seat_value").assertIsDisplayed()
         assertEquals("—", formatTemp(Signal.Unavailable))
         assertEquals("—", formatLevel(Signal.Unavailable, 5))
     }
