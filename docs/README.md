@@ -91,6 +91,7 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | [SystemUI wiring sketch](adoption/sketches/systemui-cabin/) | Thin `static_libs` fragment for host SystemUI |
 | [Migration](adoption/migration.md) | From stock Material / AAOS widgets |
 | [Packaging](adoption/packaging.md) | Maven vs Soong dual distribution, minimal footprint |
+| [v0.1.0 release readiness](release/v0.1.0.md) | Library install path, CI gates, tag blockers |
 
 ### Agents
 

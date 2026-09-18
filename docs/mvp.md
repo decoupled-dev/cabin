@@ -56,6 +56,15 @@ required to call MVP done — Views-first is the gate
 ([ADR 0002](adr/0002-views-first-platform.md)). Experimental Compose Theme +
 bars live in `cabin-compose` (post-MVP track).
 
+
+## v0.1.0 library release track (note)
+
+The frozen table above remains the MVP **core**. On `main`, thin **ClimateTile** and
+**MediaNowPlaying** Alpha tiles also ship in `cabin-views` / `cabin-compose` as an
+early Layer-2 slice (not full HVAC/Media screens). Release readiness:
+[release/v0.1.0.md](release/v0.1.0.md). Do not treat this as permission to add further
+domain packs without an explicit scope change.
+
 ## After MVP
 
 Unblock Layer 2 domain screens and fuller Compose kit per
