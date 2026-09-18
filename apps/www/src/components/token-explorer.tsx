@@ -8,6 +8,7 @@ import {
   type TokenEntry,
 } from "@/lib/tokens";
 import { useCssVar } from "@/lib/use-css-var";
+import { SegmentedControl } from "@/components/segmented-control";
 
 type ExplorerTab = "scheme" | "semantic" | "domain";
 
@@ -44,20 +45,20 @@ function ColorSwatch({ token }: { token: TokenEntry }) {
   const resolved = useCssVar(token.cssVar);
 
   return (
-    <li className="group flex flex-col">
+    <li className="flex flex-col border-b border-r border-[var(--outline-subtle)] p-4">
       <div
-        className="relative h-16 w-full overflow-hidden rounded-md border border-[var(--outline-subtle)] transition-[border-color] duration-200 ease-cabin group-hover:border-outline"
+        className="relative h-20 w-full overflow-hidden border border-[var(--outline-subtle)]"
         style={{ background: `var(${token.cssVar})` }}
         role="img"
         aria-label={`${token.name} swatch`}
       >
         {token.locked ? (
-          <span className="absolute bottom-2 left-2 rounded-sm bg-[var(--scrim)] px-1.5 py-0.5 text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-on-surface">
+          <span className="absolute bottom-2 left-2 bg-[var(--scrim)] px-1.5 py-0.5 text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-on-surface">
             Locked
           </span>
         ) : null}
       </div>
-      <div className="mt-2.5 flex flex-col gap-0.5">
+      <div className="mt-3 flex flex-col gap-0.5">
         <div className="flex items-baseline justify-between gap-2">
           <p className="text-label text-on-surface">{token.name}</p>
           {token.locked ? (
@@ -93,43 +94,26 @@ export function TokenExplorer() {
   const activeHint = TABS.find((t) => t.id === tab)?.hint ?? "";
 
   return (
-    <div className="rounded-lg border border-[var(--outline-subtle)] bg-surface">
-      <div className="border-b border-[var(--outline-subtle)] px-5 py-4 sm:px-6">
-        <h3 className="font-display text-title text-on-surface">
-          Token explorer
-        </h3>
-        <p className="mt-1 max-w-xl text-status text-on-surface-variant">
-          {activeHint}. Use Night / Day in the header to flip schemes.
-        </p>
-      </div>
-
-      <div className="border-b border-[var(--outline-subtle)] px-5 sm:px-6">
-        <div
-          className="flex gap-1 overflow-x-auto py-3"
-          role="tablist"
-          aria-label="Token groups"
-        >
-          {TABS.map((t) => (
-            <button
-              key={t.id}
-              type="button"
-              role="tab"
-              aria-selected={tab === t.id}
-              onClick={() => setTab(t.id)}
-              className={`shrink-0 rounded-md px-3 py-2 text-status transition-colors duration-200 ease-cabin ${
-                tab === t.id
-                  ? "bg-primary text-on-primary"
-                  : "text-on-surface-variant hover:bg-[var(--surface-high)] hover:text-on-surface"
-              }`}
-            >
-              {t.label}
-            </button>
-          ))}
+    <div className="instrument-well">
+      <div className="flex flex-col gap-4 border-b border-[var(--outline-subtle)] px-5 py-5 sm:flex-row sm:items-end sm:justify-between sm:px-6">
+        <div>
+          <h3 className="font-display text-title text-on-surface">
+            Token explorer
+          </h3>
+          <p className="mt-1 max-w-xl text-status text-on-surface-variant">
+            {activeHint}. Use Night / Day in the header to flip schemes.
+          </p>
         </div>
+        <SegmentedControl
+          ariaLabel="Token groups"
+          value={tab}
+          onChange={setTab}
+          options={TABS.map((t) => ({ id: t.id, label: t.label }))}
+        />
       </div>
 
       <ul
-        className="grid gap-5 p-5 sm:grid-cols-2 sm:p-6 lg:grid-cols-3 xl:grid-cols-4"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         role="tabpanel"
       >
         {tokens.map((token) => (

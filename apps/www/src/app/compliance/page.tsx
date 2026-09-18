@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/button-link";
 import { Reveal } from "@/components/reveal";
+import { InstrumentWell } from "@/components/instrument-frame";
+import { PageFrame, SectionHeading } from "@/components/site-chrome";
 import { DOCS_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -31,14 +33,14 @@ const layers = [
 export default function CompliancePage() {
   return (
     <div className="bg-background">
-      <div className="mx-auto max-w-6xl px-5 pb-24 pt-16 sm:px-8 sm:pt-24">
+      <PageFrame className="pb-24 pt-14 sm:pt-20">
         <Reveal>
-          <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
-            Compliance
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-display text-on-surface text-balance">
-            Safe by default
-          </h1>
+          <SectionHeading
+            as="h1"
+            size="display"
+            kicker="Compliance"
+            title="Safe by default"
+          />
           <p className="mt-5 max-w-2xl text-body text-on-surface-variant text-balance">
             Compliance is design material — a first-class Restriction Engine
             consumed by Compose and Views. Programs tighten policy without
@@ -46,42 +48,51 @@ export default function CompliancePage() {
           </p>
         </Reveal>
 
-        <Reveal className="mt-14" delayMs={40}>
-          <div className="overflow-hidden border border-[var(--outline-subtle)] bg-surface">
-            <div className="grid border-b border-[var(--outline-subtle)] sm:grid-cols-3">
+        <Reveal className="mt-12" delayMs={40}>
+          <InstrumentWell>
+            <div className="grid sm:grid-cols-3">
               {[
                 { label: "Vehicle state", value: "Driving · 48 km/h" },
                 { label: "Policy", value: "Limit string · No keyboard" },
                 { label: "Outcome", value: "Browse substituted" },
-              ].map((cell) => (
+              ].map((cell, i) => (
                 <div
                   key={cell.label}
-                  className="border-[var(--outline-subtle)] px-5 py-5 sm:border-r sm:last:border-r-0"
+                  className={`px-5 py-6 ${
+                    i > 0
+                      ? "border-t border-[var(--outline-subtle)] sm:border-t-0 sm:border-l"
+                      : ""
+                  }`}
                 >
-                  <p className="text-status uppercase tracking-[0.12em] text-on-surface-variant">
-                    {cell.label}
-                  </p>
-                  <p className="mt-2 font-display text-title text-on-surface">
+                  <p className="kicker text-on-surface-variant">{cell.label}</p>
+                  <p className="mt-3 font-display text-title text-on-surface">
                     {cell.value}
                   </p>
                 </div>
               ))}
             </div>
-            <div className="flex items-center gap-3 px-5 py-4">
+            <div className="flex items-center gap-3 border-t border-[var(--outline-subtle)] px-5 py-4">
               <span className="h-2 w-2 shrink-0 rounded-full bg-warning" />
               <p className="text-status text-on-surface-variant">
                 Illustrative restriction path — widgets query policy; they do
                 not hardcode OEM if/else trees.
               </p>
             </div>
-          </div>
+          </InstrumentWell>
         </Reveal>
 
-        <div className="mt-16 grid gap-10 md:grid-cols-2">
+        <div className="mt-14 grid gap-0 md:grid-cols-2">
           {layers.map((layer, i) => (
             <Reveal key={layer.title} delayMs={Math.min(i * 40, 80)}>
-              <article className="h-full border-t border-primary/35 pt-6">
-                <h2 className="font-display text-title text-on-surface">
+              <article
+                className={`h-full border-[var(--outline-subtle)] py-8 ${
+                  i < 2 ? "border-b" : ""
+                } ${i % 2 === 1 ? "md:border-l md:pl-8" : "md:pr-8"}`}
+              >
+                <p className="text-status tabular-nums text-primary">
+                  0{i + 1}
+                </p>
+                <h2 className="mt-3 font-display text-title text-on-surface">
                   {layer.title}
                 </h2>
                 <p className="mt-3 text-body text-on-surface-variant">
@@ -92,7 +103,7 @@ export default function CompliancePage() {
           ))}
         </div>
 
-        <Reveal className="mt-20">
+        <Reveal className="mt-16">
           <div className="flex flex-wrap gap-3">
             <ButtonLink href={`${DOCS_URL}compliance/`} external>
               Compliance docs
@@ -102,7 +113,7 @@ export default function CompliancePage() {
             </ButtonLink>
           </div>
         </Reveal>
-      </div>
+      </PageFrame>
     </div>
   );
 }

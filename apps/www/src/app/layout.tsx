@@ -48,8 +48,16 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-background font-sans text-on-surface antialiased">
         <SchemeProvider>
+          <a
+            href="#content"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-on-primary"
+          >
+            Skip to content
+          </a>
           <SiteHeader />
-          <main className="pt-16">{children}</main>
+          <main id="content" className="pt-16">
+            {children}
+          </main>
           <SiteFooter />
         </SchemeProvider>
       </body>

@@ -7,6 +7,7 @@ import {
   type SystemGlyphId,
 } from "@/components/cabin-glyphs";
 import { BezelChrome, DemoRail } from "@/components/demo-stage";
+import { SegmentedControl } from "@/components/segmented-control";
 
 /**
  * Web HMI demos of Cabin System / Status bars in bezel chrome.
@@ -90,29 +91,16 @@ export function StatusBarDemo({ embedded = false }: { embedded?: boolean }) {
     <div>
       {bar}
       <DemoRail label="Status emphasis">
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Status emphasis">
-          {(
-            [
-              ["normal", "Normal"],
-              ["warning", "Warning locked"],
-              ["charging", "Charging locked"],
-            ] as const
-          ).map(([id, label]) => (
-            <button
-              key={id}
-              type="button"
-              onClick={() => setEmphasis(id)}
-              aria-pressed={emphasis === id}
-              className={`rounded-md px-3 py-2 text-status transition-colors duration-200 ease-cabin ${
-                emphasis === id
-                  ? "bg-primary text-on-primary"
-                  : "border border-[var(--outline-subtle)] text-on-surface-variant hover:text-on-surface"
-              }`}
-            >
-              {label}
-            </button>
-          ))}
-        </div>
+        <SegmentedControl
+          ariaLabel="Status emphasis"
+          value={emphasis}
+          onChange={setEmphasis}
+          options={[
+            { id: "normal", label: "Normal" },
+            { id: "warning", label: "Warning locked" },
+            { id: "charging", label: "Charging locked" },
+          ]}
+        />
       </DemoRail>
     </div>
   );
@@ -189,23 +177,15 @@ export function SystemBarDemo({
     <div>
       {bar}
       <DemoRail label="Drive state">
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Drive state for system bar">
-          {(["parked", "moving"] as const).map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => setDrive(s)}
-              aria-pressed={driveState === s}
-              className={`rounded-md px-3 py-2 text-status capitalize transition-colors duration-200 ease-cabin ${
-                driveState === s
-                  ? "bg-primary text-on-primary"
-                  : "border border-[var(--outline-subtle)] text-on-surface-variant hover:text-on-surface"
-              }`}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
+        <SegmentedControl
+          ariaLabel="Drive state for system bar"
+          value={driveState}
+          onChange={setDrive}
+          options={[
+            { id: "parked", label: "Parked" },
+            { id: "moving", label: "Moving" },
+          ]}
+        />
         <p className="text-status text-on-surface-variant">
           Apps soft-disables while Moving. Home / Media stay activatable.
         </p>
@@ -229,9 +209,7 @@ export function BarsBezelDemo() {
       >
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
-              Cabin chrome
-            </p>
+            <p className="kicker text-on-surface-variant">Cabin chrome</p>
             <p className="mt-1.5 font-display text-title text-on-surface">
               Status · content · system
             </p>
@@ -244,48 +222,27 @@ export function BarsBezelDemo() {
 
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
         <DemoRail label="Status emphasis">
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Status emphasis">
-            {(
-              [
-                ["normal", "Normal"],
-                ["warning", "Warning"],
-                ["charging", "Charging"],
-              ] as const
-            ).map(([id, label]) => (
-              <button
-                key={id}
-                type="button"
-                onClick={() => setEmphasis(id)}
-                aria-pressed={emphasis === id}
-                className={`rounded-md px-3 py-2 text-status transition-colors duration-200 ease-cabin ${
-                  emphasis === id
-                    ? "bg-primary text-on-primary"
-                    : "border border-[var(--outline-subtle)] text-on-surface-variant hover:text-on-surface"
-                }`}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
+          <SegmentedControl
+            ariaLabel="Status emphasis"
+            value={emphasis}
+            onChange={setEmphasis}
+            options={[
+              { id: "normal", label: "Normal" },
+              { id: "warning", label: "Warning" },
+              { id: "charging", label: "Charging" },
+            ]}
+          />
         </DemoRail>
         <DemoRail label="Drive state">
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Drive state">
-            {(["parked", "moving"] as const).map((s) => (
-              <button
-                key={s}
-                type="button"
-                onClick={() => setDrive(s)}
-                aria-pressed={drive === s}
-                className={`rounded-md px-3 py-2 text-status capitalize transition-colors duration-200 ease-cabin ${
-                  drive === s
-                    ? "bg-primary text-on-primary"
-                    : "border border-[var(--outline-subtle)] text-on-surface-variant hover:text-on-surface"
-                }`}
-              >
-                {s}
-              </button>
-            ))}
-          </div>
+          <SegmentedControl
+            ariaLabel="Drive state"
+            value={drive}
+            onChange={setDrive}
+            options={[
+              { id: "parked", label: "Parked" },
+              { id: "moving", label: "Moving" },
+            ]}
+          />
         </DemoRail>
       </div>
     </div>

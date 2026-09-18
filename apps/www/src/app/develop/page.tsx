@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/button-link";
 import { Reveal } from "@/components/reveal";
+import { InstrumentWell } from "@/components/instrument-frame";
+import { PageFrame, SectionHeading } from "@/components/site-chrome";
 import { DOCS_URL, GITHUB_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -27,14 +29,14 @@ const steps = [
 export default function DevelopPage() {
   return (
     <div className="bg-background">
-      <div className="mx-auto max-w-6xl px-5 pb-24 pt-16 sm:px-8 sm:pt-24">
+      <PageFrame className="pb-24 pt-14 sm:pt-20">
         <Reveal>
-          <p className="text-status font-semibold uppercase tracking-[0.14em] text-on-surface-variant">
-            Develop
-          </p>
-          <h1 className="mt-4 max-w-3xl font-display text-display text-on-surface text-balance">
-            Build on Cabin
-          </h1>
+          <SectionHeading
+            as="h1"
+            size="display"
+            kicker="Develop"
+            title="Build on Cabin"
+          />
           <p className="mt-5 max-w-2xl text-body text-on-surface-variant text-balance">
             Developer documentation lives on the docs site — this marketing
             surface stays focused on the product story. Deep-link when you are
@@ -50,10 +52,17 @@ export default function DevelopPage() {
           </div>
         </Reveal>
 
-        <ol className="mt-20 grid gap-8 md:grid-cols-3">
+        <ol className="mt-16 grid gap-0 md:grid-cols-3">
           {steps.map((step, i) => (
-            <Reveal key={step.title} delayMs={Math.min(i * 40, 80)}>
-              <li className="border-t border-[var(--outline-subtle)] pt-6">
+            <li
+              key={step.title}
+              className={`border-[var(--outline-subtle)] py-8 ${
+                i > 0
+                  ? "border-t md:border-t-0 md:border-l md:pl-8"
+                  : "md:pr-8"
+              } ${i === 1 ? "md:px-8" : ""}`}
+            >
+              <Reveal delayMs={Math.min(i * 40, 80)}>
                 <p className="text-status tabular-nums text-primary">
                   Step {i + 1}
                 </p>
@@ -63,51 +72,53 @@ export default function DevelopPage() {
                 <p className="mt-3 text-body text-on-surface-variant">
                   {step.body}
                 </p>
-              </li>
-            </Reveal>
+              </Reveal>
+            </li>
           ))}
         </ol>
 
-        <Reveal className="mt-20">
-          <div className="grid gap-6 border-t border-[var(--outline-subtle)] pt-8 lg:grid-cols-2">
-            <div>
-              <h2 className="font-display text-headline text-on-surface">
-                Dual distribution
-              </h2>
-              <p className="mt-3 text-body text-on-surface-variant">
-                Thin artifacts by design. Samples, catalog, and websites never
-                leak into product images.
-              </p>
+        <Reveal className="mt-8">
+          <InstrumentWell>
+            <div className="grid gap-0 lg:grid-cols-2">
+              <div className="border-b border-[var(--outline-subtle)] px-6 py-8 lg:border-b-0 lg:border-r">
+                <h2 className="font-display text-headline text-on-surface">
+                  Dual distribution
+                </h2>
+                <p className="mt-3 text-body text-on-surface-variant">
+                  Thin artifacts by design. Samples, catalog, and websites never
+                  leak into product images.
+                </p>
+              </div>
+              <dl className="grid gap-0 sm:grid-cols-2">
+                <div className="border-b border-[var(--outline-subtle)] px-6 py-8 sm:border-b-0 sm:border-r">
+                  <dt className="kicker text-on-surface-variant">
+                    App developers
+                  </dt>
+                  <dd className="mt-3 text-body text-on-surface">
+                    Gradle → Maven
+                    <br />
+                    <span className="text-status text-on-surface-variant">
+                      cabin-tokens · cabin-compliance · …
+                    </span>
+                  </dd>
+                </div>
+                <div className="px-6 py-8">
+                  <dt className="kicker text-on-surface-variant">
+                    Platform / SystemUI
+                  </dt>
+                  <dd className="mt-3 text-body text-on-surface">
+                    Soong → Android.bp
+                    <br />
+                    <span className="text-status text-on-surface-variant">
+                      CabinTokens · CabinCompliance · CabinViews
+                    </span>
+                  </dd>
+                </div>
+              </dl>
             </div>
-            <dl className="grid gap-5 sm:grid-cols-2">
-              <div>
-                <dt className="text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
-                  App developers
-                </dt>
-                <dd className="mt-2 text-body text-on-surface">
-                  Gradle → Maven
-                  <br />
-                  <span className="text-status text-on-surface-variant">
-                    cabin-tokens · cabin-compliance · …
-                  </span>
-                </dd>
-              </div>
-              <div>
-                <dt className="text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
-                  Platform / SystemUI
-                </dt>
-                <dd className="mt-2 text-body text-on-surface">
-                  Soong → Android.bp
-                  <br />
-                  <span className="text-status text-on-surface-variant">
-                    CabinTokens · CabinCompliance · CabinViews
-                  </span>
-                </dd>
-              </div>
-            </dl>
-          </div>
+          </InstrumentWell>
         </Reveal>
-      </div>
+      </PageFrame>
     </div>
   );
 }

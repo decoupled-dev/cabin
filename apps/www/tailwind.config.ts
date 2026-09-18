@@ -35,12 +35,12 @@ export default {
       fontSize: {
         /* Brand-first: display dominates; headline supports, never competes */
         display: [
-          "clamp(3.25rem, 8vw, 5.75rem)",
-          { lineHeight: "0.96", letterSpacing: "-0.04em", fontWeight: "700" },
+          "clamp(3.5rem, 9vw, 6.25rem)",
+          { lineHeight: "0.92", letterSpacing: "-0.045em", fontWeight: "700" },
         ],
         headline: [
-          "clamp(1.5rem, 2.6vw, 2.125rem)",
-          { lineHeight: "1.2", letterSpacing: "-0.02em", fontWeight: "600" },
+          "clamp(1.625rem, 2.8vw, 2.25rem)",
+          { lineHeight: "1.18", letterSpacing: "-0.025em", fontWeight: "600" },
         ],
         title: ["1.25rem", { lineHeight: "1.3", fontWeight: "600" }],
         body: ["1.0625rem", { lineHeight: "1.55", fontWeight: "400" }],
@@ -78,6 +78,10 @@ export default {
           from: { transform: "scaleX(0)" },
           to: { transform: "scaleX(1)" },
         },
+        "rail-in": {
+          from: { transform: "scaleX(0)" },
+          to: { transform: "scaleX(1)" },
+        },
       },
       animation: {
         /* Short Material-like entrance only — no bounce / elastic / ambient loops */
@@ -85,6 +89,7 @@ export default {
         "brand-in": "brand-in 480ms cubic-bezier(0.2, 0, 0, 1) both",
         "fade-in": "fade-in 360ms cubic-bezier(0.2, 0, 0, 1) both",
         "hmi-line": "hmi-line 500ms cubic-bezier(0.2, 0, 0, 1) both",
+        "rail-in": "rail-in 560ms cubic-bezier(0.2, 0, 0, 1) both",
       },
     },
   },

@@ -10,6 +10,7 @@ import {
   GalleryNav,
   GallerySection,
 } from "@/components/gallery-chrome";
+import { PageFrame } from "@/components/site-chrome";
 import { TokenExplorer } from "@/components/token-explorer";
 import { DOCS_URL } from "@/lib/site";
 import { DOCS_FOUNDATIONS, DOCS_TOKENS, FOUNDATIONS_NAV } from "@/lib/tokens";
@@ -29,7 +30,7 @@ export default function FoundationsPage() {
       />
       <GalleryNav label="Foundations sections" items={FOUNDATIONS_NAV} />
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-14 px-5 py-10 sm:px-8 sm:py-12">
+      <PageFrame className="flex flex-col gap-16 py-10 sm:py-12">
         <GallerySection
           id="color"
           title="Color"
@@ -55,25 +56,20 @@ export default function FoundationsPage() {
         >
           <div className="grid gap-3 lg:grid-cols-2 lg:gap-4">
             <DemoStage>
-              <div className="rounded-lg bg-surface px-5 py-5 sm:px-6">
-                <p className="mb-4 text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
-                  Type
-                </p>
+              <div className="px-5 py-5 sm:px-6">
+                <p className="kicker mb-4 text-on-surface-variant">Type</p>
                 <TypeScaleDemo />
               </div>
             </DemoStage>
             <DemoStage>
-              <div className="rounded-lg bg-surface px-5 py-5 sm:px-6">
-                <p className="mb-4 text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
-                  Space
-                </p>
+              <div className="px-5 py-5 sm:px-6">
+                <p className="kicker mb-4 text-on-surface-variant">Space</p>
                 <SpaceScaleDemo />
               </div>
             </DemoStage>
           </div>
         </GallerySection>
 
-        {/* Keep #space for deep links */}
         <div id="space" className="sr-only" aria-hidden />
 
         <GallerySection
@@ -82,7 +78,7 @@ export default function FoundationsPage() {
           body="Fast, medium, slow durations from tokens. Mechanical and precise — decorative motion yields while driving."
         >
           <DemoStage>
-            <div className="rounded-lg bg-surface px-5 py-4 sm:px-6">
+            <div className="px-5 py-4 sm:px-6">
               <MotionDemo />
             </div>
           </DemoStage>
@@ -115,7 +111,7 @@ export default function FoundationsPage() {
             Foundations docs
           </a>
         </p>
-      </div>
+      </PageFrame>
     </div>
   );
 }

@@ -4,8 +4,9 @@
 **Status:** authoritative for visual and copy craft on this surface.  
 **Live:** [cabin-www.vercel.app](https://cabin-www.vercel.app) (also planned as cabin.decoupled.dev).
 
-This is **not** a redesign ticket. It locks intent so the site stays Material-class
-and cabin-native — not a generic AI landing page.
+This is **not** a license for generic AI landing pages. It locks craft intent
+so the site stays Material-class and cabin-native — instrument chrome, not
+SaaS marketing theater.
 
 ---
 
@@ -40,16 +41,21 @@ default · one language two skins · thin by design**
 - **Typography:** expressive but disciplined — Syne (display) + Source Sans 3
   (body). Brand name is hero-level; headlines support, they do not overpower
   “Cabin.”
-- **Hero visual:** illustrative **cabin HMI preview** with fidelity to Cabin
-  chrome roles — not stock photography of cars, dashboards, or lifestyle roads.
+- **Hero visual:** one **instrument composition** — status / content / system
+  wrapping brand story and glanceable HMI tiles. Not a separate marketing column
+  beside a nested mockup; not stock photography of cars or dashboards.
+- **Site chrome:** header is a status analog (forest rail, glance nav, Night/Day
+  segmented control, clock). Footer is quiet; galleries stay a strip.
 - **Day/Night:** toggle must match token intent (day = glare-legible light cabin;
   night = deep instrument black). Same structure; different scheme tokens.
+  One scheme control only, in the site header.
 - **Safety colors:** warning, error, and charging stay crisp at night. Do not
   soft-wash them into the forest primary. Lock contrast when tweaking night.
 - **Domain accents** (charging / climate / media): accents only — never body
   copy color, never competing hero washes.
 
 Reference implementation: `src/app/globals.css`, `src/components/cabin-hmi-preview.tsx`,
+`src/components/instrument-frame.tsx`, `src/components/segmented-control.tsx`,
 `tailwind.config.ts`.
 
 ---
@@ -81,7 +87,8 @@ reject it before merge.
 ### Layout and hierarchy
 
 - First viewport reads as **one composition**: brand, one headline, one short
-  supporting sentence, one CTA group, one dominant HMI visual.
+  supporting sentence, one CTA group, one dominant HMI visual — all inside
+  status / content / system instrument chrome.
 - Restrained type hierarchy: display → headline → title → body → status/label.
   Prefer existing Tailwind type tokens over one-off sizes.
 - Whitespace with intent — quiet surfaces, clear section jobs, no filler panels.

@@ -8,7 +8,6 @@ import {
 } from "@/lib/tokens";
 import { useCssVar } from "@/lib/use-css-var";
 
-
 function MeasureRow({ token }: { token: TokenEntry }) {
   const value = useCssVar(token.cssVar);
   const isSpace = token.group === "space";
@@ -21,7 +20,7 @@ function MeasureRow({ token }: { token: TokenEntry }) {
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
           <p className="text-label text-on-surface">{token.name}</p>
-          <code className="text-status text-on-surface-variant">
+          <code className="break-all text-status text-on-surface-variant">
             {token.cssVar}
           </code>
         </div>
@@ -35,7 +34,7 @@ function MeasureRow({ token }: { token: TokenEntry }) {
       <div className="flex items-center gap-4">
         {isSpace && px !== undefined && !Number.isNaN(px) ? (
           <div
-            className="h-3 rounded-sm bg-primary/80"
+            className="h-2 rounded-sm bg-primary/80"
             style={{ width: Math.min(px * 1.5, 160) }}
             aria-hidden
           />
@@ -59,7 +58,7 @@ function MeasureRow({ token }: { token: TokenEntry }) {
 
 export function TypeScaleDemo() {
   return (
-    <ul className="flex flex-col gap-4">
+    <ul className="flex flex-col">
       {TYPE_TOKENS.map((role) => (
         <TypeRoleRow key={role.name} role={role} />
       ))}
@@ -75,11 +74,9 @@ function TypeRoleRow({ role }: { role: TokenEntry }) {
   const weight = useCssVar(weightVar);
 
   return (
-    <li className="border-t border-[var(--outline-subtle)] pt-3.5 first:border-t-0 first:pt-0">
+    <li className="border-t border-[var(--outline-subtle)] py-4 first:border-t-0 first:pt-0">
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <p className="text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
-          {role.name}
-        </p>
+        <p className="kicker text-on-surface-variant">{role.name}</p>
         <code className="text-status text-on-surface-variant">
           {size} / {weight}
         </code>

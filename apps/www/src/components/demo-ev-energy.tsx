@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DemoRail } from "@/components/demo-stage";
+import { SegmentedControl } from "@/components/segmented-control";
 import {
   type DemoSignal,
   type SignalKind,
@@ -247,34 +248,17 @@ export function EvSignalRails({
 }) {
   return (
     <DemoRail label="Signal">
-      <div
-        className="flex flex-wrap gap-2"
-        role="group"
-        aria-label="EV signal fixture"
-      >
-        {(
-          [
-            ["value", "Live"],
-            ["stale", "Stale"],
-            ["unavailable", "Empty"],
-            ["fault", "Fault"],
-          ] as const
-        ).map(([id, label]) => (
-          <button
-            key={id}
-            type="button"
-            onClick={() => onFixture(id)}
-            aria-pressed={fixture === id}
-            className={`rounded-md px-3 py-2 text-status transition-colors duration-200 ease-cabin ${
-              fixture === id
-                ? "bg-primary text-on-primary"
-                : "border border-[var(--outline-subtle)] text-on-surface-variant hover:text-on-surface"
-            }`}
-          >
-            {label}
-          </button>
-        ))}
-      </div>
+      <SegmentedControl
+        ariaLabel="EV signal fixture"
+        value={fixture}
+        onChange={onFixture}
+        options={[
+          { id: "value", label: "Live" },
+          { id: "stale", label: "Stale" },
+          { id: "unavailable", label: "Empty" },
+          { id: "fault", label: "Fault" },
+        ]}
+      />
       <p className="text-status text-on-surface-variant">
         Honest empty / stale / fault — no invented SOC. Charging color stays
         locked.

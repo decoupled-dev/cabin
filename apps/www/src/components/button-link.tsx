@@ -4,11 +4,11 @@ type Variant = "primary" | "secondary" | "ghost";
 
 const styles: Record<Variant, string> = {
   primary:
-    "bg-primary text-on-primary hover:opacity-90 px-6 py-3.5 text-label",
+    "min-h-12 bg-primary px-6 py-3 text-label text-on-primary hover:bg-[color-mix(in_srgb,var(--primary)_88%,white)]",
   secondary:
-    "border border-outline bg-transparent text-on-surface hover:bg-[var(--surface-high)] px-6 py-3.5 text-label",
+    "min-h-12 border border-outline bg-transparent px-6 py-3 text-label text-on-surface hover:bg-[var(--surface-high)]",
   ghost:
-    "text-on-surface-variant hover:text-on-surface underline-offset-4 hover:underline",
+    "text-on-surface-variant underline-offset-4 hover:text-on-surface hover:underline",
 };
 
 export function ButtonLink({
@@ -24,7 +24,7 @@ export function ButtonLink({
   external?: boolean;
   className?: string;
 }) {
-  const classes = `inline-flex items-center justify-center rounded-lg font-semibold transition-all duration-200 ease-cabin ${styles[variant]} ${className}`;
+  const classes = `inline-flex items-center justify-center rounded-md font-semibold transition-colors duration-200 ease-cabin ${styles[variant]} ${className}`;
 
   if (external) {
     return (
