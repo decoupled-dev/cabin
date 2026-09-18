@@ -1,7 +1,7 @@
 # Integration
 
 How to add Cabin to an existing AAOS image or application repository with
-**minimal footprint**. Artifacts below are **planned**.
+**minimal footprint**. Coordinates below match v0.1.0 Alpha (`publishCabinToMavenLocal`); remote Maven still open.
 
 ## Choose your slice
 
@@ -29,19 +29,18 @@ SystemUI, CarLauncher, platform media, and other AOSP targets use **Soong**
 Full guide: [build-tree](build-tree.md) · engineering notes:
 [soong](../platforms/soong.md).
 
-## Planned Gradle setup (app developers)
+## Gradle setup (app developers)
 
 ### App / Compose module
 
 ```kotlin
-// Planned
+// After ./gradlew publishCabinToMavenLocal
 dependencies {
-    implementation("dev.decoupled.cabin:cabin-compose:<version>")
+    implementation("dev.decoupled.cabin:cabin-compose:0.1.0")
 }
 ```
 
 ```kotlin
-// Planned usage
 setContent {
     CabinTheme(tokens = OemOverlay.toCabinTokens()) {
         MediaNowPlaying(state = state, onAction = viewModel::onAction)
@@ -52,9 +51,9 @@ setContent {
 ### Views module (Gradle-built apps only)
 
 ```kotlin
-// Planned — for app modules still on Views, built with Gradle
+// Views apps (Gradle) — not SystemUI
 dependencies {
-    implementation("dev.decoupled.cabin:cabin-views:<version>")
+    implementation("dev.decoupled.cabin:cabin-views:0.1.0")
 }
 ```
 

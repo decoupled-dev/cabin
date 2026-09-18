@@ -1,18 +1,17 @@
-# API contracts (planned)
+# API contracts
 
-Frozen naming targets for **v0.1 MVP** and forward. Nothing here is published
-until implementation lands.
+Frozen naming targets for **v0.1** and forward. Modules are implemented; **local** Maven publish is available (`0.1.0`). Remote publish / git tag still open — see [release notes](release/v0.1.0.md).
 
 ## Maven coordinates (Gradle apps)
 
-Group: `dev.decoupled.cabin` (illustrative; finalize at first publish).
+Group: `dev.decoupled.cabin` (v0.1.0 Alpha; local publish via `./gradlew publishCabinToMavenLocal`).
 
 | Artifact | Coordinate | MVP |
 | --- | --- | --- |
 | Tokens | `dev.decoupled.cabin:cabin-tokens` | **Yes** |
 | Compliance | `dev.decoupled.cabin:cabin-compliance` | **Yes** |
-| Views | `dev.decoupled.cabin:cabin-views` | **Yes** (Theme Kit + System/Status bars Alpha) |
-| Compose | `dev.decoupled.cabin:cabin-compose` | Post-MVP (**Experimental** Theme + bars) |
+| Views | `dev.decoupled.cabin:cabin-views` | **Yes** (Theme Kit + System/Status bars + ClimateTile + MediaNowPlaying Alpha) |
+| Compose | `dev.decoupled.cabin:cabin-compose` | **Experimental** Theme + bars + ClimateTile + MediaNowPlaying |
 
 ## Soong module names (build-tree)
 
@@ -29,7 +28,7 @@ umbrella library). SystemUI wiring sketch:
 
 See [build-tree](adoption/build-tree.md).
 
-## Kotlin / Java package roots (planned)
+## Kotlin / Java package roots
 
 | Module | Package root |
 | --- | --- |
@@ -44,7 +43,7 @@ Views Theme Kit types: `dev.decoupled.cabin.views.theme.CabinThemes`,
 `…CabinMediaNowPlayingView` (Alpha).
 
 Compose Theme + bars (Experimental): `dev.decoupled.cabin.compose.theme.CabinTheme`,
-`…CabinSystemBar`, `…CabinStatusBar`. Domain (Experimental): `…CabinClimateTile`,
+`…CabinSystemBar`, `…CabinStatusBar`. Domain (Experimental): `…CabinClimateTileView`,
 `…CabinMediaNowPlaying`.
 
 ## Stability
