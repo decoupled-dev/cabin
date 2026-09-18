@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { ClimateTileDemo } from "@/components/demo-climate-tile";
 import {
   EvEnergyTile,
@@ -32,9 +32,62 @@ const SYSTEM_SLOTS: {
   { id: "apps", label: "Apps", gated: true },
 ];
 
-function StageStatusBar({ mode }: { mode: StageMode }) {
+function StageStatusBar({
+  mode,
+  chargeSignal = "value",
+}: {
+  mode: StageMode;
+  /** Charging stage only — keep status SOC honest with EV fixtures. */
+  chargeSignal?: SignalKind;
+}) {
   const gear = mode === "moving" ? "D" : "P";
   const temp = mode === "moving" ? "68°F" : "72°F";
+
+  let energyChip: React.ReactNode;
+  if (mode === "charging") {
+    switch (chargeSignal) {
+      case "value":
+        energyChip = (
+          <span className="inline-flex items-center gap-1.5 text-status text-charging">
+            <span className="h-1.5 w-1.5 rounded-full bg-charging" />
+            78% charging
+          </span>
+        );
+        break;
+      case "stale":
+        energyChip = (
+          <span className="text-status tabular-nums text-warning">
+            78% · stale
+          </span>
+        );
+        break;
+      case "unavailable":
+        energyChip = (
+          <span className="text-status text-[var(--on-container)]/80">—</span>
+        );
+        break;
+      case "fault":
+        energyChip = (
+          <span className="inline-flex items-center gap-1.5 text-status text-error">
+            <span className="h-1.5 w-1.5 rounded-full bg-error" />
+            Charge fault
+          </span>
+        );
+        break;
+    }
+  } else if (mode === "moving") {
+    energyChip = (
+      <span className="text-status tabular-nums text-[var(--on-container)]/80">
+        64%
+      </span>
+    );
+  } else {
+    energyChip = (
+      <span className="text-status tabular-nums text-[var(--on-container)]/80">
+        78%
+      </span>
+    );
+  }
 
   return (
     <div
@@ -63,20 +116,7 @@ function StageStatusBar({ mode }: { mode: StageMode }) {
         <span className="text-status tabular-nums tracking-wide">
           {gear} · {temp}
         </span>
-        {mode === "charging" ? (
-          <span className="inline-flex items-center gap-1.5 text-status text-charging">
-            <span className="h-1.5 w-1.5 rounded-full bg-charging" />
-            78% charging
-          </span>
-        ) : mode === "moving" ? (
-          <span className="text-status tabular-nums text-[var(--on-container)]/80">
-            64%
-          </span>
-        ) : (
-          <span className="text-status tabular-nums text-[var(--on-container)]/80">
-            78%
-          </span>
-        )}
+        {energyChip}
       </div>
       <span className="text-status tabular-nums text-[var(--on-container)]">
         12:41
@@ -200,7 +240,9 @@ export function ChargingStage() {
   return (
     <div>
       <BezelChrome
-        status={<StageStatusBar mode="charging" />}
+        status={
+          <StageStatusBar mode="charging" chargeSignal={fixture} />
+        }
         system={<StageSystemBar mode="charging" />}
       >
         <div className="mx-auto max-w-lg">
