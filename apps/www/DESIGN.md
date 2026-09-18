@@ -97,7 +97,7 @@ reject it before merge.
 - Warning / error / charging: verify night contrast stays locked and readable.
 - Domain accents stay off body copy and off large text blocks.
 
-### Gallery routes (`/foundations`, `/components`)
+### Gallery routes (`/foundations`, `/use-cases`, `/components`)
 
 - Dense two-up / full-bleed demo stages — no sparse right-column void.
 - Real SVG glyphs and art wells — no dash icon stubs, no hyphen artwork, no
@@ -105,7 +105,13 @@ reject it before merge.
 - Bars render inside instrument bezel chrome (status · content · system).
 - Transport uses cabin control surfaces; mediaAccent / climate accents are
   mark-only.
-- Quiet gallery footer — strip marketing copy from Foundations / Components.
+- Quiet gallery footer — strip marketing copy from Foundations / Use cases /
+  Components.
+- **Use cases** are three live full-bleed HMI stages (Parked / Moving /
+  Charging). Day/night via the single site header scheme toggle only.
+- Charging control rows use flex — never leave empty grid cells.
+- Long token CSS var names in Foundations wrap (`break-all`); do not truncate
+  mid-name.
 
 ### HMI preview
 
@@ -148,14 +154,22 @@ sentence**. If a section needs cards to make sense as interaction, keep them
 minimal; default is no decorative cards.
 
 Good section jobs: pitch, pillars, foundations gallery (color / type / space /
-motion), components gallery (Bars / Climate / Media), compliance story, develop
-/ get started. Bad: “stats strip + logos + testimonials + feature bingo” in one
-fold.
+motion), use-case stages (Parked / Moving / Charging), components gallery
+(Bars / Climate / Media), compliance story, develop / get started. Bad: “stats
+strip + logos + testimonials + feature bingo” in one fold.
 
-**Foundations + Components (`/foundations`, `/components`):** calm cabin chrome
-galleries — quiet page titles, sticky IA + day/night, live demos from generated
-CSS vars. No marketing hero noise on those routes. Domain tiles mirror Android
-specs (honest Signals, RE-quiet). Do not kitchen-sink the rest of the site.
+**Foundations + Use cases + Components:** calm cabin chrome galleries — quiet
+page titles, sticky IA, live demos from generated CSS vars. One scheme toggle
+in the site header. No marketing hero noise on those routes.
+
+| Use case | Stage job |
+| --- | --- |
+| **Parked** | Climate full control (temp / fan / seats); forest night bezel; climate accents mark-only |
+| **Moving** | Media glance; transport Allow; source / complex RE-quiet; no distraction chrome |
+| **Charging** | Honest SOC / range; locked charging color; empty / stale / fault never invent values |
+
+Domain tiles mirror Android specs (honest Signals, RE-quiet). Do not
+kitchen-sink the rest of the site.
 
 ---
 
@@ -173,6 +187,10 @@ Editors (human or agent) must pass all of the following:
 - [ ] Motion is short and Material-like — no bounce/elastic novelty or Lottie spam
 - [ ] Copy is calm and specific — no buzzword hero, no vanity metrics
 - [ ] No new `cabin-*` Android library dependencies
+- [ ] Gallery IA is Foundations → Use cases → Components; quiet footers on all
+  three
+- [ ] Use-case stages show RE fail-closed (Moving gated controls) and honest
+  Charging empty / stale / fault
 - [ ] Docs shell (`website/`) and Vercel/DNS config left alone unless explicitly requested
 - [ ] Change still passes product pillars (glanceable, quiet, safe by default, two skins, thin)
 

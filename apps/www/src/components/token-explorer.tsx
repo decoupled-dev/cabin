@@ -66,7 +66,10 @@ function ColorSwatch({ token }: { token: TokenEntry }) {
             </span>
           ) : null}
         </div>
-        <code className="truncate text-status text-on-surface-variant">
+        <code
+          className="break-all text-status text-on-surface-variant"
+          title={token.cssVar}
+        >
           {token.cssVar}
         </code>
         <p className="font-mono text-status tabular-nums text-on-surface-variant">

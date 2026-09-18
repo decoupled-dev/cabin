@@ -92,15 +92,19 @@ type FixtureId = keyof typeof FIXTURES;
  */
 export function MediaNowPlayingDemo({
   compact = false,
+  lockedDrive,
 }: {
   compact?: boolean;
+  /** When set, drive state is fixed (use-case stages). */
+  lockedDrive?: DriveState;
 }) {
   const [fixture, setFixture] = useState<FixtureId>("value");
-  const [drive, setDrive] = useState<DriveState>("parked");
+  const [drive, setDrive] = useState<DriveState>(lockedDrive ?? "parked");
   const [state, setState] = useState<MediaState>(LIVE);
+  const driveState = lockedDrive ?? drive;
 
-  const transportGate = dispositionFor(drive, "mediaTransport");
-  const complexGate = dispositionFor(drive, "mediaComplex");
+  const transportGate = dispositionFor(driveState, "mediaTransport");
+  const complexGate = dispositionFor(driveState, "mediaComplex");
   const progress = liveProgressText(state.positionMs, state.durationMs);
 
   function applyFixture(id: FixtureId) {
@@ -249,30 +253,38 @@ export function MediaNowPlayingDemo({
               ))}
             </div>
           </DemoRail>
-          <DemoRail label="Drive">
-            <div className="flex flex-wrap gap-2" role="group" aria-label="Drive state">
-              {(["parked", "moving"] as const).map((s) => (
-                <button
-                  key={s}
-                  type="button"
-                  onClick={() => setDrive(s)}
-                  aria-pressed={drive === s}
-                  className={`rounded-md px-3 py-2 text-status capitalize transition-colors duration-200 ease-cabin ${
-                    drive === s
-                      ? "bg-[var(--surface-high)] text-on-surface"
-                      : "border border-[var(--outline-subtle)] text-on-surface-variant hover:text-on-surface"
-                  }`}
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
+          {!lockedDrive ? (
+            <DemoRail label="Drive">
+              <div className="flex flex-wrap gap-2" role="group" aria-label="Drive state">
+                {(["parked", "moving"] as const).map((s) => (
+                  <button
+                    key={s}
+                    type="button"
+                    onClick={() => setDrive(s)}
+                    aria-pressed={driveState === s}
+                    className={`rounded-md px-3 py-2 text-status capitalize transition-colors duration-200 ease-cabin ${
+                      driveState === s
+                        ? "bg-[var(--surface-high)] text-on-surface"
+                        : "border border-[var(--outline-subtle)] text-on-surface-variant hover:text-on-surface"
+                    }`}
+                  >
+                    {s}
+                  </button>
+                ))}
+              </div>
+              <p className="text-status text-on-surface-variant">
+                {driveState === "moving"
+                  ? "Moving: transport Allow; source soft-disables. Media accent is mark-only."
+                  : "Parked: source and transport Allow. Media accent is mark-only."}
+              </p>
+            </DemoRail>
+          ) : (
             <p className="text-status text-on-surface-variant">
-              {drive === "moving"
-                ? "Moving: transport Allow; source soft-disables. Media accent is mark-only."
+              {driveState === "moving"
+                ? "Moving: transport Allow; source / complex RE-quiet. Media accent is mark-only."
                 : "Parked: source and transport Allow. Media accent is mark-only."}
             </p>
-          </DemoRail>
+          )}
         </div>
       ) : null}
     </div>
