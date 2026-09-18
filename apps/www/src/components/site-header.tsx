@@ -71,7 +71,7 @@ export function SiteHeader() {
             value={scheme}
             onChange={setScheme}
             size="sm"
-            fill="quiet"
+            fill="primary"
             options={[
               { id: "night", label: "Night" },
               { id: "day", label: "Day" },

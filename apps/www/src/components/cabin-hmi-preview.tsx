@@ -115,47 +115,55 @@ function HeroSystemBar() {
 
 function CabinHmiTiles() {
   return (
-    <div className="grid h-full gap-3 sm:grid-cols-[1.15fr_0.85fr] sm:gap-3.5">
-      <div className="flex flex-col rounded-md border border-[var(--outline-subtle)] bg-[var(--surface-high)] p-4 sm:p-5">
-        <div className="flex items-start gap-3">
-          <div
-            className="relative h-[4.5rem] w-[4.5rem] shrink-0 overflow-hidden rounded-md border border-outline"
-            style={{
-              background:
-                "radial-gradient(circle at 32% 28%, color-mix(in srgb, var(--on-surface) 18%, transparent), transparent 46%), radial-gradient(circle at 78% 76%, color-mix(in srgb, var(--primary) 26%, transparent), transparent 50%), var(--surface-variant)",
-            }}
-          >
-            <span
-              className="absolute bottom-2 left-2 h-3 w-1 bg-[var(--media)]"
-              data-testid="media-art-accent-mark"
-            />
-          </div>
-          <div className="min-w-0 pt-0.5">
+    <div className="grid h-full gap-3 sm:grid-cols-[1.2fr_0.8fr] sm:gap-3.5">
+      <div className="flex min-h-0 flex-col overflow-hidden rounded-md border border-[var(--outline-subtle)] bg-[var(--surface-high)]">
+        <div
+          className="relative min-h-[9.5rem] flex-1"
+          style={{
+            background:
+              "radial-gradient(circle at 28% 24%, color-mix(in srgb, var(--on-surface) 16%, transparent), transparent 42%), radial-gradient(circle at 82% 78%, color-mix(in srgb, var(--primary) 22%, transparent), transparent 52%), var(--surface-variant)",
+          }}
+        >
+          <span
+            className="absolute left-4 top-4 h-4 w-1 bg-[var(--media)]"
+            data-testid="media-art-accent-mark"
+          />
+          <div className="absolute inset-x-0 bottom-0 bg-[color-mix(in_srgb,var(--surface)_72%,transparent)] px-4 pb-3 pt-8">
             <p className="kicker text-on-surface-variant">Now playing</p>
-            <p className="mt-2 font-display text-title text-on-surface">
+            <p className="mt-1.5 font-display text-title text-on-surface">
               Quiet roads
             </p>
-            <p className="mt-1 text-status text-on-surface-variant">
+            <p className="mt-0.5 text-status text-on-surface-variant">
               Cabin Media
             </p>
           </div>
         </div>
-        <div className="mt-5 h-1 overflow-hidden rounded-sm bg-[var(--surface-variant)]">
-          <div
-            className="h-full w-[62%] origin-left rounded-sm bg-[var(--on-surface)]/55 animate-hmi-line"
-            style={{ animationDelay: "200ms" }}
-          />
-        </div>
-        <div className="mt-auto flex items-center justify-center gap-2 pt-4">
-          <TransportChip>
-            <GlyphPrev className="h-5 w-5" />
-          </TransportChip>
-          <TransportChip accent>
-            <GlyphPause className="h-5 w-5" />
-          </TransportChip>
-          <TransportChip>
-            <GlyphNext className="h-5 w-5" />
-          </TransportChip>
+        <div className="border-t border-[var(--outline-subtle)] px-4 py-3">
+          <div className="h-1 overflow-hidden rounded-sm bg-[var(--surface-variant)]">
+            <div
+              className="h-full w-[62%] origin-left rounded-sm bg-[var(--on-surface)]/55 animate-hmi-line"
+              style={{ animationDelay: "200ms" }}
+            />
+          </div>
+          <div className="mt-3 flex items-center justify-between">
+            <span className="text-status tabular-nums text-on-surface-variant">
+              2:05
+            </span>
+            <div className="flex items-center gap-2">
+              <TransportChip>
+                <GlyphPrev className="h-5 w-5" />
+              </TransportChip>
+              <TransportChip accent>
+                <GlyphPause className="h-5 w-5" />
+              </TransportChip>
+              <TransportChip>
+                <GlyphNext className="h-5 w-5" />
+              </TransportChip>
+            </div>
+            <span className="text-status tabular-nums text-on-surface-variant">
+              3:24
+            </span>
+          </div>
         </div>
       </div>
 

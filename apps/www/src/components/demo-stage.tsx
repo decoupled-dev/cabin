@@ -14,7 +14,7 @@ export function DemoStage({
   className?: string;
 }) {
   return (
-    <div className={`instrument ${className}`}>
+    <div className={className ? `instrument ${className}` : "instrument"}>
       <div className="m-[7px] overflow-hidden rounded-md border border-[var(--outline-subtle)] bg-surface sm:m-2.5">
         {children}
       </div>
