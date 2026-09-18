@@ -8,6 +8,7 @@ import {
   GalleryNav,
   GallerySection,
 } from "@/components/gallery-chrome";
+import { PageFrame } from "@/components/site-chrome";
 import { DOCS_URL } from "@/lib/site";
 import {
   COMPONENTS_NAV,
@@ -32,7 +33,7 @@ export default function ComponentsPage() {
       />
       <GalleryNav label="Components sections" items={COMPONENTS_NAV} />
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-14 px-5 py-10 sm:px-8 sm:py-12">
+      <PageFrame className="flex flex-col gap-16 py-10 sm:py-12">
         <GallerySection
           id="bars"
           title="Bars"
@@ -64,16 +65,16 @@ export default function ComponentsPage() {
         >
           <TwoUpStage
             left={
-              <div>
-                <p className="mb-3 px-1 text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
+              <div className="p-4 sm:p-5">
+                <p className="kicker mb-3 text-on-surface-variant">
                   ClimateTile
                 </p>
                 <ClimateTileDemo />
               </div>
             }
             right={
-              <div>
-                <p className="mb-3 px-1 text-status font-semibold uppercase tracking-[0.12em] text-on-surface-variant">
+              <div className="p-4 sm:p-5">
+                <p className="kicker mb-3 text-on-surface-variant">
                   MediaNowPlaying
                 </p>
                 <MediaNowPlayingDemo />
@@ -98,7 +99,6 @@ export default function ComponentsPage() {
           </p>
         </GallerySection>
 
-        {/* Keep #media anchor for deep links from prior nav */}
         <div id="media" className="sr-only" aria-hidden />
 
         <p className="border-t border-[var(--outline-subtle)] pt-5 text-status text-on-surface-variant">
@@ -118,7 +118,7 @@ export default function ComponentsPage() {
             Foundations
           </a>
         </p>
-      </div>
+      </PageFrame>
     </div>
   );
 }

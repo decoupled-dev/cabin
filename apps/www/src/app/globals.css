@@ -16,40 +16,44 @@
   color-scheme: dark;
 
   /* Presentation-only (not in Android stub) — derived from generated roles, no hand hex */
-  --background: color-mix(in srgb, var(--surface) 72%, black);
-  --surface-high: color-mix(in srgb, var(--surface) 88%, var(--on-surface));
-  --on-surface-variant: color-mix(in srgb, var(--on-surface) 62%, var(--surface));
-  --outline-subtle: color-mix(in srgb, var(--on-surface) 9%, transparent);
+  --background: color-mix(in srgb, var(--surface) 54%, black);
+  --surface-high: color-mix(in srgb, var(--surface) 82%, var(--on-surface));
+  --on-surface-variant: color-mix(in srgb, var(--on-surface) 58%, var(--surface));
+  --outline-subtle: color-mix(in srgb, var(--on-surface) 10%, transparent);
   /* Night brand: quiet forest lift from semantic primary — glanceable, not neon */
   --primary: color-mix(in srgb, var(--cabin-color-semantic-primary) 72%, white);
   --primary-container: var(--cabin-color-semantic-primary);
   --on-primary: color-mix(in srgb, var(--cabin-color-semantic-on-primary) 12%, black);
-  --hmi-bezel: color-mix(in srgb, var(--surface) 62%, black);
-  --elev-1: 0 1px 0 color-mix(in srgb, var(--on-surface) 3%, transparent),
-    0 4px 12px color-mix(in srgb, black 28%, transparent);
-  --elev-2: 0 1px 0 color-mix(in srgb, var(--on-surface) 4%, transparent),
-    0 10px 22px color-mix(in srgb, black 34%, transparent);
-  --nav-bg: color-mix(in srgb, var(--background) 92%, transparent);
+  --hmi-bezel: color-mix(in srgb, var(--surface) 42%, black);
+  --elev-1: 0 1px 0 color-mix(in srgb, var(--on-surface) 4%, transparent),
+    0 8px 20px color-mix(in srgb, black 38%, transparent);
+  --elev-2: 0 1px 0 color-mix(in srgb, var(--on-surface) 5%, transparent),
+    0 16px 36px color-mix(in srgb, black 46%, transparent);
+  --nav-bg: color-mix(in srgb, var(--background) 97%, var(--surface));
   --foreground: var(--on-surface);
+  --rail: var(--primary);
+  --control-fill: color-mix(in srgb, var(--surface-high) 88%, var(--surface));
 }
 
 [data-scheme="day"] {
   color-scheme: light;
 
-  --background: color-mix(in srgb, var(--surface) 88%, var(--outline));
+  --background: color-mix(in srgb, var(--surface) 82%, var(--outline));
   --surface-high: var(--container);
-  --on-surface-variant: color-mix(in srgb, var(--on-surface) 55%, var(--surface));
-  --outline-subtle: color-mix(in srgb, var(--on-surface) 10%, transparent);
+  --on-surface-variant: color-mix(in srgb, var(--on-surface) 52%, var(--surface));
+  --outline-subtle: color-mix(in srgb, var(--on-surface) 12%, transparent);
   --primary: var(--cabin-color-semantic-primary);
   --primary-container: color-mix(in srgb, var(--cabin-color-semantic-primary) 88%, white);
   --on-primary: var(--cabin-color-semantic-on-primary);
-  --hmi-bezel: color-mix(in srgb, var(--surface-variant) 70%, var(--outline));
-  --elev-1: 0 1px 0 color-mix(in srgb, white 80%, transparent),
-    0 4px 12px color-mix(in srgb, var(--on-surface) 6%, transparent);
-  --elev-2: 0 1px 0 color-mix(in srgb, white 90%, transparent),
-    0 10px 24px color-mix(in srgb, var(--on-surface) 10%, transparent);
-  --nav-bg: color-mix(in srgb, var(--surface) 94%, transparent);
+  --hmi-bezel: color-mix(in srgb, var(--surface-variant) 62%, var(--outline));
+  --elev-1: 0 1px 0 color-mix(in srgb, white 70%, transparent),
+    0 6px 16px color-mix(in srgb, var(--on-surface) 7%, transparent);
+  --elev-2: 0 1px 0 color-mix(in srgb, white 85%, transparent),
+    0 14px 28px color-mix(in srgb, var(--on-surface) 11%, transparent);
+  --nav-bg: color-mix(in srgb, var(--surface) 96%, white);
   --foreground: var(--on-surface);
+  --rail: var(--primary);
+  --control-fill: var(--container);
 }
 
 html {
@@ -65,8 +69,55 @@ body {
 }
 
 ::selection {
-  background: color-mix(in srgb, var(--primary) 40%, transparent);
+  background: color-mix(in srgb, var(--primary) 38%, transparent);
   color: var(--on-surface);
+}
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+@layer components {
+  .kicker {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .page-frame {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 76rem;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .page-frame {
+      padding-inline: 2rem;
+    }
+  }
+
+  .instrument {
+    overflow: hidden;
+    border: 1px solid var(--outline-subtle);
+    border-radius: 0.75rem;
+    background: var(--hmi-bezel);
+    box-shadow: var(--elev-2);
+  }
+
+  .instrument-well {
+    overflow: hidden;
+    border: 1px solid var(--outline-subtle);
+    border-radius: 0.5rem;
+    background: var(--surface);
+  }
+
+  .hairline {
+    border-color: var(--outline-subtle);
+  }
 }
 
 @layer utilities {
@@ -97,5 +148,26 @@ body {
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal,
+  .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .animate-fade-rise,
+  .animate-brand-in,
+  .animate-fade-in,
+  .animate-hmi-line,
+  .animate-rail-in {
+    animation: none !important;
   }
 }

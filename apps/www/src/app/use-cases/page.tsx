@@ -9,6 +9,7 @@ import {
   GalleryNav,
   GallerySection,
 } from "@/components/gallery-chrome";
+import { PageFrame } from "@/components/site-chrome";
 import { USE_CASES_NAV } from "@/lib/use-cases";
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function UseCasesPage() {
       />
       <GalleryNav label="Use case stages" items={USE_CASES_NAV} />
 
-      <div className="mx-auto flex max-w-6xl flex-col gap-14 px-5 py-10 sm:px-8 sm:py-12">
+      <PageFrame className="flex flex-col gap-16 py-10 sm:py-12">
         <GallerySection
           id="parked"
           title="Parked"
@@ -50,7 +51,7 @@ export default function UseCasesPage() {
         >
           <ChargingStage />
         </GallerySection>
-      </div>
+      </PageFrame>
     </div>
   );
 }

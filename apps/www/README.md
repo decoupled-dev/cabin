@@ -60,10 +60,10 @@ keep docs on `decoupled-dev.github.io/cabin/`.
 **Authoritative craft brief:** [DESIGN.md](./DESIGN.md) — read before changing
 layout, color, motion, or copy (anti-vibecode).
 
-- Night-leaning default with Day/Night toggle (Cabin day/night story)
+- Night-leaning default with Day/Night segmented control in the header (Cabin day/night story)
 - Semantic color roles aligned with Cabin (primary green, charging, climate)
 - Typography: Syne (display) + Source Sans 3 (body)
-- Hero visual: illustrative cabin HMI chrome (status + content + system bar)
+- Hero visual: one instrument composition (status + content + system) with brand story and HMI tiles
 - Motion: short Material-like brand/entrance and reveals — no ambient blob loops
 - Palette: night cabin black + forest/teal accents — safety warning/error/charging stay crisp at night; domain accents off body copy; no purple brand wash
 
