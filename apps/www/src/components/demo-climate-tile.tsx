@@ -65,13 +65,17 @@ const FIXTURES: Record<SignalKind, ClimateState> = {
  */
 export function ClimateTileDemo({
   compact = false,
+  lockedDrive,
 }: {
   compact?: boolean;
+  /** When set, drive state is fixed (use-case stages). */
+  lockedDrive?: DriveState;
 }) {
   const [fixture, setFixture] = useState<SignalKind>("value");
-  const [drive, setDrive] = useState<DriveState>("parked");
+  const [drive, setDrive] = useState<DriveState>(lockedDrive ?? "parked");
   const [state, setState] = useState<ClimateState>(LIVE);
-  const disposition = dispositionFor(drive, "hvacAdjust");
+  const driveState = lockedDrive ?? drive;
+  const disposition = dispositionFor(driveState, "hvacAdjust");
 
   function applyFixture(kind: SignalKind) {
     setFixture(kind);
@@ -234,11 +238,12 @@ export function ClimateTileDemo({
       {!compact ? (
         <DemoControls
           fixture={fixture}
-          drive={drive}
+          drive={driveState}
           onFixture={applyFixture}
           onDrive={setDrive}
+          driveLocked={Boolean(lockedDrive)}
           note={
-            drive === "moving"
+            driveState === "moving"
               ? "Moving: HvacAdjust Block — steppers RE-quiet; values stay glanceable."
               : "Parked: adjustments Allow. Climate accent is mark-only."
           }
@@ -373,12 +378,14 @@ function DemoControls({
   onFixture,
   onDrive,
   note,
+  driveLocked = false,
 }: {
   fixture: SignalKind;
   drive: DriveState;
   onFixture: (k: SignalKind) => void;
   onDrive: (d: DriveState) => void;
   note: string;
+  driveLocked?: boolean;
 }) {
   return (
     <div className="mt-4 space-y-3">
@@ -408,26 +415,30 @@ function DemoControls({
           ))}
         </div>
       </DemoRail>
-      <DemoRail label="Drive">
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Drive state">
-          {(["parked", "moving"] as const).map((s) => (
-            <button
-              key={s}
-              type="button"
-              onClick={() => onDrive(s)}
-              aria-pressed={drive === s}
-              className={`rounded-md px-3 py-2 text-status capitalize transition-colors duration-200 ease-cabin ${
-                drive === s
-                  ? "bg-[var(--surface-high)] text-on-surface"
-                  : "border border-[var(--outline-subtle)] text-on-surface-variant hover:text-on-surface"
-              }`}
-            >
-              {s}
-            </button>
-          ))}
-        </div>
+      {!driveLocked ? (
+        <DemoRail label="Drive">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Drive state">
+            {(["parked", "moving"] as const).map((s) => (
+              <button
+                key={s}
+                type="button"
+                onClick={() => onDrive(s)}
+                aria-pressed={drive === s}
+                className={`rounded-md px-3 py-2 text-status capitalize transition-colors duration-200 ease-cabin ${
+                  drive === s
+                    ? "bg-[var(--surface-high)] text-on-surface"
+                    : "border border-[var(--outline-subtle)] text-on-surface-variant hover:text-on-surface"
+                }`}
+              >
+                {s}
+              </button>
+            ))}
+          </div>
+          <p className="text-status text-on-surface-variant">{note}</p>
+        </DemoRail>
+      ) : (
         <p className="text-status text-on-surface-variant">{note}</p>
-      </DemoRail>
+      )}
     </div>
   );
 }

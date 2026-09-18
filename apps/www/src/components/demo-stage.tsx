@@ -35,7 +35,7 @@ export function BezelChrome({
     <DemoStage>
       <div className="overflow-hidden rounded-lg border border-[var(--outline-subtle)] bg-surface">
         {status}
-        <div className="min-h-[7.5rem] bg-[var(--surface)] px-4 py-5 sm:min-h-[8.5rem] sm:px-5">
+        <div className="min-h-[10rem] bg-[var(--surface)] px-4 py-5 sm:min-h-[12rem] sm:px-5 sm:py-6">
           {children ?? (
             <p className="max-w-md text-status text-on-surface-variant">
               Status above · System below — container / outline / onContainer

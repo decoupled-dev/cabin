@@ -55,8 +55,8 @@ export default function HomePage() {
               style={{ animationDelay: "140ms" }}
             >
               <ButtonLink href="/develop">Get started</ButtonLink>
-              <ButtonLink href="/foundations" variant="secondary">
-                Foundations
+              <ButtonLink href="/use-cases" variant="secondary">
+                Use cases
               </ButtonLink>
             </div>
           </div>
@@ -142,13 +142,13 @@ export default function HomePage() {
               Next
             </p>
             <h2 className="mt-3 max-w-xl font-display text-headline text-on-surface text-balance">
-              Explore foundations, compliance, or jump to developer docs.
+              Explore use cases, foundations, or jump to developer docs.
             </h2>
           </Reveal>
           <Reveal delayMs={40}>
             <div className="flex flex-wrap gap-3">
-              <ButtonLink href="/compliance" variant="secondary">
-                Compliance story
+              <ButtonLink href="/use-cases" variant="secondary">
+                Use cases
               </ButtonLink>
               <ButtonLink href={DOCS_URL} external>
                 Open docs

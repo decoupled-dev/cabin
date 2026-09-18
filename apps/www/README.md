@@ -17,6 +17,7 @@ This package has **zero** dependency on Android `cabin-tokens` /
 
 - `/` — Home hero + pillars
 - `/foundations` — Color / Type / Space / Motion (live day/night, codegen CSS)
+- `/use-cases` — Parked / Moving / Charging full-bleed HMI stages
 - `/components` — Bars / Climate / Media live HMI demos
 - `/compliance` — Safety-by-default story
 - `/develop` — Get started → docs

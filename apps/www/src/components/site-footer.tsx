@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { DOCS_URL, GITHUB_URL, NAV } from "@/lib/site";
 
-const GALLERY_PATHS = ["/foundations", "/components"];
+const GALLERY_PATHS = ["/foundations", "/use-cases", "/components"];
 
 function isGalleryRoute(pathname: string): boolean {
   return GALLERY_PATHS.some(

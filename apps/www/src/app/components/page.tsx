@@ -100,6 +100,24 @@ export default function ComponentsPage() {
 
         {/* Keep #media anchor for deep links from prior nav */}
         <div id="media" className="sr-only" aria-hidden />
+
+        <p className="border-t border-[var(--outline-subtle)] pt-5 text-status text-on-surface-variant">
+          <a
+            href="/use-cases"
+            className="text-on-surface underline-offset-4 hover:underline"
+          >
+            Use cases
+          </a>
+          <span aria-hidden className="mx-2">
+            ·
+          </span>
+          <a
+            href="/foundations"
+            className="text-on-surface underline-offset-4 hover:underline"
+          >
+            Foundations
+          </a>
+        </p>
       </div>
     </div>
   );
