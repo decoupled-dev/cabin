@@ -130,8 +130,10 @@ class KitchenSinkPackagingTest {
         val candidates = listOf(
             File(relative),
             File("..", relative),
+            File(File("..", ".."), relative),
             File(System.getProperty("user.dir") ?: ".", relative),
             File(System.getProperty("user.dir") ?: ".", "../$relative"),
+            File(System.getProperty("user.dir") ?: ".", "../../$relative"),
         )
         return candidates.firstOrNull { it.isFile }
             ?: error("Could not find $relative from cwd=${System.getProperty("user.dir")}")

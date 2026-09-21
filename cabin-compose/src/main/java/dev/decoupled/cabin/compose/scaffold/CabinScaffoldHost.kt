@@ -103,12 +103,13 @@ fun CabinScaffoldHost(
     Row(
         modifier = modifier
             .fillMaxWidth()
+            .heightIn(min = minSize)
             .alpha(GateVisuals.quietAlpha(disposition))
             .border(if (showFocus) ring else 1.dp, borderColor, RoundedCornerShape(corner))
             .background(fill, RoundedCornerShape(corner))
             .onFocusChanged { focusedNow = it.isFocused }
             .focusable()
-            .semantics(mergeDescendants = true) {
+            .semantics {
                 contentDescription = "$title. $status"
                 role = Role.Button
             }
@@ -117,6 +118,7 @@ fun CabinScaffoldHost(
         Box(
             modifier = Modifier
                 .width(CabinTokens.Space.xs.dp.dp)
+                .heightIn(min = minSize)
                 .fillMaxHeight()
                 .background(mark, RoundedCornerShape(topStart = corner, bottomStart = corner))
                 .testTag("${testTag}_mark"),
