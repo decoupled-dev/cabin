@@ -120,21 +120,21 @@ function ThemeColorRail({
   onDrive: (drive: DriveState) => void;
 }) {
   return (
-    <aside className="border-b border-[var(--outline-subtle)] lg:border-b-0 lg:border-r">
-      <div className="px-5 py-5">
+    <aside className="border-b border-[var(--outline-subtle)] lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto lg:border-b-0 lg:border-r">
+      <div className="px-5 py-4">
         <p className="kicker text-on-surface-variant">Key colors</p>
-        <ul className="mt-4 grid grid-cols-3 gap-3 sm:grid-cols-6 lg:grid-cols-2">
+        <ul className="mt-3 grid grid-cols-3 gap-2.5">
           {KEY_COLORS.map((role) => (
             <KeyColorWell key={role.name} role={role} />
           ))}
         </ul>
-        <p className="mt-3 text-status text-on-surface-variant">
-          Read-only token roles. OEM brand remaps tokens — not this surface.
+        <p className="mt-2 text-status text-on-surface-variant">
+          Token roles. OEM remaps tokens — not this surface.
         </p>
       </div>
 
-      <div className="border-t border-[var(--outline-subtle)] px-5 py-4">
-        <p className="kicker mb-3 text-on-surface-variant">Drive</p>
+      <div className="border-t border-[var(--outline-subtle)] px-5 py-3">
+        <p className="kicker mb-2 text-on-surface-variant">Drive</p>
         <SegmentedControl
           ariaLabel="Drive state"
           value={drive}
@@ -150,7 +150,7 @@ function ThemeColorRail({
 
       <nav
         aria-label="Component families"
-        className="border-t border-[var(--outline-subtle)] px-2 py-3 lg:max-h-[28rem] lg:overflow-y-auto"
+        className="border-t border-[var(--outline-subtle)] px-2 py-3"
       >
         <p className="px-3 pb-2 kicker text-on-surface-variant">Families</p>
         <FamilyRow
@@ -183,7 +183,7 @@ function KeyColorWell({
   return (
     <li className="flex flex-col items-start gap-1.5">
       <span
-        className="aspect-square w-full rounded-full border border-[var(--outline-subtle)]"
+        className="h-10 w-10 rounded-full border border-[var(--outline-subtle)] sm:h-11 sm:w-11"
         style={{ background: `var(${role.cssVar})` }}
         role="img"
         aria-label={`${role.name} ${resolved}`}
@@ -308,7 +308,7 @@ function ThemeInspector({
     .join(" · ");
 
   return (
-    <aside className="px-5 py-5">
+    <aside className="px-5 py-5 lg:sticky lg:top-16 lg:h-[calc(100vh-4rem)] lg:overflow-y-auto">
       <p className="kicker text-on-surface-variant">Component</p>
       <h3 className="mt-2 font-display text-title text-on-surface">
         {entry.title}
