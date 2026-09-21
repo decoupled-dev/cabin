@@ -8,11 +8,14 @@ Cabin is an open-source **AAOS design language** and dual UI kit
 
 **Alpha library modules present:** `cabin-tokens` / `CabinTokens`,
 `cabin-compliance` / `CabinCompliance` (Restriction Engine + `Signal`), and
-`cabin-views` / `CabinViews` (Theme Kit + System/Status bar Views chrome).
-**Experimental:** `cabin-compose` / `CabinCompose` (Theme + System/Status bar
-parity). **Sample:** [`catalog/`](catalog/README.md) demos tokens + chrome
-(not a product / SystemUI dep). See [docs/mvp.md](docs/mvp.md) ·
-[theme-kit](docs/adoption/theme-kit.md) · [compose](docs/platforms/compose.md).
+`cabin-views` / `CabinViews` (Theme Kit + System/Status bars + build-tree
+subset). **Experimental:** `cabin-foundation` / `CabinFoundation` (size
+classes + shared State/Action), `cabin-compose` / `CabinCompose` (Theme +
+bars + kit scaffold), `cabin-gauges` / `CabinGauges` (opt-in cluster; never
+SystemUI). **Sample:** [`catalog/`](catalog/README.md) family index (not a
+product / SystemUI dep). See [docs/mvp.md](docs/mvp.md) ·
+[theme-kit](docs/adoption/theme-kit.md) · [compose](docs/platforms/compose.md)
+· [ADR 0005](docs/adr/0005-compose-first-kit-foundation.md).
 
 **Before expanding library scope, satisfy [docs/pre-implementation.md](docs/pre-implementation.md)
 and respect the frozen [MVP v0.1](docs/mvp.md)** (tokens + Restriction Engine +
@@ -51,16 +54,17 @@ Full map: [docs/README.md](docs/README.md) · LLM map: [llms.txt](llms.txt).
 
 0. **Before library code:** clear [docs/pre-implementation.md](docs/pre-implementation.md) and honor frozen [MVP v0.1](docs/mvp.md).
 1. **Do not bloat modules.** No umbrella AAR/Soong meta-module; samples/catalog/website never leak into product deps.
-2. **`cabin-tokens` and `cabin-compliance` have no UI framework dependencies** (no Compose, no Views widgets).
+2. **`cabin-tokens`, `cabin-compliance`, and `cabin-foundation` have no UI framework dependencies** (no Compose, no Views widgets).
 3. **`cabin-compose` ⊀ `cabin-views`** and vice versa (no cross-stack dependency).
-4. **Views-first for SystemUI / build-tree.** Platform chrome uses Soong `CabinViews` + tokens + compliance. Compose is **not** a gate for SystemUI. Do not tell agents to `implementation` Cabin into SystemUI via Gradle.
+4. **Views-first for SystemUI / build-tree.** Platform chrome uses Soong `CabinViews` + tokens + compliance (`CabinFoundation` is transitive). Compose and gauges are **not** SystemUI deps. Do not tell agents to `implementation` Cabin into SystemUI via Gradle.
 5. **Plan before large implementation** when the user prefers planning, or when changing architecture/compliance contracts.
-6. **Mark planned vs implemented.** Never invent “shipped” APIs. Label sketches **planned**.
+6. **Mark planned vs implemented.** Never invent “shipped” APIs. Label sketches **planned**. Scaffold APIs are `@CabinScaffold` Experimental — not Stable.
 7. **Compliance is not optional.** Do not hardcode driving policy inside widgets; use the Restriction Engine / compliance APIs ([docs/compliance](docs/compliance/README.md)).
 8. **OEM brand without forks.** Tokens + RROs + extension slots — not core edits ([docs/components/extension-model.md](docs/components/extension-model.md)).
-9. **Stay in MVP scope.** Do not add Compose domain screens (media/HVAC/EV)
-   unless maintainers request that next slice. Thin `catalog/` chrome demos
-   are allowed; keep them out of the `cabin-*` publish graph.
+9. **Stay in MVP craft scope.** Do not replace Experimental kit scaffolds with
+   production domain screens (media/HVAC/EV) unless maintainers request that
+   slice. Generate new stubs from [`components/cabin.components.yaml`](components/cabin.components.yaml).
+   Thin `catalog/` demos are allowed; keep them out of the `cabin-*` publish graph.
 10. **American English**; restrained, production-minded tone.
 11. **When editing `apps/www`**, follow [`apps/www/DESIGN.md`](apps/www/DESIGN.md)
     (anti-vibecode craft brief). Do not treat the marketing site as generic AI

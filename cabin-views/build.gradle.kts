@@ -31,6 +31,7 @@ dependencies {
     // System/Status bars: tokens + Restriction Engine (thin-by-design; no Compose).
     api(project(":cabin-tokens"))
     api(project(":cabin-compliance"))
+    api(project(":cabin-foundation"))
     implementation(libs.androidx.annotation)
 
     testImplementation(libs.junit)

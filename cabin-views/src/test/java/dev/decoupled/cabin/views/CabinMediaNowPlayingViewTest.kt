@@ -4,6 +4,8 @@ import android.view.ContextThemeWrapper
 import android.view.View
 import dev.decoupled.cabin.compliance.Signal
 import dev.decoupled.cabin.compliance.VehicleUiState
+import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingAction
+import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingState
 import dev.decoupled.cabin.views.compliance.CabinComplianceHost
 import dev.decoupled.cabin.views.theme.CabinThemes
 import org.junit.Assert.assertEquals

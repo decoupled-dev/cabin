@@ -10,4 +10,6 @@
     <integer name="cabin_motion_fast_duration">100</integer>
     <integer name="cabin_motion_medium_duration">200</integer>
     <integer name="cabin_motion_slow_duration">300</integer>
+    <integer name="cabin_motion_reduced_duration">0</integer>
+    <integer name="cabin_motion_drivingCap_duration">120</integer>
 </resources>

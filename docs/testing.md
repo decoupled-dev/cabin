@@ -49,7 +49,9 @@ unit tests and Views chrome verification. Compose bar parity is
 
 - Gradle module dependency tests (or lint) ensuring Views ⊀ Compose
 - Soong thin-deps guard: `python3 tools/check_soong_thin_deps.py`
-  (no `CabinCompose` / catalog in SystemUI-shaped sketch; no catalog bp)
+  (no `CabinCompose` / `CabinGauges` / catalog in SystemUI-shaped sketch;
+  no catalog bp; Views static_libs include `CabinFoundation`)
+- Component inventory drift: `python3 tools/generate_cabin_components.py --check`
 - Document Soong `static_libs` review against
   [systemui-cabin sketch](adoption/sketches/systemui-cabin/)
 
@@ -58,16 +60,17 @@ unit tests and Views chrome verification. Compose bar parity is
 | Area | Expectation |
 | --- | --- |
 | Compose System/Status bars + ClimateTile / MediaNowPlaying | **Experimental** — gate / Signal / tone / honest-media parity tests in `cabin-compose` (shipped); screenshot/golden later |
+| Kit scaffold families | One parameterized smoke per family: composition/bind, `testTag`, Block while Moving (`cabin-compose` / `cabin-views` / `cabin-gauges`); no goldens in this pass |
 | Screenshot / golden | Paparazzi (or equiv.) for Views; Compose parity screenshots |
 | Dual-stack parity | Shared fixtures for System/Status bar state |
-| Catalog | Thin sample tests in `catalog/` (fixtures + packaging guard); visual QA later |
+| Catalog | Thin sample tests in `catalog/` (fixtures + registry + packaging guard); visual QA later |
 | Platform image CI | Optional userdebug jobs consuming Soong modules |
 
 ## Gradle CI vs platform / Soong
 
 | Lane | v0.1 |
 | --- | --- |
-| **Gradle CI** (GitHub/etc.) | Unit tests for compliance + tokens + Theme Kit / Views bars (`cabin-views`) + Experimental Compose bars (`cabin-compose`); `tools/check_soong_thin_deps.py`; lint/format as added |
+| **Gradle CI** (GitHub/etc.) | Unit tests for tokens + compliance + foundation + Views + Compose + gauges + catalog; `tools/check_soong_thin_deps.py`; token and component codegen `--check` |
 | **Platform / Soong** | Manual or partner tree verification that `Cabin*` modules build and SystemUI-shaped target links thinly ([sketch](adoption/sketches/systemui-cabin/)); full AAOS image CI is partner-owned |
 
 Cabin does not require hosting a full AAOS tree in this repo for MVP.

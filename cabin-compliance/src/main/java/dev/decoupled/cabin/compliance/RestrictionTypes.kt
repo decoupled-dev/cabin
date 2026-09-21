@@ -47,6 +47,14 @@ enum class CabinInteraction {
      * (`StatusDeepLink → settings / setup` in restriction-states.md).
      */
     StatusDeepLinkSettings,
+    /**
+     * Parked-only content (lyrics, video, EULA, 3D vehicle). Fail-closed unless Parked.
+     */
+    ParkedOnly,
+    /**
+     * Body / vehicle adjustments (locks, windows, drive mode). Same matrix as HvacAdjust.
+     */
+    VehicleAdjust,
 }
 
 /** Gate result for a declared interaction under the current UI mode. */

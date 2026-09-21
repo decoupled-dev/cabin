@@ -65,6 +65,10 @@ object CabinThemeResolver {
             climate = color(context, attr.colorClimate),
             mediaAccent = color(context, attr.colorMediaAccent),
             scrim = color(context, attr.colorScrim),
+            critical = color(context, attr.colorCritical),
+            adasActive = color(context, attr.colorAdasActive),
+            privacy = color(context, attr.colorPrivacy),
+            focusRing = color(context, attr.colorFocusRing),
         )
     }
 

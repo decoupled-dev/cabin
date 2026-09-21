@@ -103,6 +103,16 @@ class CatalogDemoDataTest {
     }
 
     @Test
+    fun registry_coversFamiliesAndViewsSubset() {
+        assertTrue(CatalogRegistry.entries.size > 100)
+        assertTrue(CatalogRegistry.families.contains("action"))
+        assertTrue(CatalogRegistry.families.contains("gauges"))
+        assertTrue(CatalogRegistry.entries.any { it.id == "button" && it.stacks.contains("views") })
+        assertTrue(CatalogRegistry.entries.any { it.id == "system-bar" && it.handwritten })
+        assertTrue(CatalogRegistry.entries.none { it.id == "speedometer" && it.stacks.contains("views") })
+    }
+
+    @Test
     fun catalogActivity_launches() {
         val controller = Robolectric.buildActivity(CatalogActivity::class.java).setup()
         assertTrue(controller.get() != null)
@@ -119,8 +129,10 @@ class CatalogPackagingTest {
         val roots = listOf(
             "cabin-tokens/build.gradle.kts",
             "cabin-compliance/build.gradle.kts",
+            "cabin-foundation/build.gradle.kts",
             "cabin-views/build.gradle.kts",
             "cabin-compose/build.gradle.kts",
+            "cabin-gauges/build.gradle.kts",
         )
         roots.forEach { relative ->
             val file = resolveRepoFile(relative)

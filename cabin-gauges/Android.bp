@@ -1,0 +1,25 @@
+// CabinGauges — Experimental cluster / HUD primitives (opt-in).
+// Same sources as the Gradle module (:cabin-gauges).
+//
+// NEVER add CabinGauges to SystemUI static_libs. Cluster surfaces have a
+// separate performance budget and release cadence.
+
+android_library {
+    name: "CabinGauges",
+    defaults: ["CabinAndroidLibraryDefaults"],
+    visibility: ["//visibility:public"],
+    srcs: ["src/main/java/**/*.kt"],
+    resource_dirs: ["src/main/res"],
+    manifest: "src/main/AndroidManifest.xml",
+    static_libs: [
+        "CabinTokens",
+        "CabinCompliance",
+        "CabinFoundation",
+        "CabinCompose",
+        "androidx.annotation_annotation",
+        // Compose runtime / UI libs come from the host tree when linking.
+        // "androidx.compose.runtime_runtime",
+        // "androidx.compose.ui_ui",
+        // "androidx.compose.foundation_foundation",
+    ],
+}

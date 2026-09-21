@@ -1,0 +1,4755 @@
+{
+  "version": 1,
+  "components": [
+    {
+      "id": "system-bar",
+      "typeName": "SystemBar",
+      "family": "systemui",
+      "title": "System bar",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": true,
+      "module": "compose"
+    },
+    {
+      "id": "status-bar",
+      "typeName": "StatusBar",
+      "family": "systemui",
+      "title": "Status bar",
+      "interaction": "Glance",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": true,
+      "module": "compose"
+    },
+    {
+      "id": "climate-tile",
+      "typeName": "ClimateTile",
+      "family": "hvac",
+      "title": "Climate tile",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": true,
+      "module": "compose"
+    },
+    {
+      "id": "media-now-playing",
+      "typeName": "MediaNowPlaying",
+      "family": "media",
+      "title": "Now playing",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": true,
+      "module": "compose"
+    },
+    {
+      "id": "button",
+      "typeName": "Button",
+      "family": "action",
+      "title": "Button",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [
+        "filled",
+        "tonal",
+        "outlined",
+        "text",
+        "icon"
+      ],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "fab",
+      "typeName": "Fab",
+      "family": "action",
+      "title": "FAB",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [
+        "standard",
+        "extended"
+      ],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "button-group",
+      "typeName": "ButtonGroup",
+      "family": "action",
+      "title": "Button group",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "toggle-button",
+      "typeName": "ToggleButton",
+      "family": "action",
+      "title": "Toggle button",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "segmented-button",
+      "typeName": "SegmentedButton",
+      "family": "action",
+      "title": "Segmented button",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "split-button",
+      "typeName": "SplitButton",
+      "family": "action",
+      "title": "Split button",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "long-press-button",
+      "typeName": "LongPressButton",
+      "family": "action",
+      "title": "Long-press button",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "action-row",
+      "typeName": "ActionRow",
+      "family": "action",
+      "title": "Rotary action row",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "hold-to-confirm",
+      "typeName": "HoldToConfirmButton",
+      "family": "action",
+      "title": "Hold-to-confirm",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "safety-action",
+      "typeName": "SafetyActionButton",
+      "family": "action",
+      "title": "Safety-critical action",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "press-hold-repeater",
+      "typeName": "PressHoldRepeater",
+      "family": "action",
+      "title": "Press-and-hold repeater",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "switch",
+      "typeName": "Switch",
+      "family": "selection",
+      "title": "Switch",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "checkbox",
+      "typeName": "Checkbox",
+      "family": "selection",
+      "title": "Checkbox",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "radio",
+      "typeName": "Radio",
+      "family": "selection",
+      "title": "Radio",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "radio-group",
+      "typeName": "RadioGroup",
+      "family": "selection",
+      "title": "Radio group",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "chip",
+      "typeName": "Chip",
+      "family": "selection",
+      "title": "Chip",
+      "interaction": "FilterOrSort",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [
+        "filter",
+        "input",
+        "assist",
+        "suggestion"
+      ],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "chip-group",
+      "typeName": "ChipGroup",
+      "family": "selection",
+      "title": "Chip group",
+      "interaction": "FilterOrSort",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "selection-card",
+      "typeName": "SelectionCard",
+      "family": "selection",
+      "title": "Selection card",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "multi-select-toolbar",
+      "typeName": "MultiSelectToolbar",
+      "family": "selection",
+      "title": "Multi-select toolbar",
+      "interaction": "FilterOrSort",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "toggle-tile",
+      "typeName": "ToggleTile",
+      "family": "selection",
+      "title": "Toggle tile",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "tri-state-toggle",
+      "typeName": "TriStateToggle",
+      "family": "selection",
+      "title": "Tri-state toggle",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "multi-position-selector",
+      "typeName": "MultiPositionSelector",
+      "family": "selection",
+      "title": "Multi-position selector",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "navigation-dock",
+      "typeName": "NavigationDock",
+      "family": "navigation",
+      "title": "Navigation dock",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "navigation-rail",
+      "typeName": "NavigationRail",
+      "family": "navigation",
+      "title": "Navigation rail",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "bottom-bar",
+      "typeName": "BottomBar",
+      "family": "navigation",
+      "title": "Bottom bar",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "side-drawer",
+      "typeName": "SideDrawer",
+      "family": "navigation",
+      "title": "Side drawer",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "top-bar",
+      "typeName": "TopBar",
+      "family": "navigation",
+      "title": "Top app bar",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "tabs",
+      "typeName": "Tabs",
+      "family": "navigation",
+      "title": "Tabs",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [
+        "fixed",
+        "scrollable",
+        "icon-only"
+      ],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "breadcrumbs",
+      "typeName": "Breadcrumbs",
+      "family": "navigation",
+      "title": "Breadcrumbs",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "back-affordance",
+      "typeName": "BackAffordance",
+      "family": "navigation",
+      "title": "Back / up",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "hardware-back-handler",
+      "typeName": "HardwareBackHandler",
+      "family": "navigation",
+      "title": "Hardware back handler",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "page-indicator",
+      "typeName": "PageIndicator",
+      "family": "navigation",
+      "title": "Page indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "pager",
+      "typeName": "Pager",
+      "family": "navigation",
+      "title": "Pager",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "carousel",
+      "typeName": "Carousel",
+      "family": "navigation",
+      "title": "Carousel",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "wizard-stepper",
+      "typeName": "WizardStepper",
+      "family": "navigation",
+      "title": "Wizard stepper",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "deep-link-helper",
+      "typeName": "DeepLinkHelper",
+      "family": "navigation",
+      "title": "Deep-link helper",
+      "interaction": "StatusDeepLinkInformational",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "surface",
+      "typeName": "Surface",
+      "family": "surface",
+      "title": "Surface",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "card",
+      "typeName": "Card",
+      "family": "surface",
+      "title": "Card",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [
+        "filled",
+        "outlined",
+        "elevated"
+      ],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "tile",
+      "typeName": "Tile",
+      "family": "surface",
+      "title": "Tile",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "banner",
+      "typeName": "Banner",
+      "family": "surface",
+      "title": "Banner",
+      "interaction": "StatusDeepLinkInformational",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "panel",
+      "typeName": "Panel",
+      "family": "surface",
+      "title": "Panel",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "section-container",
+      "typeName": "SectionContainer",
+      "family": "surface",
+      "title": "Section container",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "expandable-container",
+      "typeName": "ExpandableContainer",
+      "family": "surface",
+      "title": "Expandable container",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "accordion",
+      "typeName": "Accordion",
+      "family": "surface",
+      "title": "Accordion",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "divider",
+      "typeName": "Divider",
+      "family": "surface",
+      "title": "Divider",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "spacer",
+      "typeName": "Spacer",
+      "family": "surface",
+      "title": "Spacer",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "scrim-overlay",
+      "typeName": "ScrimOverlay",
+      "family": "surface",
+      "title": "Scrim",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "paged-scroll",
+      "typeName": "PagedScroll",
+      "family": "surface",
+      "title": "Paged scroll",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "scroll-position-indicator",
+      "typeName": "ScrollPositionIndicator",
+      "family": "surface",
+      "title": "Scroll position indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "scroll-buttons",
+      "typeName": "ScrollButtons",
+      "family": "surface",
+      "title": "Scroll buttons",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "sticky-header",
+      "typeName": "StickyHeader",
+      "family": "surface",
+      "title": "Sticky header",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "pull-free-refresh",
+      "typeName": "PullFreeRefresh",
+      "family": "surface",
+      "title": "Pull-free refresh",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "bottom-sheet",
+      "typeName": "BottomSheet",
+      "family": "surface",
+      "title": "Bottom sheet",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "side-sheet",
+      "typeName": "SideSheet",
+      "family": "surface",
+      "title": "Side sheet",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "modal-drawer",
+      "typeName": "ModalDrawer",
+      "family": "surface",
+      "title": "Modal drawer",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "list-item",
+      "typeName": "ListItem",
+      "family": "collection",
+      "title": "List item",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [
+        "one-line",
+        "two-line",
+        "three-line"
+      ],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "paged-list",
+      "typeName": "PagedList",
+      "family": "collection",
+      "title": "Paged list",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "sectioned-list",
+      "typeName": "SectionedList",
+      "family": "collection",
+      "title": "Sectioned list",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "grouped-list",
+      "typeName": "GroupedList",
+      "family": "collection",
+      "title": "Grouped list",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "jump-list",
+      "typeName": "JumpList",
+      "family": "collection",
+      "title": "Jump list",
+      "interaction": "FilterOrSort",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "app-grid",
+      "typeName": "AppGrid",
+      "family": "collection",
+      "title": "App grid",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "media-grid",
+      "typeName": "MediaGrid",
+      "family": "collection",
+      "title": "Media grid",
+      "interaction": "MediaComplex",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "adaptive-grid",
+      "typeName": "AdaptiveGrid",
+      "family": "collection",
+      "title": "Adaptive grid",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "data-table",
+      "typeName": "DataTable",
+      "family": "collection",
+      "title": "Data table",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "key-value-row",
+      "typeName": "KeyValueRow",
+      "family": "collection",
+      "title": "Key-value row",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "info-row",
+      "typeName": "InfoRow",
+      "family": "collection",
+      "title": "Info row",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "description-list",
+      "typeName": "DescriptionList",
+      "family": "collection",
+      "title": "Description list",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "timeline-list",
+      "typeName": "TimelineList",
+      "family": "collection",
+      "title": "Timeline list",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "filter-bar",
+      "typeName": "FilterBar",
+      "family": "collection",
+      "title": "Filter bar",
+      "interaction": "FilterOrSort",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "sort-control",
+      "typeName": "SortControl",
+      "family": "collection",
+      "title": "Sort control",
+      "interaction": "FilterOrSort",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "search-result-list",
+      "typeName": "SearchResultList",
+      "family": "collection",
+      "title": "Search result list",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "empty-state",
+      "typeName": "EmptyState",
+      "family": "collection",
+      "title": "Empty state",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "error-state",
+      "typeName": "ErrorState",
+      "family": "collection",
+      "title": "Error state",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "loading-collection",
+      "typeName": "LoadingCollection",
+      "family": "collection",
+      "title": "Loading collection",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "text-field",
+      "typeName": "TextField",
+      "family": "input",
+      "title": "Text field",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [
+        "filled",
+        "outlined"
+      ],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "search-field",
+      "typeName": "SearchField",
+      "family": "input",
+      "title": "Search field",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "pin-field",
+      "typeName": "PinField",
+      "family": "input",
+      "title": "PIN field",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "otp-field",
+      "typeName": "OtpField",
+      "family": "input",
+      "title": "OTP field",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "multiline-text",
+      "typeName": "MultilineText",
+      "family": "input",
+      "title": "Multi-line text",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "autocomplete",
+      "typeName": "Autocomplete",
+      "family": "input",
+      "title": "Autocomplete",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "masked-input",
+      "typeName": "MaskedInput",
+      "family": "input",
+      "title": "Masked input",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "numeric-keypad",
+      "typeName": "NumericKeypad",
+      "family": "input",
+      "title": "Numeric keypad",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "dial-pad",
+      "typeName": "DialPad",
+      "family": "input",
+      "title": "Dial pad",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "rotary-text-entry",
+      "typeName": "RotaryTextEntry",
+      "family": "input",
+      "title": "Rotary text entry",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "slider",
+      "typeName": "Slider",
+      "family": "input",
+      "title": "Slider",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "range-slider",
+      "typeName": "RangeSlider",
+      "family": "input",
+      "title": "Range slider",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "stepper",
+      "typeName": "Stepper",
+      "family": "input",
+      "title": "Stepper",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "number-picker",
+      "typeName": "NumberPicker",
+      "family": "input",
+      "title": "Number picker",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "dial-knob",
+      "typeName": "DialKnob",
+      "family": "input",
+      "title": "Dial / knob",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "date-picker",
+      "typeName": "DatePicker",
+      "family": "input",
+      "title": "Date picker",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "time-picker",
+      "typeName": "TimePicker",
+      "family": "input",
+      "title": "Time picker",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "duration-picker",
+      "typeName": "DurationPicker",
+      "family": "input",
+      "title": "Duration picker",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "dropdown",
+      "typeName": "Dropdown",
+      "family": "input",
+      "title": "Dropdown",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "list-picker",
+      "typeName": "ListPicker",
+      "family": "input",
+      "title": "List picker",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "color-picker",
+      "typeName": "ColorPicker",
+      "family": "input",
+      "title": "Color picker",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "wheel-picker",
+      "typeName": "WheelPicker",
+      "family": "input",
+      "title": "Wheel picker",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "option-picker",
+      "typeName": "OptionPicker",
+      "family": "input",
+      "title": "Option picker",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "voice-mic-button",
+      "typeName": "VoiceMicButton",
+      "family": "input",
+      "title": "Voice mic button",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "listening-indicator",
+      "typeName": "ListeningIndicator",
+      "family": "input",
+      "title": "Listening indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "transcription-field",
+      "typeName": "TranscriptionField",
+      "family": "input",
+      "title": "Transcription field",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "rating-input",
+      "typeName": "RatingInput",
+      "family": "input",
+      "title": "Rating input",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "gesture-pad",
+      "typeName": "GesturePad",
+      "family": "input",
+      "title": "Gesture pad",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "dialog",
+      "typeName": "Dialog",
+      "family": "feedback",
+      "title": "Dialog",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [
+        "alert",
+        "confirmation",
+        "list",
+        "input"
+      ],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "snackbar",
+      "typeName": "Snackbar",
+      "family": "feedback",
+      "title": "Snackbar",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "toast",
+      "typeName": "Toast",
+      "family": "feedback",
+      "title": "Toast",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "inline-message",
+      "typeName": "InlineMessage",
+      "family": "feedback",
+      "title": "Inline message",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "callout",
+      "typeName": "Callout",
+      "family": "feedback",
+      "title": "Callout",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "linear-progress",
+      "typeName": "LinearProgress",
+      "family": "feedback",
+      "title": "Linear progress",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "circular-progress",
+      "typeName": "CircularProgress",
+      "family": "feedback",
+      "title": "Circular progress",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "skeleton",
+      "typeName": "Skeleton",
+      "family": "feedback",
+      "title": "Skeleton",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "step-progress",
+      "typeName": "StepProgress",
+      "family": "feedback",
+      "title": "Step progress",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "context-menu",
+      "typeName": "ContextMenu",
+      "family": "feedback",
+      "title": "Context menu",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "tooltip",
+      "typeName": "Tooltip",
+      "family": "feedback",
+      "title": "Tooltip",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "offline-state",
+      "typeName": "OfflineState",
+      "family": "feedback",
+      "title": "Offline state",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "no-permission-state",
+      "typeName": "NoPermissionState",
+      "family": "feedback",
+      "title": "No-permission state",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "driving-restricted-state",
+      "typeName": "DrivingRestrictedState",
+      "family": "feedback",
+      "title": "Driving-restricted state",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "badge",
+      "typeName": "Badge",
+      "family": "feedback",
+      "title": "Badge",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "status-pill",
+      "typeName": "StatusPill",
+      "family": "feedback",
+      "title": "Status pill",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "tag",
+      "typeName": "Tag",
+      "family": "feedback",
+      "title": "Tag",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "splash-screen",
+      "typeName": "SplashScreen",
+      "family": "feedback",
+      "title": "Splash / loading screen",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "preference",
+      "typeName": "Preference",
+      "family": "settings",
+      "title": "Preference row",
+      "interaction": "StatusDeepLinkSettings",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [
+        "switch",
+        "checkbox",
+        "list",
+        "slider",
+        "edit-text"
+      ],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "preference-scaffold",
+      "typeName": "PreferenceScaffold",
+      "family": "settings",
+      "title": "Two-pane settings",
+      "interaction": "StatusDeepLinkSettings",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "settings-search",
+      "typeName": "SettingsSearch",
+      "family": "settings",
+      "title": "Settings search",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "settings-tile",
+      "typeName": "SettingsTile",
+      "family": "settings",
+      "title": "Settings tile",
+      "interaction": "StatusDeepLinkSettings",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "settings-homepage",
+      "typeName": "SettingsHomepage",
+      "family": "settings",
+      "title": "Settings homepage",
+      "interaction": "StatusDeepLinkSettings",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "mini-player",
+      "typeName": "MiniPlayer",
+      "family": "media",
+      "title": "Mini player",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "dock-player",
+      "typeName": "DockPlayer",
+      "family": "media",
+      "title": "Dock player",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "transport-controls",
+      "typeName": "TransportControls",
+      "family": "media",
+      "title": "Transport controls",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "media-seek-bar",
+      "typeName": "MediaSeekBar",
+      "family": "media",
+      "title": "Media seek bar",
+      "interaction": "MediaComplex",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "shuffle-repeat",
+      "typeName": "ShuffleRepeat",
+      "family": "media",
+      "title": "Shuffle / repeat",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "rating-like",
+      "typeName": "RatingLike",
+      "family": "media",
+      "title": "Rating / like",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "album-art",
+      "typeName": "AlbumArt",
+      "family": "media",
+      "title": "Album art",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "queue-list",
+      "typeName": "QueueList",
+      "family": "media",
+      "title": "Queue list",
+      "interaction": "MediaComplex",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "browse-tree",
+      "typeName": "BrowseTree",
+      "family": "media",
+      "title": "Browse tree",
+      "interaction": "MediaComplex",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "source-switcher",
+      "typeName": "SourceSwitcher",
+      "family": "media",
+      "title": "Source switcher",
+      "interaction": "MediaComplex",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "audio-zone-selector",
+      "typeName": "AudioZoneSelector",
+      "family": "media",
+      "title": "Audio-zone selector",
+      "interaction": "MediaComplex",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "volume-panel",
+      "typeName": "VolumePanel",
+      "family": "media",
+      "title": "Volume panel",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "fade-balance-panel",
+      "typeName": "FadeBalancePanel",
+      "family": "media",
+      "title": "Fade / balance panel",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "eq-controls",
+      "typeName": "EqControls",
+      "family": "media",
+      "title": "EQ controls",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "audio-visualizer",
+      "typeName": "AudioVisualizer",
+      "family": "media",
+      "title": "Audio visualizer",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "radio-tuner",
+      "typeName": "RadioTuner",
+      "family": "media",
+      "title": "Radio tuner",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "radio-presets",
+      "typeName": "RadioPresets",
+      "family": "media",
+      "title": "Radio presets",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "station-list",
+      "typeName": "StationList",
+      "family": "media",
+      "title": "Station list",
+      "interaction": "MediaComplex",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "hd-metadata-card",
+      "typeName": "HdMetadataCard",
+      "family": "media",
+      "title": "HD / DAB metadata",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "podcast-controls",
+      "typeName": "PodcastControls",
+      "family": "media",
+      "title": "Podcast controls",
+      "interaction": "MediaComplex",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "lyrics-view",
+      "typeName": "LyricsView",
+      "family": "media",
+      "title": "Lyrics view",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "video-player-chrome",
+      "typeName": "VideoPlayerChrome",
+      "family": "media",
+      "title": "Video player chrome",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "rear-seat-media-controls",
+      "typeName": "RearSeatMediaControls",
+      "family": "media",
+      "title": "Rear-seat media controls",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "temperature-control",
+      "typeName": "TemperatureControl",
+      "family": "hvac",
+      "title": "Temperature control",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "fan-speed",
+      "typeName": "FanSpeed",
+      "family": "hvac",
+      "title": "Fan speed",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "airflow-direction",
+      "typeName": "AirflowDirection",
+      "family": "hvac",
+      "title": "Airflow direction",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "zone-selector",
+      "typeName": "ZoneSelector",
+      "family": "hvac",
+      "title": "Zone selector",
+      "interaction": "HvacPeek",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "seat-climate",
+      "typeName": "SeatClimate",
+      "family": "hvac",
+      "title": "Seat heat / vent",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "steering-wheel-heat",
+      "typeName": "SteeringWheelHeat",
+      "family": "hvac",
+      "title": "Steering wheel heat",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "mirror-heat",
+      "typeName": "MirrorHeat",
+      "family": "hvac",
+      "title": "Mirror heat",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "defrost-toggle",
+      "typeName": "DefrostToggle",
+      "family": "hvac",
+      "title": "Defrost",
+      "interaction": "HvacPeek",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "recirc-toggle",
+      "typeName": "RecircToggle",
+      "family": "hvac",
+      "title": "Recirculation",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "auto-ac-toggle",
+      "typeName": "AutoAcToggle",
+      "family": "hvac",
+      "title": "Auto / A/C",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "eco-toggle",
+      "typeName": "EcoToggle",
+      "family": "hvac",
+      "title": "Eco climate",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "air-quality-indicator",
+      "typeName": "AirQualityIndicator",
+      "family": "hvac",
+      "title": "Air quality",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "fragrance-control",
+      "typeName": "FragranceControl",
+      "family": "hvac",
+      "title": "Fragrance",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "preconditioning-scheduler",
+      "typeName": "PreconditioningScheduler",
+      "family": "hvac",
+      "title": "Pre-conditioning scheduler",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "ambient-lighting",
+      "typeName": "AmbientLighting",
+      "family": "hvac",
+      "title": "Ambient lighting",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "sunroof-control",
+      "typeName": "SunroofControl",
+      "family": "hvac",
+      "title": "Sunroof / sunshade",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "hvac-overlay",
+      "typeName": "HvacOverlay",
+      "family": "hvac",
+      "title": "HVAC overlay",
+      "interaction": "HvacPeek",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "persistent-hvac-bar",
+      "typeName": "PersistentHvacBar",
+      "family": "hvac",
+      "title": "Persistent HVAC bar",
+      "interaction": "HvacPeek",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "door-control",
+      "typeName": "DoorControl",
+      "family": "vehicle",
+      "title": "Door control",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "window-control",
+      "typeName": "WindowControl",
+      "family": "vehicle",
+      "title": "Window control",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "trunk-control",
+      "typeName": "TrunkControl",
+      "family": "vehicle",
+      "title": "Trunk / frunk",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "lock-control",
+      "typeName": "LockControl",
+      "family": "vehicle",
+      "title": "Lock control",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "mirror-control",
+      "typeName": "MirrorControl",
+      "family": "vehicle",
+      "title": "Mirror control",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "seat-memory",
+      "typeName": "SeatMemory",
+      "family": "vehicle",
+      "title": "Seat memory",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "charge-port-door",
+      "typeName": "ChargePortDoor",
+      "family": "vehicle",
+      "title": "Charge-port door",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "wiper-control",
+      "typeName": "WiperControl",
+      "family": "vehicle",
+      "title": "Wiper control",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "light-control",
+      "typeName": "LightControl",
+      "family": "vehicle",
+      "title": "Light control",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "drive-mode-selector",
+      "typeName": "DriveModeSelector",
+      "family": "vehicle",
+      "title": "Drive-mode selector",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "regen-selector",
+      "typeName": "RegenSelector",
+      "family": "vehicle",
+      "title": "Regen-level selector",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "suspension-control",
+      "typeName": "SuspensionControl",
+      "family": "vehicle",
+      "title": "Suspension / ride height",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "steering-feel",
+      "typeName": "SteeringFeel",
+      "family": "vehicle",
+      "title": "Steering feel",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "traction-control",
+      "typeName": "TractionControl",
+      "family": "vehicle",
+      "title": "Traction control",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "telltale-set",
+      "typeName": "TelltaleSet",
+      "family": "vehicle",
+      "title": "Telltale set",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "warning-list",
+      "typeName": "WarningList",
+      "family": "vehicle",
+      "title": "Warning list",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "service-reminder",
+      "typeName": "ServiceReminder",
+      "family": "vehicle",
+      "title": "Service reminder",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "vehicle-open-map",
+      "typeName": "VehicleOpenMap",
+      "family": "vehicle",
+      "title": "Vehicle-open map",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "tire-pressure",
+      "typeName": "TirePressure",
+      "family": "vehicle",
+      "title": "Tire pressure",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "fluid-levels",
+      "typeName": "FluidLevels",
+      "family": "vehicle",
+      "title": "Fluid levels",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "battery-12v",
+      "typeName": "Battery12v",
+      "family": "vehicle",
+      "title": "12V battery",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "trip-computer",
+      "typeName": "TripComputer",
+      "family": "vehicle",
+      "title": "Trip computer",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "consumption-graph",
+      "typeName": "ConsumptionGraph",
+      "family": "vehicle",
+      "title": "Consumption graph",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "eco-score",
+      "typeName": "EcoScore",
+      "family": "vehicle",
+      "title": "Eco-score",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "vehicle-model-view",
+      "typeName": "VehicleModelView",
+      "family": "vehicle",
+      "title": "Vehicle model view",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "confirm-safety-action",
+      "typeName": "ConfirmSafetyAction",
+      "family": "vehicle",
+      "title": "Confirm safety action",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "digital-key",
+      "typeName": "DigitalKey",
+      "family": "vehicle",
+      "title": "Digital key",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "valet-mode",
+      "typeName": "ValetMode",
+      "family": "vehicle",
+      "title": "Valet mode",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "guest-mode",
+      "typeName": "GuestMode",
+      "family": "vehicle",
+      "title": "Guest mode",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "range-estimator",
+      "typeName": "RangeEstimator",
+      "family": "ev",
+      "title": "Range estimator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "range-on-map",
+      "typeName": "RangeOnMap",
+      "family": "ev",
+      "title": "Range on map",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "charge-session-card",
+      "typeName": "ChargeSessionCard",
+      "family": "ev",
+      "title": "Charge session card",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "charge-limit-slider",
+      "typeName": "ChargeLimitSlider",
+      "family": "ev",
+      "title": "Charge limit slider",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "charging-schedule",
+      "typeName": "ChargingSchedule",
+      "family": "ev",
+      "title": "Charging schedule",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "charge-port-status",
+      "typeName": "ChargePortStatus",
+      "family": "ev",
+      "title": "Charge-port status",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "charging-station-card",
+      "typeName": "ChargingStationCard",
+      "family": "ev",
+      "title": "Charging-station card",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "connector-type-chip",
+      "typeName": "ConnectorTypeChip",
+      "family": "ev",
+      "title": "Connector-type chip",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "energy-flow-diagram",
+      "typeName": "EnergyFlowDiagram",
+      "family": "ev",
+      "title": "Energy flow diagram",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "consumption-chart",
+      "typeName": "ConsumptionChart",
+      "family": "ev",
+      "title": "Consumption chart",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "regen-indicator",
+      "typeName": "RegenIndicator",
+      "family": "ev",
+      "title": "Regen indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "charge-precondition",
+      "typeName": "ChargePrecondition",
+      "family": "ev",
+      "title": "Precondition for charging",
+      "interaction": "HvacAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "trip-charge-planner",
+      "typeName": "TripChargePlanner",
+      "family": "ev",
+      "title": "Trip charge planner",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "v2x-controls",
+      "typeName": "V2xControls",
+      "family": "ev",
+      "title": "V2L / V2H controls",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "fuel-level",
+      "typeName": "FuelLevel",
+      "family": "ev",
+      "title": "Fuel level",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "hybrid-range-breakdown",
+      "typeName": "HybridRangeBreakdown",
+      "family": "ev",
+      "title": "Hybrid range breakdown",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "map-container",
+      "typeName": "MapContainer",
+      "family": "nav",
+      "title": "Map container",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "map-controls",
+      "typeName": "MapControls",
+      "family": "nav",
+      "title": "Map controls",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "route-card",
+      "typeName": "RouteCard",
+      "family": "nav",
+      "title": "Route card",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "eta-panel",
+      "typeName": "EtaPanel",
+      "family": "nav",
+      "title": "ETA panel",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "turn-instruction",
+      "typeName": "TurnInstruction",
+      "family": "nav",
+      "title": "Turn instruction",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "lane-guidance",
+      "typeName": "LaneGuidance",
+      "family": "nav",
+      "title": "Lane guidance",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "junction-view",
+      "typeName": "JunctionView",
+      "family": "nav",
+      "title": "Junction view",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "speed-limit",
+      "typeName": "NavSpeedLimit",
+      "family": "nav",
+      "title": "Speed-limit indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "nav-search-bar",
+      "typeName": "NavSearchBar",
+      "family": "nav",
+      "title": "Navigation search",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "place-card",
+      "typeName": "PlaceCard",
+      "family": "nav",
+      "title": "Place card",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "favorites-list",
+      "typeName": "FavoritesList",
+      "family": "nav",
+      "title": "Favorites / recents",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "poi-chips",
+      "typeName": "PoiChips",
+      "family": "nav",
+      "title": "POI category chips",
+      "interaction": "FilterOrSort",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "arrival-panel",
+      "typeName": "ArrivalPanel",
+      "family": "nav",
+      "title": "Arrival panel",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "route-options",
+      "typeName": "RouteOptions",
+      "family": "nav",
+      "title": "Route options",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "traffic-indicator",
+      "typeName": "TrafficIndicator",
+      "family": "nav",
+      "title": "Traffic indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "waypoint-list",
+      "typeName": "WaypointList",
+      "family": "nav",
+      "title": "Waypoint list",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "trip-summary",
+      "typeName": "TripSummary",
+      "family": "nav",
+      "title": "Trip summary",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "parking-availability",
+      "typeName": "ParkingAvailability",
+      "family": "nav",
+      "title": "Parking availability",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "nav-widget",
+      "typeName": "NavWidget",
+      "family": "nav",
+      "title": "Nav widget",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "dialer",
+      "typeName": "Dialer",
+      "family": "comms",
+      "title": "Dialer",
+      "interaction": "OpenKeyboard",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "in-call-screen",
+      "typeName": "InCallScreen",
+      "family": "comms",
+      "title": "In-call screen",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "incoming-call-hud",
+      "typeName": "IncomingCallHud",
+      "family": "comms",
+      "title": "Incoming-call HUD",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "call-controls",
+      "typeName": "CallControls",
+      "family": "comms",
+      "title": "Call controls",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "contact-list",
+      "typeName": "ContactList",
+      "family": "comms",
+      "title": "Contact list",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "contact-card",
+      "typeName": "ContactCard",
+      "family": "comms",
+      "title": "Contact card",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "conversation-list",
+      "typeName": "ConversationList",
+      "family": "comms",
+      "title": "Conversation list",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "message-bubble",
+      "typeName": "MessageBubble",
+      "family": "comms",
+      "title": "Message bubble",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "voice-reply",
+      "typeName": "VoiceReply",
+      "family": "comms",
+      "title": "Voice reply",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "canned-reply-chips",
+      "typeName": "CannedReplyChips",
+      "family": "comms",
+      "title": "Canned reply chips",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "bluetooth-pairing",
+      "typeName": "BluetoothPairing",
+      "family": "comms",
+      "title": "Bluetooth pairing",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "device-list",
+      "typeName": "DeviceList",
+      "family": "comms",
+      "title": "Device list",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "projection-status",
+      "typeName": "ProjectionStatus",
+      "family": "comms",
+      "title": "Projection status",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "voicemail",
+      "typeName": "Voicemail",
+      "family": "comms",
+      "title": "Voicemail",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "assistant-surface",
+      "typeName": "AssistantSurface",
+      "family": "voice",
+      "title": "Assistant surface",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "invocation-button",
+      "typeName": "InvocationButton",
+      "family": "voice",
+      "title": "Invocation button",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "mic-privacy-indicator",
+      "typeName": "MicPrivacyIndicator",
+      "family": "voice",
+      "title": "Mic privacy indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "suggestion-chips",
+      "typeName": "SuggestionChips",
+      "family": "voice",
+      "title": "Voice suggestion chips",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "you-can-say-bar",
+      "typeName": "YouCanSayBar",
+      "family": "voice",
+      "title": "You-can-say bar",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "voice-results-card",
+      "typeName": "VoiceResultsCard",
+      "family": "voice",
+      "title": "Voice results card",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "confirm-cancel",
+      "typeName": "VoiceConfirmCancel",
+      "family": "voice",
+      "title": "Voice confirm / cancel",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "barge-in-indicator",
+      "typeName": "BargeInIndicator",
+      "family": "voice",
+      "title": "Barge-in indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "multi-zone-voice",
+      "typeName": "MultiZoneVoice",
+      "family": "voice",
+      "title": "Multi-zone voice",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "launcher-scaffold",
+      "typeName": "LauncherScaffold",
+      "family": "launcher",
+      "title": "Launcher scaffold",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "app-icon",
+      "typeName": "AppIcon",
+      "family": "launcher",
+      "title": "App icon",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "recents-switcher",
+      "typeName": "RecentsSwitcher",
+      "family": "launcher",
+      "title": "Recents / task switcher",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "widget-host",
+      "typeName": "WidgetHost",
+      "family": "launcher",
+      "title": "Widget host",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "widget-picker",
+      "typeName": "WidgetPicker",
+      "family": "launcher",
+      "title": "Widget picker",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "widget-edit-mode",
+      "typeName": "WidgetEditMode",
+      "family": "launcher",
+      "title": "Widget edit mode",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "suggestion-card",
+      "typeName": "SuggestionCard",
+      "family": "launcher",
+      "title": "Suggestion card",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "shortcut-tile",
+      "typeName": "ShortcutTile",
+      "family": "launcher",
+      "title": "Shortcut tile",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "home-template",
+      "typeName": "HomeTemplate",
+      "family": "launcher",
+      "title": "Home template",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "screensaver",
+      "typeName": "Screensaver",
+      "family": "launcher",
+      "title": "Screensaver / idle",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "welcome-screen",
+      "typeName": "WelcomeScreen",
+      "family": "launcher",
+      "title": "Welcome screen",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "wallpaper-picker",
+      "typeName": "WallpaperPicker",
+      "family": "launcher",
+      "title": "Wallpaper picker",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "quick-settings",
+      "typeName": "QuickSettings",
+      "family": "systemui",
+      "title": "Quick settings",
+      "interaction": "StatusDeepLinkSettings",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "notification-center",
+      "typeName": "NotificationCenter",
+      "family": "systemui",
+      "title": "Notification center",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "heads-up-notification",
+      "typeName": "HeadsUpNotification",
+      "family": "systemui",
+      "title": "Heads-up notification",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "volume-ui",
+      "typeName": "VolumeUi",
+      "family": "systemui",
+      "title": "Volume UI",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "brightness-ui",
+      "typeName": "BrightnessUi",
+      "family": "systemui",
+      "title": "Brightness UI",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "clean-mode-overlay",
+      "typeName": "CleanModeOverlay",
+      "family": "systemui",
+      "title": "Clean-mode overlay",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "shutdown-ui",
+      "typeName": "ShutdownUi",
+      "family": "systemui",
+      "title": "Power / shutdown UI",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "update-progress",
+      "typeName": "UpdateProgress",
+      "family": "systemui",
+      "title": "Update in progress",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "display-mode-switcher",
+      "typeName": "DisplayModeSwitcher",
+      "family": "systemui",
+      "title": "Display-mode switcher",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "immersive-indicator",
+      "typeName": "ImmersiveIndicator",
+      "family": "systemui",
+      "title": "Immersive-mode indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "privacy-indicators",
+      "typeName": "PrivacyIndicators",
+      "family": "systemui",
+      "title": "Privacy indicators",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "ecall-ui",
+      "typeName": "EcallUi",
+      "family": "systemui",
+      "title": "Emergency / eCall",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "profile-switcher",
+      "typeName": "ProfileSwitcher",
+      "family": "user",
+      "title": "Profile switcher",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "profile-card",
+      "typeName": "ProfileCard",
+      "family": "user",
+      "title": "Profile card",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "profile-create",
+      "typeName": "ProfileCreate",
+      "family": "user",
+      "title": "Profile creation",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "pin-pattern-password",
+      "typeName": "PinPatternPassword",
+      "family": "user",
+      "title": "PIN / pattern / password",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "biometric-prompt",
+      "typeName": "BiometricPrompt",
+      "family": "user",
+      "title": "Biometric prompt",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "onboarding-wizard",
+      "typeName": "OnboardingWizard",
+      "family": "user",
+      "title": "Onboarding wizard",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "eula-consent",
+      "typeName": "EulaConsent",
+      "family": "user",
+      "title": "EULA / consent",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "account-linking",
+      "typeName": "AccountLinking",
+      "family": "user",
+      "title": "Account linking",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "privacy-notice",
+      "typeName": "PrivacyNotice",
+      "family": "user",
+      "title": "Privacy notice",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "child-lock-notice",
+      "typeName": "ChildLockNotice",
+      "family": "user",
+      "title": "Child-lock notice",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "factory-reset-confirm",
+      "typeName": "FactoryResetConfirm",
+      "family": "user",
+      "title": "Factory reset confirm",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "passenger-scaffold",
+      "typeName": "PassengerScaffold",
+      "family": "rse",
+      "title": "Passenger scaffold",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "rse-home",
+      "typeName": "RseHome",
+      "family": "rse",
+      "title": "Rear-seat home",
+      "interaction": "OpenComplexApp",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "zone-media",
+      "typeName": "ZoneMedia",
+      "family": "rse",
+      "title": "Per-zone media",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "zone-volume",
+      "typeName": "ZoneVolume",
+      "family": "rse",
+      "title": "Per-zone volume",
+      "interaction": "MediaTransport",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "cross-display-handoff",
+      "typeName": "CrossDisplayHandoff",
+      "family": "rse",
+      "title": "Cross-display handoff",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "occupant-zone-indicator",
+      "typeName": "OccupantZoneIndicator",
+      "family": "rse",
+      "title": "Occupant-zone indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "display-lock",
+      "typeName": "DisplayLock",
+      "family": "rse",
+      "title": "Display lock",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "shared-content-pattern",
+      "typeName": "SharedContentPattern",
+      "family": "rse",
+      "title": "Shared vs personal content",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "cluster-center-handoff",
+      "typeName": "ClusterCenterHandoff",
+      "family": "rse",
+      "title": "Cluster-to-center handoff",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "camera-view",
+      "typeName": "CameraView",
+      "family": "adas",
+      "title": "Camera view",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "view-selector",
+      "typeName": "ViewSelector",
+      "family": "adas",
+      "title": "Camera view selector",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "hitch-view",
+      "typeName": "HitchView",
+      "family": "adas",
+      "title": "Hitch / trailer view",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "parking-sensor",
+      "typeName": "ParkingSensor",
+      "family": "adas",
+      "title": "Parking sensor",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "auto-park-flow",
+      "typeName": "AutoParkFlow",
+      "family": "adas",
+      "title": "Auto-park flow",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "adas-status-chip",
+      "typeName": "AdasStatusChip",
+      "family": "adas",
+      "title": "ADAS status chip",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "driver-attention",
+      "typeName": "DriverAttention",
+      "family": "adas",
+      "title": "Driver-attention indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "acc-controls",
+      "typeName": "AccControls",
+      "family": "adas",
+      "title": "Adaptive-cruise controls",
+      "interaction": "VehicleAdjust",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "blind-spot-alert",
+      "typeName": "BlindSpotAlert",
+      "family": "adas",
+      "title": "Blind-spot alert",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "dashcam-controls",
+      "typeName": "DashcamControls",
+      "family": "adas",
+      "title": "Dashcam controls",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "recordings-list",
+      "typeName": "RecordingsList",
+      "family": "adas",
+      "title": "Recordings list",
+      "interaction": "ParkedOnly",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "pane-divider",
+      "typeName": "PaneDivider",
+      "family": "layout",
+      "title": "Pane divider",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "collapsible-side-panel",
+      "typeName": "CollapsibleSidePanel",
+      "family": "layout",
+      "title": "Collapsible side panel",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "adaptive-container",
+      "typeName": "AdaptiveContainer",
+      "family": "layout",
+      "title": "Adaptive container",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    },
+    {
+      "id": "radial-gauge",
+      "typeName": "RadialGauge",
+      "family": "gauges",
+      "title": "Radial gauge",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "linear-gauge",
+      "typeName": "LinearGauge",
+      "family": "gauges",
+      "title": "Linear gauge",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "arc-gauge",
+      "typeName": "ArcGauge",
+      "family": "gauges",
+      "title": "Arc gauge",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "segmented-gauge",
+      "typeName": "SegmentedGauge",
+      "family": "gauges",
+      "title": "Segmented gauge",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "speedometer",
+      "typeName": "Speedometer",
+      "family": "gauges",
+      "title": "Speedometer",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "tachometer",
+      "typeName": "Tachometer",
+      "family": "gauges",
+      "title": "Tachometer",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "power-meter",
+      "typeName": "PowerMeter",
+      "family": "gauges",
+      "title": "Power meter",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "g-force",
+      "typeName": "GForce",
+      "family": "gauges",
+      "title": "G-force display",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "needle",
+      "typeName": "Needle",
+      "family": "gauges",
+      "title": "Needle primitive",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "tick-scale",
+      "typeName": "TickScale",
+      "family": "gauges",
+      "title": "Tick / scale primitive",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "gear-indicator",
+      "typeName": "GearIndicator",
+      "family": "gauges",
+      "title": "Gear indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "digital-speed",
+      "typeName": "DigitalSpeed",
+      "family": "gauges",
+      "title": "Digital speed",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": true,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "speed-limit-indicator",
+      "typeName": "SpeedLimitIndicator",
+      "family": "gauges",
+      "title": "Speed-limit indicator",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "telltale-strip",
+      "typeName": "TelltaleStrip",
+      "family": "gauges",
+      "title": "Telltale strip",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "warning-overlay",
+      "typeName": "WarningOverlay",
+      "family": "gauges",
+      "title": "Warning overlay",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "cluster-info-panel",
+      "typeName": "ClusterInfoPanel",
+      "family": "gauges",
+      "title": "Cluster info panel",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "cluster-mode-switcher",
+      "typeName": "ClusterModeSwitcher",
+      "family": "gauges",
+      "title": "Cluster mode switcher",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "hud-primitive",
+      "typeName": "HudPrimitive",
+      "family": "gauges",
+      "title": "HUD primitive",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "cluster-theme-set",
+      "typeName": "ClusterThemeSet",
+      "family": "gauges",
+      "title": "Cluster theme set",
+      "interaction": "Glance",
+      "stacks": [
+        "compose"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "gauges"
+    },
+    {
+      "id": "focus-area",
+      "typeName": "FocusArea",
+      "family": "navigation",
+      "title": "Focus area",
+      "interaction": "NavigateSimple",
+      "stacks": [
+        "compose",
+        "views"
+      ],
+      "variants": [],
+      "telemetry": false,
+      "handwritten": false,
+      "module": "compose"
+    }
+  ]
+}

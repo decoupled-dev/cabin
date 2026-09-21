@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -36,6 +35,8 @@ import dev.decoupled.cabin.compose.compliance.LocalCabinComplianceState
 import dev.decoupled.cabin.compose.compliance.dispositionOf
 import dev.decoupled.cabin.compose.theme.LocalCabinColors
 import dev.decoupled.cabin.tokens.CabinTokens
+import dev.decoupled.cabin.foundation.hvac.CabinClimateTileAction
+import dev.decoupled.cabin.foundation.hvac.CabinClimateTileState
 
 /**
  * Automotive climate tile: zone temp / fan / seat heat.
@@ -315,35 +316,4 @@ internal fun formatLevel(signal: Signal<Int>, max: Int): String = when (signal) 
     is Signal.Stale -> "${signal.last}/$max · stale"
     Signal.Unavailable -> "—"
     is Signal.Fault -> "Fault"
-}
-
-/** ClimateTile presentation state (parity with Views). */
-@Immutable
-data class CabinClimateTileState(
-    val zoneLabel: String,
-    val temperatureC: Signal<Int>,
-    val fanLevel: Signal<Int>,
-    val fanMax: Int = 5,
-    val seatHeatLevel: Signal<Int>,
-    val seatHeatMax: Int = 3,
-    val powerOn: Boolean = true,
-) {
-    companion object {
-        fun empty(): CabinClimateTileState = CabinClimateTileState(
-            zoneLabel = "",
-            temperatureC = Signal.Unavailable,
-            fanLevel = Signal.Unavailable,
-            seatHeatLevel = Signal.Unavailable,
-            powerOn = false,
-        )
-    }
-}
-
-sealed interface CabinClimateTileAction {
-    data object TempUp : CabinClimateTileAction
-    data object TempDown : CabinClimateTileAction
-    data object FanUp : CabinClimateTileAction
-    data object FanDown : CabinClimateTileAction
-    data object SeatHeatUp : CabinClimateTileAction
-    data object SeatHeatDown : CabinClimateTileAction
 }

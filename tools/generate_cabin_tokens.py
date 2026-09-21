@@ -79,6 +79,10 @@ THEME_ATTRS: list[tuple[str, str]] = [
     ("Climate", "climate"),
     ("MediaAccent", "mediaAccent"),
     ("Scrim", "scrim"),
+    ("Critical", "critical"),
+    ("AdasActive", "adasActive"),
+    ("Privacy", "privacy"),
+    ("FocusRing", "focusRing"),
 ]
 
 
@@ -289,6 +293,8 @@ def build_kotlin(
     space_lines: list[str],
     size_lines: list[str],
     elevation_lines: list[str],
+    shape_lines: list[str],
+    focus_lines: list[str],
     motion_lines: list[str],
     component_lines: list[str],
 ) -> str:
@@ -346,6 +352,14 @@ def build_kotlin(
         "",
         "    object Elevation {",
         indent(elevation_lines, 8),
+        "    }",
+        "",
+        "    object Shape {",
+        indent(shape_lines, 8),
+        "    }",
+        "",
+        "    object Focus {",
+        indent(focus_lines, 8),
         "    }",
         "",
         "    object Motion {",
@@ -441,6 +455,10 @@ def build_compose(
         "            climate = semantic.climate,",
         "            mediaAccent = semantic.mediaAccent,",
         "            scrim = semantic.scrim,",
+        "            critical = semantic.critical,",
+        "            adasActive = semantic.adasActive,",
+        "            privacy = semantic.privacy,",
+        "            focusRing = semantic.focusRing,",
         "        )",
         "    }",
         "}",
@@ -514,6 +532,10 @@ def build_css(
         lines.append("  --climate: var(--cabin-color-semantic-climate);")
         lines.append("  --media: var(--cabin-color-semantic-media-accent);")
         lines.append("  --scrim: var(--cabin-color-semantic-scrim);")
+        lines.append("  --critical: var(--cabin-color-semantic-critical);")
+        lines.append("  --adas-active: var(--cabin-color-semantic-adas-active);")
+        lines.append("  --privacy: var(--cabin-color-semantic-privacy);")
+        lines.append("  --focus-ring: var(--cabin-color-semantic-focus-ring);")
         lines.append("}")
         lines.append("")
 
@@ -746,17 +768,54 @@ def collect_outputs(doc: dict) -> dict[Path, str]:
         )
         measure_css.append((css_var("elevation", name), f'{entry["value"]}px'))
 
+    def measure_group_lines(category: str, groups: dict) -> list[str]:
+        lines: list[str] = []
+        for group, items in groups.items():
+            lines.append(f"object {kotlin_const(group)} {{")
+            for name, node in items.items():
+                entry = leaf(doc, node)
+                res = resource_name(category, camel_to_snake(group), name)
+                unit = entry.get("unit", "dp")
+                dimens.append((res, f'{entry["value"]}{unit}'))
+                unit_enum = "SP" if unit == "sp" else "DP"
+                lines.append(
+                    f"    val {name}: CabinMeasure = CabinMeasure("
+                    f'{entry["value"]}f, CabinUnit.{unit_enum}, "{res}")'
+                )
+                measure_css.append(
+                    (
+                        css_var(
+                            category,
+                            camel_to_kebab(group),
+                            camel_to_kebab(name),
+                        ),
+                        f'{entry["value"]}px',
+                    )
+                )
+            lines.append("}")
+        return lines
+
+    shape_lines = measure_group_lines("shape", cabin.get("shape", {}))
+    focus_lines = measure_group_lines("focus", cabin.get("focus", {}))
+
     motion_lines: list[str] = []
     for name, node in cabin["motion"].items():
-        entry = leaf(doc, node["duration"])
+        duration_entry = leaf(doc, node["duration"])
         res = resource_name("motion", name, "duration")
-        integers.append((res, str(entry["value"])))
+        integers.append((res, str(duration_entry["value"])))
         motion_lines.append(f"object {kotlin_const(name)} {{")
-        motion_lines.append(f"    const val durationMs: Int = {entry['value']}")
+        motion_lines.append(f"    const val durationMs: Int = {duration_entry['value']}")
         motion_lines.append(f'    const val durationResourceName: String = "{res}"')
+        easing_node = node.get("easing")
+        if easing_node:
+            easing_entry = leaf(doc, easing_node)
+            easing_res = resource_name("motion", name, "easing")
+            strings.append((easing_res, str(easing_entry["value"])))
+            motion_lines.append(f'    const val easing: String = "{easing_entry["value"]}"')
+            motion_lines.append(f'    const val easingResourceName: String = "{easing_res}"')
         motion_lines.append("}")
         measure_css.append(
-            (css_var("motion", name, "duration"), f'{entry["value"]}ms')
+            (css_var("motion", name, "duration"), f'{duration_entry["value"]}ms')
         )
 
     component_lines: list[str] = []
@@ -800,6 +859,8 @@ def collect_outputs(doc: dict) -> dict[Path, str]:
         space_lines,
         size_lines,
         elevation_lines,
+        shape_lines,
+        focus_lines,
         motion_lines,
         component_lines,
     )

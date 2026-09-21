@@ -146,6 +146,25 @@ class CabinRestrictionEngine(
                 CabinUiMode.Unknown,
                 -> GateDisposition.Block
             }
+
+            CabinInteraction.ParkedOnly -> when (mode) {
+                CabinUiMode.Parked -> GateDisposition.Allow
+                CabinUiMode.Idling,
+                CabinUiMode.Moving,
+                CabinUiMode.Restricted,
+                CabinUiMode.Unknown,
+                -> GateDisposition.Block
+            }
+
+            CabinInteraction.VehicleAdjust -> when (mode) {
+                CabinUiMode.Parked,
+                CabinUiMode.Idling,
+                -> GateDisposition.Allow
+                CabinUiMode.Moving,
+                CabinUiMode.Restricted,
+                CabinUiMode.Unknown,
+                -> GateDisposition.Block
+            }
         }
     }
 

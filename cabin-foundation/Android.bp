@@ -1,0 +1,19 @@
+// CabinFoundation — UI-agnostic layout types + shared State/Action (Experimental).
+// Same sources as the Gradle module (:cabin-foundation).
+//
+// Hard rule: no Compose, Views widgets, AppCompat, or Material deps.
+// SystemUI may consume this transitively via CabinViews; do not add to
+// SystemUI static_libs unless the host compiles against foundation types.
+
+android_library {
+    name: "CabinFoundation",
+    defaults: ["CabinAndroidLibraryDefaults"],
+    visibility: ["//visibility:public"],
+    srcs: ["src/main/java/**/*.kt"],
+    manifest: "src/main/AndroidManifest.xml",
+    static_libs: [
+        "CabinTokens",
+        "CabinCompliance",
+        "androidx.annotation_annotation",
+    ],
+}

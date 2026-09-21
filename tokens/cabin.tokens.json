@@ -4,10 +4,10 @@
   "title": "Cabin design tokens (stub)",
   "description": "Source-of-truth stub for Cabin tokens. Intended for Style Dictionary / codegen into cabin-tokens (Android resources + Kotlin). Not a published runtime format yet. See docs/design-language/token-schema.md.",
   "meta": {
-    "version": "0.1.1-stub",
+    "version": "0.1.2-stub",
     "status": "planned-stub",
     "naming": "cabin.{category}.{tier}.{name}",
-    "notes": "Day/night schemes include chrome roles (outline, container) and locked night contrast for warning/error/charging. Domain accents stay off body-text roles (onSurface/onContainer)."
+    "notes": "Day/night schemes include chrome roles (outline, container) and locked night contrast for warning/error/charging. Domain accents stay off body-text roles (onSurface/onContainer). Scaffold extras: critical/ADAS/privacy/focus colors, shape, focus rings, motion easing."
   },
   "cabin": {
     "color": {
@@ -26,7 +26,11 @@
         "charging": { "value": "#00897B", "type": "color", "comment": "Domain accent; meaning must stay recognizable; not a body-text role" },
         "climate": { "value": "#0288D1", "type": "color", "comment": "Domain accent; not a body-text role" },
         "mediaAccent": { "value": "#7E57C2", "type": "color", "comment": "Domain accent; not a body-text role" },
-        "scrim": { "value": "#00000099", "type": "color" }
+        "scrim": { "value": "#00000099", "type": "color" },
+        "critical": { "value": "#B71C1C", "type": "color", "comment": "Safety-critical telltale / eCall; not a body-text role", "extensions": { "cabin.lock": "safety-adjacent" } },
+        "adasActive": { "value": "#1565C0", "type": "color", "comment": "ADAS-active accent; not a body-text role" },
+        "privacy": { "value": "#6A1B9A", "type": "color", "comment": "Mic / camera / location privacy indicator" },
+        "focusRing": { "value": "#80CBC4", "type": "color", "comment": "Visible focus / rotary highlight; OEM-overridable" }
       },
       "scheme": {
         "day": {
@@ -111,15 +115,42 @@
       "level1": { "value": "1", "type": "elevation", "unit": "dp" },
       "level2": { "value": "3", "type": "elevation", "unit": "dp" }
     },
+    "shape": {
+      "corner": {
+        "none": { "value": "0", "type": "borderRadius", "unit": "dp" },
+        "sm": { "value": "4", "type": "borderRadius", "unit": "dp" },
+        "md": { "value": "8", "type": "borderRadius", "unit": "dp" },
+        "lg": { "value": "16", "type": "borderRadius", "unit": "dp" }
+      }
+    },
+    "focus": {
+      "ring": {
+        "width": { "value": "3", "type": "sizing", "unit": "dp" }
+      },
+      "rotary": {
+        "highlightWidth": { "value": "4", "type": "sizing", "unit": "dp" }
+      }
+    },
     "motion": {
       "fast": {
-        "duration": { "value": "100", "type": "duration", "unit": "ms" }
+        "duration": { "value": "100", "type": "duration", "unit": "ms" },
+        "easing": { "value": "standard", "type": "other" }
       },
       "medium": {
-        "duration": { "value": "200", "type": "duration", "unit": "ms" }
+        "duration": { "value": "200", "type": "duration", "unit": "ms" },
+        "easing": { "value": "decelerate", "type": "other" }
       },
       "slow": {
-        "duration": { "value": "300", "type": "duration", "unit": "ms" }
+        "duration": { "value": "300", "type": "duration", "unit": "ms" },
+        "easing": { "value": "emphasized", "type": "other" }
+      },
+      "reduced": {
+        "duration": { "value": "0", "type": "duration", "unit": "ms" },
+        "easing": { "value": "linear", "type": "other" }
+      },
+      "drivingCap": {
+        "duration": { "value": "120", "type": "duration", "unit": "ms" },
+        "easing": { "value": "decelerate", "type": "other" }
       }
     },
     "component": {

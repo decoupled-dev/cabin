@@ -36,6 +36,7 @@ dependencies {
     // Compose System/Status bars: tokens + Restriction Engine only (no cabin-views).
     api(project(":cabin-tokens"))
     api(project(":cabin-compliance"))
+    api(project(":cabin-foundation"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)

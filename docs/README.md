@@ -4,7 +4,8 @@ Authoritative documentation for **Cabin**, an open-source AAOS design language
 and dual UI component library (Jetpack Compose + legacy Views).
 
 > Library Alpha: `cabin-tokens`, `cabin-compliance`, and Theme Kit in
-> `cabin-views`. Planned APIs beyond that are marked as such.
+> `cabin-views`. Experimental: Compose kit scaffold, `cabin-foundation`,
+> `cabin-gauges`. Planned APIs beyond that are marked as such.
 
 ## Table of contents
 
@@ -63,6 +64,7 @@ and dual UI component library (Jetpack Compose + legacy Views).
 | Document | Description |
 | --- | --- |
 | [Inventory](components/README.md) | Taxonomy and coverage map |
+| [Coverage (generated)](components/coverage.generated.md) | Experimental kit scaffold status |
 | [System bars](components/system-bars.md) | Nav / system chrome |
 | [Status bars](components/status-bars.md) | Vehicle and system status |
 | [Spec: System Bar](components/specs/system-bar.md) | MVP implementable spec |

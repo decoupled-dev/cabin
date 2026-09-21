@@ -207,8 +207,31 @@ class CabinRestrictionEngineTest {
     }
 
     @Test
-    fun touchTargetMinDp_fromTokens() {
-        assertEquals(76, engine.touchTargetMinDp(VehicleUiState.parked()))
+    fun parkedOnly_blocksUnlessParked() {
+        assertEquals(
+            GateDisposition.Allow,
+            engine.disposition(CabinInteraction.ParkedOnly, VehicleUiState.parked()),
+        )
+        assertEquals(
+            GateDisposition.Block,
+            engine.disposition(CabinInteraction.ParkedOnly, VehicleUiState.moving()),
+        )
+        assertEquals(
+            GateDisposition.Block,
+            engine.disposition(CabinInteraction.ParkedOnly, VehicleUiState.unknown()),
+        )
+    }
+
+    @Test
+    fun vehicleAdjust_matchesHvacAdjustMatrix() {
+        assertEquals(
+            GateDisposition.Allow,
+            engine.disposition(CabinInteraction.VehicleAdjust, VehicleUiState.parked()),
+        )
+        assertEquals(
+            GateDisposition.Block,
+            engine.disposition(CabinInteraction.VehicleAdjust, VehicleUiState.moving()),
+        )
     }
 }
 

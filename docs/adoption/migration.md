@@ -41,9 +41,15 @@ Wrap edges carefully so compliance locals still apply to Cabin children.
 
 ## From AAOS / Car UI lib / vendor Views
 
+Cabin **does not replace** `car-ui-lib`. Adopt beside it ([ADR 0005](../adr/0005-compose-first-kit-foundation.md)).
+
 | Legacy | Cabin |
 | --- | --- |
 | Vendor status layouts | [Status bars](../components/status-bars.md) |
+| `car-ui-lib` Toolbar | Cabin `TopBar` / System Bar slots (Views subset); keep Toolbar where GAS apps require it |
+| `CarUiRecyclerView` + `CarUiListItem` | Cabin `PagedList` / `ListItem` scaffolds; keep car-ui-lib lists until craft lands |
+| `PreferenceFragment` / Car UI preferences | Cabin `Preference` / `PreferenceScaffold` (Views subset for Settings) |
+| `FocusParkingView` / `FocusArea` | Keep car-ui-lib rotary host; Cabin `FocusArea` is a thin chrome helper |
 | Custom climate ViewGroups | [HVAC](../components/hvac.md) |
 | One-off touch target dims | Token `cabin.size.touch.minimum` |
 

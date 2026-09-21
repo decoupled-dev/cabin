@@ -1,6 +1,6 @@
 /*
  * GENERATED from tokens/cabin.tokens.json — do not edit by hand.
- * Stub version: 0.1.1-stub
+ * Stub version: 0.1.2-stub
  * Run: python3 tools/generate_cabin_tokens.py
  *
  * Same semantic names as Android (cabin_color_*) and Compose (CabinTokens).
@@ -8,7 +8,7 @@
  */
 
 :root {
-  --cabin-tokens-version: "0.1.1-stub";
+  --cabin-tokens-version: "0.1.2-stub";
   --cabin-type-family-plain: CabinSans, system-ui, sans-serif;
 
   /* Semantic colors */
@@ -27,6 +27,10 @@
   --cabin-color-semantic-climate: #0288D1;
   --cabin-color-semantic-media-accent: #7E57C2;
   --cabin-color-semantic-scrim: rgba(0, 0, 0, 0.6);
+  --cabin-color-semantic-critical: #B71C1C; /* lock:safety-adjacent */
+  --cabin-color-semantic-adas-active: #1565C0;
+  --cabin-color-semantic-privacy: #6A1B9A;
+  --cabin-color-semantic-focus-ring: #80CBC4;
 
   /* Space / size / type / elevation / motion */
   --cabin-type-role-display-size: 40px;
@@ -58,9 +62,17 @@
   --cabin-elevation-level0: 0px;
   --cabin-elevation-level1: 1px;
   --cabin-elevation-level2: 3px;
+  --cabin-shape-corner-none: 0px;
+  --cabin-shape-corner-sm: 4px;
+  --cabin-shape-corner-md: 8px;
+  --cabin-shape-corner-lg: 16px;
+  --cabin-focus-ring-width: 3px;
+  --cabin-focus-rotary-highlight-width: 4px;
   --cabin-motion-fast-duration: 100ms;
   --cabin-motion-medium-duration: 200ms;
   --cabin-motion-slow-duration: 300ms;
+  --cabin-motion-reduced-duration: 0ms;
+  --cabin-motion-drivingCap-duration: 120ms;
   --cabin-component-system-bar-height: 80px;
   --cabin-component-system-bar-icon-size: 28px;
   --cabin-component-system-bar-item-min-size: 76px;
@@ -109,6 +121,10 @@
   --climate: var(--cabin-color-semantic-climate);
   --media: var(--cabin-color-semantic-media-accent);
   --scrim: var(--cabin-color-semantic-scrim);
+  --critical: var(--cabin-color-semantic-critical);
+  --adas-active: var(--cabin-color-semantic-adas-active);
+  --privacy: var(--cabin-color-semantic-privacy);
+  --focus-ring: var(--cabin-color-semantic-focus-ring);
 }
 
 /* Day scheme — glare-legible chrome + feedback */
@@ -140,4 +156,8 @@
   --climate: var(--cabin-color-semantic-climate);
   --media: var(--cabin-color-semantic-media-accent);
   --scrim: var(--cabin-color-semantic-scrim);
+  --critical: var(--cabin-color-semantic-critical);
+  --adas-active: var(--cabin-color-semantic-adas-active);
+  --privacy: var(--cabin-color-semantic-privacy);
+  --focus-ring: var(--cabin-color-semantic-focus-ring);
 }

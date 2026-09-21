@@ -14,6 +14,8 @@ import dev.decoupled.cabin.compliance.GateDisposition
 import dev.decoupled.cabin.compliance.Signal
 import dev.decoupled.cabin.tokens.CabinTokens
 import dev.decoupled.cabin.tokens.R as TokensR
+import dev.decoupled.cabin.foundation.hvac.CabinClimateTileAction
+import dev.decoupled.cabin.foundation.hvac.CabinClimateTileState
 import dev.decoupled.cabin.views.compliance.CabinComplianceHost
 import dev.decoupled.cabin.views.theme.CabinThemeResolver
 
@@ -31,7 +33,8 @@ class CabinClimateTileView @JvmOverloads constructor(
     defStyleAttr: Int = 0,
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
-    private var state: CabinClimateTileState = CabinClimateTileState.empty()
+    private var state: CabinClimateTileState =
+        dev.decoupled.cabin.foundation.hvac.CabinClimateTileState.empty()
     private var complianceHost: CabinComplianceHost? = null
     private var actionListener: ((CabinClimateTileAction) -> Unit)? = null
 
@@ -375,37 +378,6 @@ class CabinClimateTileView @JvmOverloads constructor(
             is Signal.Fault -> "Fault"
         }
     }
-}
-
-/** ClimateTile presentation state (parity with Compose). */
-data class CabinClimateTileState(
-    val zoneLabel: String,
-    val temperatureC: Signal<Int>,
-    val fanLevel: Signal<Int>,
-    val fanMax: Int = 5,
-    val seatHeatLevel: Signal<Int>,
-    val seatHeatMax: Int = 3,
-    val powerOn: Boolean = true,
-) {
-    companion object {
-        fun empty(): CabinClimateTileState = CabinClimateTileState(
-            zoneLabel = "",
-            temperatureC = Signal.Unavailable,
-            fanLevel = Signal.Unavailable,
-            seatHeatLevel = Signal.Unavailable,
-            powerOn = false,
-        )
-    }
-}
-
-/** ClimateTile actions — all gated as [CabinInteraction.HvacAdjust]. */
-sealed interface CabinClimateTileAction {
-    data object TempUp : CabinClimateTileAction
-    data object TempDown : CabinClimateTileAction
-    data object FanUp : CabinClimateTileAction
-    data object FanDown : CabinClimateTileAction
-    data object SeatHeatUp : CabinClimateTileAction
-    data object SeatHeatDown : CabinClimateTileAction
 }
 
 /** Token constants for tests / diagnostics. */

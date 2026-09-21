@@ -16,6 +16,10 @@
     <color name="cabin_color_semantic_climate">#0288D1</color>
     <color name="cabin_color_semantic_mediaAccent">#7E57C2</color>
     <color name="cabin_color_semantic_scrim">#99000000</color>
+    <color name="cabin_color_semantic_critical">#B71C1C</color>
+    <color name="cabin_color_semantic_adasActive">#1565C0</color>
+    <color name="cabin_color_semantic_privacy">#6A1B9A</color>
+    <color name="cabin_color_semantic_focusRing">#80CBC4</color>
     <color name="cabin_color_scheme_surface">#F5F5F5</color>
     <color name="cabin_color_scheme_onSurface">#121212</color>
     <color name="cabin_color_scheme_surfaceVariant">#E8E8E8</color>

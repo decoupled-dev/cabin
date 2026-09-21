@@ -9,6 +9,8 @@ import androidx.compose.ui.test.performClick
 import dev.decoupled.cabin.compliance.Signal
 import dev.decoupled.cabin.compliance.VehicleUiState
 import dev.decoupled.cabin.compose.theme.CabinTheme
+import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingAction
+import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingState
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue

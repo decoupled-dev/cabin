@@ -34,6 +34,10 @@ data class CabinColors(
     val climate: Color,
     val mediaAccent: Color,
     val scrim: Color,
+    val critical: Color,
+    val adasActive: Color,
+    val privacy: Color,
+    val focusRing: Color,
 )
 
 /**

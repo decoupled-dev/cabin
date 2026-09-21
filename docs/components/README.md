@@ -10,11 +10,18 @@ specified for **Compose and Views**, shares **tokens**, and declares
 | --- | --- | --- |
 | **Primitive** | Low-level building blocks | Button, IconButton, Chip, ListItem, Banner |
 | **Chrome** | System-level frames | System bars, status bars |
+| **Layout** | Automotive size classes and scaffolds | Adaptive scaffold, insets |
 | **Domain** | Cabin feature surfaces | Media, EV, HVAC, vehicle controls |
 | **Pattern** | Multi-component flows | Restricted browse, fault recovery |
+| **Gauges** | Cluster / HUD (separate module) | Radial gauge, speedometer |
 
-Primitives will be detailed as implementation proceeds; this phase focuses on
-chrome and domain coverage OEMs expect on day one.
+Coverage for the Experimental kit (generated scaffolds + handwritten Alpha
+chrome) lives in **[coverage.generated.md](coverage.generated.md)**. Inventory
+source: [`components/cabin.components.yaml`](../../components/cabin.components.yaml).
+
+Primitives and domain widgets that are not the four handwritten specs are
+**Experimental scaffolds** (`@CabinScaffold`): they render, expose `Activate`,
+and honor the Restriction Engine. They are not production-complete.
 
 ## Classification (safety)
 
@@ -36,6 +43,7 @@ Each component documents one of:
 | HVAC (full pack) | [hvac.md](hvac.md) | After ClimateTile |
 | Vehicle controls | [vehicle-controls.md](vehicle-controls.md) | Later (VehicleQuickControls planned) |
 | OEM extensions | [extension-model.md](extension-model.md) | Continuous |
+| Kit coverage (generated) | **[coverage.generated.md](coverage.generated.md)** | Experimental scaffold |
 
 ## Dual-stack contract template
 
@@ -54,8 +62,10 @@ Every component page includes (or will include at implementation):
 | Component family | Primary modules |
 | --- | --- |
 | Chrome (system/status) | `cabin-views` first; Compose mirrors for apps |
-| Media / EV / HVAC / controls | `cabin-compose` + `cabin-views` |
-| Shared banners, buttons | both |
+| Build-tree subset (dock, list, button, switch, slider, dialog, prefs, QS) | `cabin-views` + Compose |
+| App kit (full inventory) | `cabin-compose` Experimental scaffolds |
+| Cluster / HUD | `cabin-gauges` (never SystemUI) |
+| Shared state / size classes | `cabin-foundation` |
 
 ## Related
 

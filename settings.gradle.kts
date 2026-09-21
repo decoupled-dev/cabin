@@ -18,7 +18,9 @@ rootProject.name = "cabin"
 
 include(":cabin-tokens")
 include(":cabin-compliance")
+include(":cabin-foundation")
 include(":cabin-views")
 include(":cabin-compose")
+include(":cabin-gauges")
 // Sample only — never a cabin-* publish / SystemUI dependency.
 include(":catalog")

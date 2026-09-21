@@ -15,7 +15,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.background
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -35,6 +34,8 @@ import dev.decoupled.cabin.compliance.Signal
 import dev.decoupled.cabin.compose.compliance.LocalCabinComplianceState
 import dev.decoupled.cabin.compose.compliance.dispositionOf
 import dev.decoupled.cabin.compose.theme.LocalCabinColors
+import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingAction
+import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingState
 import dev.decoupled.cabin.tokens.CabinTokens
 
 /**
@@ -284,38 +285,4 @@ internal fun formatProgress(positionMs: Long, durationMs: Long): String {
         return "%d:%02d".format(m, s)
     }
     return "${mmss(positionMs)} / ${mmss(durationMs)}"
-}
-
-/** MediaNowPlaying presentation state (parity with Views). */
-@Immutable
-data class CabinMediaNowPlayingState(
-    val title: Signal<String>,
-    val artist: Signal<String>,
-    val sourceLabel: Signal<String>,
-    val isPlaying: Boolean,
-    val artworkAvailable: Boolean,
-    val positionMs: Signal<Long>,
-    val durationMs: Signal<Long>,
-    val hasSource: Boolean = true,
-) {
-    companion object {
-        fun empty(): CabinMediaNowPlayingState = CabinMediaNowPlayingState(
-            title = Signal.Unavailable,
-            artist = Signal.Unavailable,
-            sourceLabel = Signal.Unavailable,
-            isPlaying = false,
-            artworkAvailable = false,
-            positionMs = Signal.Unavailable,
-            durationMs = Signal.Unavailable,
-            hasSource = false,
-        )
-    }
-}
-
-sealed interface CabinMediaNowPlayingAction {
-    data object PlayPause : CabinMediaNowPlayingAction
-    data object Next : CabinMediaNowPlayingAction
-    data object Previous : CabinMediaNowPlayingAction
-    data object OpenSource : CabinMediaNowPlayingAction
-    data class SeekTo(val positionMs: Long) : CabinMediaNowPlayingAction
 }

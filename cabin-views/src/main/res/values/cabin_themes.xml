@@ -24,6 +24,10 @@
         <item name="cabin_colorClimate">@color/cabin_color_semantic_climate</item>
         <item name="cabin_colorMediaAccent">@color/cabin_color_semantic_mediaAccent</item>
         <item name="cabin_colorScrim">@color/cabin_color_semantic_scrim</item>
+        <item name="cabin_colorCritical">@color/cabin_color_semantic_critical</item>
+        <item name="cabin_colorAdasActive">@color/cabin_color_semantic_adasActive</item>
+        <item name="cabin_colorPrivacy">@color/cabin_color_semantic_privacy</item>
+        <item name="cabin_colorFocusRing">@color/cabin_color_semantic_focusRing</item>
 
         <!-- Scheme chrome + feedback (day/night via CabinTokens values-night). -->
         <item name="cabin_colorSurface">@color/cabin_color_scheme_surface</item>
@@ -56,6 +60,10 @@
         <item name="cabin_colorClimate">@color/cabin_color_semantic_climate</item>
         <item name="cabin_colorMediaAccent">@color/cabin_color_semantic_mediaAccent</item>
         <item name="cabin_colorScrim">@color/cabin_color_semantic_scrim</item>
+        <item name="cabin_colorCritical">@color/cabin_color_semantic_critical</item>
+        <item name="cabin_colorAdasActive">@color/cabin_color_semantic_adasActive</item>
+        <item name="cabin_colorPrivacy">@color/cabin_color_semantic_privacy</item>
+        <item name="cabin_colorFocusRing">@color/cabin_color_semantic_focusRing</item>
         <item name="cabin_colorSurface">@color/cabin_color_scheme_surface</item>
         <item name="cabin_colorOnSurface">@color/cabin_color_scheme_onSurface</item>
         <item name="cabin_colorSurfaceVariant">@color/cabin_color_scheme_surfaceVariant</item>

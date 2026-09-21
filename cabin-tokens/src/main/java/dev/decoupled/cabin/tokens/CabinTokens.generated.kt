@@ -6,16 +6,16 @@ package dev.decoupled.cabin.tokens
  * Public Cabin token constants generated from `tokens/cabin.tokens.json`.
  *
  * Do not edit by hand -- run `python3 tools/generate_cabin_tokens.py`.
- * Stub version: 0.1.1-stub
+ * Stub version: 0.1.2-stub
  *
  * This module has no Compose, Views widget, AppCompat, or Material dependencies.
  */
 object CabinTokens {
-    const val SOURCE_VERSION: String = "0.1.1-stub"
+    const val SOURCE_VERSION: String = "0.1.2-stub"
     const val SOURCE_PATH: String = "tokens/cabin.tokens.json"
 
     /** Semantic color role names locked as safety-adjacent. */
-    val safetyLockedSemanticColors: Set<String> = setOf("warning", "error")
+    val safetyLockedSemanticColors: Set<String> = setOf("warning", "error", "critical")
 
     /** Night scheme roles with locked contrast (no soft-wash). */
     val nightContrastLockedSchemeColors: Set<String> = setOf("warning", "error", "charging")
@@ -40,6 +40,10 @@ object CabinTokens {
             val climate: CabinColor = CabinColor(argb = -16611119, hex = "#0288D1", resourceName = "cabin_color_semantic_climate", lock = null)
             val mediaAccent: CabinColor = CabinColor(argb = -8497214, hex = "#7E57C2", resourceName = "cabin_color_semantic_mediaAccent", lock = null)
             val scrim: CabinColor = CabinColor(argb = -1728053248, hex = "#99000000", resourceName = "cabin_color_semantic_scrim", lock = null)
+            val critical: CabinColor = CabinColor(argb = -4776932, hex = "#B71C1C", resourceName = "cabin_color_semantic_critical", lock = "safety-adjacent")
+            val adasActive: CabinColor = CabinColor(argb = -15374912, hex = "#1565C0", resourceName = "cabin_color_semantic_adasActive", lock = null)
+            val privacy: CabinColor = CabinColor(argb = -9823334, hex = "#6A1B9A", resourceName = "cabin_color_semantic_privacy", lock = null)
+            val focusRing: CabinColor = CabinColor(argb = -8336444, hex = "#80CBC4", resourceName = "cabin_color_semantic_focusRing", lock = null)
         }
 
         private val schemeDay = CabinColorSchemeColors(
@@ -134,18 +138,54 @@ object CabinTokens {
         val level2: CabinMeasure = CabinMeasure(3f, CabinUnit.DP, "cabin_elevation_level2")
     }
 
+    object Shape {
+        object Corner {
+            val none: CabinMeasure = CabinMeasure(0f, CabinUnit.DP, "cabin_shape_corner_none")
+            val sm: CabinMeasure = CabinMeasure(4f, CabinUnit.DP, "cabin_shape_corner_sm")
+            val md: CabinMeasure = CabinMeasure(8f, CabinUnit.DP, "cabin_shape_corner_md")
+            val lg: CabinMeasure = CabinMeasure(16f, CabinUnit.DP, "cabin_shape_corner_lg")
+        }
+    }
+
+    object Focus {
+        object Ring {
+            val width: CabinMeasure = CabinMeasure(3f, CabinUnit.DP, "cabin_focus_ring_width")
+        }
+        object Rotary {
+            val highlightWidth: CabinMeasure = CabinMeasure(4f, CabinUnit.DP, "cabin_focus_rotary_highlightWidth")
+        }
+    }
+
     object Motion {
         object Fast {
             const val durationMs: Int = 100
             const val durationResourceName: String = "cabin_motion_fast_duration"
+            const val easing: String = "standard"
+            const val easingResourceName: String = "cabin_motion_fast_easing"
         }
         object Medium {
             const val durationMs: Int = 200
             const val durationResourceName: String = "cabin_motion_medium_duration"
+            const val easing: String = "decelerate"
+            const val easingResourceName: String = "cabin_motion_medium_easing"
         }
         object Slow {
             const val durationMs: Int = 300
             const val durationResourceName: String = "cabin_motion_slow_duration"
+            const val easing: String = "emphasized"
+            const val easingResourceName: String = "cabin_motion_slow_easing"
+        }
+        object Reduced {
+            const val durationMs: Int = 0
+            const val durationResourceName: String = "cabin_motion_reduced_duration"
+            const val easing: String = "linear"
+            const val easingResourceName: String = "cabin_motion_reduced_easing"
+        }
+        object DrivingCap {
+            const val durationMs: Int = 120
+            const val durationResourceName: String = "cabin_motion_drivingCap_duration"
+            const val easing: String = "decelerate"
+            const val easingResourceName: String = "cabin_motion_drivingCap_easing"
         }
     }
 

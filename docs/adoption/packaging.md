@@ -24,7 +24,7 @@ Coordinates and Soong names below are **planned**.
             ▼                               ▼
      Gradle (Maven AAR)              Soong (android_library)
   cabin-tokens / -compliance         CabinTokens / CabinCompliance
-  cabin-views / -compose             CabinViews / CabinCompose
+  cabin-views / -compose / -foundation / -gauges
             │                               │
             ▼                               ▼
       App developers                 SystemUI / build-tree
@@ -43,8 +43,10 @@ Coordinates and Soong names below are **planned**.
 | --- | --- | --- |
 | Tokens | `dev.decoupled.cabin:cabin-tokens` | Apps; OEM overlays |
 | Compliance | `dev.decoupled.cabin:cabin-compliance` | Apps |
+| Foundation | `dev.decoupled.cabin:cabin-foundation` | Shared State/Action; size classes |
 | Compose UI | `dev.decoupled.cabin:cabin-compose` | Feature apps |
-| Views UI | `dev.decoupled.cabin:cabin-views` | Legacy / Views apps built with Gradle |
+| Views UI | `dev.decoupled.cabin:cabin-views` | Legacy / Views apps built with Gradle; SystemUI via Soong |
+| Gauges | `dev.decoupled.cabin:cabin-gauges` | Cluster/HUD apps only |
 
 Group ID `dev.decoupled.cabin` is illustrative and may be finalized at first
 publish.
@@ -55,8 +57,10 @@ publish.
 | --- | --- | --- |
 | `CabinTokens` | `cabin-tokens` | Required |
 | `CabinCompliance` | `cabin-compliance` | Required with UI |
+| `CabinFoundation` | `cabin-foundation` | Transitive via Views / Compose |
 | `CabinViews` | `cabin-views` | **Primary** for SystemUI / chrome |
 | `CabinCompose` | `cabin-compose` | Opt-in only |
+| `CabinGauges` | `cabin-gauges` | Opt-in; never SystemUI |
 
 Alpha `Android.bp` scaffolding is co-located with each module. Full guide:
 [build-tree](build-tree.md). SystemUI fragment:
@@ -76,12 +80,16 @@ cabin-tokens / CabinTokens
      ▲
 cabin-compliance / CabinCompliance
      ▲
- ┌───┴───┐
-compose  views
+cabin-foundation / CabinFoundation
+     ▲
+ ┌───┴───────────────┐
+compose            views
+     ▲
+gauges (opt-in; never SystemUI)
 ```
 
 `cabin-compose` ⊀ `cabin-views` (no dependency either way). Same rule for
-`CabinCompose` / `CabinViews`.
+`CabinCompose` / `CabinViews`. `CabinGauges` must never appear on SystemUI.
 
 ## Selecting modules — Gradle (apps)
 
@@ -128,7 +136,7 @@ static_libs: [
 ]
 ```
 
-Do not add `CabinCompose`, catalog, or samples to SystemUI. Sketch + manifest
+Do not add `CabinCompose`, `CabinGauges`, catalog, or samples to SystemUI. Sketch + manifest
 sync: [build-tree](build-tree.md) ·
 [systemui-cabin](sketches/systemui-cabin/).
 
@@ -156,7 +164,7 @@ Do not install the catalog app on production user images.
 
 1. No “umbrella” AAR or Soong meta-module that pulls both stacks and samples
    by default.
-2. SystemUI never depends on Compose, catalog, or samples.
+2. SystemUI never depends on Compose, gauges, catalog, or samples.
 3. Optional domain packs (future) only if metrics show need — start coarse
    and split later carefully.
 4. Keep transitive deps minimal (no forcing full Material into system UI

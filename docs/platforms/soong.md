@@ -27,7 +27,7 @@ Keep `build.gradle.kts` and `Android.bp` co-located with the same `srcs` /
 | Type | Cabin use |
 | --- | --- |
 | `java_defaults` | Root `CabinAndroidLibraryDefaults` (sdk / min sdk only) |
-| `android_library` | Primary form for `CabinTokens`, `CabinCompliance`, `CabinViews`, `CabinCompose` |
+| `android_library` | Primary form for `CabinTokens`, `CabinCompliance`, `CabinFoundation`, `CabinViews`, `CabinCompose`, `CabinGauges` |
 | `android_library_import` | Secondary prebuilt AAR import for constrained vendor partitions |
 | `runtime_resource_overlay` | OEM brand RROs targeting Cabin / SystemUI themes |
 | `java_library` | Only if a pure-JVM helper is later required (avoid for UI) |
@@ -42,8 +42,10 @@ Views + samples for convenience. Do not add `Android.bp` under `catalog/`,
 | --- | --- | --- |
 | `CabinTokens` | `cabin-tokens/Android.bp` | Required |
 | `CabinCompliance` | `cabin-compliance/Android.bp` | Required |
-| `CabinViews` | `cabin-views/Android.bp` | Required (Theme Kit + bars; future Button/ListItem stay here) |
+| `CabinFoundation` | `cabin-foundation/Android.bp` | Transitive via Views |
+| `CabinViews` | `cabin-views/Android.bp` | Required (Theme Kit + bars; Button/ListItem stay here) |
 | `CabinCompose` | `cabin-compose/Android.bp` | **Never** |
+| `CabinGauges` | `cabin-gauges/Android.bp` | **Never** |
 
 Thin-deps guard (Gradle CI / local):
 

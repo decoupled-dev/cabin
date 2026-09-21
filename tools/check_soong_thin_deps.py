@@ -64,6 +64,8 @@ def main() -> int:
         "cabin-compliance/Android.bp": "CabinCompliance",
         "cabin-views/Android.bp": "CabinViews",
         "cabin-compose/Android.bp": "CabinCompose",
+        "cabin-foundation/Android.bp": "CabinFoundation",
+        "cabin-gauges/Android.bp": "CabinGauges",
     }
     for rel, name in expected.items():
         path = ROOT / rel
@@ -87,12 +89,32 @@ def main() -> int:
     views_libs = static_libs_for(ROOT / "cabin-views" / "Android.bp")
     if "CabinCompose" in views_libs:
         errors.append("CabinViews must not static_libs CabinCompose")
+    if "CabinGauges" in views_libs:
+        errors.append("CabinViews must not static_libs CabinGauges")
     if "CabinTokens" not in views_libs or "CabinCompliance" not in views_libs:
         errors.append("CabinViews must static_libs CabinTokens + CabinCompliance")
+    if "CabinFoundation" not in views_libs:
+        errors.append("CabinViews must static_libs CabinFoundation")
 
     compose_libs = static_libs_for(ROOT / "cabin-compose" / "Android.bp")
     if "CabinViews" in compose_libs:
         errors.append("CabinCompose must not static_libs CabinViews")
+    if "CabinGauges" in compose_libs:
+        errors.append("CabinCompose must not static_libs CabinGauges")
+    if "CabinFoundation" not in compose_libs:
+        errors.append("CabinCompose must static_libs CabinFoundation")
+
+    foundation_libs = static_libs_for(ROOT / "cabin-foundation" / "Android.bp")
+    allowed_foundation = {"CabinTokens", "CabinCompliance", "androidx.annotation_annotation"}
+    if foundation_libs - allowed_foundation:
+        errors.append(
+            "CabinFoundation static_libs must be tokens + compliance "
+            f"(+ annotation); found {sorted(foundation_libs)}"
+        )
+
+    gauges_libs = static_libs_for(ROOT / "cabin-gauges" / "Android.bp")
+    if "CabinViews" in gauges_libs:
+        errors.append("CabinGauges must not static_libs CabinViews")
 
     compliance_libs = static_libs_for(ROOT / "cabin-compliance" / "Android.bp")
     if compliance_libs - {"CabinTokens"}:
@@ -123,7 +145,7 @@ def main() -> int:
                 "SystemUI sketch must static_libs "
                 f"{sorted(required)}; found {sorted(sketch_libs)}"
             )
-        forbidden_libs = {"CabinCompose", "catalog", "CabinCatalog"}
+        forbidden_libs = {"CabinCompose", "catalog", "CabinCatalog", "CabinGauges"}
         bad = sketch_libs & forbidden_libs
         if bad:
             errors.append(f"SystemUI sketch must not list {sorted(bad)}")
@@ -137,7 +159,7 @@ def main() -> int:
         return 1
 
     print("Soong thin-deps check OK")
-    print("  modules: CabinTokens, CabinCompliance, CabinViews, CabinCompose")
+    print("  modules: CabinTokens, CabinCompliance, CabinFoundation, CabinViews, CabinCompose, CabinGauges")
     print("  SystemUI sketch: tokens + compliance + views only")
     print("  catalog / frozen sites: no Android.bp")
     return 0

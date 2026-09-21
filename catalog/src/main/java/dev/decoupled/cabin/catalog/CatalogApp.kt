@@ -60,6 +60,10 @@ fun CatalogApp(
     onVehicleStateChange: (VehicleUiState) -> Unit,
     lastAction: String?,
     onAction: (String) -> Unit,
+    kitFamily: String,
+    onKitFamilyChange: (String) -> Unit,
+    sizeClass: dev.decoupled.cabin.foundation.CabinWindowSizeClass,
+    onSizeClassChange: (dev.decoupled.cabin.foundation.CabinWindowSizeClass) -> Unit,
 ) {
     CabinTheme(
         colorScheme = colorScheme,
@@ -98,6 +102,12 @@ fun CatalogApp(
                     colorScheme = colorScheme,
                     vehicleState = vehicleState,
                     onAction = onAction,
+                )
+                CatalogKitSection(
+                    family = kitFamily,
+                    onFamilyChange = onKitFamilyChange,
+                    sizeClass = sizeClass,
+                    onSizeClassChange = onSizeClassChange,
                 )
                 SignalToneLegend()
                 Box(modifier = Modifier.height(24.dp))

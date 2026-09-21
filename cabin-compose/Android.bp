@@ -16,6 +16,7 @@ android_library {
     static_libs: [
         "CabinTokens",
         "CabinCompliance",
+        "CabinFoundation",
         "androidx.annotation_annotation",
         // Compose runtime / UI libs come from the host tree. Uncomment and
         // align names to the Android branch when linking CabinCompose into a

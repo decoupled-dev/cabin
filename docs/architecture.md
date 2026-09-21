@@ -25,12 +25,16 @@ cabin/                          # synced to Android tree via repo manifest
 ├── cabin-compliance/           # driving / UX / a11y / safety policies
 │   ├── build.gradle.kts
 │   └── Android.bp              # CabinCompliance
+├── cabin-foundation/           # size classes + shared State/Action (no UI toolkit)
+│   ├── build.gradle.kts
+│   └── Android.bp              # CabinFoundation
 ├── cabin-compose/              # Jetpack Compose components + theme
 │   ├── build.gradle.kts
 │   └── Android.bp              # CabinCompose (opt-in; never SystemUI)
 ├── cabin-views/                # View/XML components + attrs (primary for SystemUI)
 │   ├── build.gradle.kts
 │   └── Android.bp              # CabinViews
+├── cabin-gauges/               # cluster / HUD stubs (opt-in; never SystemUI)
 ├── samples/
 │   ├── sample-media/
 │   ├── sample-ev/
@@ -57,8 +61,10 @@ SystemUI; AAR prebuilts are secondary ([build-tree](adoption/build-tree.md)).
 | --- | --- | --- | --- | --- |
 | `cabin-tokens` | `dev.decoupled.cabin:cabin-tokens` | `CabinTokens` | — | Color, type, space, elevation, motion, icon semantic tokens |
 | `cabin-compliance` | `dev.decoupled.cabin:cabin-compliance` | `CabinCompliance` | tokens | Driving gates, UX rules, a11y baselines, safety defaults |
-| `cabin-compose` | `dev.decoupled.cabin:cabin-compose` | `CabinCompose` | tokens, compliance | Compose theme + components |
-| `cabin-views` | `dev.decoupled.cabin:cabin-views` | `CabinViews` | tokens, compliance | Views theme + components |
+| `cabin-foundation` | `dev.decoupled.cabin:cabin-foundation` | `CabinFoundation` | tokens, compliance | Size classes, shared State/Action, no UI toolkit |
+| `cabin-compose` | `dev.decoupled.cabin:cabin-compose` | `CabinCompose` | tokens, compliance, foundation | Compose theme + Experimental kit |
+| `cabin-views` | `dev.decoupled.cabin:cabin-views` | `CabinViews` | tokens, compliance, foundation | Views theme + chrome + build-tree subset |
+| `cabin-gauges` | `dev.decoupled.cabin:cabin-gauges` | `CabinGauges` | tokens, compliance, foundation, compose | Cluster/HUD stubs (never SystemUI) |
 
 Samples, catalog, and website are **not** published as runtime AARs and are
 **not** Soong deps for SystemUI.
@@ -73,26 +79,31 @@ Samples, catalog, and website are **not** published as runtime AARs and are
                     ┌────────▼────────┐
                     │cabin-compliance │
                     └────────┬────────┘
-              ┌──────────────┴──────────────┐
-              ▼                             ▼
-     ┌────────────────┐            ┌────────────────┐
-     │ cabin-compose  │            │  cabin-views   │
-     └────────┬───────┘            └────────┬───────┘
-              │                             │
-              └──────────────┬──────────────┘
-                             ▼
-                      samples / catalog
+                             │
+                    ┌────────▼────────┐
+                    │cabin-foundation │
+                    └────────┬────────┘
+          ┌──────────────────┼──────────────────┐
+          ▼                  ▼                  ▼
+   ┌────────────┐     ┌────────────┐     ┌────────────┐
+   │cabin-compose│     │ cabin-views│     │cabin-gauges│
+   └──────┬─────┘     └──────┬─────┘     └──────┬─────┘
+          │                  │                  │
+          └──────────────────┴────────┬─────────┘
+                                      ▼
+                               samples / catalog
 ```
 
 **Hard rules (planned lint / module checks):**
 
 1. `cabin-tokens` / `CabinTokens` must not depend on Compose, AppCompat, or Material.
 2. `cabin-compliance` / `CabinCompliance` must not depend on Compose UI or View widgets.
-3. `cabin-compose` must not depend on `cabin-views`, and vice versa (same for Soong names).
-4. OEM brand overlays / RROs depend on tokens (+ optional compliance), never on
+3. `cabin-foundation` / `CabinFoundation` must not depend on Compose or Views widgets.
+4. `cabin-compose` must not depend on `cabin-views`, and vice versa (same for Soong names).
+5. OEM brand overlays / RROs depend on tokens (+ optional compliance), never on
    samples.
-5. Apps may depend on one UI stack only.
-6. SystemUI Soong deps must not include `CabinCompose`, catalog, or samples.
+6. Apps may depend on one UI stack only.
+7. SystemUI Soong deps must not include `CabinCompose`, `CabinGauges`, catalog, or samples.
 
 ## Extension and theming points
 

@@ -7,6 +7,8 @@ import androidx.compose.ui.test.performClick
 import dev.decoupled.cabin.compliance.Signal
 import dev.decoupled.cabin.compliance.VehicleUiState
 import dev.decoupled.cabin.compose.theme.CabinTheme
+import dev.decoupled.cabin.foundation.hvac.CabinClimateTileAction
+import dev.decoupled.cabin.foundation.hvac.CabinClimateTileState
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Rule

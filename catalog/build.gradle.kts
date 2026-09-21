@@ -45,6 +45,7 @@ dependencies {
     // Thin sample: depends on product modules; product modules must never depend back.
     implementation(project(":cabin-compose"))
     implementation(project(":cabin-views"))
+    implementation(project(":cabin-gauges"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)

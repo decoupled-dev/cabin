@@ -16,6 +16,7 @@ android_library {
     static_libs: [
         "CabinTokens",
         "CabinCompliance",
+        "CabinFoundation",
         // Mirrors Gradle implementation(androidx.annotation).
         // Soong name is stable on modern AndroidX trees; adjust if the host
         // branch still uses a legacy alias.

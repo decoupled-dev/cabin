@@ -24,8 +24,10 @@ dev.decoupled.cabin:cabin-compose:<version>
 | Maven (Gradle apps) | `dev.decoupled.cabin:cabin-compose` | **Experimental** (Theme + System/Status bars + ClimateTile + MediaNowPlaying) |
 | Soong | `CabinCompose` | Alpha scaffolding — **do not** link from SystemUI |
 
-Depends on `cabin-tokens` and `cabin-compliance` ([architecture](../architecture.md)).
-Must **not** depend on `cabin-views`.
+Depends on `cabin-tokens`, `cabin-compliance`, and `cabin-foundation`
+([architecture](../architecture.md)). Must **not** depend on `cabin-views`.
+Experimental kit scaffolds (`@CabinScaffold`) cover the inventory in
+[coverage.generated.md](../components/coverage.generated.md).
 
 ## Theme
 

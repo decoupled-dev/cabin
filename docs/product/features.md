@@ -67,8 +67,10 @@ How the product is built, verified, taught, and adopted into OEM images.
 
 | Feature | Intent | Primary docs / modules |
 | --- | --- | --- |
-| **Compose Kit** | `cabin-compose` / `CabinCompose` theme + System/Status bars (**Experimental**) | [compose](../platforms/compose.md) |
-| **Views Kit** | `cabin-views` / `CabinViews` theme + components (SystemUI primary) | [views](../platforms/views.md) |
+| **Compose Kit** | `cabin-compose` / `CabinCompose` theme + System/Status bars + **Experimental kit scaffold** ([ADR 0005](../adr/0005-compose-first-kit-foundation.md)) | [compose](../platforms/compose.md) |
+| **Views Kit** | `cabin-views` / `CabinViews` theme + chrome + build-tree subset (SystemUI primary) | [views](../platforms/views.md) |
+| **Foundation** | Size classes, display profiles, shared State/Action (no UI toolkit) | `cabin-foundation` |
+| **Gauges** | Opt-in cluster/HUD stubs — never SystemUI | `cabin-gauges` |
 | **Build-tree / Soong distribution** | Same sources as Maven AARs; Soong modules for SystemUI, CarLauncher, platform media; RROs for brand; thin Views-first deps | [build-tree](../adoption/build-tree.md), [soong](../platforms/soong.md), [packaging](../adoption/packaging.md) |
 | **Agent skills + AGENTS.md** | Modular Agent Skills and hard rules so coding agents implement thin, compliant, dual-stack Cabin correctly | [AGENTS.md](../../AGENTS.md), [docs/agents](../agents/README.md), [skills/](../../skills/) |
 | **Catalog app** | Interactive reference for parity and adoption | [site plan](../website/site-plan.md) |

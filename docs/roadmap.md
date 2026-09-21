@@ -69,6 +69,9 @@ See [mvp.md](mvp.md) success criteria. Summary:
 
 - [x] Compose Theme + System/Status bar parity (`cabin-compose`) — Experimental;
   Views remain the SystemUI path
+- [x] Compose-first kit scaffold + `cabin-foundation` + `cabin-gauges` (ADR 0005);
+  generated stubs, not production craft
+
 ## Phase 3 — Media + HVAC
 
 Unblocked only after MVP done. Dual-stack as required; compliance hooks

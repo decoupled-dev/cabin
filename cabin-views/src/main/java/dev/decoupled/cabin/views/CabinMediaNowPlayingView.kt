@@ -14,6 +14,8 @@ import dev.decoupled.cabin.compliance.GateDisposition
 import dev.decoupled.cabin.compliance.Signal
 import dev.decoupled.cabin.tokens.CabinTokens
 import dev.decoupled.cabin.tokens.R as TokensR
+import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingAction
+import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingState
 import dev.decoupled.cabin.views.compliance.CabinComplianceHost
 import dev.decoupled.cabin.views.theme.CabinThemeResolver
 
@@ -32,7 +34,8 @@ class CabinMediaNowPlayingView @JvmOverloads constructor(
     defStyleAttr: Int = 0,
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
-    private var state: CabinMediaNowPlayingState = CabinMediaNowPlayingState.empty()
+    private var state: CabinMediaNowPlayingState =
+        dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingState.empty()
     private var complianceHost: CabinComplianceHost? = null
     private var actionListener: ((CabinMediaNowPlayingAction) -> Unit)? = null
 
@@ -368,39 +371,6 @@ class CabinMediaNowPlayingView @JvmOverloads constructor(
             return "${mmss(positionMs)} / ${mmss(durationMs)}"
         }
     }
-}
-
-/** MediaNowPlaying presentation state (parity with Compose). */
-data class CabinMediaNowPlayingState(
-    val title: Signal<String>,
-    val artist: Signal<String>,
-    val sourceLabel: Signal<String>,
-    val isPlaying: Boolean,
-    val artworkAvailable: Boolean,
-    val positionMs: Signal<Long>,
-    val durationMs: Signal<Long>,
-    val hasSource: Boolean = true,
-) {
-    companion object {
-        fun empty(): CabinMediaNowPlayingState = CabinMediaNowPlayingState(
-            title = Signal.Unavailable,
-            artist = Signal.Unavailable,
-            sourceLabel = Signal.Unavailable,
-            isPlaying = false,
-            artworkAvailable = false,
-            positionMs = Signal.Unavailable,
-            durationMs = Signal.Unavailable,
-            hasSource = false,
-        )
-    }
-}
-
-sealed interface CabinMediaNowPlayingAction {
-    data object PlayPause : CabinMediaNowPlayingAction
-    data object Next : CabinMediaNowPlayingAction
-    data object Previous : CabinMediaNowPlayingAction
-    data object OpenSource : CabinMediaNowPlayingAction
-    data class SeekTo(val positionMs: Long) : CabinMediaNowPlayingAction
 }
 
 object CabinMediaNowPlayingTokens {

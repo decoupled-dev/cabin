@@ -7,16 +7,18 @@ alwaysApply: true
 
 You are working in **Cabin**: AAOS design language + dual UI (Compose + Views),
 compliance-first, dual Gradle/Soong distribution. Alpha modules: tokens,
-compliance, Theme Kit + System/Status bars in `cabin-views`. Experimental:
-Compose Theme + bars in `cabin-compose`. Thin sample catalog under `catalog/`
-(not a product dep). Mark unimplemented APIs **planned**.
+compliance, Theme Kit + System/Status bars + build-tree subset in
+`cabin-views`. Experimental: `cabin-foundation`, Compose kit scaffold in
+`cabin-compose`, opt-in `cabin-gauges` (never SystemUI). Thin sample catalog
+under `catalog/` (not a product dep). Mark unimplemented craft **planned**;
+scaffolds are `@CabinScaffold`.
 
 ## Hard constraints
 
 - Thin by design: no umbrella modules; no samples/catalog/website in product deps
-- `cabin-tokens` / `cabin-compliance`: no Compose or Views widget deps
+- `cabin-tokens` / `cabin-compliance` / `cabin-foundation`: no Compose or Views widget deps
 - `cabin-compose` and `cabin-views` must not depend on each other
-- SystemUI / build-tree: **Soong** + **Views-first** (`CabinViews` + tokens + compliance). Never Gradle-`implementation` Cabin into SystemUI
+- SystemUI / build-tree: **Soong** + **Views-first** (`CabinViews` + tokens + compliance). Never Gradle-`implementation` Cabin into SystemUI; never `CabinCompose` / `CabinGauges`
 - Do not hardcode driving/UX policy inside widgets — use compliance / Restriction Engine
 - OEM brand via tokens / RROs / extension slots — not core forks
 - Compose + Views parity for components; shared states/actions

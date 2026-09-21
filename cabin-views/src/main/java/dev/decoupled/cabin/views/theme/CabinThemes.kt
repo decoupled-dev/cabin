@@ -54,6 +54,10 @@ object CabinThemes {
         @AttrRes val colorClimate: Int = TokensR.attr.cabin_colorClimate
         @AttrRes val colorMediaAccent: Int = TokensR.attr.cabin_colorMediaAccent
         @AttrRes val colorScrim: Int = TokensR.attr.cabin_colorScrim
+        @AttrRes val colorCritical: Int = TokensR.attr.cabin_colorCritical
+        @AttrRes val colorAdasActive: Int = TokensR.attr.cabin_colorAdasActive
+        @AttrRes val colorPrivacy: Int = TokensR.attr.cabin_colorPrivacy
+        @AttrRes val colorFocusRing: Int = TokensR.attr.cabin_colorFocusRing
     }
 }
 
@@ -81,4 +85,8 @@ data class CabinResolvedColors(
     @ColorInt val climate: Int,
     @ColorInt val mediaAccent: Int,
     @ColorInt val scrim: Int,
+    @ColorInt val critical: Int,
+    @ColorInt val adasActive: Int,
+    @ColorInt val privacy: Int,
+    @ColorInt val focusRing: Int,
 )

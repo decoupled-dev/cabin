@@ -8,7 +8,7 @@ import dev.decoupled.cabin.compliance.GateDisposition
  * Widgets must query [dev.decoupled.cabin.compose.compliance.LocalCabinComplianceState]
  * for disposition — never embed driving if/else trees (ADR 0004).
  */
-internal object GateVisuals {
+object GateVisuals {
     fun alpha(disposition: GateDisposition): Float = when (disposition) {
         GateDisposition.Allow -> 1f
         GateDisposition.Substitute -> 0.55f

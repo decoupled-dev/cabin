@@ -6,8 +6,8 @@ Gradle Maven AARs remain the path for app developers. Both paths compile the
 **same** Kotlin/Java/resources source of truth.
 
 > **Alpha Soong scaffolding** lives co-located with each `cabin-*` module
-> (`Android.bp` → `CabinTokens` / `CabinCompliance` / `CabinViews` /
-> `CabinCompose`) plus root `CabinAndroidLibraryDefaults`. Full on-device
+> (`Android.bp` → `CabinTokens` / `CabinCompliance` / `CabinFoundation` /
+> `CabinViews` / `CabinCompose` / `CabinGauges`) plus root `CabinAndroidLibraryDefaults`. Full on-device
 > SystemUI bar wiring remains partner-tree work; see the
 > [SystemUI sketch](sketches/systemui-cabin/).
 
@@ -47,7 +47,10 @@ Platform chrome is Views/XML today. Cabin’s primary build-tree surface is:
 CabinTokens + CabinCompliance + CabinViews
 ```
 
-Compose (`CabinCompose`, **Experimental** Theme + bars) remains first-class for:
+`CabinFoundation` is pulled transitively by `CabinViews`. Never add
+`CabinCompose` or `CabinGauges` to SystemUI `static_libs`.
+
+Compose (`CabinCompose`, **Experimental** Theme + kit scaffold) remains first-class for:
 
 - Gradle app developers
 - Platform apps that already ship Compose
@@ -70,10 +73,16 @@ cabin/                                    # synced into Android tree via manifes
 ├── cabin-compliance/
 │   ├── build.gradle.kts
 │   └── Android.bp
+├── cabin-foundation/
+│   ├── build.gradle.kts
+│   └── Android.bp
 ├── cabin-views/
 │   ├── build.gradle.kts
 │   └── Android.bp
 ├── cabin-compose/                        # apps + Compose-capable platform apps
+│   ├── build.gradle.kts
+│   └── Android.bp
+├── cabin-gauges/                         # opt-in cluster; never SystemUI
 │   ├── build.gradle.kts
 │   └── Android.bp
 ├── samples/                              # Gradle-oriented; not on device images
@@ -91,8 +100,10 @@ Illustrative tree paths after sync: `external/cabin` or
 | --- | --- | --- | --- |
 | `cabin-tokens` | `CabinTokens` | Always | `cabin-tokens/Android.bp` |
 | `cabin-compliance` | `CabinCompliance` | Always with UI | `cabin-compliance/Android.bp` |
+| `cabin-foundation` | `CabinFoundation` | Transitive via Views / Compose | `cabin-foundation/Android.bp` |
 | `cabin-views` | `CabinViews` | **Primary** for SystemUI / chrome | `cabin-views/Android.bp` |
 | `cabin-compose` | `CabinCompose` | Opt-in; never required by SystemUI | `cabin-compose/Android.bp` |
+| `cabin-gauges` | `CabinGauges` | Opt-in; never SystemUI | `cabin-gauges/Android.bp` |
 
 Shared defaults: root [`Android.bp`](../../Android.bp) →
 `CabinAndroidLibraryDefaults` (sdk / min sdk only — **not** an umbrella lib).
@@ -100,7 +111,7 @@ Shared defaults: root [`Android.bp`](../../Android.bp) →
 Hard rules:
 
 - `CabinViews` must not depend on `CabinCompose` (and vice versa).
-- SystemUI bp must not list `CabinCompose`, catalog, samples, or website.
+- SystemUI bp must not list `CabinCompose`, `CabinGauges`, catalog, samples, or website.
 - Upcoming Views primitives (Button, ListItem, …) stay **inside** `CabinViews`
   — do not invent per-widget Soong module names.
 - `catalog/` has **no** `Android.bp` (sample-only).

@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import dev.decoupled.cabin.compliance.VehicleUiState
+import dev.decoupled.cabin.foundation.CabinWindowSizeClass
 import dev.decoupled.cabin.tokens.CabinColorScheme
 
 /**
@@ -23,6 +24,8 @@ class CatalogActivity : ComponentActivity() {
             var colorScheme by remember { mutableStateOf(CabinColorScheme.Day) }
             var vehicleState by remember { mutableStateOf(VehicleUiState.parked()) }
             var lastAction by remember { mutableStateOf<String?>(null) }
+            var kitFamily by remember { mutableStateOf("action") }
+            var sizeClass by remember { mutableStateOf(CabinWindowSizeClass.StandardLandscape) }
 
             CatalogApp(
                 colorScheme = colorScheme,
@@ -31,6 +34,10 @@ class CatalogActivity : ComponentActivity() {
                 onVehicleStateChange = { vehicleState = it },
                 lastAction = lastAction,
                 onAction = { lastAction = it },
+                kitFamily = kitFamily,
+                onKitFamilyChange = { kitFamily = it },
+                sizeClass = sizeClass,
+                onSizeClassChange = { sizeClass = it },
             )
         }
     }

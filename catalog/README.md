@@ -1,7 +1,7 @@
 # Cabin Catalog (sample)
 
-Thin interactive catalog for Cabin MVP chrome — **not** a product library and
-**not** a SystemUI / Soong dependency.
+Thin interactive catalog for Cabin chrome and the Experimental kit scaffold —
+**not** a product library and **not** a SystemUI / Soong dependency.
 
 ## What it demos
 
@@ -12,14 +12,18 @@ Thin interactive catalog for Cabin MVP chrome — **not** a product library and
 | System Bar + Status Bar | **Compose (Experimental)** | Same fixtures; parity smoke |
 | Restriction Engine | Parked / Idling / Moving / Restricted | Gates activations on both stacks |
 | Signals + tones | Status items | unavailable / stale / fault + Warning / Charging |
+| Kit family index | Compose scaffolds (+ gauges) | Search/filter by YAML id; size-class switcher |
 
-**Out of scope:** media, HVAC, EV, vehicle-controls screens.
+Handwritten chrome stays at the top. Generated components are Experimental
+scaffolds (`@CabinScaffold`) — they render and gate; they are not production
+visuals.
 
 ## Packaging
 
 ```text
-catalog  →  cabin-compose
-         →  cabin-views  →  cabin-compliance → cabin-tokens
+catalog  →  cabin-compose → cabin-foundation → cabin-compliance → cabin-tokens
+         →  cabin-views   → cabin-foundation → …
+         →  cabin-gauges  → cabin-compose → …
 ```
 
 `cabin-*` modules never depend on `catalog`. Do not install this APK on

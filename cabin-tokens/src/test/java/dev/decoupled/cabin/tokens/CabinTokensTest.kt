@@ -9,7 +9,7 @@ class CabinTokensTest {
 
     @Test
     fun sourceMetadata_matchesStub() {
-        assertEquals("0.1.1-stub", CabinTokens.SOURCE_VERSION)
+        assertEquals("0.1.2-stub", CabinTokens.SOURCE_VERSION)
         assertEquals("tokens/cabin.tokens.json", CabinTokens.SOURCE_PATH)
     }
 
@@ -105,6 +105,12 @@ class CabinTokensTest {
         assertEquals(76f, CabinTokens.Component.ClimateTile.controlMinSize.dp)
         assertEquals(120f, CabinTokens.Component.MediaNowPlaying.artworkSize.dp)
         assertEquals(76f, CabinTokens.Component.MediaNowPlaying.transportMinSize.dp)
+        assertEquals(3f, CabinTokens.Focus.Ring.width.dp)
+        assertEquals(8f, CabinTokens.Shape.Corner.md.dp)
+        assertEquals("standard", CabinTokens.Motion.Fast.easing)
+        assertEquals(0, CabinTokens.Motion.Reduced.durationMs)
+        assertEquals("#B71C1C", CabinTokens.Color.Semantic.critical.hex)
+        assertTrue(CabinTokens.Color.Semantic.critical.isSafetyLocked)
     }
 
     @Test

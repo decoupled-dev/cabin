@@ -2,4 +2,9 @@
 <!-- GENERATED from tokens/cabin.tokens.json. Do not edit. -->
 <resources>
     <string name="cabin_type_family_plain" translatable="false">CabinSans</string>
+    <string name="cabin_motion_fast_easing" translatable="false">standard</string>
+    <string name="cabin_motion_medium_easing" translatable="false">decelerate</string>
+    <string name="cabin_motion_slow_easing" translatable="false">emphasized</string>
+    <string name="cabin_motion_reduced_easing" translatable="false">linear</string>
+    <string name="cabin_motion_drivingCap_easing" translatable="false">decelerate</string>
 </resources>

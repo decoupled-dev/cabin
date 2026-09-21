@@ -11,10 +11,10 @@ import dev.decoupled.cabin.tokens.CabinTokens
  *
  * Same semantic names as Android resources and CSS `--cabin-*` variables.
  * Do not edit by hand -- run `python3 tools/generate_cabin_tokens.py`.
- * Stub version: 0.1.1-stub
+ * Stub version: 0.1.2-stub
  */
 object CabinComposeTokens {
-    const val SOURCE_VERSION: String = "0.1.1-stub"
+    const val SOURCE_VERSION: String = "0.1.2-stub"
 
     object Semantic {
         val primary: Color get() = CabinTokens.Color.Semantic.primary.toComposeColor()
@@ -32,6 +32,10 @@ object CabinComposeTokens {
         val climate: Color get() = CabinTokens.Color.Semantic.climate.toComposeColor()
         val mediaAccent: Color get() = CabinTokens.Color.Semantic.mediaAccent.toComposeColor()
         val scrim: Color get() = CabinTokens.Color.Semantic.scrim.toComposeColor()
+        val critical: Color get() = CabinTokens.Color.Semantic.critical.toComposeColor()
+        val adasActive: Color get() = CabinTokens.Color.Semantic.adasActive.toComposeColor()
+        val privacy: Color get() = CabinTokens.Color.Semantic.privacy.toComposeColor()
+        val focusRing: Color get() = CabinTokens.Color.Semantic.focusRing.toComposeColor()
     }
 
     /** Day/night scheme chrome + locked feedback roles. */
@@ -90,6 +94,10 @@ object CabinComposeTokens {
             climate = semantic.climate,
             mediaAccent = semantic.mediaAccent,
             scrim = semantic.scrim,
+            critical = semantic.critical,
+            adasActive = semantic.adasActive,
+            privacy = semantic.privacy,
+            focusRing = semantic.focusRing,
         )
     }
 }
