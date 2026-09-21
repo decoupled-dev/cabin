@@ -4,10 +4,9 @@ import android.os.Build
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
-import dev.decoupled.cabin.compliance.VehicleUiState
-import dev.decoupled.cabin.compose.theme.CabinTheme
+import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performScrollTo
 import dev.decoupled.cabin.foundation.CabinScaffold
-import dev.decoupled.cabin.tokens.CabinColorScheme
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Rule
@@ -27,48 +26,27 @@ class KitchenSinkTest {
 
     @Test
     fun activity_launches() {
-        assertTrue(composeRule.activity != null)
         composeRule.onNodeWithTag("sink_home").assertIsDisplayed()
     }
 
     @Test
     fun home_opensComponentsAndScreens() {
-        var route: SinkRoute = SinkRoute.Home
-        composeRule.setContent {
-            CabinTheme(vehicleState = VehicleUiState.parked()) {
-                KitchenSinkApp(
-                    colorScheme = CabinColorScheme.Day,
-                    onColorSchemeChange = {},
-                    vehicleState = VehicleUiState.parked(),
-                    onVehicleStateChange = {},
-                    route = route,
-                    onRoute = { route = it },
-                    lastAction = null,
-                    onAction = {},
-                )
-            }
-        }
         composeRule.onNodeWithTag("sink_home").assertIsDisplayed()
         composeRule.onNodeWithTag("sink_open_components").assertIsDisplayed()
         composeRule.onNodeWithTag("sink_open_screens").assertIsDisplayed()
+
+        composeRule.onNodeWithTag("sink_open_components").performClick()
+        composeRule.onNodeWithTag("sink_browser").assertIsDisplayed()
+
+        composeRule.onNodeWithTag("sink_back").performClick()
+        composeRule.onNodeWithTag("sink_open_screens").performClick()
+        composeRule.onNodeWithTag("sink_screens").assertIsDisplayed()
     }
 
     @Test
     fun inspector_showsButtonScaffold() {
-        composeRule.setContent {
-            CabinTheme(vehicleState = VehicleUiState.parked()) {
-                KitchenSinkApp(
-                    colorScheme = CabinColorScheme.Day,
-                    onColorSchemeChange = {},
-                    vehicleState = VehicleUiState.parked(),
-                    onVehicleStateChange = {},
-                    route = SinkRoute.Inspector("button"),
-                    onRoute = {},
-                    lastAction = null,
-                    onAction = {},
-                )
-            }
-        }
+        composeRule.onNodeWithTag("sink_open_components").performClick()
+        composeRule.onNodeWithTag("entry_button").performScrollTo().performClick()
         composeRule.onNodeWithTag("sink_inspector").assertIsDisplayed()
         composeRule.onNodeWithTag("cabin_button").assertIsDisplayed()
         composeRule.onNodeWithTag("cabin_button_mark").assertIsDisplayed()
@@ -76,20 +54,8 @@ class KitchenSinkTest {
 
     @Test
     fun dashboard_composesChromeAndTiles() {
-        composeRule.setContent {
-            CabinTheme(vehicleState = VehicleUiState.parked()) {
-                KitchenSinkApp(
-                    colorScheme = CabinColorScheme.Day,
-                    onColorSchemeChange = {},
-                    vehicleState = VehicleUiState.parked(),
-                    onVehicleStateChange = {},
-                    route = SinkRoute.Screen("dashboard"),
-                    onRoute = {},
-                    lastAction = null,
-                    onAction = {},
-                )
-            }
-        }
+        composeRule.onNodeWithTag("sink_open_screens").performClick()
+        composeRule.onNodeWithTag("screen_dashboard").performClick()
         composeRule.onNodeWithTag("sink_screen_dashboard").assertIsDisplayed()
         composeRule.onNodeWithTag("cabin_system_bar").assertIsDisplayed()
         composeRule.onNodeWithTag("cabin_climate_tile").assertIsDisplayed()
