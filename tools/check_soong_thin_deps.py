@@ -54,7 +54,7 @@ def main() -> int:
             "(catalog stays off SystemUI / product images)"
         )
 
-    for forbidden in ("apps/www/Android.bp", "website/Android.bp"):
+    for forbidden in ("apps/www/Android.bp", "website/Android.bp", "samples/kitchen-sink/Android.bp"):
         path = ROOT / forbidden
         if path.exists():
             errors.append(f"{forbidden} must not exist (frozen / non-product)")

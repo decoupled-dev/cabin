@@ -64,13 +64,14 @@ unit tests and Views chrome verification. Compose bar parity is
 | Screenshot / golden | Paparazzi (or equiv.) for Views; Compose parity screenshots |
 | Dual-stack parity | Shared fixtures for System/Status bar state |
 | Catalog | Thin sample tests in `catalog/` (fixtures + registry + packaging guard); visual QA later |
+| Kitchen sink | `samples/kitchen-sink` — component inspector + composed screens; packaging guard |
 | Platform image CI | Optional userdebug jobs consuming Soong modules |
 
 ## Gradle CI vs platform / Soong
 
 | Lane | v0.1 |
 | --- | --- |
-| **Gradle CI** (GitHub/etc.) | Unit tests for tokens + compliance + foundation + Views + Compose + gauges + catalog; `tools/check_soong_thin_deps.py`; token and component codegen `--check` |
+| **Gradle CI** (GitHub/etc.) | Unit tests for tokens + compliance + foundation + Views + Compose + gauges + catalog + kitchen-sink; `tools/check_soong_thin_deps.py`; token and component codegen `--check` |
 | **Platform / Soong** | Manual or partner tree verification that `Cabin*` modules build and SystemUI-shaped target links thinly ([sketch](adoption/sketches/systemui-cabin/)); full AAOS image CI is partner-owned |
 
 Cabin does not require hosting a full AAOS tree in this repo for MVP.

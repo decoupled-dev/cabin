@@ -87,6 +87,18 @@ CATALOG_DIR = (
     / "cabin"
     / "catalog"
 )
+SINK_DIR = (
+    ROOT
+    / "samples"
+    / "kitchen-sink"
+    / "src"
+    / "main"
+    / "java"
+    / "dev"
+    / "decoupled"
+    / "cabin"
+    / "sink"
+)
 
 COMPOSE_FAMILY_PKG = {
     "nav": "maps",
@@ -285,6 +297,7 @@ def gauges_scaffolds(items: list[dict]) -> str:
             "        ui = state.ui,",
             f"        onActivate = {{ onAction(Cabin{name}Action.Activate) }},",
             "        modifier = modifier,",
+            '        family = "gauges",',
             "    )",
             "}",
             "",
@@ -292,10 +305,16 @@ def gauges_scaffolds(items: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def catalog_registry(items: list[dict]) -> str:
+def catalog_registry(
+    items: list[dict],
+    *,
+    package: str = "dev.decoupled.cabin.catalog",
+    entry_type: str = "CatalogEntry",
+    object_name: str = "CatalogRegistry",
+) -> str:
     lines = [
-        kotlin_file_header("dev.decoupled.cabin.catalog"),
-        "data class CatalogEntry(",
+        kotlin_file_header(package),
+        f"data class {entry_type}(",
         "    val id: String,",
         "    val typeName: String,",
         "    val family: String,",
@@ -308,8 +327,8 @@ def catalog_registry(items: list[dict]) -> str:
         "    val testTag: String,",
         ")",
         "",
-        "object CatalogRegistry {",
-        "    val entries: List<CatalogEntry> = listOf(",
+        f"object {object_name} {{",
+        f"    val entries: List<{entry_type}> = listOf(",
     ]
     for item in items:
         stacks = ", ".join(f'"{s}"' for s in item["stacks"])
@@ -317,7 +336,7 @@ def catalog_registry(items: list[dict]) -> str:
         hw = "true" if item["handwritten"] else "false"
         tag = f"cabin_{item['id'].replace('-', '_')}"
         lines.append(
-            "        CatalogEntry("
+            f"        {entry_type}("
             f'id = "{item["id"]}", typeName = "{item["typeName"]}", '
             f'family = "{item["family"]}", title = "{item["title"]}", '
             f'interaction = "{item["interaction"]}", stacks = listOf({stacks}), '
@@ -334,33 +353,52 @@ def catalog_registry(items: list[dict]) -> str:
     return "\n".join(lines)
 
 
-def catalog_demo(items: list[dict]) -> str:
+def catalog_demo(
+    items: list[dict],
+    *,
+    package: str = "dev.decoupled.cabin.catalog",
+    fun_name: str = "CatalogComponentDemo",
+) -> str:
     generated = [i for i in items if not i["handwritten"]]
-    imports: set[str] = set()
-    for item in generated:
-        if item["module"] == "gauges":
-            imports.add("import dev.decoupled.cabin.gauges.Cabin" + item["typeName"])
-        else:
-            pkg = compose_pkg(item["family"])
-            imports.add(
-                f"import dev.decoupled.cabin.compose.{pkg}.Cabin{item['typeName']}"
-            )
-    lines = [
-        kotlin_file_header("dev.decoupled.cabin.catalog"),
+    imports: set[str] = {
         "import androidx.compose.runtime.Composable",
         "import androidx.compose.ui.Modifier",
+        "import dev.decoupled.cabin.foundation.CabinComponentUiState",
+    }
+    for item in generated:
+        name = item["typeName"]
+        if item["module"] == "gauges":
+            imports.add(f"import dev.decoupled.cabin.gauges.Cabin{name}")
+            imports.add(
+                f"import dev.decoupled.cabin.foundation.components.gauges.Cabin{name}State"
+            )
+        else:
+            pkg = compose_pkg(item["family"])
+            imports.add(f"import dev.decoupled.cabin.compose.{pkg}.Cabin{name}")
+            imports.add(
+                f"import dev.decoupled.cabin.foundation.components.{pkg}.Cabin{name}State"
+            )
+    lines = [
+        kotlin_file_header(package),
         *sorted(imports),
         "",
         "@Composable",
-        "fun CatalogComponentDemo(",
+        f"fun {fun_name}(",
         "    id: String,",
         "    modifier: Modifier = Modifier,",
+        "    ui: CabinComponentUiState = CabinComponentUiState(),",
+        '    variant: String = "",',
         ") {",
         "    when (id) {",
     ]
     for item in generated:
         name = item["typeName"]
-        lines.append(f'        "{item["id"]}" -> Cabin{name}(modifier = modifier)')
+        lines.append(
+            f'        "{item["id"]}" -> Cabin{name}('
+            f"state = Cabin{name}State("
+            f"variant = variant.ifBlank {{ Cabin{name}State().variant }}, "
+            f"ui = ui), modifier = modifier)"
+        )
     lines += [
         "        else -> {}",
         "    }",
@@ -405,6 +443,17 @@ def collect_outputs(items: list[dict]) -> dict[Path, str]:
         COVERAGE_OUT: coverage_md(items),
         CATALOG_DIR / "CatalogRegistry.generated.kt": catalog_registry(items),
         CATALOG_DIR / "CatalogComponentDemo.generated.kt": catalog_demo(items),
+        SINK_DIR / "SinkRegistry.generated.kt": catalog_registry(
+            items,
+            package="dev.decoupled.cabin.sink",
+            entry_type="SinkEntry",
+            object_name="SinkRegistry",
+        ),
+        SINK_DIR / "SinkComponentDemo.generated.kt": catalog_demo(
+            items,
+            package="dev.decoupled.cabin.sink",
+            fun_name="SinkComponentDemo",
+        ),
     }
 
     by_family: dict[str, list[dict]] = defaultdict(list)

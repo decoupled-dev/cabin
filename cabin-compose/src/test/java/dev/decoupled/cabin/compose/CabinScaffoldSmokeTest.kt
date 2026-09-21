@@ -69,4 +69,18 @@ class CabinScaffoldSmokeTest {
         composeRule.onNodeWithTag("scaffold_primary").assertIsDisplayed()
         composeRule.onNodeWithTag("scaffold_secondary").assertIsDisplayed()
     }
+
+    @Test
+    fun focused_showsFamilyMark() {
+        composeRule.setContent {
+            CabinTheme(vehicleState = VehicleUiState.parked()) {
+                CabinButton(
+                    state = dev.decoupled.cabin.foundation.components.action.CabinButtonState(
+                        ui = dev.decoupled.cabin.foundation.CabinComponentUiState(focused = true),
+                    ),
+                )
+            }
+        }
+        composeRule.onNodeWithTag("cabin_button_mark").assertIsDisplayed()
+    }
 }

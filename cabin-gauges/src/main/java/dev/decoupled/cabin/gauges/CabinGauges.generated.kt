@@ -23,6 +23,7 @@ fun CabinRadialGauge(
         ui = state.ui,
         onActivate = { onAction(CabinRadialGaugeAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -40,6 +41,7 @@ fun CabinLinearGauge(
         ui = state.ui,
         onActivate = { onAction(CabinLinearGaugeAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -57,6 +59,7 @@ fun CabinArcGauge(
         ui = state.ui,
         onActivate = { onAction(CabinArcGaugeAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -74,6 +77,7 @@ fun CabinSegmentedGauge(
         ui = state.ui,
         onActivate = { onAction(CabinSegmentedGaugeAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -91,6 +95,7 @@ fun CabinSpeedometer(
         ui = state.ui,
         onActivate = { onAction(CabinSpeedometerAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -108,6 +113,7 @@ fun CabinTachometer(
         ui = state.ui,
         onActivate = { onAction(CabinTachometerAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -125,6 +131,7 @@ fun CabinPowerMeter(
         ui = state.ui,
         onActivate = { onAction(CabinPowerMeterAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -142,6 +149,7 @@ fun CabinGForce(
         ui = state.ui,
         onActivate = { onAction(CabinGForceAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -159,6 +167,7 @@ fun CabinNeedle(
         ui = state.ui,
         onActivate = { onAction(CabinNeedleAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -176,6 +185,7 @@ fun CabinTickScale(
         ui = state.ui,
         onActivate = { onAction(CabinTickScaleAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -193,6 +203,7 @@ fun CabinGearIndicator(
         ui = state.ui,
         onActivate = { onAction(CabinGearIndicatorAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -210,6 +221,7 @@ fun CabinDigitalSpeed(
         ui = state.ui,
         onActivate = { onAction(CabinDigitalSpeedAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -227,6 +239,7 @@ fun CabinSpeedLimitIndicator(
         ui = state.ui,
         onActivate = { onAction(CabinSpeedLimitIndicatorAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -244,6 +257,7 @@ fun CabinTelltaleStrip(
         ui = state.ui,
         onActivate = { onAction(CabinTelltaleStripAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -261,6 +275,7 @@ fun CabinWarningOverlay(
         ui = state.ui,
         onActivate = { onAction(CabinWarningOverlayAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -278,6 +293,7 @@ fun CabinClusterInfoPanel(
         ui = state.ui,
         onActivate = { onAction(CabinClusterInfoPanelAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -295,6 +311,7 @@ fun CabinClusterModeSwitcher(
         ui = state.ui,
         onActivate = { onAction(CabinClusterModeSwitcherAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -312,6 +329,7 @@ fun CabinHudPrimitive(
         ui = state.ui,
         onActivate = { onAction(CabinHudPrimitiveAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }
 
@@ -329,5 +347,6 @@ fun CabinClusterThemeSet(
         ui = state.ui,
         onActivate = { onAction(CabinClusterThemeSetAction.Activate) },
         modifier = modifier,
+        family = "gauges",
     )
 }

@@ -141,6 +141,10 @@ class CatalogPackagingTest {
                 "$relative must not depend on :catalog",
                 text.contains("project(\":catalog\")") || text.contains("project(':catalog')"),
             )
+            assertFalse(
+                "$relative must not depend on :samples:kitchen-sink",
+                text.contains("project(\":samples:kitchen-sink\")"),
+            )
         }
     }
 

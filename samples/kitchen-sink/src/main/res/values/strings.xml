@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sink_app_name">Cabin Kitchen Sink</string>
+    <string name="sink_tagline">Inspect components and screens built on Cabin</string>
+</resources>

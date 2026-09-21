@@ -5,6 +5,7 @@ import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import dev.decoupled.cabin.compliance.CabinInteraction
@@ -18,8 +19,8 @@ import dev.decoupled.cabin.views.theme.CabinThemeResolver
 /**
  * Shared Experimental scaffold chrome for generated Views components.
  *
- * Token colors, min touch, Restriction Engine gating. Hosts attach a
- * [CabinComplianceHost] the same way System/Status bars do.
+ * Token colors, min touch, Restriction Engine gating, family accent mark.
+ * Hosts attach a [CabinComplianceHost] the same way System/Status bars do.
  */
 open class CabinScaffoldView @JvmOverloads constructor(
     context: Context,
@@ -36,9 +37,11 @@ open class CabinScaffoldView @JvmOverloads constructor(
     private var complianceHost: CabinComplianceHost? = null
     private var activateListener: (() -> Unit)? = null
 
+    private val accentView = View(context).apply { tag = "cabin_scaffold_mark" }
     private val titleView = TextView(context)
     private val variantView = TextView(context)
     private val statusView = TextView(context)
+    private val loadingView = View(context)
     private val activateView = TextView(context).apply {
         gravity = Gravity.CENTER
         isFocusable = true
@@ -53,10 +56,21 @@ open class CabinScaffoldView @JvmOverloads constructor(
     init {
         orientation = VERTICAL
         val pad = (CabinTokens.Space.sm.dp * resources.displayMetrics.density).toInt()
+        val markH = (CabinTokens.Space.xs.dp * resources.displayMetrics.density).toInt()
         setPadding(pad, pad, pad, pad)
-        addView(titleView, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
+        addView(accentView, LayoutParams(LayoutParams.MATCH_PARENT, markH))
+        addView(
+            titleView,
+            LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).also {
+                it.topMargin = pad
+            },
+        )
         addView(variantView, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
         addView(statusView, LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT))
+        addView(
+            loadingView,
+            LayoutParams(LayoutParams.MATCH_PARENT, markH).also { it.topMargin = pad / 2 },
+        )
         addView(
             activateView,
             LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).also {
@@ -78,8 +92,10 @@ open class CabinScaffoldView @JvmOverloads constructor(
         this.testTagValue = testTag
         this.interaction = interaction
         tag = testTag
+        accentView.tag = "${testTag}_mark"
         activateView.tag = "${testTag}_activate"
         statusView.tag = "${testTag}_status"
+        loadingView.tag = "${testTag}_loading"
         titleView.text = title
         applyVisuals()
     }
@@ -128,6 +144,8 @@ open class CabinScaffoldView @JvmOverloads constructor(
             ui.loading -> "Loading"
             ui.error -> "Error"
             restricted -> "Restricted while driving — park to continue"
+            ui.disabled || !ui.enabled -> "Off"
+            ui.selected -> "Selected"
             else -> family
         }
         statusView.text = status
@@ -135,20 +153,43 @@ open class CabinScaffoldView @JvmOverloads constructor(
         activateView.isEnabled = activatable()
         activateView.contentDescription = "$title. $status"
         titleView.contentDescription = title
+        loadingView.visibility = if (ui.loading) VISIBLE else GONE
         if (colors != null) {
+            val mark = cabinFamilyAccent(family, colors)
             titleView.setTextColor(colors.onSurface)
             variantView.setTextColor(colors.outline)
-            statusView.setTextColor(if (restricted) colors.warning else colors.outline)
+            statusView.setTextColor(
+                when {
+                    ui.error -> colors.error
+                    restricted -> colors.warning
+                    else -> colors.outline
+                },
+            )
             activateView.setTextColor(colors.onSurface)
+            accentView.setBackgroundColor(mark)
+            loadingView.setBackgroundColor(mark)
+            val stroke = when {
+                ui.error -> colors.error
+                ui.focused -> colors.focusRing
+                else -> colors.outline
+            }
             val bg = GradientDrawable().apply {
-                setColor(colors.surfaceVariant)
+                setColor(if (ui.selected) colors.surfaceVariant else colors.surface)
                 setStroke(
-                    (CabinTokens.Focus.Ring.width.dp * resources.displayMetrics.density).toInt(),
-                    if (ui.focused) colors.focusRing else colors.outline,
+                    (CabinTokens.Focus.Ring.width.dp * resources.displayMetrics.density).toInt()
+                        .let { if (ui.focused) it else maxOf(1, it / 3) },
+                    stroke,
                 )
                 cornerRadius = CabinTokens.Shape.Corner.md.dp * resources.displayMetrics.density
             }
             background = bg
+            val activateBg = GradientDrawable().apply {
+                setColor(if (activatable()) colors.surfaceVariant else colors.surface)
+                setStroke(1, if (activatable()) mark else colors.outline)
+                cornerRadius = CabinTokens.Shape.Corner.md.dp * resources.displayMetrics.density
+            }
+            activateView.background = activateBg
+            activateView.minHeight = touchMinPx()
         }
         alpha = GateVisuals.quietAlpha(disposition)
     }

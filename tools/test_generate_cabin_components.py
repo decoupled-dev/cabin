@@ -25,6 +25,11 @@ class GenerateCabinComponentsTest(unittest.TestCase):
         self.assertTrue(any(i["id"] == "navigation-dock" for i in views))
         self.assertFalse(any(i["id"] == "speedometer" and "views" in i["stacks"] for i in items))
 
+    def test_demo_emits_ui_state(self) -> None:
+        text = gen.catalog_demo(load_inventory())
+        self.assertIn("ui: CabinComponentUiState", text)
+        self.assertIn("CabinButtonState(", text)
+
     def test_gauges_are_opt_in_module(self) -> None:
         gauges = [i for i in load_inventory() if i["module"] == "gauges"]
         self.assertGreaterEqual(len(gauges), 10)

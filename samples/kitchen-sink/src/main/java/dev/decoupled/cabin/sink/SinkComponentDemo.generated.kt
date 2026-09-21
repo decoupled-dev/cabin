@@ -1,6 +1,6 @@
 @file:OptIn(dev.decoupled.cabin.foundation.CabinScaffold::class)
 
-package dev.decoupled.cabin.catalog
+package dev.decoupled.cabin.sink
 
 /** GENERATED from components/cabin.components.yaml. Do not edit by hand — run python3 tools/generate_cabin_components.py. */
 
@@ -671,7 +671,7 @@ import dev.decoupled.cabin.gauges.CabinTickScale
 import dev.decoupled.cabin.gauges.CabinWarningOverlay
 
 @Composable
-fun CatalogComponentDemo(
+fun SinkComponentDemo(
     id: String,
     modifier: Modifier = Modifier,
     ui: CabinComponentUiState = CabinComponentUiState(),

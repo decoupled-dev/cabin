@@ -22,5 +22,7 @@ include(":cabin-foundation")
 include(":cabin-views")
 include(":cabin-compose")
 include(":cabin-gauges")
-// Sample only — never a cabin-* publish / SystemUI dependency.
+// Samples only — never a cabin-* publish / SystemUI dependency.
 include(":catalog")
+include(":samples:kitchen-sink")
+project(":samples:kitchen-sink").projectDir = file("samples/kitchen-sink")

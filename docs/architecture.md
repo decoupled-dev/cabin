@@ -36,10 +36,7 @@ cabin/                          # synced to Android tree via repo manifest
 │   └── Android.bp              # CabinViews
 ├── cabin-gauges/               # cluster / HUD stubs (opt-in; never SystemUI)
 ├── samples/
-│   ├── sample-media/
-│   ├── sample-ev/
-│   ├── sample-hvac/
-│   └── sample-vehicle-controls/
+│   └── kitchen-sink/           # inspect components + composed screens (no Android.bp)
 ├── catalog/                    # thin chrome catalog sample (not product dep; no Android.bp)
 ├── website/                    # public docs site
 └── docs/                       # this documentation set (present now)

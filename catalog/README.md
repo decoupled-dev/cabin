@@ -71,4 +71,5 @@ Catalog binds **generated** `CabinTokens` (Kotlin / Theme Kit). After editing
 python3 tools/generate_cabin_tokens.py
 ```
 
-See [token codegen](../docs/design-language/token-codegen.md).
+See also [`samples/kitchen-sink`](../samples/kitchen-sink/README.md) for a
+component inspector and composed screens (dashboard, media, climate, charge).

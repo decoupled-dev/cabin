@@ -50,7 +50,7 @@ jobs:
         run: python3 tools/test_generate_cabin_components.py
 
       - name: Run unit tests
-        run: ./gradlew :cabin-tokens:test :cabin-compliance:test :cabin-foundation:test :cabin-views:test :cabin-compose:test :cabin-gauges:test :catalog:test --stacktrace
+        run: ./gradlew :cabin-tokens:test :cabin-compliance:test :cabin-foundation:test :cabin-views:test :cabin-compose:test :cabin-gauges:test :catalog:test :samples:kitchen-sink:test --stacktrace
 
       - name: Upload test reports
         if: failure()
