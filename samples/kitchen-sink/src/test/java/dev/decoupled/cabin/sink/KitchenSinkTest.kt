@@ -18,7 +18,7 @@ import java.io.File
 
 @OptIn(CabinScaffold::class)
 @RunWith(RobolectricTestRunner::class)
-@Config(sdk = [Build.VERSION_CODES.UPSIDE_DOWN_CAKE])
+@Config(sdk = [Build.VERSION_CODES.UPSIDE_DOWN_CAKE], qualifiers = "w1280dp-h800dp-mdpi")
 class KitchenSinkTest {
 
     @get:Rule
@@ -48,8 +48,8 @@ class KitchenSinkTest {
         composeRule.onNodeWithTag("sink_open_components").performClick()
         composeRule.onNodeWithTag("entry_button").performScrollTo().performClick()
         composeRule.onNodeWithTag("sink_inspector").assertIsDisplayed()
-        composeRule.onNodeWithTag("cabin_button").assertIsDisplayed()
-        composeRule.onNodeWithTag("cabin_button_mark").assertIsDisplayed()
+        composeRule.onNodeWithTag("cabin_button").performScrollTo().assertIsDisplayed()
+        composeRule.onNodeWithTag("cabin_button_mark").performScrollTo().assertIsDisplayed()
     }
 
     @Test
@@ -57,8 +57,8 @@ class KitchenSinkTest {
         composeRule.onNodeWithTag("sink_open_screens").performClick()
         composeRule.onNodeWithTag("screen_dashboard").performClick()
         composeRule.onNodeWithTag("sink_screen_dashboard").assertIsDisplayed()
-        composeRule.onNodeWithTag("cabin_system_bar").assertIsDisplayed()
-        composeRule.onNodeWithTag("cabin_climate_tile").assertIsDisplayed()
+        composeRule.onNodeWithTag("cabin_system_bar").performScrollTo().assertIsDisplayed()
+        composeRule.onNodeWithTag("cabin_climate_tile").performScrollTo().assertIsDisplayed()
     }
 
     @Test
