@@ -43,8 +43,8 @@ export default function CompliancePage() {
           />
           <p className="mt-5 max-w-2xl text-body text-on-surface-variant text-balance">
             Compliance is design material — a first-class Restriction Engine
-            consumed by Compose and Views. Programs tighten policy without
-            forking components.
+            consumed by Compose, Views, and Experimental kit hosts. Programs
+            tighten policy without forking components.
           </p>
         </Reveal>
 

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { BarsBezelDemo } from "@/components/demo-chrome-bars";
 import { ClimateTileDemo } from "@/components/demo-climate-tile";
+import { ComposedScreenDemo } from "@/components/demo-composed-screen";
 import { MediaNowPlayingDemo } from "@/components/demo-media-now-playing";
+import { KitInspectorDemo } from "@/components/demo-scaffold-host";
 import { TwoUpStage } from "@/components/demo-stage";
 import {
   GalleryHeader,
@@ -9,7 +11,7 @@ import {
   GallerySection,
 } from "@/components/gallery-chrome";
 import { PageFrame } from "@/components/site-chrome";
-import { DOCS_URL } from "@/lib/site";
+import { DOCS_URL, KITCHEN_SINK_URL } from "@/lib/site";
 import {
   COMPONENTS_NAV,
   DOCS_CLIMATE_TILE,
@@ -21,7 +23,7 @@ import {
 export const metadata: Metadata = {
   title: "Components",
   description:
-    "Cabin components — Bars, ClimateTile, and MediaNowPlaying live demos from generated tokens.",
+    "Cabin components — Bars, ClimateTile, MediaNowPlaying, Experimental kit chrome, and screens composed from the kit.",
 };
 
 export default function ComponentsPage() {
@@ -29,7 +31,7 @@ export default function ComponentsPage() {
     <div className="bg-background" data-gallery="components">
       <GalleryHeader
         title="Components"
-        summary="Bars, Climate, and Media — denser HMI stages on generated tokens. One scheme toggle in the header."
+        summary="Bars, Climate, Media, then kit chrome and screens built from those pieces. One scheme toggle in the header."
       />
       <GalleryNav label="Components sections" items={COMPONENTS_NAV} />
 
@@ -101,6 +103,22 @@ export default function ComponentsPage() {
 
         <div id="media" className="sr-only" aria-hidden />
 
+        <GallerySection
+          id="kit"
+          title="Kit"
+          body="Experimental shared chrome for generated Compose / Views stubs — family accent mark, focus ring, Restriction Engine copy. Inspect one row at a time; the Android sample is samples/kitchen-sink."
+        >
+          <KitInspectorDemo />
+        </GallerySection>
+
+        <GallerySection
+          id="screens"
+          title="Screens"
+          body="Cabin surfaces assembled from the kit — dashboard chrome with now playing and climate. Parked / Moving uses the same Restriction Engine as the sample app."
+        >
+          <ComposedScreenDemo />
+        </GallerySection>
+
         <p className="border-t border-[var(--outline-subtle)] pt-5 text-status text-on-surface-variant">
           <a
             href="/use-cases"
@@ -116,6 +134,16 @@ export default function ComponentsPage() {
             className="text-on-surface underline-offset-4 hover:underline"
           >
             Foundations
+          </a>
+          <span aria-hidden className="mx-2">
+            ·
+          </span>
+          <a
+            href={KITCHEN_SINK_URL}
+            className="text-on-surface underline-offset-4 hover:underline"
+            rel="noreferrer"
+          >
+            Kitchen sink sample
           </a>
         </p>
       </PageFrame>

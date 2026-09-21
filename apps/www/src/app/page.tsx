@@ -12,7 +12,7 @@ const reasons = [
   },
   {
     title: "Compose and Views",
-    body: "Two skins, one language. Shared tokens and compliance so system UI and apps stay in parity.",
+    body: "Two skins, one language. Shared tokens, Restriction Engine, and scaffold chrome so system UI and apps stay in parity.",
   },
   {
     title: "OEM brand without forks",

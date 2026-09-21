@@ -107,6 +107,8 @@ reject it before merge.
 ### Gallery routes (`/foundations`, `/use-cases`, `/components`)
 
 - Dense two-up / full-bleed demo stages — no sparse right-column void.
+- Components: Bars / Climate / Media stay the live Alpha demos; Kit is one
+  inspector (not an inventory grid); Screens compose those pieces.
 - Real SVG glyphs and art wells — no dash icon stubs, no hyphen artwork, no
   emoji transport.
 - Bars render inside instrument bezel chrome (status · content · system).
@@ -162,12 +164,18 @@ minimal; default is no decorative cards.
 
 Good section jobs: pitch, pillars, foundations gallery (color / type / space /
 motion), use-case stages (Parked / Moving / Charging), components gallery
-(Bars / Climate / Media), compliance story, develop / get started. Bad: “stats
-strip + logos + testimonials + feature bingo” in one fold.
+(Bars / Climate / Media, kit inspector, composed screens), compliance story,
+develop / get started. Bad: “stats strip + logos + testimonials + feature bingo”
+in one fold.
 
 **Foundations + Use cases + Components:** calm cabin chrome galleries — quiet
 page titles, sticky IA, live demos from generated CSS vars. One scheme toggle
 in the site header. No marketing hero noise on those routes.
+
+**Components kit / screens:** shared Experimental scaffold chrome (family mark,
+focus, Restriction Engine) and one dashboard assembled from bars + climate +
+media. Do not add a 100-row inventory grid. The Android sample is
+`samples/kitchen-sink` — mention it; do not embed the catalog.
 
 | Use case | Stage job |
 | --- | --- |

@@ -74,8 +74,8 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 3px;
+  outline: var(--cabin-focus-ring-width) solid var(--focus-ring);
+  outline-offset: 2px;
 }
 
 @layer components {

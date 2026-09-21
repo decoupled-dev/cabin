@@ -3,12 +3,12 @@ import { ButtonLink } from "@/components/button-link";
 import { Reveal } from "@/components/reveal";
 import { InstrumentWell } from "@/components/instrument-frame";
 import { PageFrame, SectionHeading } from "@/components/site-chrome";
-import { DOCS_URL, GITHUB_URL } from "@/lib/site";
+import { DOCS_URL, GITHUB_URL, KITCHEN_SINK_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Develop",
   description:
-    "Get started with Cabin — tokens, Restriction Engine, dual distribution for Gradle apps and Soong build-tree.",
+    "Get started with Cabin — tokens, Restriction Engine, Theme Kit, Experimental kit scaffold, dual Gradle/Soong distribution.",
 };
 
 const steps = [
@@ -17,12 +17,12 @@ const steps = [
     body: "Start with vision, MVP v0.1, and the pre-implementation gate so library scope stays frozen and thin.",
   },
   {
-    title: "Tokens + compliance",
-    body: "Alpha modules cabin-tokens and cabin-compliance scaffold the Restriction Engine. Theme Kit and Views chrome are planned next.",
+    title: "Tokens, compliance, chrome",
+    body: "Alpha: cabin-tokens, cabin-compliance, cabin-views (Theme Kit + System/Status bars). Experimental: cabin-foundation, cabin-compose kit, cabin-gauges.",
   },
   {
     title: "Pick your consumption path",
-    body: "Apps: Gradle / Maven coordinates. SystemUI and build-tree: Soong Android.bp — Views-first, never Gradle-implementation into platform chrome.",
+    body: "Apps: Gradle / Maven. SystemUI and build-tree: Soong Android.bp — Views-first, never Gradle-implementation into platform chrome. Inspect rows in samples/kitchen-sink (sample only).",
   },
 ] as const;
 
@@ -98,7 +98,8 @@ export default function DevelopPage() {
                     Gradle → Maven
                     <br />
                     <span className="text-status text-on-surface-variant">
-                      cabin-tokens · cabin-compliance · …
+                      cabin-tokens · cabin-compliance · cabin-views ·
+                      cabin-compose
                     </span>
                   </dd>
                 </div>
@@ -117,6 +118,20 @@ export default function DevelopPage() {
               </dl>
             </div>
           </InstrumentWell>
+        </Reveal>
+
+        <Reveal className="mt-10">
+          <p className="max-w-2xl text-body text-on-surface-variant text-balance">
+            Inspect inventory rows and screens built from the kit in{" "}
+            <a
+              href={KITCHEN_SINK_URL}
+              className="text-on-surface underline-offset-4 hover:underline"
+              rel="noreferrer"
+            >
+              samples/kitchen-sink
+            </a>
+            . Gradle sample only — never a cabin-* or SystemUI dependency.
+          </p>
         </Reveal>
       </PageFrame>
     </div>
