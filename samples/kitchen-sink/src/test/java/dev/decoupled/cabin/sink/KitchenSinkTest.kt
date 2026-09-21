@@ -2,7 +2,7 @@ package dev.decoupled.cabin.sink
 
 import android.os.Build
 import androidx.compose.ui.test.assertIsDisplayed
-import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import dev.decoupled.cabin.compliance.VehicleUiState
 import dev.decoupled.cabin.compose.theme.CabinTheme
@@ -13,7 +13,6 @@ import org.junit.Assert.assertTrue
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 import org.robolectric.annotation.Config
 import java.io.File
@@ -24,13 +23,12 @@ import java.io.File
 class KitchenSinkTest {
 
     @get:Rule
-    val composeRule = createComposeRule()
+    val composeRule = createAndroidComposeRule<KitchenSinkActivity>()
 
     @Test
     fun activity_launches() {
-        val controller = Robolectric.buildActivity(KitchenSinkActivity::class.java).setup()
-        assertTrue(controller.get() != null)
-        controller.pause().stop().destroy()
+        assertTrue(composeRule.activity != null)
+        composeRule.onNodeWithTag("sink_home").assertIsDisplayed()
     }
 
     @Test
