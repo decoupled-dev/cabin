@@ -31,6 +31,37 @@ export function dispositionFor(
   }
 }
 
+/**
+ * Restriction Engine allow matrix for inventory interaction names.
+ * Parked / Moving only on this surface (Idling / Restricted live on Android).
+ */
+export function dispositionForInteraction(
+  drive: DriveState,
+  interaction: string,
+): GateDisposition {
+  if (drive === "parked") return "allow";
+  switch (interaction) {
+    case "Glance":
+    case "NavigateSimple":
+    case "MediaTransport":
+    case "HvacPeek":
+      return "allow";
+    case "StatusDeepLinkInformational":
+      return "substitute";
+    case "HvacAdjust":
+    case "MediaComplex":
+    case "OpenComplexApp":
+    case "OpenKeyboard":
+    case "FilterOrSort":
+    case "StatusDeepLinkSettings":
+    case "ParkedOnly":
+    case "VehicleAdjust":
+      return "block";
+    default:
+      return "allow";
+  }
+}
+
 /** RE-quiet soft-disable — values stay glanceable (Compose GateVisuals.quietAlpha). */
 export function quietOpacity(disposition: GateDisposition, enabled = true): number {
   if (!enabled) return 0.7;
@@ -110,9 +141,7 @@ function mmss(ms: number): string {
 }
 
 export const COMPONENTS_NAV = [
-  { href: "#bars", label: "Bars" },
-  { href: "#climate", label: "Climate & Media" },
-  { href: "#kit", label: "Kit" },
+  { href: "#theme", label: "Theme" },
   { href: "#screens", label: "Screens" },
 ] as const;
 

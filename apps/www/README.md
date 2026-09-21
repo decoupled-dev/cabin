@@ -18,7 +18,7 @@ This package has **zero** dependency on Android `cabin-tokens` /
 - `/` — Home hero + pillars
 - `/foundations` — Color / Type / Space / Motion (live day/night, codegen CSS)
 - `/use-cases` — Parked / Moving / Charging full-bleed HMI stages
-- `/components` — Bars / Climate / Media, kit inspector, composed screens
+- `/components` — Theme Builder (token colors + kit preview) and composed screens
 - `/compliance` — Safety-by-default story
 - `/develop` — Get started → docs
 
@@ -70,5 +70,5 @@ layout, color, motion, or copy (anti-vibecode).
 ## Explicit non-goals
 
 - Does **not** replace or modify `website/` Docusaurus docs
-- No full interactive component catalog
+- Theme Builder is a web analog of the kit — not the Android kitchen-sink
 - Not a contribution README — product-first IA

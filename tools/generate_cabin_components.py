@@ -9,6 +9,7 @@ Emits:
   5. Gauges scaffold composables
   6. Catalog registry + demo switch
   7. docs/components/coverage.generated.md
+  8. Marketing kit catalog (apps/www Theme Builder)
 
 Usage:
     python3 tools/generate_cabin_components.py
@@ -98,6 +99,9 @@ SINK_DIR = (
     / "decoupled"
     / "cabin"
     / "sink"
+)
+WWW_CATALOG_OUT = (
+    ROOT / "apps" / "www" / "src" / "lib" / "kit-catalog.generated.ts"
 )
 
 COMPOSE_FAMILY_PKG = {
@@ -408,6 +412,39 @@ def catalog_demo(
     return "\n".join(lines)
 
 
+def www_kit_catalog(items: list[dict]) -> str:
+    slim = [
+        {
+            "id": item["id"],
+            "typeName": item["typeName"],
+            "family": item["family"],
+            "title": item["title"],
+            "interaction": item["interaction"],
+            "stacks": item["stacks"],
+            "variants": item["variants"],
+            "handwritten": item["handwritten"],
+            "module": item["module"],
+        }
+        for item in items
+    ]
+    body = json.dumps(slim, indent=2)
+    return (
+        f"/** {HEADER} */\n\n"
+        "export type KitCatalogEntry = {\n"
+        "  id: string;\n"
+        "  typeName: string;\n"
+        "  family: string;\n"
+        "  title: string;\n"
+        "  interaction: string;\n"
+        "  stacks: string[];\n"
+        "  variants: string[];\n"
+        "  handwritten: boolean;\n"
+        "  module: string;\n"
+        "};\n\n"
+        f"export const KIT_CATALOG: readonly KitCatalogEntry[] = {body};\n"
+    )
+
+
 def coverage_md(items: list[dict]) -> str:
     lines = [
         "<!-- " + HEADER + " -->",
@@ -454,6 +491,7 @@ def collect_outputs(items: list[dict]) -> dict[Path, str]:
             package="dev.decoupled.cabin.sink",
             fun_name="SinkComponentDemo",
         ),
+        WWW_CATALOG_OUT: www_kit_catalog(items),
     }
 
     by_family: dict[str, list[dict]] = defaultdict(list)

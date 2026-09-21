@@ -107,8 +107,8 @@ reject it before merge.
 ### Gallery routes (`/foundations`, `/use-cases`, `/components`)
 
 - Dense two-up / full-bleed demo stages — no sparse right-column void.
-- Components: Bars / Climate / Media stay the live Alpha demos; Kit is one
-  inspector (not an inventory grid); Screens compose those pieces.
+- Components: Theme Builder (key-color rail, family list, instrument preview
+  board, inspector) plus Screens. Night / Day stays in the site header.
 - Real SVG glyphs and art wells — no dash icon stubs, no hyphen artwork, no
   emoji transport.
 - Bars render inside instrument bezel chrome (status · content · system).
@@ -163,19 +163,22 @@ sentence**. If a section needs cards to make sense as interaction, keep them
 minimal; default is no decorative cards.
 
 Good section jobs: pitch, pillars, foundations gallery (color / type / space /
-motion), use-case stages (Parked / Moving / Charging), components gallery
-(Bars / Climate / Media, kit inspector, composed screens), compliance story,
-develop / get started. Bad: “stats strip + logos + testimonials + feature bingo”
-in one fold.
+motion), use-case stages (Parked / Moving / Charging), components Theme Builder
+(token color rail + kit preview + inspector, then composed screens), compliance
+story, develop / get started. Bad: “stats strip + logos + testimonials +
+feature bingo” in one fold.
 
 **Foundations + Use cases + Components:** calm cabin chrome galleries — quiet
 page titles, sticky IA, live demos from generated CSS vars. One scheme toggle
 in the site header. No marketing hero noise on those routes.
 
-**Components kit / screens:** shared Experimental scaffold chrome (family mark,
-focus, Restriction Engine) and one dashboard assembled from bars + climate +
-media. Do not add a 100-row inventory grid. The Android sample is
-`samples/kitchen-sink` — mention it; do not embed the catalog.
+**Components Theme Builder:** Material Theme Builder–class workspace for Cabin
+components — read-only key-color wells, Drive (Parked / Moving), family rail,
+instrument preview board, inspector. Theme view is a curated board (one
+representative set); family view lists that family’s analogs. Do not dump a
+sortable 300-row data table. Do not add a hue picker that remaps forest
+primary or safety colors. Domain accents stay marks. The Android sample
+(`samples/kitchen-sink`) remains the runtime inspector — mention it.
 
 | Use case | Stage job |
 | --- | --- |

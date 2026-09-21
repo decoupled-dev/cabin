@@ -122,7 +122,14 @@ export default function DevelopPage() {
 
         <Reveal className="mt-10">
           <p className="max-w-2xl text-body text-on-surface-variant text-balance">
-            Inspect inventory rows and screens built from the kit in{" "}
+            Preview the kit on{" "}
+            <a
+              href="/components"
+              className="text-on-surface underline-offset-4 hover:underline"
+            >
+              Theme Builder
+            </a>
+            . Inspect Android inventory rows and screens in{" "}
             <a
               href={KITCHEN_SINK_URL}
               className="text-on-surface underline-offset-4 hover:underline"

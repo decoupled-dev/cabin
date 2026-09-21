@@ -35,6 +35,11 @@ class GenerateCabinComponentsTest(unittest.TestCase):
         self.assertGreaterEqual(len(gauges), 10)
         self.assertTrue(all(i["family"] == "gauges" for i in gauges))
 
+    def test_www_kit_catalog_lists_inventory(self) -> None:
+        text = gen.www_kit_catalog(load_inventory())
+        self.assertIn('id": "button"', text)
+        self.assertIn("export const KIT_CATALOG", text)
+
     def test_check_drift_clean_after_generate(self) -> None:
         self.assertEqual(gen.check_drift(), 0)
 
