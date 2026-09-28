@@ -6,10 +6,13 @@ It targets OEMs, Tier-1 suppliers, and app developers who need a
 Material Design 3–class platform purpose-built for the vehicle cabin —
 not a phone UI stretched onto a bigger screen.
 
-> **Library Alpha (in progress):** `cabin-tokens` + `cabin-compliance` +
-> `cabin-views` (Theme Kit + System/Status bar Views chrome). Compose Theme +
-> System/Status bars are **Experimental** (`cabin-compose`). Packaging /
-> Maven publish notes remain. See [MVP v0.1](docs/mvp.md) ·
+> **Library v0.1.0 (Alpha, release track):** `cabin-tokens` (codegen) +
+> `cabin-compliance` (Restriction Engine) + `cabin-views` (Theme Kit, System/Status
+> bars, ClimateTile, MediaNowPlaying) + `cabin-compose` (**Experimental** parity).
+> Consume via source composite build, `publishCabinToMavenLocal`, or Soong.
+> Remote Maven (Central / GitHub Packages) and the `v0.1.0` git tag wait on site
+> gate ([PR #21](https://github.com/decoupled-dev/cabin/pull/21)). See
+> [release notes](docs/release/v0.1.0.md) · [MVP](docs/mvp.md) ·
 > [theme-kit](docs/adoption/theme-kit.md) · [compose](docs/platforms/compose.md).
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
@@ -50,6 +53,70 @@ Soong sketches: `cabin-tokens/Android.bp` (`CabinTokens`),
 `cabin-compliance/Android.bp` (`CabinCompliance`),
 `cabin-views/Android.bp` (`CabinViews`),
 `cabin-compose/Android.bp` (`CabinCompose` — not for SystemUI).
+
+---
+
+
+## Install / consume (OEMs & app developers)
+
+Library version **`0.1.0`** · Maven group **`dev.decoupled.cabin`**.
+
+| Consumer | Path |
+| --- | --- |
+| App / feature APK (Gradle) | Maven Local (below) or include this repo as a composite/`include` |
+| SystemUI / CarLauncher / platform | **Soong** modules — not Gradle `implementation` |
+
+### Option A — Maven Local (fastest Gradle trial)
+
+From this repo:
+
+```bash
+./gradlew publishCabinToMavenLocal
+```
+
+In the consuming app (`settings.gradle.kts` repositories must include `mavenLocal()`):
+
+```kotlin
+dependencies {
+    // Views-first chrome + domain tiles (pulls tokens + compliance transitively)
+    implementation("dev.decoupled.cabin:cabin-views:0.1.0")
+
+    // Optional: Experimental Compose Theme + bars + Climate/Media parity
+    implementation("dev.decoupled.cabin:cabin-compose:0.1.0")
+
+    // Or pick thin slices:
+    // implementation("dev.decoupled.cabin:cabin-tokens:0.1.0")
+    // implementation("dev.decoupled.cabin:cabin-compliance:0.1.0")
+}
+```
+
+### Option B — Source composite / include
+
+```kotlin
+// settings.gradle.kts
+includeBuild("../cabin") // or include(":cabin-tokens") etc. in a shared checkout
+```
+
+Or copy/sync the `cabin-*` modules into your Gradle tree and `api`/`implementation`
+project dependencies. Keep `catalog/` out of product graphs.
+
+### Option C — Soong (build-tree / SystemUI)
+
+Sync Cabin into the Android tree (e.g. `external/cabin`), then:
+
+```bp
+static_libs: [
+    "CabinTokens",
+    "CabinCompliance",
+    "CabinViews",
+]
+```
+
+Do **not** add `CabinCompose`, `catalog`, or website modules to SystemUI.
+Details: [build-tree](docs/adoption/build-tree.md) · [packaging](docs/adoption/packaging.md).
+
+Remote Maven publish (Central / GitHub Packages) is **not** wired yet — see
+[remaining blockers](docs/release/v0.1.0.md).
 
 ---
 
@@ -113,15 +180,15 @@ build-tree apps — same source, Views-first on platform
 
 ## Module map
 
-> Maven publish is not configured yet (Alpha source modules). Soong names match
+> v0.1.0 Alpha — `publishCabinToMavenLocal` configured; remote Maven still open. Soong names match
 > [api-contracts](docs/api-contracts.md).
 
 ```
 cabin/
 ├── cabin-tokens          # Alpha — design tokens (codegen from tokens/cabin.tokens.json)
-├── cabin-compliance      # Alpha — Restriction Engine (System/Status bar matrix)
-├── cabin-views           # Alpha — Theme Kit + System/Status bars (Views-first)
-├── cabin-compose         # Experimental — Theme + System/Status bar parity
+├── cabin-compliance      # Alpha — Restriction Engine (bars + Climate/Media gates)
+├── cabin-views           # Alpha — Theme Kit + System/Status bars + ClimateTile + MediaNowPlaying
+├── cabin-compose         # Experimental — Theme + bars + ClimateTile + MediaNowPlaying
 ├── catalog/              # Sample — thin chrome catalog (not a product dep)
 ├── apps/www              # Marketing site (Next.js) — not the docs shell
 ├── samples/              # Planned — reference apps
@@ -131,10 +198,10 @@ cabin/
 **Maven coordinates** (illustrative; publish later):
 
 ```text
-dev.decoupled.cabin:cabin-tokens:<version>
-dev.decoupled.cabin:cabin-compliance:<version>
-dev.decoupled.cabin:cabin-compose:<version>
-dev.decoupled.cabin:cabin-views:<version>
+dev.decoupled.cabin:cabin-tokens:0.1.0
+dev.decoupled.cabin:cabin-compliance:0.1.0
+dev.decoupled.cabin:cabin-compose:0.1.0
+dev.decoupled.cabin:cabin-views:0.1.0
 ```
 
 Adopt only what you need — see [packaging](docs/adoption/packaging.md).
@@ -144,16 +211,16 @@ Adopt only what you need — see [packaging](docs/adoption/packaging.md).
 ## Adoption teaser
 
 ```kotlin
-// Planned — Compose (Gradle apps)
+// Compose apps (after publishCabinToMavenLocal)
 dependencies {
-    implementation("dev.decoupled.cabin:cabin-compose:<version>")
-    implementation("dev.decoupled.cabin:cabin-compliance:<version>")
+    implementation("dev.decoupled.cabin:cabin-compose:0.1.0")
+    implementation("dev.decoupled.cabin:cabin-compliance:0.1.0")
 }
 
-// Planned — Views (Gradle-built apps only — not SystemUI)
+// Views apps via Gradle (not SystemUI — use Soong there)
 dependencies {
-    implementation("dev.decoupled.cabin:cabin-views:<version>")
-    implementation("dev.decoupled.cabin:cabin-compliance:<version>")
+    implementation("dev.decoupled.cabin:cabin-views:0.1.0")
+    implementation("dev.decoupled.cabin:cabin-compliance:0.1.0")
 }
 ```
 
@@ -219,6 +286,16 @@ Apache License 2.0 — see [LICENSE](LICENSE).
 
 ## Status
 
-Library **Alpha** source modules ship in-tree (tokens, compliance, Theme Kit).
-Maven publish is not configured yet. System/Status bars and broader kits remain
-on the [roadmap](docs/roadmap.md).
+Library **v0.1.0 Alpha** source is in-tree and consumable via Maven Local /
+source / Soong:
+
+| Module | Stack | Ships in v0.1.0 |
+| --- | --- | --- |
+| `cabin-tokens` | — | Codegen + night safety locks |
+| `cabin-compliance` | — | Restriction Engine (fail-closed) |
+| `cabin-views` | Views | Theme Kit, System/Status bars, ClimateTile, MediaNowPlaying |
+| `cabin-compose` | Compose | Experimental Theme + bars + Climate/Media parity |
+
+**Do not tag `v0.1.0` yet** until remaining blockers in
+[docs/release/v0.1.0.md](docs/release/v0.1.0.md) clear (site PR #21, remote
+Maven). Optional primitives PR #15 is out of this release track.

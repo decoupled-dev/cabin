@@ -8,7 +8,7 @@ supports **dual distribution** from one source tree:
 | **Maven AARs** | Gradle | App developers, Gradle-built OEM feature apps |
 | **Soong modules** | `Android.bp` in the Android / AAOS tree | SystemUI, CarLauncher, platform media, vendor chrome |
 
-Coordinates and Soong names below are **planned**.
+Maven **group/version** for local publish are set (`dev.decoupled.cabin` / `0.1.0` via `gradle.properties`). Remote repository publish (Central / GitHub Packages) is still open. Soong names below match in-repo `Android.bp` scaffolding.
 
 > **Platform / SystemUI:** do **not** consume Cabin via Gradle
 > `implementation(...)`. Use Soong module dependencies after syncing Cabin
@@ -37,7 +37,7 @@ Coordinates and Soong names below are **planned**.
 - **Prebuilts secondary** — `android_library_import` of AARs is allowed for
   constrained vendor partitions; prefer source-in-tree for SystemUI.
 
-## Planned Maven artifacts (app / Gradle consumers)
+## Maven artifacts (app / Gradle consumers)
 
 | Artifact | Coordinate | Typical consumer |
 | --- | --- | --- |
@@ -48,10 +48,20 @@ Coordinates and Soong names below are **planned**.
 | Views UI | `dev.decoupled.cabin:cabin-views` | Legacy / Views apps built with Gradle; SystemUI via Soong |
 | Gauges | `dev.decoupled.cabin:cabin-gauges` | Cluster/HUD apps only |
 
-Group ID `dev.decoupled.cabin` is illustrative and may be finalized at first
-publish.
+Group ID `dev.decoupled.cabin` is the v0.1.0 Alpha coordinate (local publish). Remote hosting TBD.
 
-## Planned Soong modules (build-tree consumers)
+
+### Local publish (v0.1.0 Alpha)
+
+```bash
+./gradlew publishCabinToMavenLocal
+```
+
+Consumers need `mavenLocal()` and e.g. `implementation("dev.decoupled.cabin:cabin-views:0.1.0")`.
+Catalog is not published. Full steps: [README install](../../README.md#install--consume-oems--app-developers) ·
+[release notes](../release/v0.1.0.md).
+
+## Soong modules (build-tree consumers)
 
 | Soong `name` | Maps to | Platform role |
 | --- | --- | --- |
@@ -140,7 +150,7 @@ Do not add `CabinCompose`, `CabinGauges`, catalog, or samples to SystemUI. Sketc
 sync: [build-tree](build-tree.md) ·
 [systemui-cabin](sketches/systemui-cabin/).
 
-## Versioning (planned)
+## Versioning
 
 - SemVer once stable (Maven).
 - Platform pins Cabin via repo manifest revision/tag.
