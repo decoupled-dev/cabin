@@ -54,7 +54,7 @@ Reusable interaction grammar across domains.
 
 | Feature | Intent |
 | --- | --- |
-| **Primary Action** | One obvious action cluster; glance-sized; gated cleanly — spec: **[Button / IconButton](../components/specs/button.md)** |
+| **Primary Action** | One obvious action cluster; glance-sized; gated cleanly — **[Button](../components/specs/button.md)** visual (Compose + Views) |
 | **Confirm Destructive** | Rare, large-target confirmation; never blocks safety paths — **later** |
 | **Cabin List / Grid** | Low-density, restriction-aware collection layouts — spec: **[ListItem](../components/specs/list-item.md)**; full Grid later |
 | **Empty & Error** | Calm empty states; exhaustive fault/unavailable patterns |

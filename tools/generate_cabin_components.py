@@ -180,7 +180,12 @@ def foundation_models(family: str, items: list[dict]) -> str:
     return "\n".join(lines)
 
 
+# Visuals written by hand. State/Action and catalog calls stay generated.
+PRODUCTION_VISUAL_IDS = frozenset({"button"})
+
+
 def compose_scaffolds(family: str, items: list[dict]) -> str:
+    items = [item for item in items if item["id"] not in PRODUCTION_VISUAL_IDS]
     pkg = f"dev.decoupled.cabin.compose.{compose_pkg(family)}"
     fpkg = f"dev.decoupled.cabin.foundation.components.{compose_pkg(family)}"
     lines = [
@@ -223,6 +228,7 @@ def compose_scaffolds(family: str, items: list[dict]) -> str:
 
 
 def views_scaffolds(family: str, items: list[dict]) -> str:
+    items = [item for item in items if item["id"] not in PRODUCTION_VISUAL_IDS]
     pkg = f"dev.decoupled.cabin.views.{compose_pkg(family)}"
     fpkg = f"dev.decoupled.cabin.foundation.components.{compose_pkg(family)}"
     lines = [
@@ -451,18 +457,24 @@ def coverage_md(items: list[dict]) -> str:
         "",
         "# Component coverage map (generated)",
         "",
-        "Experimental scaffold status. Existing System/Status bars, ClimateTile,",
-        "and MediaNowPlaying remain Alpha / handwritten. Everything else is a",
-        "callable stub: renders, exposes Activate, honors Restriction Engine.",
+        "Experimental scaffold status. System/Status bars, ClimateTile, and",
+        "MediaNowPlaying remain Alpha / handwritten. Button is a production",
+        "visual (Compose + Views) on the generated State/Action contract.",
+        "Everything else is a callable stub: renders, exposes Activate,",
+        "honors Restriction Engine.",
         "",
         "| Id | Family | Compose | Views | Interaction | Module | Notes |",
         "| --- | --- | --- | --- | --- | --- | --- |",
     ]
     for item in items:
-        compose = "handwritten" if item["handwritten"] else "scaffold"
-        views = "scaffold" if "views" in item["stacks"] else "—"
-        if item["handwritten"] and "views" in item["stacks"]:
-            views = "Alpha"
+        if item["id"] in PRODUCTION_VISUAL_IDS:
+            compose = "visual"
+            views = "visual" if "views" in item["stacks"] else "—"
+        else:
+            compose = "handwritten" if item["handwritten"] else "scaffold"
+            views = "scaffold" if "views" in item["stacks"] else "—"
+            if item["handwritten"] and "views" in item["stacks"]:
+                views = "Alpha"
         if item["module"] == "gauges":
             compose = "gauges-scaffold"
         notes = "variants: " + ", ".join(item["variants"]) if item["variants"] else ""

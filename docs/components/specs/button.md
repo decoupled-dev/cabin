@@ -1,179 +1,107 @@
-# Spec: Button / IconButton (Primary Action)
+# Spec: Button
 
-Implementable contract for Cabin **Button** and **IconButton** primitives —
-Layer 3 Primary Action pattern ([features](../../product/features.md)).
-Overview inventory: [components README](../README.md).
+Production visual for the Cabin **Button** primitive — Layer 3 Primary Action
+([features](../../product/features.md)). Shared state lives in
+`CabinButtonState` / `CabinButtonAction` (foundation). Compose and Views
+share variants, touch size, and Restriction Engine gating.
 
 ## Purpose
 
-One obvious, glance-sized action control. Prefer a single primary action
-cluster per glance region ([pillars](../../product/pillars.md)). Buttons
-declare an interaction class and gate via the Restriction Engine — they do
-not embed driving policy.
+One obvious, glance-sized action. Prefer a single filled button per glance
+cluster ([pillars](../../product/pillars.md)). The widget declares
+`NavigateSimple` and asks the Restriction Engine — it does not embed driving
+policy.
 
 ## Anatomy
 
-### Button
-
 ```text
+filled / tonal / outlined / text
 ┌──────────────────────────────┐
-│  [optional icon]  Label      │
+│           Label              │
 └──────────────────────────────┘
-```
 
-### IconButton
-
-```text
+icon
 ┌────────┐
-│  icon  │   contentDescription required
+│   ＋    │
 └────────┘
 ```
 
+Label is the glance string. The icon variant is the same control with no
+fill: a square touch target and a primary glyph. There is no second
+IconButton type.
+
 ## Variants
 
-| Variant | Fill / stroke | Content color | Use |
+Matches the theme-board button styles (`buttonVariantStyle`).
+
+| Variant | Fill | Label | Stroke |
 | --- | --- | --- | --- |
-| **Filled** | forest `primary` (`#0B6E4F`) | `onPrimary` | The one primary action in a cluster |
-| **Outlined** | transparent + scheme `outline` stroke | `onSurface` | Secondary / alternate |
-| **Quiet** | transparent | `onSurface` | Tertiary; keep quiet |
+| `filled` | `primary` | `onPrimary` | none |
+| `tonal` | `primary` at 18% over a raised surface | `onSurface` | none |
+| `outlined` | transparent | `onSurface` | 1dp `outline` |
+| `text` | transparent | `primary` | none |
+| `icon` | transparent | `primary` glyph | none |
 
-IconButton uses the same variants with icon-only chrome.
-
-## Craft constraints
-
-Production craft for this slice (no marketing flourish):
-
-1. **76dp touch minimum** — `cabin.component.button.minHeight` /
-   `iconButton.minSize` alias `cabin.size.touch.minimum` (76dp).
-2. **Forest primary / onPrimary** for Filled; **outline** stroke for Outlined
-   secondary — never invent a second brand fill.
-3. **Night `warning` / `error` stay locked** — Button chrome must not consume
-   safety feedback roles for decoration or brand.
-4. Specs and Restriction Engine gates before any chrome flourish; no vanity
-   motion, badges, or marketing-site copy in library surfaces.
+Disabled, loading, or a non-Allow gate uses a quiet disabled chrome: surface
+fill, muted label, subtle stroke. Focus uses the token focus ring. Error
+uses the `error` stroke. Safety colors (`warning`, `error`, `charging`) are
+not remapped for brand.
 
 ## States
 
 | State | Behavior |
 | --- | --- |
-| Default | Activatable when gate is Allow |
-| Pressed / Focused | Token motion / focus ring; no vanity animation |
-| Disabled (product) | Visible, non-activatable (`enabled = false`) |
-| Restricted (gate) | Substitute / Block → visible, non-activatable; honest disable look |
-| Day / Night | Theme Kit scheme roles; brand via primary overlay only |
+| Default | Variant chrome; activation allowed when the gate is Allow |
+| Focused | Focus ring from tokens |
+| Pressed | Slightly darker fill; still the same variant |
+| Disabled / loading | Visible, not activatable |
+| Error | Error stroke on the variant (or on disabled chrome) |
+| Restricted | Presentation hint; the gate still decides activation |
+| Absent compliance host | Fail-closed (`Block`) |
 
-Locked safety colors (`warning` / `error` / `charging`) are **not** Button
-chrome roles — do not remap them for brand decoration.
+`NavigateSimple` is Allow while moving. A missing compliance host is Block.
 
-## Sizes & type (from tokens)
+## Sizes (tokens)
 
 | Token | Role |
 | --- | --- |
-| `cabin.component.button.minHeight` | Touch minimum height |
-| `cabin.component.button.horizontalPadding` | Horizontal padding |
-| `cabin.component.button.iconSize` | Leading / icon glyph |
-| `cabin.component.button.gap` | Icon–label gap |
-| `cabin.component.button.cornerRadius` | Modest radius |
-| `cabin.component.iconButton.minSize` | Icon-only touch square |
-| `cabin.component.iconButton.iconSize` | Icon-only glyph |
-| `cabin.type.role.label` | Button label |
+| `component.button.minHeight` | Touch floor (cabin minimum, raised by the compliance profile) |
+| `component.button.horizontalPadding` | Label inset |
+| `component.button.cornerRadius` | Corner (`shape.corner.md`) |
+| `component.button.iconSize` | Glyph box for the icon variant |
+| `type.role.label` | Label size and weight |
 
-Stub: [`tokens/cabin.tokens.json`](../../../tokens/cabin.tokens.json).
-
-## Compliance gates
-
-| Interaction (examples) | Typical use |
-| --- | --- |
-| `NavigateSimple` | Driving-safe primary navigate |
-| `MediaTransport` / `HvacPeek` | Limited transport / climate |
-| `OpenComplexApp` / `OpenKeyboard` / `FilterOrSort` | Parked-heavy; Block/Substitute while Moving/Restricted |
-
-Safety class: **Convenience** (unless a product wires a safety-critical path —
-then follow [safety-critical](../../compliance/safety-critical.md)).
-
-Missing compliance host / local is **fail-closed** (`GateDisposition.Block`).
-
-## Views API (Alpha)
-
-```kotlin
-class CabinButtonView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-) : LinearLayout(context, attrs) {
-    fun bind(state: CabinButtonState, onClick: (() -> Unit)? = null) { /* … */ }
-    fun setCompliance(host: CabinComplianceHost?) { /* … */ }
-}
-
-class CabinIconButtonView @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-) : FrameLayout(context, attrs) {
-    fun bind(state: CabinIconButtonState, onClick: (() -> Unit)? = null) { /* … */ }
-    fun setCompliance(host: CabinComplianceHost?) { /* … */ }
-}
-```
-
-Package: `dev.decoupled.cabin.views` in `cabin-views` / `CabinViews`.
-
-## Compose API (Experimental parity)
+## Compose
 
 ```kotlin
 @Composable
 fun CabinButton(
-    state: CabinButtonState,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-)
-
-@Composable
-fun CabinIconButton(
-    state: CabinIconButtonState,
-    onClick: () -> Unit,
+    state: CabinButtonState = CabinButtonState(),
+    onAction: (CabinButtonAction) -> Unit = {},
     modifier: Modifier = Modifier,
 )
 ```
 
-Package: `dev.decoupled.cabin.compose` in `cabin-compose` / `CabinCompose`.
-Same Restriction Engine gates and token roles as Views; wrap with `CabinTheme`.
-**Must not** depend on `cabin-views`.
+Package: `dev.decoupled.cabin.compose.action`. Gate via
+`LocalCabinComplianceState`.
 
-## Shared state (parity)
+## Views
 
 ```kotlin
-enum class CabinButtonVariant { Filled, Outlined, Quiet }
-
-data class CabinButtonState(
-    val label: String,
-    val variant: CabinButtonVariant = CabinButtonVariant.Filled,
-    val interaction: CabinInteraction,
-    val enabled: Boolean = true,
-    val icon: /* Drawable / Painter */? = null,
-    val contentDescription: String? = null,
-)
-
-data class CabinIconButtonState(
-    val icon: /* Drawable / Painter */,
-    val contentDescription: String,
-    val variant: CabinButtonVariant = CabinButtonVariant.Quiet,
-    val interaction: CabinInteraction,
-    val enabled: Boolean = true,
-)
+class CabinButtonView : LinearLayout {
+    fun bind(state: CabinButtonState)
+    fun setOnAction(listener: ((CabinButtonAction) -> Unit)?)
+    fun setCompliance(host: CabinComplianceHost?)
+}
 ```
 
-## Acceptance criteria
+Package: `dev.decoupled.cabin.views.action`. Null host is fail-closed.
+Theme colors come from `Theme.Cabin` — no hardcoded hex.
 
-- [x] Views-first in `cabin-views`; Compose parity without compose→views edge
-- [x] Touch minima **76dp** from tokens (`cabin.size.touch.minimum`)
-- [x] Filled → forest `primary` / `onPrimary`; Outlined secondary → `outline`
-- [x] Night `warning` / `error` locked; unused as Button chrome
-- [x] Restriction Engine gates activation; fail-closed without host/local
-- [x] IconButton requires content description
-- [x] Specs before chrome flourish; no Dialog / Confirm / Toast in this slice
-- [x] No catalog / `apps/www` / `website/` dependency from `cabin-*`
+## Acceptance
 
-## Related
-
-- [ListItem spec](list-item.md)
-- [Views](../../platforms/views.md)
-- [Compose](../../platforms/compose.md)
-- [Restriction states](../../compliance/restriction-states.md)
+- Parked (and moving) `NavigateSimple` click emits `Activate`
+- Disabled, loading, and a missing compliance host do not emit `Activate`
+- Filled / tonal / outlined / text / icon match the theme board
+- Min touch is at least the token floor
+- Compose and Views share `CabinButtonState`

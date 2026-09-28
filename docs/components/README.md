@@ -19,9 +19,11 @@ Coverage for the Experimental kit (generated scaffolds + handwritten Alpha
 chrome) lives in **[coverage.generated.md](coverage.generated.md)**. Inventory
 source: [`components/cabin.components.yaml`](../../components/cabin.components.yaml).
 
-Primitives and domain widgets that are not the four handwritten specs are
+Primitives and domain widgets that are not the handwritten specs are
 **Experimental scaffolds** (`@CabinScaffold`): they render, expose `Activate`,
 and honor the Restriction Engine. They are not production-complete.
+**Button** is the first production visual on the generated State/Action
+contract (filled, tonal, outlined, text, icon).
 
 ## Classification (safety)
 
@@ -39,6 +41,7 @@ Each component documents one of:
 | Status bars | [status-bars.md](status-bars.md) · **[MVP spec](specs/status-bar.md)** | **MVP** (Views-first) |
 | ClimateTile | [hvac.md](hvac.md) · **[spec](specs/climate-tile.md)** | Layer 2 (Alpha Views / Experimental Compose) |
 | MediaNowPlaying | [media.md](media.md) · **[spec](specs/media-now-playing.md)** | Layer 2 (Alpha Views / Experimental Compose) |
+| Button | **[spec](specs/button.md)** | First production visual (Compose + Views) |
 | EV / energy | [ev.md](ev.md) | Later (EvEnergyGlance planned) |
 | HVAC (full pack) | [hvac.md](hvac.md) | After ClimateTile |
 | Vehicle controls | [vehicle-controls.md](vehicle-controls.md) | Later (VehicleQuickControls planned) |

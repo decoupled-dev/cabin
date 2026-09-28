@@ -10,29 +10,6 @@ import dev.decoupled.cabin.compose.scaffold.CabinScaffoldHost
 import dev.decoupled.cabin.foundation.components.action.*
 
 /**
- * Experimental scaffold: Button.
- * Restriction-aware; token-driven host. Not a production visual.
- */
-@dev.decoupled.cabin.foundation.CabinScaffold
-@Composable
-fun CabinButton(
-    state: CabinButtonState = CabinButtonState(),
-    onAction: (CabinButtonAction) -> Unit = {},
-    modifier: Modifier = Modifier,
-) {
-    CabinScaffoldHost(
-        title = state.label.ifBlank { "Button" },
-        family = "action",
-        testTag = "cabin_button",
-        interaction = CabinButtonInteraction,
-        ui = state.ui,
-        variant = state.variant,
-        onActivate = { onAction(CabinButtonAction.Activate) },
-        modifier = modifier,
-    )
-}
-
-/**
  * Experimental scaffold: FAB.
  * Restriction-aware; token-driven host. Not a production visual.
  */

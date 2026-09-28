@@ -25,6 +25,14 @@ class GenerateCabinComponentsTest(unittest.TestCase):
         self.assertTrue(any(i["id"] == "navigation-dock" for i in views))
         self.assertFalse(any(i["id"] == "speedometer" and "views" in i["stacks"] for i in items))
 
+    def test_button_visual_is_omitted_from_scaffolds(self) -> None:
+        action = [i for i in load_inventory() if i["family"] == "action"]
+        compose = gen.compose_scaffolds("action", action)
+        views = gen.views_scaffolds("action", action)
+        self.assertNotIn("fun CabinButton(", compose)
+        self.assertNotIn("class CabinButtonView", views)
+        self.assertIn("fun CabinFab(", compose)
+
     def test_demo_emits_ui_state(self) -> None:
         text = gen.catalog_demo(load_inventory())
         self.assertIn("ui: CabinComponentUiState", text)

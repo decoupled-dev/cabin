@@ -526,6 +526,7 @@ function AnalogBody({
   }
 }
 
+/** Same variants as CabinButton (Compose + Views). */
 function buttonVariantStyle(
   variant: string,
   disabled: boolean,

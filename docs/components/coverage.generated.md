@@ -2,9 +2,11 @@
 
 # Component coverage map (generated)
 
-Experimental scaffold status. Existing System/Status bars, ClimateTile,
-and MediaNowPlaying remain Alpha / handwritten. Everything else is a
-callable stub: renders, exposes Activate, honors Restriction Engine.
+Experimental scaffold status. System/Status bars, ClimateTile, and
+MediaNowPlaying remain Alpha / handwritten. Button is a production
+visual (Compose + Views) on the generated State/Action contract.
+Everything else is a callable stub: renders, exposes Activate,
+honors Restriction Engine.
 
 | Id | Family | Compose | Views | Interaction | Module | Notes |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -12,7 +14,7 @@ callable stub: renders, exposes Activate, honors Restriction Engine.
 | `status-bar` | systemui | handwritten | Alpha | Glance | compose |  |
 | `climate-tile` | hvac | handwritten | Alpha | HvacAdjust | compose |  |
 | `media-now-playing` | media | handwritten | Alpha | MediaTransport | compose |  |
-| `button` | action | scaffold | scaffold | NavigateSimple | compose | variants: filled, tonal, outlined, text, icon |
+| `button` | action | visual | visual | NavigateSimple | compose | variants: filled, tonal, outlined, text, icon |
 | `fab` | action | scaffold | — | NavigateSimple | compose | variants: standard, extended |
 | `button-group` | action | scaffold | — | NavigateSimple | compose |  |
 | `toggle-button` | action | scaffold | — | NavigateSimple | compose |  |

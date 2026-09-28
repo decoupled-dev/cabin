@@ -60,6 +60,7 @@ unit tests and Views chrome verification. Compose bar parity is
 | Area | Expectation |
 | --- | --- |
 | Compose System/Status bars + ClimateTile / MediaNowPlaying | **Experimental** — gate / Signal / tone / honest-media parity tests in `cabin-compose` (shipped); screenshot/golden later |
+| Button | Compose + Views: Activate while Parked, fail-closed without a compliance host, disabled does not activate. Variant chrome matches the theme board |
 | Kit scaffold families | One parameterized smoke per family: composition/bind, `testTag`, Block while Moving (`cabin-compose` / `cabin-views` / `cabin-gauges`); no goldens in this pass |
 | Screenshot / golden | Paparazzi (or equiv.) for Views; Compose parity screenshots |
 | Dual-stack parity | Shared fixtures for System/Status bar state |
