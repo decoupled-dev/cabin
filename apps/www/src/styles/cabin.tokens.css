@@ -59,6 +59,7 @@
   --cabin-size-touch-minimum: 76px;
   --cabin-size-icon-status: 24px;
   --cabin-size-icon-system-bar: 28px;
+  --cabin-size-icon-action: 28px;
   --cabin-elevation-level0: 0px;
   --cabin-elevation-level1: 1px;
   --cabin-elevation-level2: 3px;
@@ -80,6 +81,20 @@
   --cabin-component-status-bar-height: 48px;
   --cabin-component-status-bar-icon-size: 24px;
   --cabin-component-status-bar-item-gap: 8px;
+  --cabin-component-button-min-height: 76px;
+  --cabin-component-button-horizontal-padding: 16px;
+  --cabin-component-button-icon-size: 28px;
+  --cabin-component-button-gap: 8px;
+  --cabin-component-button-corner-radius: 8px;
+  --cabin-component-icon-button-min-size: 76px;
+  --cabin-component-icon-button-icon-size: 28px;
+  --cabin-component-icon-button-corner-radius: 8px;
+  --cabin-component-list-item-min-height: 76px;
+  --cabin-component-list-item-horizontal-padding: 16px;
+  --cabin-component-list-item-vertical-padding: 8px;
+  --cabin-component-list-item-gap: 16px;
+  --cabin-component-list-item-icon-size: 28px;
+  --cabin-component-list-item-divider-inset: 16px;
   --cabin-component-climate-tile-control-min-size: 76px;
   --cabin-component-climate-tile-gap: 8px;
   --cabin-component-climate-tile-padding: 16px;

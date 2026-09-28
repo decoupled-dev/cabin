@@ -54,9 +54,9 @@ Reusable interaction grammar across domains.
 
 | Feature | Intent |
 | --- | --- |
-| **Primary Action** | One obvious action cluster; glance-sized; gated cleanly |
-| **Confirm Destructive** | Rare, large-target confirmation; never blocks safety paths |
-| **Cabin List / Grid** | Low-density, restriction-aware collection layouts |
+| **Primary Action** | One obvious action cluster; glance-sized; gated cleanly — spec: **[Button / IconButton](../components/specs/button.md)** |
+| **Confirm Destructive** | Rare, large-target confirmation; never blocks safety paths — **later** |
+| **Cabin List / Grid** | Low-density, restriction-aware collection layouts — spec: **[ListItem](../components/specs/list-item.md)**; full Grid later |
 | **Empty & Error** | Calm empty states; exhaustive fault/unavailable patterns |
 
 Patterns compose Layer 0–2 pieces; they do not bypass the Restriction Engine.
