@@ -1,5 +1,6 @@
 {
   "name": "@cabin/website",
+  "license": "Apache-2.0",
   "version": "0.0.0",
   "private": true,
   "description": "Cabin public docs site — decoupled from Android library modules",

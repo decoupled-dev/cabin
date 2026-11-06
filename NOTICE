@@ -1,0 +1,14 @@
+Cabin
+Copyright (C) 2026 The Cabin Authors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+"The Cabin Authors" means the contributors recorded in this repository's
+git history.
+
+Third-party components:
+  Cabin libraries bundle no third-party code, fonts or assets. Library
+  modules depend on AndroidX (Apache-2.0) at build time. Font family names in
+  tokens refer to fonts the host provides; the sample showcase may bundle
+  fonts under the SIL Open Font License 1.1, with their license files
+  next to them.

@@ -1,4 +1,18 @@
 #!/usr/bin/env python3
+#
+# Copyright (C) 2026 The Cabin Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 """Generate Cabin tokens from tokens/cabin.tokens.json (single source of truth).
 
 Emits:
@@ -24,6 +38,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import cabin_looks  # noqa: E402
+import license_headers  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 TOKENS_JSON = ROOT / "tokens" / "cabin.tokens.json"
@@ -908,6 +923,7 @@ def collect_outputs(doc: dict) -> dict[Path, str]:
 def generate(*, write_files: bool = True) -> dict[Path, str]:
     doc = json.loads(TOKENS_JSON.read_text(encoding="utf-8"))
     outputs = collect_outputs(doc)
+    outputs = {path: license_headers.apply(path, text) for path, text in outputs.items()}
     if write_files:
         for path, content in outputs.items():
             write(path, content)

@@ -1,12 +1,13 @@
 # Contributing
 
-Thanks for helping build Cabin. This repository is in **Phase 1 (docs)**.
-Library code will land in later phases per the [roadmap](roadmap.md).
+Thanks for helping build Cabin. Library code is in active development
+(v0.2 track, [ADR 0006](adr/0006-material3-looks-and-tiers.md)); see the
+[roadmap](roadmap.md).
 
-## Code of conduct
+## Code of conduct, license, sign-off
 
-Be respectful and professional. Cabin serves OEMs, Tier-1s, and developers
-shipping real vehicles — keep discussion concrete and inclusive.
+See the root [CONTRIBUTING.md](../CONTRIBUTING.md) (Apache-2.0, DCO sign-off,
+license headers) and [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md).
 
 ## What to contribute now
 
@@ -16,8 +17,7 @@ shipping real vehicles — keep discussion concrete and inclusive.
 - Adoption guidance for AAOS programs
 - Website IA improvements
 
-**Do not** submit Android library source until Phase 2+ issues/milestones call
-for it, unless maintainers ask.
+For library source, open an issue first so scope matches the current track.
 
 ## Quality bar
 

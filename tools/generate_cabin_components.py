@@ -1,4 +1,18 @@
 #!/usr/bin/env python3
+#
+# Copyright (C) 2026 The Cabin Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 """Generate Experimental Cabin component scaffolds from the inventory.
 
 Emits:
@@ -27,6 +41,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "tools"))
 
 from cabin_components_inventory import load_inventory  # noqa: E402
+import license_headers  # noqa: E402
 
 YAML_OUT = ROOT / "components" / "cabin.components.yaml"
 COVERAGE_OUT = ROOT / "docs" / "components" / "coverage.generated.md"
@@ -486,6 +501,7 @@ def collect_outputs(items: list[dict]) -> dict[Path, str]:
 def generate(*, write_files: bool = True) -> dict[Path, str]:
     items = load_inventory()
     outputs = collect_outputs(items)
+    outputs = {path: license_headers.apply(path, text) for path, text in outputs.items()}
     if write_files:
         for path, content in outputs.items():
             write(path, content)

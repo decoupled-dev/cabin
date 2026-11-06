@@ -40,6 +40,12 @@ jobs:
       - name: Check Soong thin deps
         run: python3 tools/check_soong_thin_deps.py
 
+      - name: License headers
+        run: python3 tools/license_headers.py --check
+
+      - name: Token codegen tests
+        run: python3 tools/test_generate_cabin_tokens.py
+
       - name: Check token codegen drift
         run: python3 tools/generate_cabin_tokens.py --check
 
