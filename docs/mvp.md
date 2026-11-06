@@ -1,5 +1,11 @@
 # MVP v0.1 (frozen)
 
+> **v0.2 track (opened 2026-11-06 by the maintainer):** a Compose vertical
+> slice on Material 3 with six look presets: Home (H1 Split), Media (M2 Art
+> hero), Climate (C4 Panel), plus a `CarUxRestrictions` adapter and the
+> opt-in `cabin-screens` module. See [ADR 0006](adr/0006-material3-looks-and-tiers.md).
+> v0.1 below stays the Views / SystemUI gate.
+
 **Frozen scope** for the first implementable Cabin library drop. Anything not
 listed here is **explicitly later** — see [feature plan](product/features.md)
 and [roadmap](roadmap.md).

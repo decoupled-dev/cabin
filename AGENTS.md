@@ -61,14 +61,20 @@ Full map: [docs/README.md](docs/README.md) · LLM map: [llms.txt](llms.txt).
 6. **Mark planned vs implemented.** Never invent “shipped” APIs. Label sketches **planned**. Scaffold APIs are `@CabinScaffold` Experimental — not Stable.
 7. **Compliance is not optional.** Do not hardcode driving policy inside widgets; use the Restriction Engine / compliance APIs ([docs/compliance](docs/compliance/README.md)).
 8. **OEM brand without forks.** Tokens + RROs + extension slots — not core edits ([docs/components/extension-model.md](docs/components/extension-model.md)).
-9. **Stay in MVP craft scope.** Do not replace Experimental kit scaffolds with
-   production domain screens (media/HVAC/EV) unless maintainers request that
-   slice. Generate new stubs from [`components/cabin.components.yaml`](components/cabin.components.yaml).
-   Thin `catalog/` demos are allowed; keep them out of the `cabin-*` publish graph.
+9. **Stay in scope.** Maintainers opened the v0.2 slice ([ADR 0006](docs/adr/0006-material3-looks-and-tiers.md)):
+   Material 3 theme with six look presets (Quiet default), hand-written kit
+   primitives/cards in `cabin-compose` (`compose.kit`), and Home/Media/Climate
+   reference screens in opt-in `cabin-screens`. Generated scaffolds from
+   [`components/cabin.components.yaml`](components/cabin.components.yaml) are
+   frozen — don't extend them. Other domain screens (EV, ADAS, …) still need a
+   maintainer request. Thin `catalog/` demos stay out of the `cabin-*` publish graph.
 10. **American English**; restrained, production-minded tone.
 11. **When editing `apps/www`**, follow [`apps/www/DESIGN.md`](apps/www/DESIGN.md)
     (anti-vibecode craft brief). Do not treat the marketing site as generic AI
     landing chrome or as a substitute for the `website/` docs shell.
+12. **AOSP-upstream bar.** New library code must build with Soong against AOSP
+   prebuilts, carry an Apache-2.0 header, ship no fonts or GMS deps, and use
+   tokens only (no hex/dp literals). See [docs/adoption/aosp-upstream.md](docs/adoption/aosp-upstream.md).
 
 ## Soong vs Gradle
 
