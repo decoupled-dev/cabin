@@ -23,7 +23,7 @@ android_library {
     defaults: ["CabinAndroidLibraryDefaults"],
     visibility: ["//visibility:public"],
     srcs: ["src/main/java/**/*.kt"],
-    manifest: "src/main/AndroidManifest.xml",
+    manifest: "AndroidManifest.xml",
     static_libs: [
         "CabinTokens",
     ],

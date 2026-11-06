@@ -1,9 +1,15 @@
 # AOSP upstream path (`external/cabin`)
 
-**Status:** partly verified against a local AOSP 17 tree (`CP2A.260605.016`,
-2026-11-06). Module names and `Android.bp` syntax are confirmed; a full `m`
-build of the Cabin modules is still pending (the local tree's analysis fails
-on unrelated untracked files in `hardware/interfaces`).
+**Status:** compile-verified against a local AOSP 17 tree (`CP2A.260605.016`,
+2026-11-06). All seven Soong modules compile with the tree's own toolchain
+(Kotlin 2.2 + Compose plugin, Material 3 1.5.0-alpha16, `system_current`,
+`android.car`) via `tools/aosp_compile_check.py`. A full `m` build is still
+pending: that tree's whole-tree analysis fails on unrelated untracked files in
+`hardware/interfaces`.
+
+```bash
+python3 tools/aosp_compile_check.py --aosp /path/to/aosp   # no writes to the tree
+```
 
 Cabin's long-term target is to be good enough for AAOS to carry it by default,
 as `external/cabin`, next to `car-ui-lib` and `com.android.oem.tokens`. Code
@@ -16,6 +22,7 @@ rework. This page is the checklist.
 external/cabin/
   Android.bp                 # CabinAndroidLibraryDefaults (no umbrella module)
   METADATA  OWNERS  NOTICE  MODULE_LICENSE_APACHE2
+  <module>/AndroidManifest.xml  # Soong manifest with package (Gradle uses src/main + namespace)
   cabin-tokens/Android.bp    # CabinTokens      (no UI deps)
   cabin-compliance/Android.bp# CabinCompliance  (libs: android.car, optional)
   cabin-foundation/Android.bp# CabinFoundation  (no UI deps)
@@ -31,7 +38,7 @@ Samples, catalog, `apps/www` and `website/` never get an `Android.bp`
 
 | Area | Requirement | State |
 | --- | --- | --- |
-| Build | Same sources build with Gradle and Soong | Gradle verified; Soong syntax (`bpfmt`) and dependency names verified, full build pending |
+| Build | Same sources build with Gradle and Soong | Gradle verified; AOSP 17 toolchain compile verified (`aosp_compile_check.py`); full `m` pending |
 | Deps | AOSP prebuilts only: `androidx.compose.runtime_runtime`, `androidx.compose.ui_ui`, `androidx.compose.foundation_foundation`, `androidx.compose.material3_material3`; compiler plugin `kotlin-compose-compiler-plugin` | Names verified in the AOSP 17 tree |
 | Car APIs | `android.car` as an optional `libs` entry, never packaged | `cabin-compliance` |
 | Tokens | Roles named after Material 3 roles, the same vocabulary as the AAOS OEM design tokens | Names verified (see mapping below); RRO generation planned |

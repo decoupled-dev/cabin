@@ -24,7 +24,7 @@ android_library {
     visibility: ["//visibility:public"],
     srcs: ["src/main/java/**/*.kt"],
     resource_dirs: ["src/main/res"],
-    manifest: "src/main/AndroidManifest.xml",
+    manifest: "AndroidManifest.xml",
     kotlin_plugins: ["kotlin-compose-compiler-plugin"],
     static_libs: [
         "CabinCompose",

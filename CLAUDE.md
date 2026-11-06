@@ -50,6 +50,10 @@ python3 tools/generate_cabin_tokens.py --check
 python3 tools/generate_cabin_components.py --check
 python3 tools/test_generate_cabin_components.py
 python3 tools/test_generate_cabin_tokens.py
+python3 tools/license_headers.py --check
+
+# Compile the Soong modules with an AOSP tree's toolchain (no writes to the tree)
+python3 tools/aosp_compile_check.py --aosp /home/dc/Abhinav/aosp-17
 
 # Regenerate after editing sources of truth
 python3 tools/generate_cabin_tokens.py       # after tokens/cabin.tokens.json
