@@ -27,16 +27,17 @@ android_library {
     srcs: ["src/main/java/**/*.kt"],
     resource_dirs: ["src/main/res"],
     manifest: "src/main/AndroidManifest.xml",
+    kotlin_plugins: ["androidx.compose.compiler_compiler-hosted-plugin"],
     static_libs: [
         "CabinTokens",
         "CabinCompliance",
         "CabinFoundation",
         "androidx.annotation_annotation",
-        // Compose runtime / UI libs come from the host tree. Uncomment and
-        // align names to the Android branch when linking CabinCompose into a
-        // Compose-capable platform app (never SystemUI):
-        // "androidx.compose.runtime_runtime",
-        // "androidx.compose.ui_ui",
-        // "androidx.compose.foundation_foundation",
+        // AOSP prebuilts (prebuilts/sdk/current/androidx). Material 3 is part
+        // of the public theme API (ADR 0006).
+        "androidx.compose.runtime_runtime",
+        "androidx.compose.ui_ui",
+        "androidx.compose.foundation_foundation",
+        "androidx.compose.material3_material3",
     ],
 }

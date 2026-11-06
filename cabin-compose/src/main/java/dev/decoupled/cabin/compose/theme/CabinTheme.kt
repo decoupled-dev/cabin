@@ -17,6 +17,8 @@
 package dev.decoupled.cabin.compose.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
@@ -28,6 +30,8 @@ import dev.decoupled.cabin.compliance.VehicleUiState
 import dev.decoupled.cabin.compose.compliance.CabinComplianceState
 import dev.decoupled.cabin.compose.compliance.LocalCabinComplianceState
 import dev.decoupled.cabin.tokens.CabinColorScheme
+import dev.decoupled.cabin.tokens.CabinLook
+import dev.decoupled.cabin.tokens.CabinLooks
 
 /**
  * Composition local for Theme Kit–equivalent colors.
@@ -43,12 +47,27 @@ val LocalCabinColors = staticCompositionLocalOf {
 val LocalCabinColorScheme = staticCompositionLocalOf { CabinColorScheme.Day }
 
 /**
- * Cabin Compose theme — tokens + compliance composition locals.
+ * Cabin Compose theme: a Material 3 [MaterialTheme] built from a Cabin look,
+ * plus the Restriction Engine and car-only extensions ([LocalCabinLook]).
  *
- * Mirrors Views Theme Kit **meaning** (scheme roles, locked safety feedback,
- * OEM brand via overrides) without Android Views theme attrs.
+ * ```
+ * CabinTheme(look = CabinLook.Quiet, vehicleState = state) {
+ *     CabinHomeSplitScreen(...)
+ * }
+ * ```
  *
- * Experimental until post-MVP bar parity hardens.
+ * Stock Material 3 components inside pick up the look's colors, type and
+ * shapes. Cabin kit components also read [CabinTheme.look] for the
+ * active-state style, panel edge and locked safety colors.
+ *
+ * @param colorScheme day or night; defaults to the system dark-theme setting
+ * @param look token preset; defaults to [CabinLooks.Default] (Quiet)
+ * @param brand OEM overrides for the primary roles; safety roles can't be overridden
+ * @param fonts maps the look's font family names to installed or bundled fonts
+ * @param compliance Restriction Engine policy
+ * @param vehicleState current drive state from an adapter or simulator
+ *
+ * Experimental (ADR 0006).
  */
 @Composable
 fun CabinTheme(
@@ -57,23 +76,51 @@ fun CabinTheme(
     } else {
         CabinColorScheme.Day
     },
+    look: CabinLook = CabinLooks.Default,
     brand: CabinBrandOverrides = CabinBrandOverrides.None,
+    fonts: CabinFontResolver = CabinFonts.Platform,
     compliance: CabinCompliance = CabinRestrictionEngine.Default,
     vehicleState: VehicleUiState = VehicleUiState.unknown(),
     content: @Composable () -> Unit,
 ) {
-    val colors = remember(colorScheme, brand) {
-        resolveCabinColors(colorScheme, brand)
+    val lookTheme = remember(look, colorScheme, brand, fonts) {
+        cabinLookTheme(look, colorScheme, brand, fonts)
     }
+    val colors = remember(lookTheme, brand) { lookTheme.toCabinColors(brand) }
     val complianceState = remember(compliance, vehicleState) {
         CabinComplianceState(policy = compliance, vehicleState = vehicleState)
     }
-    CompositionLocalProvider(
-        LocalCabinColors provides colors,
-        LocalCabinColorScheme provides colorScheme,
-        LocalCabinComplianceState provides complianceState,
-        content = content,
-    )
+    MaterialTheme(
+        colorScheme = remember(lookTheme) { lookTheme.toMaterialColorScheme() },
+        typography = remember(lookTheme) { lookTheme.toMaterialTypography() },
+        shapes = remember(lookTheme) { lookTheme.toMaterialShapes() },
+    ) {
+        CompositionLocalProvider(
+            LocalCabinLook provides lookTheme,
+            LocalCabinColors provides colors,
+            LocalCabinColorScheme provides colorScheme,
+            LocalCabinComplianceState provides complianceState,
+            LocalContentColor provides lookTheme.colors.onSurface,
+            content = content,
+        )
+    }
+}
+
+/**
+ * Reads the active Cabin theme, in the style of `MaterialTheme.colorScheme`.
+ */
+object CabinTheme {
+    /** Active look: colors, shapes, type, active-state style, edge. */
+    val look: CabinLookTheme
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalCabinLook.current
+
+    /** Restriction Engine state for gating interactions. */
+    val compliance: CabinComplianceState
+        @Composable
+        @ReadOnlyComposable
+        get() = LocalCabinComplianceState.current
 }
 
 /** Convenience accessors inside Cabin themed composition. */
