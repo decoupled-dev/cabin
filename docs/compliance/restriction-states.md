@@ -36,6 +36,8 @@ Notes:
 | `HvacPeek` | Climate shortcut (if slotted) |
 | `HvacQuick` | Single-tap climate: temperature step, fan level, seat heat, defrost, A/C, recirculation |
 | `HvacAdjust` | Multi-step climate setup (schedules, preconditioning, v0.1 ClimateTile) |
+| `VehicleQuick` | Single-tap body controls: door lock, lights mode, drive mode select |
+| `VehicleAdjust` | Multi-step body adjustments: windows, mirrors, seat position, vehicle settings |
 | `MediaComplex` | Now-playing source picker, scrub/seek, queue entry |
 | `StatusDeepLink` | Tap status item → detail / settings |
 
@@ -53,6 +55,8 @@ Legend: **A** = allow · **S** = substitute/disable (keep layout if possible) ·
 | `HvacPeek` | A | A | A | A / S¹ |
 | `HvacQuick` | A | A | A | A |
 | `HvacAdjust` (setup, ClimateTile) | A | A | B | B |
+| `VehicleQuick` | A | A | A | A |
+| `VehicleAdjust` | A | A | B | B |
 | `MediaComplex` | A | S | B | B |
 | `OpenComplexApp` | A | S | B | B |
 | `OpenKeyboard` | A | B | B | B |

@@ -29,6 +29,9 @@ import dev.decoupled.cabin.tokens.CabinTokens
  *   for a limited climate peek; programs may tighten to Substitute.
  * - [CabinInteraction.HvacQuick] (single-tap temp / fan / seat / defrost) is
  *   **Allow** in every mode.
+ * - [CabinInteraction.VehicleQuick] (single-tap lock / lights / drive mode)
+ *   is **Allow** in every mode; [CabinInteraction.VehicleAdjust] follows the
+ *   HvacAdjust matrix.
  * - [CabinInteraction.HvacAdjust] (multi-step climate setup) is **Block** while Moving /
  *   Restricted / Unknown (fail-closed); Parked / Idling Allow.
  * - [CabinInteraction.MediaComplex] is Block while Moving / Restricted /
@@ -106,6 +109,7 @@ class CabinRestrictionEngine(
             CabinInteraction.MediaTransport,
             CabinInteraction.HvacPeek,
             CabinInteraction.HvacQuick,
+            CabinInteraction.VehicleQuick,
             -> GateDisposition.Allow
 
             CabinInteraction.HvacAdjust -> when (mode) {

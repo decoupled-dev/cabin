@@ -75,9 +75,16 @@ enum class CabinInteraction {
      */
     ParkedOnly,
     /**
-     * Body / vehicle adjustments (locks, windows, drive mode). Same matrix as HvacAdjust.
+     * Multi-step body / vehicle adjustments (windows, mirrors, seat position,
+     * vehicle settings). Same matrix as HvacAdjust. Single-tap controls use
+     * [VehicleQuick].
      */
     VehicleAdjust,
+    /**
+     * Single-tap body controls: door lock, lights mode, drive mode select.
+     * Allowed in every mode, like [HvacQuick].
+     */
+    VehicleQuick,
 }
 
 /** Gate result for a declared interaction under the current UI mode. */

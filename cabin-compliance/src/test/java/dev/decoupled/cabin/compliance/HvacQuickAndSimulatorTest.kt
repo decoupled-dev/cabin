@@ -32,12 +32,14 @@ class HvacQuickAndSimulatorTest {
             VehicleUiState.unknown(),
         ).forEach { state ->
             assertEquals(state.label, GateDisposition.Allow, engine.disposition(CabinInteraction.HvacQuick, state))
+            assertEquals(state.label, GateDisposition.Allow, engine.disposition(CabinInteraction.VehicleQuick, state))
         }
     }
 
     @Test
     fun hvacAdjustStillFailClosedWhileMoving() {
         assertEquals(GateDisposition.Block, engine.disposition(CabinInteraction.HvacAdjust, VehicleUiState.moving()))
+        assertEquals(GateDisposition.Block, engine.disposition(CabinInteraction.VehicleAdjust, VehicleUiState.moving()))
     }
 
     @Test
