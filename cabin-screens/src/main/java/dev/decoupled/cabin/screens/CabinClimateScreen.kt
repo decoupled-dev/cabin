@@ -33,7 +33,6 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import dev.decoupled.cabin.compliance.CabinInteraction
-import dev.decoupled.cabin.compose.R as KitR
 import dev.decoupled.cabin.compose.kit.CabinClimateModeToggle
 import dev.decoupled.cabin.compose.kit.CabinFanSelector
 import dev.decoupled.cabin.compose.kit.CabinIconButton
@@ -50,6 +49,7 @@ import dev.decoupled.cabin.compose.theme.CabinTheme
 import dev.decoupled.cabin.foundation.hvac.CabinClimateAction
 import dev.decoupled.cabin.foundation.hvac.CabinClimateState
 import dev.decoupled.cabin.foundation.hvac.CabinClimateZone
+import dev.decoupled.cabin.compose.R as KitR
 
 /**
  * Climate, C4 Panel (reference screen): driver and passenger zones with
@@ -160,7 +160,9 @@ private fun ClimatePanel(
                     modifier = Modifier
                         .weight(0.7f)
                         .height(CabinKitMetrics.control),
-                    stateDescription = stringResource(if (state.zonesSynced) KitR.string.cabin_kit_state_on else KitR.string.cabin_kit_state_off),
+                    stateDescription = stringResource(
+                        if (state.zonesSynced) KitR.string.cabin_kit_state_on else KitR.string.cabin_kit_state_off,
+                    ),
                 ) {
                     androidx.compose.material3.Icon(CabinIcons.Sync, contentDescription = null)
                     CabinLabel(sync)

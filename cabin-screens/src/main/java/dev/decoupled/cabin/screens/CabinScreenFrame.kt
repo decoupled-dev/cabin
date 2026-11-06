@@ -36,8 +36,8 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.StrokeCap
 import androidx.compose.ui.graphics.StrokeJoin
-import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
@@ -117,7 +117,12 @@ fun CabinScreenFrame(
                 Modifier
                     .weight(1f)
                     .fillMaxWidth()
-                    .padding(start = CabinKitMetrics.gapMd, end = CabinKitMetrics.gapMd, top = CabinKitMetrics.gapXs, bottom = CabinKitMetrics.gapSm),
+                    .padding(
+                        start = CabinKitMetrics.gapMd,
+                        end = CabinKitMetrics.gapMd,
+                        top = CabinKitMetrics.gapXs,
+                        bottom = CabinKitMetrics.gapSm,
+                    ),
                 content = content,
             )
             CabinSystemBar(
@@ -198,16 +203,27 @@ fun CabinSampleMap(modifier: Modifier = Modifier) {
             water,
         )
         listOf(
-            floatArrayOf(60f, 260f, 180f, 110f), floatArrayOf(300f, 70f, 210f, 120f), floatArrayOf(580f, 300f, 150f, 150f),
-            floatArrayOf(780f, 240f, 190f, 100f), floatArrayOf(320f, 410f, 170f, 110f),
+            floatArrayOf(60f, 260f, 180f, 110f),
+            floatArrayOf(300f, 70f, 210f, 120f),
+            floatArrayOf(580f, 300f, 150f, 150f),
+            floatArrayOf(780f, 240f, 190f, 100f),
+            floatArrayOf(320f, 410f, 170f, 110f),
         ).forEach { (x, y, w, h) ->
-            drawRoundRect(block, topLeft = p(x, y), size = Size(w * sx, h * sy), cornerRadius = CornerRadius(radius.dp.toPx()))
+            drawRoundRect(
+                block,
+                topLeft = p(x, y),
+                size = Size(w * sx, h * sy),
+                cornerRadius = CornerRadius(radius.dp.toPx()),
+            )
         }
         fun roadLine(width: Float, vararg pts: Float) {
             val path = Path().apply {
                 moveTo(pts[0] * sx, pts[1] * sy)
                 var i = 2
-                while (i < pts.size) { lineTo(pts[i] * sx, pts[i + 1] * sy); i += 2 }
+                while (i < pts.size) {
+                    lineTo(pts[i] * sx, pts[i + 1] * sy)
+                    i += 2
+                }
             }
             drawPath(path, road, style = Stroke(width = width * sx, cap = StrokeCap.Round))
         }
@@ -217,7 +233,11 @@ fun CabinSampleMap(modifier: Modifier = Modifier) {
         roadLine(14f, 0f, 390f, 500f, 388f, 1000f, 370f)
         roadLine(14f, 755f, 560f, 765f, 225f)
         drawPath(
-            Path().apply { moveTo(546 * sx, 560 * sy); lineTo(549 * sx, 220 * sy); lineTo(1000 * sx, 212 * sy) },
+            Path().apply {
+                moveTo(546 * sx, 560 * sy)
+                lineTo(549 * sx, 220 * sy)
+                lineTo(1000 * sx, 212 * sy)
+            },
             c.primary,
             style = Stroke(width = 12f * sx, cap = StrokeCap.Round, join = StrokeJoin.Round),
         )

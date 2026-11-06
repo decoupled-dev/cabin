@@ -28,12 +28,12 @@ import androidx.annotation.VisibleForTesting
 import dev.decoupled.cabin.compliance.CabinInteraction
 import dev.decoupled.cabin.compliance.GateDisposition
 import dev.decoupled.cabin.compliance.Signal
-import dev.decoupled.cabin.tokens.CabinTokens
-import dev.decoupled.cabin.tokens.R as TokensR
 import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingAction
 import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingState
+import dev.decoupled.cabin.tokens.CabinTokens
 import dev.decoupled.cabin.views.compliance.CabinComplianceHost
 import dev.decoupled.cabin.views.theme.CabinThemeResolver
+import dev.decoupled.cabin.tokens.R as TokensR
 
 /**
  * Automotive now-playing: art, metadata, transport, source.

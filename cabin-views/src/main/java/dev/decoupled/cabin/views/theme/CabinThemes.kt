@@ -54,25 +54,45 @@ object CabinThemes {
     /** Token attribute ids widgets should resolve (from cabin-tokens). */
     object Attr {
         @AttrRes val colorPrimary: Int = TokensR.attr.cabin_colorPrimary
+
         @AttrRes val colorOnPrimary: Int = TokensR.attr.cabin_colorOnPrimary
+
         @AttrRes val colorSecondary: Int = TokensR.attr.cabin_colorSecondary
+
         @AttrRes val colorOnSecondary: Int = TokensR.attr.cabin_colorOnSecondary
+
         @AttrRes val colorSurface: Int = TokensR.attr.cabin_colorSurface
+
         @AttrRes val colorOnSurface: Int = TokensR.attr.cabin_colorOnSurface
+
         @AttrRes val colorSurfaceVariant: Int = TokensR.attr.cabin_colorSurfaceVariant
+
         @AttrRes val colorOutline: Int = TokensR.attr.cabin_colorOutline
+
         @AttrRes val colorContainer: Int = TokensR.attr.cabin_colorContainer
+
         @AttrRes val colorOnContainer: Int = TokensR.attr.cabin_colorOnContainer
+
         @AttrRes val colorSuccess: Int = TokensR.attr.cabin_colorSuccess
+
         @AttrRes val colorWarning: Int = TokensR.attr.cabin_colorWarning
+
         @AttrRes val colorError: Int = TokensR.attr.cabin_colorError
+
         @AttrRes val colorCharging: Int = TokensR.attr.cabin_colorCharging
+
         @AttrRes val colorClimate: Int = TokensR.attr.cabin_colorClimate
+
         @AttrRes val colorMediaAccent: Int = TokensR.attr.cabin_colorMediaAccent
+
         @AttrRes val colorScrim: Int = TokensR.attr.cabin_colorScrim
+
         @AttrRes val colorCritical: Int = TokensR.attr.cabin_colorCritical
+
         @AttrRes val colorAdasActive: Int = TokensR.attr.cabin_colorAdasActive
+
         @AttrRes val colorPrivacy: Int = TokensR.attr.cabin_colorPrivacy
+
         @AttrRes val colorFocusRing: Int = TokensR.attr.cabin_colorFocusRing
     }
 }

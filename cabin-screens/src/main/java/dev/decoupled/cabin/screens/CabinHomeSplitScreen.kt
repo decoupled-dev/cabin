@@ -100,7 +100,11 @@ fun CabinHomeSplitScreen(
             if (nextTurn != null) {
                 CabinNextTurnCard(nextTurn, Modifier.align(Alignment.TopStart).padding(20.dp))
                 if (nextTurn.etaText != null && nextTurn.tripText != null) {
-                    CabinEtaChip(nextTurn.etaText!!, nextTurn.tripText!!, Modifier.align(Alignment.BottomStart).padding(20.dp))
+                    CabinEtaChip(
+                        nextTurn.etaText!!,
+                        nextTurn.tripText!!,
+                        Modifier.align(Alignment.BottomStart).padding(20.dp),
+                    )
                 }
             }
             CabinIconButton(

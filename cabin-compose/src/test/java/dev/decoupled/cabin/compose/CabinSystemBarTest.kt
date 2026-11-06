@@ -273,5 +273,4 @@ class CabinSystemBarTest {
         composeRule.onNodeWithTag("apps").performClick()
         assertEquals(0, apps)
     }
-
 }

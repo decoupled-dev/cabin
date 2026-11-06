@@ -31,9 +31,9 @@ import dev.decoupled.cabin.compliance.CabinInteraction
 import dev.decoupled.cabin.compliance.GateDisposition
 import dev.decoupled.cabin.compliance.Signal
 import dev.decoupled.cabin.tokens.CabinTokens
-import dev.decoupled.cabin.tokens.R as TokensR
 import dev.decoupled.cabin.views.compliance.CabinComplianceHost
 import dev.decoupled.cabin.views.theme.CabinThemeResolver
+import dev.decoupled.cabin.tokens.R as TokensR
 
 /**
  * Glanceable vehicle / system status chrome.

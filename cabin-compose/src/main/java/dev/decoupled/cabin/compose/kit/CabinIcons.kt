@@ -55,7 +55,9 @@ object CabinIcons {
     val TurnRight: ImageVector by lazy { line("TurnRight", "M6 21v-7a4 4 0 0 1 4-4h9M15 6l4 4-4 4", width = 2.4f) }
     val TurnLeft: ImageVector by lazy { line("TurnLeft", "M18 21v-7a4 4 0 0 0-4-4H5M9 6l-4 4 4 4", width = 2.4f) }
     val Straight: ImageVector by lazy { line("Straight", "M12 21V4M7 9l5-5 5 5", width = 2.4f) }
-    val Arrive: ImageVector by lazy { line("Arrive", "M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12zM12 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4z") }
+    val Arrive: ImageVector by lazy {
+        line("Arrive", "M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12zM12 7a2 2 0 1 0 0 4 2 2 0 0 0 0-4z")
+    }
     val Minus: ImageVector by lazy { line("Minus", "M5 12h14", width = 2.4f) }
     val Plus: ImageVector by lazy { line("Plus", "M5 12h14M12 5v14", width = 2.4f) }
     val Previous: ImageVector by lazy { filled("Previous", "M19 5L9 12l10 7zM5 5v14") }

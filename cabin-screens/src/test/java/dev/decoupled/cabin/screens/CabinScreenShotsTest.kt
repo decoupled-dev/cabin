@@ -19,6 +19,7 @@ package dev.decoupled.cabin.screens
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.os.Build
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -27,7 +28,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalDensity
-import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.unit.Density
 import dev.decoupled.cabin.compliance.VehicleUiState
@@ -79,15 +79,21 @@ class CabinScreenShotsTest {
             CabinColorScheme.entries.forEach { s ->
                 Screen.entries.forEach { sc ->
                     if (only != null && only != "${l.name}-${s.name}") return@forEach
-                    look = l; scheme = s; screen = sc
+                    look = l;
+                    scheme = s;
+                    screen = sc
                     save("${sc.name}-${l.name}-${s.name}".lowercase())
                 }
             }
         }
         // Parked state shows the full Up next list and the Browse button.
-        look = CabinLook.Quiet; scheme = CabinColorScheme.Night; vehicle = VehicleUiState.parked()
-        screen = Screen.Media; save("media-quiet-night-parked")
-        screen = Screen.Home; save("home-quiet-night-parked")
+        look = CabinLook.Quiet;
+        scheme = CabinColorScheme.Night;
+        vehicle = VehicleUiState.parked()
+        screen = Screen.Media;
+        save("media-quiet-night-parked")
+        screen = Screen.Home;
+        save("home-quiet-night-parked")
         assertTrue(outDir.listFiles().orEmpty().isNotEmpty())
     }
 

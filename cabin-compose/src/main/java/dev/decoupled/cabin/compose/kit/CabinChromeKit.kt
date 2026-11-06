@@ -73,15 +73,28 @@ fun CabinStatusRow(
         Row(horizontalArrangement = Arrangement.spacedBy(20.dp), verticalAlignment = Alignment.CenterVertically) {
             Text(timeText, style = look.type.titleSmall)
             if (outsideTemperatureText != null) {
-                Row(horizontalArrangement = Arrangement.spacedBy(CabinKitMetrics.gapSm), verticalAlignment = Alignment.CenterVertically) {
-                    Icon(CabinIcons.Sun, contentDescription = null, tint = look.colors.onSurfaceVariant, modifier = Modifier.size(CabinKitMetrics.iconSm))
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(CabinKitMetrics.gapSm),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Icon(
+                        CabinIcons.Sun,
+                        contentDescription = null,
+                        tint = look.colors.onSurfaceVariant,
+                        modifier = Modifier.size(CabinKitMetrics.iconSm),
+                    )
                     Text(outsideTemperatureText, style = look.type.body, color = look.colors.onSurfaceVariant)
                 }
             }
         }
         Row(horizontalArrangement = Arrangement.spacedBy(20.dp), verticalAlignment = Alignment.CenterVertically) {
             indicators.forEach {
-                Icon(it.icon, contentDescription = it.description, tint = look.colors.onSurfaceVariant, modifier = Modifier.size(CabinKitMetrics.iconMd))
+                Icon(
+                    it.icon,
+                    contentDescription = it.description,
+                    tint = look.colors.onSurfaceVariant,
+                    modifier = Modifier.size(CabinKitMetrics.iconMd),
+                )
             }
             if (profileInitial != null) {
                 Surface(

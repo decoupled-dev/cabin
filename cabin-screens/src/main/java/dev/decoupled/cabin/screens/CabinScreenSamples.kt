@@ -79,7 +79,13 @@ object CabinScreenSamples {
 
     val quickControls: List<CabinQuickControl> = listOf(
         CabinQuickControl("lock", "Locked", CabinIcons.Lock, on = true),
-        CabinQuickControl("defrost", "Defrost", CabinIcons.Defrost, on = false, interaction = CabinInteraction.HvacQuick),
+        CabinQuickControl(
+            "defrost",
+            "Defrost",
+            CabinIcons.Defrost,
+            on = false,
+            interaction = CabinInteraction.HvacQuick,
+        ),
         CabinQuickControl("lights", "Lights auto", CabinIcons.Lights, on = false),
         CabinQuickControl("mode", "Comfort", CabinIcons.DriveMode, on = false),
     )

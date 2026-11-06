@@ -87,7 +87,13 @@ fun CabinNextTurnCard(
             }
             Column {
                 Text(state.distanceText, style = look.type.numeralMedium)
-                Text(state.instruction, style = look.type.body, color = look.colors.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(
+                    state.instruction,
+                    style = look.type.body,
+                    color = look.colors.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
             }
         }
     }
@@ -153,7 +159,11 @@ fun CabinEnergyCard(
         contentPadding = PaddingValues(horizontal = 28.dp, vertical = CabinKitMetrics.gapLg),
         verticalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.Bottom) {
+        Row(
+            Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.Bottom,
+        ) {
             Text(percentText.text, style = look.type.numeralLarge)
             CabinLabel(
                 label,
@@ -207,7 +217,12 @@ fun CabinQuickControlTile(
             verticalArrangement = Arrangement.SpaceBetween,
         ) {
             Icon(icon, contentDescription = null, modifier = Modifier.size(32.dp))
-            Text(label, style = look.type.body.copy(fontWeight = look.type.label.fontWeight), maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(
+                label,
+                style = look.type.body.copy(fontWeight = look.type.label.fontWeight),
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
         }
     }
 }

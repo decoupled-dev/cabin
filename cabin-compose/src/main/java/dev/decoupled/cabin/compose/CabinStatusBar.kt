@@ -48,7 +48,6 @@ import androidx.compose.ui.unit.sp
 import dev.decoupled.cabin.compliance.CabinInteraction
 import dev.decoupled.cabin.compliance.GateDisposition
 import dev.decoupled.cabin.compliance.Signal
-import dev.decoupled.cabin.compose.R
 import dev.decoupled.cabin.compose.compliance.LocalCabinComplianceState
 import dev.decoupled.cabin.compose.compliance.dispositionOf
 import dev.decoupled.cabin.compose.theme.CabinColors

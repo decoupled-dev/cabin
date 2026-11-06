@@ -26,6 +26,7 @@ enum class CabinUiMode {
     Idling,
     Moving,
     Restricted,
+
     /** Fail-safe: treat as Restricted for complex chrome entry points. */
     Unknown,
 }
@@ -43,43 +44,51 @@ enum class CabinInteraction {
     FilterOrSort,
     MediaTransport,
     HvacPeek,
+
     /**
      * Single-tap climate controls: temperature step, fan level, seat heat /
      * vent level, defrost, A/C, recirculation. Allowed in every mode — these
      * are glanceable, single-step tasks, and defrost must never be blocked.
      */
     HvacQuick,
+
     /**
      * Multi-step climate setup (zone sync setup, schedules, preconditioning,
      * the v0.1 ClimateTile). Fail-closed while Moving / Restricted / Unknown.
      * Single-tap controls use [HvacQuick].
      */
     HvacAdjust,
+
     /**
      * Complex media interactions from now-playing: source picker, scrub/seek,
      * queue / browse entry. Transport remains [MediaTransport].
      */
     MediaComplex,
+
     /**
      * Status bar deep link to informational detail
      * (`StatusDeepLink → informational` in restriction-states.md).
      */
     StatusDeepLinkInformational,
+
     /**
      * Status bar deep link to settings / setup
      * (`StatusDeepLink → settings / setup` in restriction-states.md).
      */
     StatusDeepLinkSettings,
+
     /**
      * Parked-only content (lyrics, video, EULA, 3D vehicle). Fail-closed unless Parked.
      */
     ParkedOnly,
+
     /**
      * Multi-step body / vehicle adjustments (windows, mirrors, seat position,
      * vehicle settings). Same matrix as HvacAdjust. Single-tap controls use
      * [VehicleQuick].
      */
     VehicleAdjust,
+
     /**
      * Single-tap body controls: door lock, lights mode, drive mode select.
      * Allowed in every mode, like [HvacQuick].
@@ -104,6 +113,7 @@ enum class UxRestriction {
     NoKeyboard,
     NoVideo,
     LimitStringLength,
+
     /** Explicit distraction-optimization / UX restriction profile. */
     DistractionOptimized,
 }

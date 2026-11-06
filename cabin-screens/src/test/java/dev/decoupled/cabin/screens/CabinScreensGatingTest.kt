@@ -85,7 +85,10 @@ class CabinScreensGatingTest {
     fun sampleReducerSyncsZonesAndClampsTemperature() {
         var s = CabinScreenSamples.reduce(CabinScreenSamples.climate, CabinClimateAction.ToggleSync)
         s = CabinScreenSamples.reduce(s, CabinClimateAction.TemperatureStep("driver", 100))
-        assertEquals(listOf(28f, 28f), s.zones.map { (it.temperatureC as dev.decoupled.cabin.compliance.Signal.Value).value })
+        assertEquals(
+            listOf(28f, 28f),
+            s.zones.map { (it.temperatureC as dev.decoupled.cabin.compliance.Signal.Value).value },
+        )
     }
 
     private fun androidx.compose.ui.test.SemanticsNodeInteractionCollection.assertCountEquals(n: Int) {

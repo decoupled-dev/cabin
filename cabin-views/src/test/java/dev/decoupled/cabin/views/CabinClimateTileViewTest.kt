@@ -17,7 +17,6 @@
 package dev.decoupled.cabin.views
 
 import android.view.ContextThemeWrapper
-import android.view.View
 import dev.decoupled.cabin.compliance.Signal
 import dev.decoupled.cabin.compliance.VehicleUiState
 import dev.decoupled.cabin.foundation.hvac.CabinClimateTileAction

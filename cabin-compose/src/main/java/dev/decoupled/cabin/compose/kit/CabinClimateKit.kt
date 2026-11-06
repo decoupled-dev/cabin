@@ -86,12 +86,25 @@ fun CabinSeatHeatButton(
         checked = level > 0,
         onCheckedChange = { onAction(CabinClimateAction.SeatHeatCycle(zone.id)) },
         interaction = CabinInteraction.HvacQuick,
-        modifier = (if (label == null) modifier.size(size) else modifier).semantics { contentDescription = description },
+        modifier = (if (label == null) {
+            modifier.size(
+                size,
+            )
+        } else {
+            modifier
+        }).semantics { contentDescription = description },
         contentPadding = if (label == null) PaddingValues() else PaddingValues(horizontal = CabinKitMetrics.gapLg),
     ) {
         if (label == null) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(6.dp)) {
-                Icon(CabinIcons.SeatHeat, contentDescription = null, modifier = Modifier.size(CabinKitMetrics.iconMd + 2.dp))
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+            ) {
+                Icon(
+                    CabinIcons.SeatHeat,
+                    contentDescription = null,
+                    modifier = Modifier.size(CabinKitMetrics.iconMd + 2.dp),
+                )
                 CabinLevelDots(level, zone.seatHeatMax)
             }
         } else {
@@ -118,7 +131,13 @@ fun CabinFanSelector(
     CabinSegmentedControl(
         options = options,
         selected = selected,
-        onSelect = { if (it == 0) onAction(CabinClimateAction.SetFanAuto) else onAction(CabinClimateAction.SetFanLevel(it)) },
+        onSelect = { if (it == 0) {
+            onAction(
+                CabinClimateAction.SetFanAuto,
+            )
+        } else {
+            onAction(CabinClimateAction.SetFanLevel(it))
+        } },
         interaction = CabinInteraction.HvacQuick,
         label = { if (it == 0) auto else it.toString() },
         optionDescription = { if (it == 0) auto else levelDescriptions.getValue(it) },
@@ -178,10 +197,30 @@ fun CabinClimateModeToggle(
 /** The standard mode set for [state], in display order. */
 @Composable
 fun cabinClimateModes(state: CabinClimateState): List<CabinClimateModeItem> = listOf(
-    CabinClimateModeItem(CabinIcons.AirConditioning, stringResource(R.string.cabin_kit_climate_ac), state.acOn, CabinClimateAction.ToggleAc),
-    CabinClimateModeItem(CabinIcons.Recirculation, stringResource(R.string.cabin_kit_climate_recirculation), state.recirculationOn, CabinClimateAction.ToggleRecirculation),
-    CabinClimateModeItem(CabinIcons.Defrost, stringResource(R.string.cabin_kit_climate_front_defrost), state.frontDefrostOn, CabinClimateAction.ToggleFrontDefrost),
-    CabinClimateModeItem(CabinIcons.RearDefrost, stringResource(R.string.cabin_kit_climate_rear_defrost), state.rearDefrostOn, CabinClimateAction.ToggleRearDefrost),
+    CabinClimateModeItem(
+        CabinIcons.AirConditioning,
+        stringResource(R.string.cabin_kit_climate_ac),
+        state.acOn,
+        CabinClimateAction.ToggleAc,
+    ),
+    CabinClimateModeItem(
+        CabinIcons.Recirculation,
+        stringResource(R.string.cabin_kit_climate_recirculation),
+        state.recirculationOn,
+        CabinClimateAction.ToggleRecirculation,
+    ),
+    CabinClimateModeItem(
+        CabinIcons.Defrost,
+        stringResource(R.string.cabin_kit_climate_front_defrost),
+        state.frontDefrostOn,
+        CabinClimateAction.ToggleFrontDefrost,
+    ),
+    CabinClimateModeItem(
+        CabinIcons.RearDefrost,
+        stringResource(R.string.cabin_kit_climate_rear_defrost),
+        state.rearDefrostOn,
+        CabinClimateAction.ToggleRearDefrost,
+    ),
 )
 
 /** One climate mode: icon, label, state and the action that toggles it. */
@@ -191,4 +230,3 @@ data class CabinClimateModeItem(
     val on: Boolean,
     val action: CabinClimateAction,
 )
-

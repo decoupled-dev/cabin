@@ -62,7 +62,11 @@ fun CabinArtworkPlaceholder(modifier: Modifier = Modifier) {
         drawRect(base)
         val d = size.minDimension
         drawCircle(c.primary, radius = d * 0.33f, center = Offset(d * 0.12f, size.height - d * 0.08f))
-        drawCircle(c.onSurface.copy(alpha = 0.85f), radius = d * 0.21f, center = Offset(size.width - d * 0.33f, d * 0.33f))
+        drawCircle(
+            c.onSurface.copy(alpha = 0.85f),
+            radius = d * 0.21f,
+            center = Offset(size.width - d * 0.33f, d * 0.33f),
+        )
     }
 }
 
@@ -108,8 +112,16 @@ fun CabinMediaProgress(state: CabinMediaNowPlayingState, modifier: Modifier = Mo
     Column(modifier, verticalArrangement = Arrangement.spacedBy(CabinKitMetrics.gapSm)) {
         CabinProgressBar(fraction)
         Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-            Text(cabinSignalText(state.positionMs, ::formatMediaTime).text, style = look.type.body.copy(fontFeatureSettings = "tnum"), color = look.colors.onSurfaceMuted)
-            Text(cabinSignalText(state.durationMs, ::formatMediaTime).text, style = look.type.body.copy(fontFeatureSettings = "tnum"), color = look.colors.onSurfaceMuted)
+            Text(
+                cabinSignalText(state.positionMs, ::formatMediaTime).text,
+                style = look.type.body.copy(fontFeatureSettings = "tnum"),
+                color = look.colors.onSurfaceMuted,
+            )
+            Text(
+                cabinSignalText(state.durationMs, ::formatMediaTime).text,
+                style = look.type.body.copy(fontFeatureSettings = "tnum"),
+                color = look.colors.onSurfaceMuted,
+            )
         }
     }
 }
@@ -128,7 +140,11 @@ fun CabinMediaTransport(
     enabled: Boolean = true,
 ) {
     val interaction = CabinInteraction.MediaTransport
-    Row(modifier, horizontalArrangement = Arrangement.spacedBy(CabinKitMetrics.gapMd), verticalAlignment = Alignment.CenterVertically) {
+    Row(
+        modifier,
+        horizontalArrangement = Arrangement.spacedBy(CabinKitMetrics.gapMd),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
         CabinIconButton(
             icon = CabinIcons.Previous,
             contentDescription = stringResource(R.string.cabin_kit_media_previous),
@@ -141,9 +157,15 @@ fun CabinMediaTransport(
             interaction = interaction,
             style = CabinButtonStyle.Filled,
             modifier = Modifier.width(playWidth).height(size),
-            contentDescription = stringResource(if (isPlaying) R.string.cabin_kit_media_pause else R.string.cabin_kit_media_play),
+            contentDescription = stringResource(
+                if (isPlaying) R.string.cabin_kit_media_pause else R.string.cabin_kit_media_play,
+            ),
         ) {
-            Icon(if (isPlaying) CabinIcons.Pause else CabinIcons.Play, contentDescription = null, modifier = Modifier.size(CabinKitMetrics.iconLg + 4.dp))
+            Icon(
+                if (isPlaying) CabinIcons.Pause else CabinIcons.Play,
+                contentDescription = null,
+                modifier = Modifier.size(CabinKitMetrics.iconLg + 4.dp),
+            )
         }
         CabinIconButton(
             icon = CabinIcons.Next,

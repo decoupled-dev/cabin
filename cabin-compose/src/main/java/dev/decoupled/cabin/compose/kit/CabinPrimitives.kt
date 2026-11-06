@@ -196,7 +196,9 @@ fun CabinButton(
         enabled = enabled,
         modifier = modifier
             .sizeIn(minWidth = CabinKitMetrics.touchMin, minHeight = CabinKitMetrics.touchMin)
-            .then(if (contentDescription != null) Modifier.semantics { this.contentDescription = contentDescription } else Modifier),
+            .then(
+                if (contentDescription != null) Modifier.semantics { this.contentDescription = contentDescription } else Modifier,
+            ),
         shape = shape,
         color = container,
         contentColor = if (enabled) contentColor else contentColor.copy(alpha = DisabledAlpha),
@@ -315,7 +317,9 @@ fun CabinToggleButton(
         enabled = enabled,
         modifier = modifier
             .sizeIn(minWidth = CabinKitMetrics.touchMin, minHeight = CabinKitMetrics.touchMin)
-            .then(if (stateDescription != null) Modifier.semantics { this.stateDescription = stateDescription } else Modifier),
+            .then(
+                if (stateDescription != null) Modifier.semantics { this.stateDescription = stateDescription } else Modifier,
+            ),
         shape = shape,
         color = colors.container,
         contentColor = if (enabled) colors.content else colors.content.copy(alpha = DisabledAlpha),
@@ -507,7 +511,12 @@ fun CabinRestrictedHint(
         horizontalArrangement = Arrangement.spacedBy(CabinKitMetrics.gapSm + 2.dp, Alignment.CenterHorizontally),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Icon(CabinIcons.Lock, contentDescription = null, tint = look.colors.onSurfaceMuted, modifier = Modifier.size(CabinKitMetrics.iconSm))
+        Icon(
+            CabinIcons.Lock,
+            contentDescription = null,
+            tint = look.colors.onSurfaceMuted,
+            modifier = Modifier.size(CabinKitMetrics.iconSm),
+        )
         Text(text, style = look.type.body, color = look.colors.onSurfaceMuted)
     }
 }

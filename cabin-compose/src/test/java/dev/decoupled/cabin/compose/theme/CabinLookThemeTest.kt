@@ -56,7 +56,16 @@ class CabinLookThemeTest {
     fun noTextStyleBelow24sp() {
         CabinLook.entries.forEach { look ->
             val t = cabinLookTheme(look, CabinColorScheme.Night).type
-            listOf(t.numeralHero, t.numeralLarge, t.numeralMedium, t.numeralSmall, t.title, t.titleSmall, t.body, t.label)
+            listOf(
+                t.numeralHero,
+                t.numeralLarge,
+                t.numeralMedium,
+                t.numeralSmall,
+                t.title,
+                t.titleSmall,
+                t.body,
+                t.label,
+            )
                 .forEach { assertTrue("$look ${it.fontSize}", it.fontSize.value >= 24f) }
             val m = cabinLookTheme(look, CabinColorScheme.Night).toMaterialTypography()
             listOf(m.bodySmall, m.labelSmall, m.titleSmall).forEach { assertTrue(it.fontSize.value >= 24f) }
