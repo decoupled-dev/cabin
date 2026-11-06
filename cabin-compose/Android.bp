@@ -27,7 +27,7 @@ android_library {
     srcs: ["src/main/java/**/*.kt"],
     resource_dirs: ["src/main/res"],
     manifest: "src/main/AndroidManifest.xml",
-    kotlin_plugins: ["androidx.compose.compiler_compiler-hosted-plugin"],
+    kotlin_plugins: ["kotlin-compose-compiler-plugin"],
     static_libs: [
         "CabinTokens",
         "CabinCompliance",
