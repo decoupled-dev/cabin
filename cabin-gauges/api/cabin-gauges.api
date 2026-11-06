@@ -1,0 +1,26 @@
+public final class dev/decoupled/cabin/gauges/CabinGauges_generatedKt {
+	public static final fun CabinArcGauge (Ldev/decoupled/cabin/foundation/components/gauges/CabinArcGaugeState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinClusterInfoPanel (Ldev/decoupled/cabin/foundation/components/gauges/CabinClusterInfoPanelState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinClusterModeSwitcher (Ldev/decoupled/cabin/foundation/components/gauges/CabinClusterModeSwitcherState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinClusterThemeSet (Ldev/decoupled/cabin/foundation/components/gauges/CabinClusterThemeSetState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinDigitalSpeed (Ldev/decoupled/cabin/foundation/components/gauges/CabinDigitalSpeedState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinGForce (Ldev/decoupled/cabin/foundation/components/gauges/CabinGForceState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinGearIndicator (Ldev/decoupled/cabin/foundation/components/gauges/CabinGearIndicatorState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinHudPrimitive (Ldev/decoupled/cabin/foundation/components/gauges/CabinHudPrimitiveState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinLinearGauge (Ldev/decoupled/cabin/foundation/components/gauges/CabinLinearGaugeState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinNeedle (Ldev/decoupled/cabin/foundation/components/gauges/CabinNeedleState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinPowerMeter (Ldev/decoupled/cabin/foundation/components/gauges/CabinPowerMeterState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinRadialGauge (Ldev/decoupled/cabin/foundation/components/gauges/CabinRadialGaugeState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinSegmentedGauge (Ldev/decoupled/cabin/foundation/components/gauges/CabinSegmentedGaugeState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinSpeedLimitIndicator (Ldev/decoupled/cabin/foundation/components/gauges/CabinSpeedLimitIndicatorState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinSpeedometer (Ldev/decoupled/cabin/foundation/components/gauges/CabinSpeedometerState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinTachometer (Ldev/decoupled/cabin/foundation/components/gauges/CabinTachometerState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinTelltaleStrip (Ldev/decoupled/cabin/foundation/components/gauges/CabinTelltaleStripState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinTickScale (Ldev/decoupled/cabin/foundation/components/gauges/CabinTickScaleState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun CabinWarningOverlay (Ldev/decoupled/cabin/foundation/components/gauges/CabinWarningOverlayState;Lkotlin/jvm/functions/Function1;Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+}
+
+public final class dev/decoupled/cabin/gauges/scaffold/CabinGaugeHostKt {
+	public static final fun CabinGaugeHost (Ljava/lang/String;Ljava/lang/String;Ldev/decoupled/cabin/compliance/CabinInteraction;Ldev/decoupled/cabin/foundation/CabinComponentUiState;Lkotlin/jvm/functions/Function0;Landroidx/compose/ui/Modifier;Ljava/lang/String;Landroidx/compose/runtime/Composer;II)V
+}
+

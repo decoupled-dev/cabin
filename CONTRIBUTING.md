@@ -32,15 +32,25 @@ python3 tools/license_headers.py --fix
 
 Generated files get it from their generators. CI runs `--check`.
 
+## Quality pipeline
+
+Run the same checks as CI before you push, and enable the hooks once per clone:
+
+```bash
+git config core.hooksPath .githooks   # pre-commit: fast gates; commit-msg: Conventional Commits
+tools/quality.sh                      # everything CI runs
+```
+
+Rules, baselines and how to fix findings: [docs/quality.md](docs/quality.md).
+
 ## Pull request checklist
 
-- [ ] Tests added or updated; the unit suite in [CLAUDE.md](CLAUDE.md) passes
-- [ ] Gates pass: `tools/license_headers.py --check`, `generate_cabin_tokens.py --check`,
-      `generate_cabin_components.py --check`, `check_soong_thin_deps.py`
-- [ ] Tokens only: no hardcoded colors or dimensions in library code
+- [ ] `tools/quality.sh` passes (gates, detekt, lint, public API, unit tests)
+- [ ] Public API changes are intended and the `api/*.api` dump is updated (`./gradlew apiDump`)
+- [ ] Tokens only: no color literals; sizes from tokens or `CabinKitMetrics`; strings are resources
 - [ ] Interactions are gated through the Restriction Engine
 - [ ] Docs updated; planned APIs are labeled as planned
-- [ ] Commits are signed off (DCO)
+- [ ] Commits follow Conventional Commits and are signed off (DCO)
 
 ## Commit style
 

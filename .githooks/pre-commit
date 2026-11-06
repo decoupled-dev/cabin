@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# Cabin pre-commit: fast gates only (seconds). Enable: git config core.hooksPath .githooks
+exec tools/quality.sh fast

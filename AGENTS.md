@@ -76,6 +76,10 @@ Full map: [docs/README.md](docs/README.md) · LLM map: [llms.txt](llms.txt).
    prebuilts, carry an Apache-2.0 header, ship no fonts or GMS deps, and use
    tokens only: no color literals; dimensions come from tokens or
    `CabinKitMetrics`; user-visible strings are resources. See [docs/adoption/aosp-upstream.md](docs/adoption/aosp-upstream.md).
+13. **Run the quality pipeline before finishing.** `tools/quality.sh` (or
+   `tools/quality.sh fast` while iterating). Don't add baseline entries or
+   `cabin-rules: allow` suppressions without a stated reason. Intended public
+   API changes need `./gradlew apiDump`. See [docs/quality.md](docs/quality.md).
 
 ## Soong vs Gradle
 

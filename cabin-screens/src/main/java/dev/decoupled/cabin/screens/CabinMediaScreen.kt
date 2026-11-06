@@ -46,7 +46,6 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import dev.decoupled.cabin.compliance.CabinInteraction
 import dev.decoupled.cabin.compliance.GateDisposition
-import dev.decoupled.cabin.compose.R as KitR
 import dev.decoupled.cabin.compose.kit.CabinArtworkPlaceholder
 import dev.decoupled.cabin.compose.kit.CabinKitMetrics
 import dev.decoupled.cabin.compose.kit.CabinLabel
@@ -60,6 +59,7 @@ import dev.decoupled.cabin.compose.kit.cabinGate
 import dev.decoupled.cabin.compose.theme.CabinTheme
 import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingAction
 import dev.decoupled.cabin.foundation.media.CabinMediaNowPlayingState
+import dev.decoupled.cabin.compose.R as KitR
 
 /** A row in the Up next list. */
 @Immutable
@@ -171,8 +171,19 @@ private fun QueueRow(item: CabinQueueItem, enabled: Boolean, onSelect: (CabinQue
                     .clip(look.shapes.medium),
             ) { CabinArtworkPlaceholder(Modifier.fillMaxSize()) }
             Column(Modifier.weight(1f)) {
-                Text(item.title, style = look.type.body.copy(fontWeight = look.type.title.fontWeight), maxLines = 1, overflow = TextOverflow.Ellipsis)
-                Text(item.subtitle, style = look.type.body, color = look.colors.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(
+                    item.title,
+                    style = look.type.body.copy(fontWeight = look.type.title.fontWeight),
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    item.subtitle,
+                    style = look.type.body,
+                    color = look.colors.onSurfaceVariant,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis,
+                )
             }
         }
     }
@@ -181,6 +192,7 @@ private fun QueueRow(item: CabinQueueItem, enabled: Boolean, onSelect: (CabinQue
         .height(CabinKitMetrics.controlLarge)
         .semantics(mergeDescendants = true) { contentDescription = "${item.title}, ${item.subtitle}" }
     if (enabled) {
+        // cabin-rules: allow CR005 — gated by the caller (UpNextPanel checks MediaComplex).
         Surface(
             onClick = { onSelect(item) },
             modifier = rowModifier,

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>MagicNumber:CabinMediaNowPlaying.kt$1000L</ID>
+    <ID>MagicNumber:CabinMediaNowPlaying.kt$60L</ID>
+    <ID>MagicNumber:CabinSignalText.kt$1000</ID>
+    <ID>MagicNumber:CabinSignalText.kt$60</ID>
+    <ID>MagicNumber:CabinSystemBar.kt$0.4f</ID>
+    <ID>MagicNumber:CabinSystemBar.kt$0.55f</ID>
+    <ID>MagicNumber:GateVisuals.kt$GateVisuals$0.4f</ID>
+    <ID>MagicNumber:GateVisuals.kt$GateVisuals$0.55f</ID>
+    <ID>MagicNumber:GateVisuals.kt$GateVisuals$0.75f</ID>
+    <ID>MagicNumber:GateVisuals.kt$GateVisuals$0.7f</ID>
+    <ID>Wrapping:CabinClimateKit.kt$(</ID>
+    <ID>Wrapping:CabinClimateKit.kt$if (it == 0) { onAction( CabinClimateAction.SetFanAuto, ) } else { onAction(CabinClimateAction.SetFanLevel(it)) }</ID>
+  </CurrentIssues>
+</SmellBaseline>

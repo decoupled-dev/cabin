@@ -136,3 +136,5 @@ Every component and pattern is specified for **both**:
 
 Shared tokens and compliance live outside both UI stacks so OEMs can theme
 once and ship everywhere. See [architecture](architecture.md).
+
+- [Quality pipeline and standards](quality.md) — gates, Cabin rules, baselines, CI

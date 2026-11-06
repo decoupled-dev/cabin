@@ -44,13 +44,13 @@ Requires JDK 17+ and `local.properties` with `sdk.dir=` (gitignored).
 ./gradlew :cabin-compliance:test
 ./gradlew :cabin-compliance:test --tests '*CabinRestrictionEngineTest'
 
-# CI gates — run before finishing changes that touch tokens, components, or Android.bp
-python3 tools/check_soong_thin_deps.py
-python3 tools/generate_cabin_tokens.py --check
-python3 tools/generate_cabin_components.py --check
-python3 tools/test_generate_cabin_components.py
-python3 tools/test_generate_cabin_tokens.py
-python3 tools/license_headers.py --check
+# Quality pipeline (same as CI) — see docs/quality.md
+tools/quality.sh fast      # Python gates, <1 s (pre-commit hook)
+tools/quality.sh static    # + detekt, Android Lint, public API check
+tools/quality.sh           # everything incl. unit tests
+./gradlew apiDump          # accept an intended public API change
+./gradlew detekt --auto-correct
+git config core.hooksPath .githooks
 
 # Compile the Soong modules with an AOSP tree's toolchain (no writes to the tree)
 python3 tools/aosp_compile_check.py --aosp /home/dc/Abhinav/aosp-17
@@ -71,6 +71,7 @@ python3 tools/generate_cabin_components.py   # after components/cabin.components
 
 - Never hand-edit generated token/component output; change the JSON/YAML source
   and regenerate, then run the `--check` gates.
+- Before finishing any change, run `tools/quality.sh` (AGENTS rule 13).
 - Changes touching architecture, compliance contracts, or module dependencies:
   plan first (plan mode) and cite the relevant doc/ADR in `docs/`.
 - When adding a dependency to any `build.gradle.kts` or `Android.bp`, re-check

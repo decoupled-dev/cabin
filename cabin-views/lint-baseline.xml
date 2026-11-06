@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.5.2" type="baseline" client="gradle" dependencies="false" name="AGP (8.5.2)" variant="all" version="8.5.2">
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="        fanLabelView.text = &quot;Fan&quot;"
+        errorLine2="                             ~~~">
+        <location
+            file="src/main/java/dev/decoupled/cabin/views/CabinClimateTileView.kt"
+            line="131"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="        fanLabelView.text = &quot;Fan&quot;"
+        errorLine2="                             ~~~">
+        <location
+            file="src/main/java/dev/decoupled/cabin/views/CabinClimateTileView.kt"
+            line="131"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="        fanLabelView.text = &quot;Fan&quot;"
+        errorLine2="                             ~~~">
+        <location
+            file="src/main/java/dev/decoupled/cabin/views/CabinClimateTileView.kt"
+            line="131"
+            column="30"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="        seatLabelView.text = &quot;Seat&quot;"
+        errorLine2="                              ~~~~">
+        <location
+            file="src/main/java/dev/decoupled/cabin/views/CabinClimateTileView.kt"
+            line="132"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="        seatLabelView.text = &quot;Seat&quot;"
+        errorLine2="                              ~~~~">
+        <location
+            file="src/main/java/dev/decoupled/cabin/views/CabinClimateTileView.kt"
+            line="132"
+            column="31"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        errorLine1="        seatLabelView.text = &quot;Seat&quot;"
+        errorLine2="                              ~~~~">
+        <location
+            file="src/main/java/dev/decoupled/cabin/views/CabinClimateTileView.kt"
+            line="132"
+            column="31"/>
+    </issue>
+
+</issues>

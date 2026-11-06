@@ -1,0 +1,55 @@
+# CodeQL security analysis for Kotlin/Java (library + tools) and Python (tools).
+name: CodeQL
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "17 3 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: java-kotlin
+            build-mode: manual
+          - language: python
+            build-mode: none
+    steps:
+      - uses: actions/checkout@v4
+      - uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          build-mode: ${{ matrix.build-mode }}
+      - if: matrix.language == 'java-kotlin'
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - if: matrix.language == 'java-kotlin'
+        uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools platforms;android-34"
+      - if: matrix.language == 'java-kotlin'
+        name: Build libraries
+        run: |
+          echo "sdk.dir=$ANDROID_HOME" > local.properties
+          ./gradlew --no-build-cache --no-configuration-cache \
+            :cabin-tokens:assembleDebug :cabin-compliance:assembleDebug :cabin-foundation:assembleDebug \
+            :cabin-views:assembleDebug :cabin-compose:assembleDebug :cabin-screens:assembleDebug :cabin-gauges:assembleDebug
+      - uses: github/codeql-action/analyze@v3
+        with:
+          category: /language:${{ matrix.language }}

@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>CyclomaticComplexMethod:CabinRestrictionEngine.kt$CabinRestrictionEngine$private fun matrixDisposition( interaction: CabinInteraction, mode: CabinUiMode, ): GateDisposition</ID>
+    <ID>LongMethod:CabinRestrictionEngine.kt$CabinRestrictionEngine$private fun matrixDisposition( interaction: CabinInteraction, mode: CabinUiMode, ): GateDisposition</ID>
+    <ID>ReturnCount:CabinRestrictionEngine.kt$CabinRestrictionEngine$override fun uiMode(state: VehicleUiState): CabinUiMode</ID>
+    <ID>ReturnCount:CabinRestrictionEngine.kt$CabinRestrictionEngine$private fun isMoving(state: VehicleUiState): Boolean?</ID>
+  </CurrentIssues>
+</SmellBaseline>

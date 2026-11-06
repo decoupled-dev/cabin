@@ -1,0 +1,431 @@
+public final class dev/decoupled/cabin/views/CabinClimateTileTokens {
+	public static final field INSTANCE Ldev/decoupled/cabin/views/CabinClimateTileTokens;
+	public final fun getControlMinSizeDp ()F
+	public final fun getGapDp ()F
+}
+
+public final class dev/decoupled/cabin/views/CabinClimateTileView : android/widget/LinearLayout {
+	public static final field Companion Ldev/decoupled/cabin/views/CabinClimateTileView$Companion;
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/hvac/CabinClimateTileState;)V
+	public final fun setCompliance (Ldev/decoupled/cabin/views/compliance/CabinComplianceHost;)V
+	public final fun setOnActionListener (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/CabinClimateTileView$Companion {
+}
+
+public final class dev/decoupled/cabin/views/CabinMediaNowPlayingTokens {
+	public static final field INSTANCE Ldev/decoupled/cabin/views/CabinMediaNowPlayingTokens;
+	public final fun getArtworkSizeDp ()F
+	public final fun getTransportMinSizeDp ()F
+}
+
+public final class dev/decoupled/cabin/views/CabinMediaNowPlayingView : android/widget/LinearLayout {
+	public static final field Companion Ldev/decoupled/cabin/views/CabinMediaNowPlayingView$Companion;
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/media/CabinMediaNowPlayingState;)V
+	public final fun setCompliance (Ldev/decoupled/cabin/views/compliance/CabinComplianceHost;)V
+	public final fun setOnActionListener (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/CabinMediaNowPlayingView$Companion {
+}
+
+public final class dev/decoupled/cabin/views/CabinStatusBarTokens {
+	public static final field INSTANCE Ldev/decoupled/cabin/views/CabinStatusBarTokens;
+	public final fun getHeightDp ()F
+	public final fun getIconSizeDp ()F
+	public final fun getItemGapDp ()F
+}
+
+public final class dev/decoupled/cabin/views/CabinStatusBarView : android/view/ViewGroup {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun setCompliance (Ldev/decoupled/cabin/views/compliance/CabinComplianceHost;)V
+	public final fun setItems (Ljava/util/List;)V
+}
+
+public final class dev/decoupled/cabin/views/CabinStatusEmphasis : java/lang/Enum {
+	public static final field Charging Ldev/decoupled/cabin/views/CabinStatusEmphasis;
+	public static final field None Ldev/decoupled/cabin/views/CabinStatusEmphasis;
+	public static final field Warning Ldev/decoupled/cabin/views/CabinStatusEmphasis;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/decoupled/cabin/views/CabinStatusEmphasis;
+	public static fun values ()[Ldev/decoupled/cabin/views/CabinStatusEmphasis;
+}
+
+public final class dev/decoupled/cabin/views/CabinStatusGlyph : dev/decoupled/cabin/views/CabinStatusItem {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Landroid/graphics/drawable/Drawable;Ljava/lang/CharSequence;Ldev/decoupled/cabin/compliance/Signal;Ldev/decoupled/cabin/views/StatusDeepLink;Ldev/decoupled/cabin/views/CabinStatusEmphasis;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Landroid/graphics/drawable/Drawable;Ljava/lang/CharSequence;Ldev/decoupled/cabin/compliance/Signal;Ldev/decoupled/cabin/views/StatusDeepLink;Ldev/decoupled/cabin/views/CabinStatusEmphasis;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Landroid/graphics/drawable/Drawable;
+	public final fun component4 ()Ljava/lang/CharSequence;
+	public final fun component5 ()Ldev/decoupled/cabin/compliance/Signal;
+	public final fun component6 ()Ldev/decoupled/cabin/views/StatusDeepLink;
+	public final fun component7 ()Ldev/decoupled/cabin/views/CabinStatusEmphasis;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;Landroid/graphics/drawable/Drawable;Ljava/lang/CharSequence;Ldev/decoupled/cabin/compliance/Signal;Ldev/decoupled/cabin/views/StatusDeepLink;Ldev/decoupled/cabin/views/CabinStatusEmphasis;)Ldev/decoupled/cabin/views/CabinStatusGlyph;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/views/CabinStatusGlyph;Ljava/lang/String;Ljava/lang/String;Landroid/graphics/drawable/Drawable;Ljava/lang/CharSequence;Ldev/decoupled/cabin/compliance/Signal;Ldev/decoupled/cabin/views/StatusDeepLink;Ldev/decoupled/cabin/views/CabinStatusEmphasis;ILjava/lang/Object;)Ldev/decoupled/cabin/views/CabinStatusGlyph;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun getContentDescription ()Ljava/lang/String;
+	public final fun getDeepLink ()Ldev/decoupled/cabin/views/StatusDeepLink;
+	public final fun getEmphasis ()Ldev/decoupled/cabin/views/CabinStatusEmphasis;
+	public final fun getIcon ()Landroid/graphics/drawable/Drawable;
+	public fun getId ()Ljava/lang/String;
+	public final fun getSignal ()Ldev/decoupled/cabin/compliance/Signal;
+	public final fun getText ()Ljava/lang/CharSequence;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class dev/decoupled/cabin/views/CabinStatusItem {
+	public abstract fun getContentDescription ()Ljava/lang/String;
+	public abstract fun getId ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/views/CabinSystemBarEntry {
+	public fun <init> (Ljava/lang/String;Landroid/graphics/drawable/Drawable;Ljava/lang/CharSequence;Ljava/lang/String;Ldev/decoupled/cabin/compliance/CabinInteraction;Lkotlin/jvm/functions/Function0;)V
+	public synthetic fun <init> (Ljava/lang/String;Landroid/graphics/drawable/Drawable;Ljava/lang/CharSequence;Ljava/lang/String;Ldev/decoupled/cabin/compliance/CabinInteraction;Lkotlin/jvm/functions/Function0;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Landroid/graphics/drawable/Drawable;
+	public final fun component3 ()Ljava/lang/CharSequence;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public final fun component6 ()Lkotlin/jvm/functions/Function0;
+	public final fun copy (Ljava/lang/String;Landroid/graphics/drawable/Drawable;Ljava/lang/CharSequence;Ljava/lang/String;Ldev/decoupled/cabin/compliance/CabinInteraction;Lkotlin/jvm/functions/Function0;)Ldev/decoupled/cabin/views/CabinSystemBarEntry;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/views/CabinSystemBarEntry;Ljava/lang/String;Landroid/graphics/drawable/Drawable;Ljava/lang/CharSequence;Ljava/lang/String;Ldev/decoupled/cabin/compliance/CabinInteraction;Lkotlin/jvm/functions/Function0;ILjava/lang/Object;)Ldev/decoupled/cabin/views/CabinSystemBarEntry;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContentDescription ()Ljava/lang/String;
+	public final fun getIcon ()Landroid/graphics/drawable/Drawable;
+	public final fun getId ()Ljava/lang/String;
+	public final fun getInteraction ()Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public final fun getLabel ()Ljava/lang/CharSequence;
+	public final fun getOnActivate ()Lkotlin/jvm/functions/Function0;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/views/CabinSystemBarSlots {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;Ljava/util/List;Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;Ljava/util/List;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Ljava/util/List;
+	public final fun component3 ()Ljava/util/List;
+	public final fun copy (Ljava/util/List;Ljava/util/List;Ljava/util/List;)Ldev/decoupled/cabin/views/CabinSystemBarSlots;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/views/CabinSystemBarSlots;Ljava/util/List;Ljava/util/List;Ljava/util/List;ILjava/lang/Object;)Ldev/decoupled/cabin/views/CabinSystemBarSlots;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCenter ()Ljava/util/List;
+	public final fun getLeading ()Ljava/util/List;
+	public final fun getTrailing ()Ljava/util/List;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/views/CabinSystemBarTokens {
+	public static final field INSTANCE Ldev/decoupled/cabin/views/CabinSystemBarTokens;
+	public final fun getGapDp ()F
+	public final fun getHeightDp ()F
+	public final fun getIconSizeDp ()F
+	public final fun getItemMinSizeDp ()F
+}
+
+public final class dev/decoupled/cabin/views/CabinSystemBarView : android/view/ViewGroup {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun setCompliance (Ldev/decoupled/cabin/views/compliance/CabinComplianceHost;)V
+	public final fun setSlots (Ldev/decoupled/cabin/views/CabinSystemBarSlots;)V
+}
+
+public final class dev/decoupled/cabin/views/StatusDeepLink {
+	public fun <init> (ZLkotlin/jvm/functions/Function0;)V
+	public final fun component1 ()Z
+	public final fun component2 ()Lkotlin/jvm/functions/Function0;
+	public final fun copy (ZLkotlin/jvm/functions/Function0;)Ldev/decoupled/cabin/views/StatusDeepLink;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/views/StatusDeepLink;ZLkotlin/jvm/functions/Function0;ILjava/lang/Object;)Ldev/decoupled/cabin/views/StatusDeepLink;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getInteraction ()Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public final fun getOnActivate ()Lkotlin/jvm/functions/Function0;
+	public final fun getOpensSettings ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/views/action/CabinButtonView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/action/CabinButtonState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/action/CabinPressHoldRepeaterView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/action/CabinPressHoldRepeaterState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/collection/CabinListItemView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/collection/CabinListItemState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/collection/CabinPagedListView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/collection/CabinPagedListState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/compliance/CabinComplianceHost {
+	public fun <init> ()V
+	public fun <init> (Ldev/decoupled/cabin/compliance/CabinCompliance;Ldev/decoupled/cabin/compliance/VehicleUiState;)V
+	public synthetic fun <init> (Ldev/decoupled/cabin/compliance/CabinCompliance;Ldev/decoupled/cabin/compliance/VehicleUiState;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun addOnChangeListener (Lkotlin/jvm/functions/Function0;)V
+	public final fun allows (Ldev/decoupled/cabin/compliance/CabinInteraction;)Z
+	public final fun attach (Ldev/decoupled/cabin/compliance/CabinCompliance;)V
+	public final fun disposition (Ldev/decoupled/cabin/compliance/CabinInteraction;)Ldev/decoupled/cabin/compliance/GateDisposition;
+	public final fun getPolicy ()Ldev/decoupled/cabin/compliance/CabinCompliance;
+	public final fun getState ()Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public final fun removeOnChangeListener (Lkotlin/jvm/functions/Function0;)V
+	public final fun touchTargetMinDp ()I
+	public final fun updateState (Ldev/decoupled/cabin/compliance/VehicleUiState;)V
+}
+
+public final class dev/decoupled/cabin/views/feedback/CabinDialogView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/feedback/CabinDialogState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/input/CabinSliderView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/input/CabinSliderState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/input/CabinStepperView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/input/CabinStepperState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/navigation/CabinBackAffordanceView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/navigation/CabinBackAffordanceState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/navigation/CabinFocusAreaView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/navigation/CabinFocusAreaState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/navigation/CabinNavigationDockView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/navigation/CabinNavigationDockState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/navigation/CabinTopBarView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/navigation/CabinTopBarState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/scaffold/CabinFamilyAccentKt {
+	public static final fun cabinFamilyAccent (Ljava/lang/String;Ldev/decoupled/cabin/views/theme/CabinResolvedColors;)I
+}
+
+public class dev/decoupled/cabin/views/scaffold/CabinScaffoldView : android/widget/LinearLayout {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun applyState (Ljava/lang/String;Ljava/lang/String;Ldev/decoupled/cabin/foundation/CabinComponentUiState;)V
+	public final fun bindHost (Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ldev/decoupled/cabin/compliance/CabinInteraction;)V
+	protected fun onDetachedFromWindow ()V
+	public final fun setCompliance (Ldev/decoupled/cabin/views/compliance/CabinComplianceHost;)V
+	public final fun setOnActivate (Lkotlin/jvm/functions/Function0;)V
+}
+
+public final class dev/decoupled/cabin/views/selection/CabinSwitchView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/selection/CabinSwitchState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/settings/CabinPreferenceScaffoldView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/settings/CabinPreferenceScaffoldState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/settings/CabinPreferenceView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/settings/CabinPreferenceState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/surface/CabinPagedScrollView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/surface/CabinPagedScrollState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/systemui/CabinQuickSettingsView : dev/decoupled/cabin/views/scaffold/CabinScaffoldView {
+	public fun <init> (Landroid/content/Context;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;)V
+	public fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;I)V
+	public synthetic fun <init> (Landroid/content/Context;Landroid/util/AttributeSet;IILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun bind (Ldev/decoupled/cabin/foundation/components/systemui/CabinQuickSettingsState;)V
+	public final fun setOnAction (Lkotlin/jvm/functions/Function1;)V
+}
+
+public final class dev/decoupled/cabin/views/theme/CabinResolvedColors {
+	public fun <init> (IIIIIIIIIIIIIIIIIIIII)V
+	public final fun component1 ()I
+	public final fun component10 ()I
+	public final fun component11 ()I
+	public final fun component12 ()I
+	public final fun component13 ()I
+	public final fun component14 ()I
+	public final fun component15 ()I
+	public final fun component16 ()I
+	public final fun component17 ()I
+	public final fun component18 ()I
+	public final fun component19 ()I
+	public final fun component2 ()I
+	public final fun component20 ()I
+	public final fun component21 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()I
+	public final fun component8 ()I
+	public final fun component9 ()I
+	public final fun copy (IIIIIIIIIIIIIIIIIIIII)Ldev/decoupled/cabin/views/theme/CabinResolvedColors;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/views/theme/CabinResolvedColors;IIIIIIIIIIIIIIIIIIIIIILjava/lang/Object;)Ldev/decoupled/cabin/views/theme/CabinResolvedColors;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAdasActive ()I
+	public final fun getCharging ()I
+	public final fun getClimate ()I
+	public final fun getContainer ()I
+	public final fun getCritical ()I
+	public final fun getError ()I
+	public final fun getFocusRing ()I
+	public final fun getMediaAccent ()I
+	public final fun getOnContainer ()I
+	public final fun getOnPrimary ()I
+	public final fun getOnSecondary ()I
+	public final fun getOnSurface ()I
+	public final fun getOutline ()I
+	public final fun getPrimary ()I
+	public final fun getPrivacy ()I
+	public final fun getScrim ()I
+	public final fun getSecondary ()I
+	public final fun getSuccess ()I
+	public final fun getSurface ()I
+	public final fun getSurfaceVariant ()I
+	public final fun getWarning ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/views/theme/CabinThemeResolver {
+	public static final field INSTANCE Ldev/decoupled/cabin/views/theme/CabinThemeResolver;
+	public final fun color (Landroid/content/Context;I)I
+	public final fun colorSchemeOf (Landroid/content/Context;)Ldev/decoupled/cabin/tokens/CabinColorScheme;
+	public final fun resolveColors (Landroid/content/Context;)Ldev/decoupled/cabin/views/theme/CabinResolvedColors;
+	public final fun wrap (Landroid/content/Context;I)Landroid/content/Context;
+}
+
+public final class dev/decoupled/cabin/views/theme/CabinThemes {
+	public static final field INSTANCE Ldev/decoupled/cabin/views/theme/CabinThemes;
+	public final fun getThemeCabin ()I
+	public final fun getThemeCabinDayNight ()I
+	public final fun getThemeOverlayCabin ()I
+	public final fun getThemeOverlayCabinOemBrandDemo ()I
+}
+
+public final class dev/decoupled/cabin/views/theme/CabinThemes$Attr {
+	public static final field INSTANCE Ldev/decoupled/cabin/views/theme/CabinThemes$Attr;
+	public final fun getColorAdasActive ()I
+	public final fun getColorCharging ()I
+	public final fun getColorClimate ()I
+	public final fun getColorContainer ()I
+	public final fun getColorCritical ()I
+	public final fun getColorError ()I
+	public final fun getColorFocusRing ()I
+	public final fun getColorMediaAccent ()I
+	public final fun getColorOnContainer ()I
+	public final fun getColorOnPrimary ()I
+	public final fun getColorOnSecondary ()I
+	public final fun getColorOnSurface ()I
+	public final fun getColorOutline ()I
+	public final fun getColorPrimary ()I
+	public final fun getColorPrivacy ()I
+	public final fun getColorScrim ()I
+	public final fun getColorSecondary ()I
+	public final fun getColorSuccess ()I
+	public final fun getColorSurface ()I
+	public final fun getColorSurfaceVariant ()I
+	public final fun getColorWarning ()I
+}
+

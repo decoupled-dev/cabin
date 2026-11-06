@@ -1,0 +1,90 @@
+#
+# Copyright (C) 2026 The Cabin Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+# Cabin detekt config: detekt defaults plus Compose-aware adjustments.
+# Rationale: docs/quality.md. Existing findings: <module>/detekt-baseline.xml.
+
+config:
+  validation: true
+  warningsAsErrors: false
+
+complexity:
+  LongParameterList:
+    # Composables take many optional, defaulted parameters by design.
+    ignoreAnnotated: ['Composable']
+    functionThreshold: 8
+    constructorThreshold: 12
+    ignoreDefaultParameters: true
+  LongMethod:
+    threshold: 80
+    ignoreAnnotated: ['Composable']
+  CyclomaticComplexMethod:
+    threshold: 20
+    ignoreAnnotated: ['Composable']
+  TooManyFunctions:
+    thresholdInFiles: 25
+    thresholdInClasses: 20
+    thresholdInObjects: 25
+    ignorePrivate: true
+
+naming:
+  FunctionNaming:
+    # Composables are PascalCase by Compose API guidelines.
+    ignoreAnnotated: ['Composable']
+  TopLevelPropertyNaming:
+    constantPattern: '[A-Z][A-Za-z0-9]*'
+  MatchingDeclarationName:
+    active: false
+
+style:
+  MagicNumber:
+    # Layout values live in CabinKitMetrics / tokens; composables still need small literals.
+    ignoreAnnotated: ['Composable']
+    ignorePropertyDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+    ignoreNamedArgument: true
+    excludes: ['**/test/**', '**/*Metrics.kt', '**/CabinIcons.kt', '**/*Samples.kt']
+  MaxLineLength:
+    maxLineLength: 140
+    excludeCommentStatements: true
+  UnusedPrivateMember:
+    ignoreAnnotated: ['Preview']
+  ReturnCount:
+    max: 3
+  WildcardImport:
+    active: true
+  ForbiddenComment:
+    comments:
+      - value: 'FIXME'
+        reason: 'Fix before merging or file an issue.'
+      - value: 'STOPSHIP'
+        reason: 'Must be resolved before release.'
+
+formatting:
+  # ktlint rules via detekt-formatting. 'detekt --auto-correct' fixes most of these.
+  MaximumLineLength:
+    maxLineLength: 140
+  FunctionNaming:
+    active: false
+  Filename:
+    active: false
+  NoWildcardImports:
+    active: true
+  TrailingCommaOnCallSite:
+    active: true
+    useTrailingCommaOnCallSite: true
+  TrailingCommaOnDeclarationSite:
+    active: true
+    useTrailingCommaOnDeclarationSite: true

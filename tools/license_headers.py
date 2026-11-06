@@ -55,6 +55,8 @@ _LINES = [
 
 EXCLUDED_PREFIXES = ("apps/", "website/", "node_modules/", "reports/", "research_notes/")
 SUFFIXES = {".kt", ".kts", ".java", ".py", ".bp", ".xml", ".css"}
+# Tool-written files that are regenerated wholesale (a header would be dropped).
+EXCLUDED_NAMES = {"lint-baseline.xml", "detekt-baseline.xml"}
 
 
 def _block() -> str:
@@ -75,7 +77,7 @@ def _xml() -> str:
 
 
 def applies_to(path: Path) -> bool:
-    return path.suffix in SUFFIXES
+    return path.suffix in SUFFIXES and path.name not in EXCLUDED_NAMES
 
 
 def has_header(text: str) -> bool:

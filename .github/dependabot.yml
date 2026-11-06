@@ -1,0 +1,17 @@
+# Keep build tooling and actions current; review each bump like any change.
+version: 2
+updates:
+  - package-ecosystem: gradle
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      androidx-compose:
+        patterns: ["androidx.compose*"]
+      quality-tooling:
+        patterns: ["io.gitlab.arturbosch.detekt*", "org.jetbrains.kotlinx.binary-compatibility-validator"]
+    open-pull-requests-limit: 5
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly

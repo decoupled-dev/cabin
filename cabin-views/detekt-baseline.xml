@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>CyclomaticComplexMethod:CabinScaffoldView.kt$CabinScaffoldView$private fun applyVisuals()</ID>
+    <ID>MagicNumber:CabinClimateTileView.kt$CabinClimateTileView$3</ID>
+    <ID>MagicNumber:CabinMediaNowPlayingView.kt$CabinMediaNowPlayingView.Companion$1000L</ID>
+    <ID>MagicNumber:CabinMediaNowPlayingView.kt$CabinMediaNowPlayingView.Companion$60L</ID>
+    <ID>MagicNumber:CabinScaffoldView.kt$CabinScaffoldView$3</ID>
+    <ID>MagicNumber:CabinStatusBarView.kt$CabinStatusBarView$0.4f</ID>
+    <ID>MagicNumber:CabinStatusBarView.kt$CabinStatusBarView$0.55f</ID>
+    <ID>MagicNumber:CabinSystemBarView.kt$CabinSystemBarView$0.4f</ID>
+    <ID>MagicNumber:CabinSystemBarView.kt$CabinSystemBarView$0.55f</ID>
+    <ID>MagicNumber:GateVisuals.kt$GateVisuals$0.4f</ID>
+    <ID>MagicNumber:GateVisuals.kt$GateVisuals$0.55f</ID>
+    <ID>MagicNumber:GateVisuals.kt$GateVisuals$0.75f</ID>
+    <ID>MagicNumber:GateVisuals.kt$GateVisuals$0.7f</ID>
+    <ID>NestedBlockDepth:CabinSystemBarView.kt$CabinSystemBarView$private fun applyContentColor(row: LinearLayout, color: Int)</ID>
+    <ID>ReturnCount:CabinSystemBarView.kt$CabinSystemBarView$@VisibleForTesting internal fun findEntryView(id: String): View?</ID>
+  </CurrentIssues>
+</SmellBaseline>

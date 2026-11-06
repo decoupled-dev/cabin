@@ -1,0 +1,143 @@
+# Cabin quality pipeline. Same stages as `tools/quality.sh` (see docs/quality.md).
+#
+#   gates   — license headers, Cabin rules, Soong thin deps, codegen drift, tool tests (no Android SDK)
+#   commits — Conventional Commits; DCO sign-off when repo variable CABIN_ENFORCE_DCO == 'true' (PRs)
+#   static  — detekt, Android Lint, public API check; SARIF uploaded to code scanning
+#   tests   — unit tests + reference-screen screenshots as an artifact
+name: Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    name: Gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fast gates
+        run: tools/quality.sh fast
+
+  commits:
+    name: Commit standards
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Conventional Commits (+ DCO when enforced)
+        env:
+          RANGE: ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}
+          ENFORCE_DCO: ${{ vars.CABIN_ENFORCE_DCO }}
+        run: |
+          args=("$RANGE")
+          if [ "$ENFORCE_DCO" = "true" ]; then args+=(--require-signoff); fi
+          python3 tools/check_commits.py "${args[@]}"
+
+  dependency-review:
+    name: Dependency review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/dependency-review-action@v4
+        with:
+          fail-on-severity: high
+          # Apache-2.0 project: block copyleft licenses in new dependencies.
+          deny-licenses: GPL-2.0-only, GPL-3.0-only, AGPL-3.0-only, LGPL-2.1-only, LGPL-3.0-only
+
+  static:
+    name: Static analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gradle/actions/wrapper-validation@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools platforms;android-34"
+      - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
+      - name: detekt, Android Lint, public API
+        run: tools/quality.sh static
+      - name: Collect SARIF
+        if: always()
+        run: |
+          mkdir -p sarif
+          find . -path ./sarif -prune -o \( -name 'detekt.sarif' -o -name 'lint-results-debug.sarif' \) -print \
+            | while read -r f; do cp "$f" "sarif/$(echo "$f" | tr '/' '_' | sed 's/^\._//')"; done
+      - name: Upload SARIF to code scanning
+        if: always() && hashFiles('sarif/*.sarif') != ''
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: sarif
+          category: cabin-static
+      - name: Upload reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-reports
+          path: |
+            **/build/reports/detekt/
+            **/build/reports/lint-results-*.html
+          if-no-files-found: ignore
+
+  tests:
+    name: Unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: gradle/actions/setup-gradle@v4
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: "platform-tools platforms;android-34"
+      - run: echo "sdk.dir=$ANDROID_HOME" > local.properties
+      - name: Unit tests
+        run: tools/quality.sh test
+      - name: Upload screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: showcase-shots
+          path: |
+            cabin-screens/build/showcase-shots/
+            catalog/build/showcase-shots/
+          if-no-files-found: ignore
+      - name: Upload test reports
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-reports
+          path: |
+            **/build/reports/tests/
+            **/build/test-results/
+          if-no-files-found: ignore

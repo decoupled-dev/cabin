@@ -1,0 +1,469 @@
+public final class dev/decoupled/cabin/tokens/CabinActiveStyle : java/lang/Enum {
+	public static final field Invert Ldev/decoupled/cabin/tokens/CabinActiveStyle;
+	public static final field Solid Ldev/decoupled/cabin/tokens/CabinActiveStyle;
+	public static final field Tonal Ldev/decoupled/cabin/tokens/CabinActiveStyle;
+	public static final field Underline Ldev/decoupled/cabin/tokens/CabinActiveStyle;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/decoupled/cabin/tokens/CabinActiveStyle;
+	public static fun values ()[Ldev/decoupled/cabin/tokens/CabinActiveStyle;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinColor {
+	public static final field Companion Ldev/decoupled/cabin/tokens/CabinColor$Companion;
+	public static final field LOCK_SAFETY_ADJACENT Ljava/lang/String;
+	public fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+	public synthetic fun <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun copy (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ldev/decoupled/cabin/tokens/CabinColor;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/tokens/CabinColor;ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Ldev/decoupled/cabin/tokens/CabinColor;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArgb ()I
+	public final fun getHex ()Ljava/lang/String;
+	public final fun getLock ()Ljava/lang/String;
+	public final fun getResourceName ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isSafetyLocked ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinColor$Companion {
+}
+
+public final class dev/decoupled/cabin/tokens/CabinColorScheme : java/lang/Enum {
+	public static final field Day Ldev/decoupled/cabin/tokens/CabinColorScheme;
+	public static final field Night Ldev/decoupled/cabin/tokens/CabinColorScheme;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/decoupled/cabin/tokens/CabinColorScheme;
+	public static fun values ()[Ldev/decoupled/cabin/tokens/CabinColorScheme;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinColorSchemeColors {
+	public fun <init> (Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;)V
+	public final fun component1 ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun component2 ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun component3 ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun component4 ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun component5 ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun component6 ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun component7 ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun component8 ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun component9 ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun copy (Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;)Ldev/decoupled/cabin/tokens/CabinColorSchemeColors;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/tokens/CabinColorSchemeColors;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;Ldev/decoupled/cabin/tokens/CabinColor;ILjava/lang/Object;)Ldev/decoupled/cabin/tokens/CabinColorSchemeColors;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCharging ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getContainer ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getError ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getOnContainer ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getOnSurface ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getOutline ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getSurface ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getSurfaceVariant ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getWarning ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinEdgeStyle : java/lang/Enum {
+	public static final field Glass Ldev/decoupled/cabin/tokens/CabinEdgeStyle;
+	public static final field Line Ldev/decoupled/cabin/tokens/CabinEdgeStyle;
+	public static final field None Ldev/decoupled/cabin/tokens/CabinEdgeStyle;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/decoupled/cabin/tokens/CabinEdgeStyle;
+	public static fun values ()[Ldev/decoupled/cabin/tokens/CabinEdgeStyle;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinLook : java/lang/Enum {
+	public static final field Glass Ldev/decoupled/cabin/tokens/CabinLook;
+	public static final field Graphic Ldev/decoupled/cabin/tokens/CabinLook;
+	public static final field Mono Ldev/decoupled/cabin/tokens/CabinLook;
+	public static final field Precision Ldev/decoupled/cabin/tokens/CabinLook;
+	public static final field Quiet Ldev/decoupled/cabin/tokens/CabinLook;
+	public static final field Warm Ldev/decoupled/cabin/tokens/CabinLook;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/decoupled/cabin/tokens/CabinLook;
+	public static fun values ()[Ldev/decoupled/cabin/tokens/CabinLook;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinLookScheme {
+	public fun <init> (IIIIIIIIIIILjava/lang/Integer;Ljava/lang/Integer;)V
+	public final fun component1 ()I
+	public final fun component10 ()I
+	public final fun component11 ()I
+	public final fun component12 ()Ljava/lang/Integer;
+	public final fun component13 ()Ljava/lang/Integer;
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun component7 ()I
+	public final fun component8 ()I
+	public final fun component9 ()I
+	public final fun copy (IIIIIIIIIIILjava/lang/Integer;Ljava/lang/Integer;)Ldev/decoupled/cabin/tokens/CabinLookScheme;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/tokens/CabinLookScheme;IIIIIIIIIIILjava/lang/Integer;Ljava/lang/Integer;ILjava/lang/Object;)Ldev/decoupled/cabin/tokens/CabinLookScheme;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBackdropGlowEnd ()Ljava/lang/Integer;
+	public final fun getBackdropGlowStart ()Ljava/lang/Integer;
+	public final fun getBackground ()I
+	public final fun getOnPrimary ()I
+	public final fun getOnPrimaryContainer ()I
+	public final fun getOnSurface ()I
+	public final fun getOnSurfaceMuted ()I
+	public final fun getOnSurfaceVariant ()I
+	public final fun getOutline ()I
+	public final fun getPrimary ()I
+	public final fun getPrimaryContainer ()I
+	public final fun getSurface ()I
+	public final fun getSurfaceContainerHigh ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinLookSpec {
+	public static final field Companion Ldev/decoupled/cabin/tokens/CabinLookSpec$Companion;
+	public static final field PILL_THRESHOLD_DP F
+	public fun <init> (Ldev/decoupled/cabin/tokens/CabinLook;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIIZFFFFLdev/decoupled/cabin/tokens/CabinActiveStyle;Ldev/decoupled/cabin/tokens/CabinEdgeStyle;Ldev/decoupled/cabin/tokens/CabinLookScheme;Ldev/decoupled/cabin/tokens/CabinLookScheme;)V
+	public final fun component1 ()Ldev/decoupled/cabin/tokens/CabinLook;
+	public final fun component10 ()Z
+	public final fun component11 ()F
+	public final fun component12 ()F
+	public final fun component13 ()F
+	public final fun component14 ()F
+	public final fun component15 ()Ldev/decoupled/cabin/tokens/CabinActiveStyle;
+	public final fun component16 ()Ldev/decoupled/cabin/tokens/CabinEdgeStyle;
+	public final fun component17 ()Ldev/decoupled/cabin/tokens/CabinLookScheme;
+	public final fun component18 ()Ldev/decoupled/cabin/tokens/CabinLookScheme;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()I
+	public final fun component8 ()I
+	public final fun component9 ()I
+	public final fun copy (Ldev/decoupled/cabin/tokens/CabinLook;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIIZFFFFLdev/decoupled/cabin/tokens/CabinActiveStyle;Ldev/decoupled/cabin/tokens/CabinEdgeStyle;Ldev/decoupled/cabin/tokens/CabinLookScheme;Ldev/decoupled/cabin/tokens/CabinLookScheme;)Ldev/decoupled/cabin/tokens/CabinLookSpec;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/tokens/CabinLookSpec;Ldev/decoupled/cabin/tokens/CabinLook;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IIIZFFFFLdev/decoupled/cabin/tokens/CabinActiveStyle;Ldev/decoupled/cabin/tokens/CabinEdgeStyle;Ldev/decoupled/cabin/tokens/CabinLookScheme;Ldev/decoupled/cabin/tokens/CabinLookScheme;ILjava/lang/Object;)Ldev/decoupled/cabin/tokens/CabinLookSpec;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getActiveStyle ()Ldev/decoupled/cabin/tokens/CabinActiveStyle;
+	public final fun getControlIsPill ()Z
+	public final fun getCornerControlDp ()F
+	public final fun getCornerLargeDp ()F
+	public final fun getCornerMediumDp ()F
+	public final fun getDay ()Ldev/decoupled/cabin/tokens/CabinLookScheme;
+	public final fun getDescription ()Ljava/lang/String;
+	public final fun getDisplayFontFamily ()Ljava/lang/String;
+	public final fun getDisplayName ()Ljava/lang/String;
+	public final fun getDisplayWeight ()I
+	public final fun getEdge ()Ldev/decoupled/cabin/tokens/CabinEdgeStyle;
+	public final fun getLabelAllCaps ()Z
+	public final fun getLabelFontFamily ()Ljava/lang/String;
+	public final fun getLabelTrackingEm ()F
+	public final fun getLabelWeight ()I
+	public final fun getLook ()Ldev/decoupled/cabin/tokens/CabinLook;
+	public final fun getNight ()Ldev/decoupled/cabin/tokens/CabinLookScheme;
+	public final fun getTitleWeight ()I
+	public final fun getUiFontFamily ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun scheme (Ldev/decoupled/cabin/tokens/CabinColorScheme;)Ldev/decoupled/cabin/tokens/CabinLookScheme;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinLookSpec$Companion {
+}
+
+public final class dev/decoupled/cabin/tokens/CabinLooks {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinLooks;
+	public static final field SOURCE_VERSION Ljava/lang/String;
+	public final fun getAll ()Ljava/util/List;
+	public final fun getDefault ()Ldev/decoupled/cabin/tokens/CabinLook;
+	public final fun spec (Ldev/decoupled/cabin/tokens/CabinLook;)Ldev/decoupled/cabin/tokens/CabinLookSpec;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinLooks$Safety {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinLooks$Safety;
+	public final fun getDay ()Ldev/decoupled/cabin/tokens/CabinSafetyScheme;
+	public final fun getNight ()Ldev/decoupled/cabin/tokens/CabinSafetyScheme;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinMeasure {
+	public fun <init> (FLdev/decoupled/cabin/tokens/CabinUnit;Ljava/lang/String;)V
+	public final fun component1 ()F
+	public final fun component2 ()Ldev/decoupled/cabin/tokens/CabinUnit;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (FLdev/decoupled/cabin/tokens/CabinUnit;Ljava/lang/String;)Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/tokens/CabinMeasure;FLdev/decoupled/cabin/tokens/CabinUnit;Ljava/lang/String;ILjava/lang/Object;)Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getDp ()F
+	public final fun getMs ()I
+	public final fun getResourceName ()Ljava/lang/String;
+	public final fun getSp ()F
+	public final fun getUnit ()Ldev/decoupled/cabin/tokens/CabinUnit;
+	public final fun getValue ()F
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinSafetyScheme {
+	public fun <init> (IIIIII)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()I
+	public final fun component6 ()I
+	public final fun copy (IIIIII)Ldev/decoupled/cabin/tokens/CabinSafetyScheme;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/tokens/CabinSafetyScheme;IIIIIIILjava/lang/Object;)Ldev/decoupled/cabin/tokens/CabinSafetyScheme;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCharging ()I
+	public final fun getChargingContainer ()I
+	public final fun getError ()I
+	public final fun getErrorContainer ()I
+	public final fun getWarning ()I
+	public final fun getWarningContainer ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens;
+	public static final field SOURCE_PATH Ljava/lang/String;
+	public static final field SOURCE_VERSION Ljava/lang/String;
+	public final fun colorScheme (Ldev/decoupled/cabin/tokens/CabinColorScheme;)Ldev/decoupled/cabin/tokens/CabinColorSchemeColors;
+	public final fun getNightContrastLockedSchemeColors ()Ljava/util/Set;
+	public final fun getSafetyLockedSemanticColors ()Ljava/util/Set;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Color {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Color;
+	public final fun scheme (Ldev/decoupled/cabin/tokens/CabinColorScheme;)Ldev/decoupled/cabin/tokens/CabinColorSchemeColors;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Color$Semantic {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Color$Semantic;
+	public final fun getAdasActive ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getCharging ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getClimate ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getCritical ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getError ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getFocusRing ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getMediaAccent ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getOnPrimary ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getOnSecondary ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getOnSurface ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getOutline ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getPrimary ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getPrivacy ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getScrim ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getSecondary ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getSuccess ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getSurface ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getSurfaceVariant ()Ldev/decoupled/cabin/tokens/CabinColor;
+	public final fun getWarning ()Ldev/decoupled/cabin/tokens/CabinColor;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Component {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Component;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Component$ClimateTile {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Component$ClimateTile;
+	public final fun getControlMinSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getCornerRadius ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getGap ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getPadding ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Component$MediaNowPlaying {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Component$MediaNowPlaying;
+	public final fun getArtworkSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getCornerRadius ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getGap ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getPadding ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getTransportMinSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Component$StatusBar {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Component$StatusBar;
+	public final fun getHeight ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getIconSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getItemGap ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Component$SystemBar {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Component$SystemBar;
+	public final fun getGap ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getHeight ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getIconSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getItemMinSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Elevation {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Elevation;
+	public final fun getLevel0 ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getLevel1 ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getLevel2 ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Focus {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Focus;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Focus$Ring {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Focus$Ring;
+	public final fun getWidth ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Focus$Rotary {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Focus$Rotary;
+	public final fun getHighlightWidth ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Motion {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Motion;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Motion$DrivingCap {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Motion$DrivingCap;
+	public static final field durationMs I
+	public static final field durationResourceName Ljava/lang/String;
+	public static final field easing Ljava/lang/String;
+	public static final field easingResourceName Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Motion$Fast {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Motion$Fast;
+	public static final field durationMs I
+	public static final field durationResourceName Ljava/lang/String;
+	public static final field easing Ljava/lang/String;
+	public static final field easingResourceName Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Motion$Medium {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Motion$Medium;
+	public static final field durationMs I
+	public static final field durationResourceName Ljava/lang/String;
+	public static final field easing Ljava/lang/String;
+	public static final field easingResourceName Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Motion$Reduced {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Motion$Reduced;
+	public static final field durationMs I
+	public static final field durationResourceName Ljava/lang/String;
+	public static final field easing Ljava/lang/String;
+	public static final field easingResourceName Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Motion$Slow {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Motion$Slow;
+	public static final field durationMs I
+	public static final field durationResourceName Ljava/lang/String;
+	public static final field easing Ljava/lang/String;
+	public static final field easingResourceName Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Shape {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Shape;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Shape$Corner {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Shape$Corner;
+	public final fun getLg ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getMd ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getNone ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getSm ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Size {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Size;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Size$Icon {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Size$Icon;
+	public final fun getStatus ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getSystemBar ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Size$Touch {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Size$Touch;
+	public final fun getMinimum ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Space {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Space;
+	public final fun getLg ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getMd ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getSm ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getXl ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getXs ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Type {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Type;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Type$Family {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Type$Family;
+	public static final field plain Ljava/lang/String;
+	public static final field plainResourceName Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Type$Role {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Type$Role;
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Type$Role$Body {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Type$Role$Body;
+	public final fun getLineHeight ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getWeight ()I
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Type$Role$Display {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Type$Role$Display;
+	public final fun getLineHeight ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getWeight ()I
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Type$Role$Headline {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Type$Role$Headline;
+	public final fun getLineHeight ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getWeight ()I
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Type$Role$Label {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Type$Role$Label;
+	public final fun getLineHeight ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getWeight ()I
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Type$Role$Status {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Type$Role$Status;
+	public final fun getLineHeight ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getWeight ()I
+}
+
+public final class dev/decoupled/cabin/tokens/CabinTokens$Type$Role$Title {
+	public static final field INSTANCE Ldev/decoupled/cabin/tokens/CabinTokens$Type$Role$Title;
+	public final fun getLineHeight ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getSize ()Ldev/decoupled/cabin/tokens/CabinMeasure;
+	public final fun getWeight ()I
+}
+
+public final class dev/decoupled/cabin/tokens/CabinUnit : java/lang/Enum {
+	public static final field DP Ldev/decoupled/cabin/tokens/CabinUnit;
+	public static final field MS Ldev/decoupled/cabin/tokens/CabinUnit;
+	public static final field SP Ldev/decoupled/cabin/tokens/CabinUnit;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/decoupled/cabin/tokens/CabinUnit;
+	public static fun values ()[Ldev/decoupled/cabin/tokens/CabinUnit;
+}
+

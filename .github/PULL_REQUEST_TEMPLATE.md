@@ -4,8 +4,8 @@
 
 ## Checklist
 
-- [ ] Unit tests pass (see CLAUDE.md for the full suite)
-- [ ] Gates pass: license headers, token and component drift, Soong thin deps
+- [ ] `tools/quality.sh` passes (gates, detekt, lint, public API, unit tests)
+- [ ] Public API changes are intended and `api/*.api` is updated
 - [ ] Tokens only (no hardcoded colors or dimensions in library code)
 - [ ] Interactions are gated through the Restriction Engine
 - [ ] Docs updated; planned APIs are labeled as planned

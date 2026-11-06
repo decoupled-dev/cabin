@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Cabin commit-msg: Conventional Commits subject (+ DCO sign-off when CABIN_REQUIRE_SIGNOFF=1).
+args=(--message-file "$1")
+[ "${CABIN_REQUIRE_SIGNOFF:-0}" = "1" ] && args+=(--require-signoff)
+exec python3 tools/check_commits.py "${args[@]}"

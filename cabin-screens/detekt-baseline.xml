@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>DestructuringDeclarationWithTooManyEntries:CabinScreenFrame.kt$(x, y, w, h)</ID>
+    <ID>NestedBlockDepth:CabinScreenShotsTest.kt$CabinScreenShotsTest$@Test fun renderAllScreensLooksAndSchemes()</ID>
+    <ID>NoSemicolons:CabinScreenShotsTest.kt$CabinScreenShotsTest$;</ID>
+  </CurrentIssues>
+</SmellBaseline>

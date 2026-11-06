@@ -1,0 +1,195 @@
+public abstract interface class dev/decoupled/cabin/compliance/CabinCompliance {
+	public abstract fun allows (Ldev/decoupled/cabin/compliance/CabinInteraction;Ldev/decoupled/cabin/compliance/VehicleUiState;)Z
+	public abstract fun disposition (Ldev/decoupled/cabin/compliance/CabinInteraction;Ldev/decoupled/cabin/compliance/VehicleUiState;)Ldev/decoupled/cabin/compliance/GateDisposition;
+	public abstract fun touchTargetMinDp (Ldev/decoupled/cabin/compliance/VehicleUiState;)I
+	public abstract fun uiMode (Ldev/decoupled/cabin/compliance/VehicleUiState;)Ldev/decoupled/cabin/compliance/CabinUiMode;
+}
+
+public final class dev/decoupled/cabin/compliance/CabinInteraction : java/lang/Enum {
+	public static final field FilterOrSort Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field Glance Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field HvacAdjust Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field HvacPeek Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field HvacQuick Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field MediaComplex Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field MediaTransport Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field NavigateSimple Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field OpenComplexApp Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field OpenKeyboard Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field ParkedOnly Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field StatusDeepLinkInformational Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field StatusDeepLinkSettings Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field VehicleAdjust Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static final field VehicleQuick Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/decoupled/cabin/compliance/CabinInteraction;
+	public static fun values ()[Ldev/decoupled/cabin/compliance/CabinInteraction;
+}
+
+public final class dev/decoupled/cabin/compliance/CabinRestrictionEngine : dev/decoupled/cabin/compliance/CabinCompliance {
+	public static final field Companion Ldev/decoupled/cabin/compliance/CabinRestrictionEngine$Companion;
+	public fun <init> ()V
+	public fun <init> (Ldev/decoupled/cabin/compliance/CabinUiMode;)V
+	public synthetic fun <init> (Ldev/decoupled/cabin/compliance/CabinUiMode;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun allows (Ldev/decoupled/cabin/compliance/CabinInteraction;Ldev/decoupled/cabin/compliance/VehicleUiState;)Z
+	public fun disposition (Ldev/decoupled/cabin/compliance/CabinInteraction;Ldev/decoupled/cabin/compliance/VehicleUiState;)Ldev/decoupled/cabin/compliance/GateDisposition;
+	public fun touchTargetMinDp (Ldev/decoupled/cabin/compliance/VehicleUiState;)I
+	public fun uiMode (Ldev/decoupled/cabin/compliance/VehicleUiState;)Ldev/decoupled/cabin/compliance/CabinUiMode;
+}
+
+public final class dev/decoupled/cabin/compliance/CabinRestrictionEngine$Companion {
+	public final fun getDefault ()Ldev/decoupled/cabin/compliance/CabinCompliance;
+}
+
+public final class dev/decoupled/cabin/compliance/CabinUiMode : java/lang/Enum {
+	public static final field Idling Ldev/decoupled/cabin/compliance/CabinUiMode;
+	public static final field Moving Ldev/decoupled/cabin/compliance/CabinUiMode;
+	public static final field Parked Ldev/decoupled/cabin/compliance/CabinUiMode;
+	public static final field Restricted Ldev/decoupled/cabin/compliance/CabinUiMode;
+	public static final field Unknown Ldev/decoupled/cabin/compliance/CabinUiMode;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/decoupled/cabin/compliance/CabinUiMode;
+	public static fun values ()[Ldev/decoupled/cabin/compliance/CabinUiMode;
+}
+
+public final class dev/decoupled/cabin/compliance/GateDisposition : java/lang/Enum {
+	public static final field Allow Ldev/decoupled/cabin/compliance/GateDisposition;
+	public static final field Block Ldev/decoupled/cabin/compliance/GateDisposition;
+	public static final field Substitute Ldev/decoupled/cabin/compliance/GateDisposition;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/decoupled/cabin/compliance/GateDisposition;
+	public static fun values ()[Ldev/decoupled/cabin/compliance/GateDisposition;
+}
+
+public abstract interface class dev/decoupled/cabin/compliance/Signal {
+}
+
+public final class dev/decoupled/cabin/compliance/Signal$Fault : dev/decoupled/cabin/compliance/Signal {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Ldev/decoupled/cabin/compliance/Signal$Fault;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/compliance/Signal$Fault;Ljava/lang/String;ILjava/lang/Object;)Ldev/decoupled/cabin/compliance/Signal$Fault;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/compliance/Signal$Stale : dev/decoupled/cabin/compliance/Signal {
+	public fun <init> (Ljava/lang/Object;J)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()J
+	public final fun copy (Ljava/lang/Object;J)Ldev/decoupled/cabin/compliance/Signal$Stale;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/compliance/Signal$Stale;Ljava/lang/Object;JILjava/lang/Object;)Ldev/decoupled/cabin/compliance/Signal$Stale;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAtMillis ()J
+	public final fun getLast ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/compliance/Signal$Unavailable : dev/decoupled/cabin/compliance/Signal {
+	public static final field INSTANCE Ldev/decoupled/cabin/compliance/Signal$Unavailable;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/compliance/Signal$Value : dev/decoupled/cabin/compliance/Signal {
+	public fun <init> (Ljava/lang/Object;J)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()J
+	public final fun copy (Ljava/lang/Object;J)Ldev/decoupled/cabin/compliance/Signal$Value;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/compliance/Signal$Value;Ljava/lang/Object;JILjava/lang/Object;)Ldev/decoupled/cabin/compliance/Signal$Value;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAtMillis ()J
+	public final fun getValue ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/compliance/UxRestriction : java/lang/Enum {
+	public static final field DistractionOptimized Ldev/decoupled/cabin/compliance/UxRestriction;
+	public static final field LimitStringLength Ldev/decoupled/cabin/compliance/UxRestriction;
+	public static final field NoFiltering Ldev/decoupled/cabin/compliance/UxRestriction;
+	public static final field NoKeyboard Ldev/decoupled/cabin/compliance/UxRestriction;
+	public static final field NoSetup Ldev/decoupled/cabin/compliance/UxRestriction;
+	public static final field NoVideo Ldev/decoupled/cabin/compliance/UxRestriction;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Ldev/decoupled/cabin/compliance/UxRestriction;
+	public static fun values ()[Ldev/decoupled/cabin/compliance/UxRestriction;
+}
+
+public final class dev/decoupled/cabin/compliance/VehicleUiState {
+	public static final field Companion Ldev/decoupled/cabin/compliance/VehicleUiState$Companion;
+	public static final field DEFAULT_MOVING_SPEED_THRESHOLD_KPH F
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Boolean;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/util/Set;FLjava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/Boolean;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/util/Set;FLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Boolean;
+	public final fun component2 ()Ljava/lang/Float;
+	public final fun component3 ()Ljava/lang/Boolean;
+	public final fun component4 ()Ljava/util/Set;
+	public final fun component5 ()F
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/Boolean;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/util/Set;FLjava/lang/String;)Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public static synthetic fun copy$default (Ldev/decoupled/cabin/compliance/VehicleUiState;Ljava/lang/Boolean;Ljava/lang/Float;Ljava/lang/Boolean;Ljava/util/Set;FLjava/lang/String;ILjava/lang/Object;)Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getLabel ()Ljava/lang/String;
+	public final fun getMovingSpeedThresholdKph ()F
+	public final fun getParkMode ()Ljava/lang/Boolean;
+	public final fun getSpeedKph ()Ljava/lang/Float;
+	public final fun getUxRestrictions ()Ljava/util/Set;
+	public fun hashCode ()I
+	public final fun isDriving ()Ljava/lang/Boolean;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class dev/decoupled/cabin/compliance/VehicleUiState$Companion {
+	public final fun idling ()Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public final fun moving (F)Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public static synthetic fun moving$default (Ldev/decoupled/cabin/compliance/VehicleUiState$Companion;FILjava/lang/Object;)Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public final fun parked ()Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public final fun restricted (F)Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public static synthetic fun restricted$default (Ldev/decoupled/cabin/compliance/VehicleUiState$Companion;FILjava/lang/Object;)Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public final fun unknown ()Ldev/decoupled/cabin/compliance/VehicleUiState;
+}
+
+public final class dev/decoupled/cabin/compliance/VehicleUiStateSimulator {
+	public static final field Companion Ldev/decoupled/cabin/compliance/VehicleUiStateSimulator$Companion;
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;)V
+	public synthetic fun <init> (Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getCurrent ()Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public final fun getIndex ()I
+	public final fun getSteps ()Ljava/util/List;
+	public final fun jumpTo (Ljava/lang/String;)Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public final fun next ()Ldev/decoupled/cabin/compliance/VehicleUiState;
+}
+
+public final class dev/decoupled/cabin/compliance/VehicleUiStateSimulator$Companion {
+	public final fun getDefaultDrive ()Ljava/util/List;
+}
+
+public final class dev/decoupled/cabin/compliance/car/CarUxRestrictionsMapping {
+	public static final field INSTANCE Ldev/decoupled/cabin/compliance/car/CarUxRestrictionsMapping;
+	public static final field UX_RESTRICTIONS_BASELINE I
+	public static final field UX_RESTRICTIONS_LIMIT_CONTENT I
+	public static final field UX_RESTRICTIONS_LIMIT_STRING_LENGTH I
+	public static final field UX_RESTRICTIONS_NO_DIALPAD I
+	public static final field UX_RESTRICTIONS_NO_FILTERING I
+	public static final field UX_RESTRICTIONS_NO_KEYBOARD I
+	public static final field UX_RESTRICTIONS_NO_SETUP I
+	public static final field UX_RESTRICTIONS_NO_TEXT_MESSAGE I
+	public static final field UX_RESTRICTIONS_NO_VIDEO I
+	public static final field UX_RESTRICTIONS_NO_VOICE_TRANSCRIPTION I
+	public final fun toVehicleUiState (ZILjava/lang/Boolean;Ljava/lang/Float;)Ldev/decoupled/cabin/compliance/VehicleUiState;
+	public static synthetic fun toVehicleUiState$default (Ldev/decoupled/cabin/compliance/car/CarUxRestrictionsMapping;ZILjava/lang/Boolean;Ljava/lang/Float;ILjava/lang/Object;)Ldev/decoupled/cabin/compliance/VehicleUiState;
+}
+
+public final class dev/decoupled/cabin/compliance/car/CarUxRestrictionsSource : java/lang/AutoCloseable {
+	public fun <init> (Landroid/content/Context;Lkotlin/jvm/functions/Function1;)V
+	public fun close ()V
+	public final fun getCurrent ()Ldev/decoupled/cabin/compliance/VehicleUiState;
+}
+
