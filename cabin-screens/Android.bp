@@ -1,0 +1,36 @@
+// Copyright (C) 2026 The Cabin Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// CabinScreens — Experimental reference screens (Home, Media, Climate).
+// Same sources as the Gradle module (:cabin-screens). ADR 0006.
+//
+// Apps only. NEVER add CabinScreens to SystemUI static_libs (Views-first).
+// Must NOT depend on CabinViews.
+
+android_library {
+    name: "CabinScreens",
+    defaults: ["CabinAndroidLibraryDefaults"],
+    visibility: ["//visibility:public"],
+    srcs: ["src/main/java/**/*.kt"],
+    resource_dirs: ["src/main/res"],
+    manifest: "src/main/AndroidManifest.xml",
+    kotlin_plugins: ["androidx.compose.compiler_compiler-hosted-plugin"],
+    static_libs: [
+        "CabinCompose",
+        "androidx.compose.runtime_runtime",
+        "androidx.compose.ui_ui",
+        "androidx.compose.foundation_foundation",
+        "androidx.compose.material3_material3",
+    ],
+}

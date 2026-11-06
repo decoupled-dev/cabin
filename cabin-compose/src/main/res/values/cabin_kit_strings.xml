@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Copyright (C) 2026 The Cabin Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<resources>
+    <!-- Signals -->
+    <string name="cabin_kit_value_unavailable">—</string>
+    <string name="cabin_kit_value_unavailable_a11y">Unavailable</string>
+    <string name="cabin_kit_value_stale_a11y">%1$s, not updated</string>
+
+    <!-- Media -->
+    <string name="cabin_kit_media_previous">Previous track</string>
+    <string name="cabin_kit_media_next">Next track</string>
+    <string name="cabin_kit_media_play">Play</string>
+    <string name="cabin_kit_media_pause">Pause</string>
+    <string name="cabin_kit_media_browse">Browse</string>
+    <string name="cabin_kit_media_browse_when_parked">Browse when parked</string>
+    <string name="cabin_kit_media_library_when_parked">Library opens when parked</string>
+    <string name="cabin_kit_media_up_next">Up next</string>
+    <string name="cabin_kit_media_no_source">Nothing playing</string>
+
+    <!-- Climate -->
+    <string name="cabin_kit_climate_temp_down">%1$s temperature down</string>
+    <string name="cabin_kit_climate_temp_up">%1$s temperature up</string>
+    <string name="cabin_kit_climate_temp_value">%1$s temperature %2$s</string>
+    <string name="cabin_kit_climate_seat_level">%1$s seat heat, level %2$d of %3$d</string>
+    <string name="cabin_kit_climate_seat_off">%1$s seat heat, off</string>
+    <string name="cabin_kit_climate_fan">Fan</string>
+    <string name="cabin_kit_climate_fan_auto">Auto</string>
+    <string name="cabin_kit_climate_fan_level">Fan level %1$s</string>
+    <string name="cabin_kit_climate_fan_off">Off</string>
+    <string name="cabin_kit_climate_ac">A/C</string>
+    <string name="cabin_kit_climate_recirculation">Recirc</string>
+    <string name="cabin_kit_climate_front_defrost">Front</string>
+    <string name="cabin_kit_climate_rear_defrost">Rear</string>
+    <string name="cabin_kit_climate_sync">Sync</string>
+    <string name="cabin_kit_climate_modes">Modes</string>
+    <string name="cabin_kit_climate_seats">Seats</string>
+    <string name="cabin_kit_state_on">On</string>
+    <string name="cabin_kit_state_off">Off</string>
+
+    <!-- Energy -->
+    <string name="cabin_kit_energy_battery">Battery</string>
+    <string name="cabin_kit_energy_charging">Charging</string>
+    <string name="cabin_kit_energy_low">Low battery</string>
+
+    <!-- Navigation -->
+    <string name="cabin_kit_nav_recenter">Recenter map</string>
+</resources>

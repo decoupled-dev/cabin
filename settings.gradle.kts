@@ -37,6 +37,7 @@ include(":cabin-compliance")
 include(":cabin-foundation")
 include(":cabin-views")
 include(":cabin-compose")
+include(":cabin-screens")
 include(":cabin-gauges")
 // Samples only — never a cabin-* publish / SystemUI dependency.
 include(":catalog")

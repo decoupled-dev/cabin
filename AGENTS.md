@@ -74,7 +74,8 @@ Full map: [docs/README.md](docs/README.md) · LLM map: [llms.txt](llms.txt).
     landing chrome or as a substitute for the `website/` docs shell.
 12. **AOSP-upstream bar.** New library code must build with Soong against AOSP
    prebuilts, carry an Apache-2.0 header, ship no fonts or GMS deps, and use
-   tokens only (no hex/dp literals). See [docs/adoption/aosp-upstream.md](docs/adoption/aosp-upstream.md).
+   tokens only: no color literals; dimensions come from tokens or
+   `CabinKitMetrics`; user-visible strings are resources. See [docs/adoption/aosp-upstream.md](docs/adoption/aosp-upstream.md).
 
 ## Soong vs Gradle
 
