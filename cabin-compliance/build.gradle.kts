@@ -20,6 +20,10 @@ android {
     kotlinOptions {
         jvmTarget = "17"
     }
+
+    // CarUxRestrictionsSource compiles against the optional android.car
+    // library; it is never packaged into the AAR (required = false).
+    useLibrary("android.car", false)
 }
 
 dependencies {

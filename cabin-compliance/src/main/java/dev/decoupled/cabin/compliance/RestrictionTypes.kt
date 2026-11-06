@@ -28,8 +28,15 @@ enum class CabinInteraction {
     MediaTransport,
     HvacPeek,
     /**
-     * ClimateTile temp / fan / seat-heat adjustments (full tile, not bar peek).
-     * Fail-closed while Moving / Restricted / Unknown.
+     * Single-tap climate controls: temperature step, fan level, seat heat /
+     * vent level, defrost, A/C, recirculation. Allowed in every mode — these
+     * are glanceable, single-step tasks, and defrost must never be blocked.
+     */
+    HvacQuick,
+    /**
+     * Multi-step climate setup (zone sync setup, schedules, preconditioning,
+     * the v0.1 ClimateTile). Fail-closed while Moving / Restricted / Unknown.
+     * Single-tap controls use [HvacQuick].
      */
     HvacAdjust,
     /**

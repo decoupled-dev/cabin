@@ -34,7 +34,8 @@ Notes:
 | `FilterOrSort` | Dense collection controls |
 | `MediaTransport` | Play/pause peek (if slotted into system bar) |
 | `HvacPeek` | Climate shortcut (if slotted) |
-| `HvacAdjust` | ClimateTile temp / fan / seat-heat adjustments |
+| `HvacQuick` | Single-tap climate: temperature step, fan level, seat heat, defrost, A/C, recirculation |
+| `HvacAdjust` | Multi-step climate setup (schedules, preconditioning, v0.1 ClimateTile) |
 | `MediaComplex` | Now-playing source picker, scrub/seek, queue entry |
 | `StatusDeepLink` | Tap status item → detail / settings |
 
@@ -50,7 +51,8 @@ Legend: **A** = allow · **S** = substitute/disable (keep layout if possible) ·
 | `NavigateSimple` | A | A | A | A |
 | `MediaTransport` | A | A | A | A |
 | `HvacPeek` | A | A | A | A / S¹ |
-| `HvacAdjust` (ClimateTile) | A | A | B | B |
+| `HvacQuick` | A | A | A | A |
+| `HvacAdjust` (setup, ClimateTile) | A | A | B | B |
 | `MediaComplex` | A | S | B | B |
 | `OpenComplexApp` | A | S | B | B |
 | `OpenKeyboard` | A | B | B | B |

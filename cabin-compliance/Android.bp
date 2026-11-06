@@ -13,4 +13,6 @@ android_library {
     static_libs: [
         "CabinTokens",
     ],
+    // CarUxRestrictionsSource; provided by the platform, never packaged.
+    libs: ["android.car"],
 }

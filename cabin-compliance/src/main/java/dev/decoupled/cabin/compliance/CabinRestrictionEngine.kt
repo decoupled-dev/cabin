@@ -11,7 +11,9 @@ import dev.decoupled.cabin.tokens.CabinTokens
  *   (fail-safe for complex chrome entry).
  * - Restricted + [CabinInteraction.HvacPeek] defaults to [GateDisposition.Allow]
  *   for a limited climate peek; programs may tighten to Substitute.
- * - [CabinInteraction.HvacAdjust] (ClimateTile) is **Block** while Moving /
+ * - [CabinInteraction.HvacQuick] (single-tap temp / fan / seat / defrost) is
+ *   **Allow** in every mode.
+ * - [CabinInteraction.HvacAdjust] (multi-step climate setup) is **Block** while Moving /
  *   Restricted / Unknown (fail-closed); Parked / Idling Allow.
  * - [CabinInteraction.MediaComplex] is Block while Moving / Restricted /
  *   Unknown; Idling Substitute; Parked Allow. [CabinInteraction.MediaTransport]
@@ -87,6 +89,7 @@ class CabinRestrictionEngine(
             CabinInteraction.NavigateSimple,
             CabinInteraction.MediaTransport,
             CabinInteraction.HvacPeek,
+            CabinInteraction.HvacQuick,
             -> GateDisposition.Allow
 
             CabinInteraction.HvacAdjust -> when (mode) {
