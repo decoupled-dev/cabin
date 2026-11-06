@@ -68,5 +68,61 @@ class GenerateCabinTokensTest(unittest.TestCase):
         self.assertEqual(gen.check_drift(), 0)
 
 
+    # ---- v0.2 look presets + locked safety tier (ADR 0006) ----
+
+    def test_looks_validate_clean(self) -> None:
+        self.assertEqual(gen.cabin_looks.validate(self.doc), [])
+
+    def test_look_must_not_define_safety_role(self) -> None:
+        doc = copy.deepcopy(self.doc)
+        doc["cabin"]["look"]["quiet"]["scheme"]["night"]["warning"] = {
+            "value": "#CDB894",
+            "type": "color",
+        }
+        errors = gen.cabin_looks.validate(doc)
+        self.assertTrue(any("must not define safety roles" in e for e in errors), errors)
+
+    def test_safety_requires_lock(self) -> None:
+        doc = copy.deepcopy(self.doc)
+        del doc["cabin"]["safety"]["day"]["error"]["extensions"]
+        errors = gen.cabin_looks.validate(doc)
+        self.assertTrue(any("cabin.safety.day.error" in e for e in errors), errors)
+
+    def test_low_contrast_text_role_fails(self) -> None:
+        doc = copy.deepcopy(self.doc)
+        doc["cabin"]["look"]["warm"]["scheme"]["day"]["onSurfaceMuted"]["value"] = "#B0B8C8"
+        errors = gen.cabin_looks.validate(doc)
+        self.assertTrue(any("warm" in e and "onSurfaceMuted" in e for e in errors), errors)
+
+    def test_translucent_surface_composited_over_background(self) -> None:
+        # Glass night surface is 8% white; text contrast must use the composite.
+        solid = gen.cabin_looks.composite("#FFFFFF14", "#070B12")
+        self.assertEqual(solid, (26, 30, 37))
+
+    def test_missing_scheme_role_fails(self) -> None:
+        doc = copy.deepcopy(self.doc)
+        del doc["cabin"]["look"]["mono"]["scheme"]["day"]["primary"]
+        errors = gen.cabin_looks.validate(doc)
+        self.assertIn("missing cabin.look.mono.scheme.day.primary", errors)
+
+    def test_generator_rejects_invalid_looks(self) -> None:
+        doc = copy.deepcopy(self.doc)
+        doc["cabin"]["look"]["default"]["value"] = "neon"
+        with self.assertRaises(SystemExit):
+            gen.collect_outputs(doc)
+
+    def test_looks_kotlin_lists_all_presets(self) -> None:
+        kotlin = gen.cabin_looks.build_kotlin(self.doc, "test")
+        for name in gen.cabin_looks.LOOK_ORDER:
+            self.assertIn(f"CabinLook.{name.capitalize()} ->", kotlin)
+        self.assertIn("Licensed under the Apache License", kotlin)
+
+    def test_looks_css_scopes_each_look_and_scheme(self) -> None:
+        css = gen.cabin_looks.build_css(self.doc, "test")
+        self.assertIn(':root, [data-cabin-look="quiet"]', css)
+        self.assertIn('[data-cabin-look="glass"][data-cabin-scheme="night"]', css)
+        self.assertIn("--cabin-safety-warning", css)
+
+
 if __name__ == "__main__":
     unittest.main()

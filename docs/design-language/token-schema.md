@@ -120,3 +120,36 @@ resolves schemes. Night `warning` / `error` / `charging` keep
 - [Tokens overview](tokens.md)
 - [MVP](../mvp.md)
 - [API contracts](../api-contracts.md)
+
+## Looks and the safety tier (v0.2, ADR 0006)
+
+`cabin.look.<name>` holds one preset per look: `quiet` (default), `precision`,
+`warm`, `glass`, `graphic`, `mono`. Each has:
+
+| Group | Keys |
+| --- | --- |
+| `scheme.{night,day}` | `background`, `surface`, `surfaceContainerHigh`, `outline`, `onSurface`, `onSurfaceVariant`, `onSurfaceMuted`, `primary`, `onPrimary`, `primaryContainer`, `onPrimaryContainer` (+ `backdropGlowStart/End` for Glass) |
+| `type` | `family.{ui,display,label}` (names only), `displayWeight`, `titleWeight`, `labelWeight`, `labelAllCaps`, `labelTracking` |
+| `shape` | `large`, `medium`, `control` (dp; ≥ 999 = pill) |
+| `style` | `activeStyle` (`tonal` / `underline` / `solid` / `invert`), `edge` (`none` / `line` / `glass`) |
+
+Role names follow Material 3, the vocabulary `com.android.oem.tokens` also
+uses. `onSurfaceMuted` is a Cabin extension.
+
+`cabin.safety.{night,day}` holds `warning`, `error`, `charging` and their
+`*Container` roles. They're shared by every look and carry
+`extensions["cabin.lock"] = "safety"`.
+
+Codegen (`tools/cabin_looks.py`) fails when:
+
+- a look defines a safety role, or a safety token loses its lock
+- a look is missing a role
+- a text role is below 4.5:1 on its surface (translucent surfaces are
+  composited over the background first)
+- a safety color is below 4.5:1 on any look's background or surface
+
+Outputs: `CabinLooks.generated.kt` (framework-free, `cabin-tokens`) and
+`tokens/generated/cabin.looks.css`.
+
+The contrast check corrected two canvas values: day warning `#9A6400` → `#905D00`
+and day charging `#1E8C4E` → `#1A7742` (both were under 4.5:1 on light backgrounds).

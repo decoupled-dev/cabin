@@ -9,7 +9,7 @@ class CabinTokensTest {
 
     @Test
     fun sourceMetadata_matchesStub() {
-        assertEquals("0.1.2-stub", CabinTokens.SOURCE_VERSION)
+        assertEquals("0.2.0-looks", CabinTokens.SOURCE_VERSION)
         assertEquals("tokens/cabin.tokens.json", CabinTokens.SOURCE_PATH)
     }
 

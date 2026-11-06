@@ -22,6 +22,9 @@ import re
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import cabin_looks  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 TOKENS_JSON = ROOT / "tokens" / "cabin.tokens.json"
 
@@ -57,6 +60,8 @@ COMPOSE_OUT = (
 CSS_WWW_OUT = ROOT / "apps" / "www" / "src" / "styles" / "cabin.tokens.css"
 CSS_GENERATED_OUT = ROOT / "tokens" / "generated" / "cabin.tokens.css"
 GENERATED_README = ROOT / "tokens" / "generated" / "README.md"
+LOOKS_KOTLIN_OUT = KOTLIN_OUT.with_name("CabinLooks.generated.kt")
+LOOKS_CSS_OUT = ROOT / "tokens" / "generated" / "cabin.looks.css"
 
 REQUIRED_NIGHT_LOCKS = ("warning", "error", "charging")
 LOCK_SAFETY = "safety-adjacent"
@@ -583,6 +588,11 @@ def generated_readme_text() -> str:
 
 def collect_outputs(doc: dict) -> dict[Path, str]:
     validate_safety_locks(doc)
+    look_errors = cabin_looks.validate(doc)
+    if look_errors:
+        raise SystemExit(
+            "error: look / safety tier check failed:\n  - " + "\n  - ".join(look_errors)
+        )
 
     cabin = doc["cabin"]
     version = doc.get("meta", {}).get("version", "0.0.0")
@@ -890,6 +900,8 @@ def collect_outputs(doc: dict) -> dict[Path, str]:
         CSS_WWW_OUT: css,
         CSS_GENERATED_OUT: css,
         GENERATED_README: generated_readme_text(),
+        LOOKS_KOTLIN_OUT: cabin_looks.build_kotlin(doc, version),
+        LOOKS_CSS_OUT: cabin_looks.build_css(doc, version),
     }
 
 

@@ -6,12 +6,12 @@ package dev.decoupled.cabin.tokens
  * Public Cabin token constants generated from `tokens/cabin.tokens.json`.
  *
  * Do not edit by hand -- run `python3 tools/generate_cabin_tokens.py`.
- * Stub version: 0.1.2-stub
+ * Stub version: 0.2.0-looks
  *
  * This module has no Compose, Views widget, AppCompat, or Material dependencies.
  */
 object CabinTokens {
-    const val SOURCE_VERSION: String = "0.1.2-stub"
+    const val SOURCE_VERSION: String = "0.2.0-looks"
     const val SOURCE_PATH: String = "tokens/cabin.tokens.json"
 
     /** Semantic color role names locked as safety-adjacent. */

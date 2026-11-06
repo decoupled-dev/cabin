@@ -4,10 +4,10 @@
   "title": "Cabin design tokens (stub)",
   "description": "Source-of-truth stub for Cabin tokens. Intended for Style Dictionary / codegen into cabin-tokens (Android resources + Kotlin). Not a published runtime format yet. See docs/design-language/token-schema.md.",
   "meta": {
-    "version": "0.1.2-stub",
+    "version": "0.2.0-looks",
     "status": "planned-stub",
     "naming": "cabin.{category}.{tier}.{name}",
-    "notes": "Day/night schemes include chrome roles (outline, container) and locked night contrast for warning/error/charging. Domain accents stay off body-text roles (onSurface/onContainer). Scaffold extras: critical/ADAS/privacy/focus colors, shape, focus rings, motion easing."
+    "notes": "Day/night schemes include chrome roles (outline, container) and locked night contrast for warning/error/charging. Domain accents stay off body-text roles (onSurface/onContainer). Scaffold extras: critical/ADAS/privacy/focus colors, shape, focus rings, motion easing. v0.2: cabin.look.* presets (Material 3 role names) over one schema; cabin.safety.* locked across looks (ADR 0006)."
   },
   "cabin": {
     "color": {
@@ -177,6 +177,362 @@
         "gap": { "$ref": "#/cabin/space/md" },
         "padding": { "$ref": "#/cabin/space/md" },
         "cornerRadius": { "value": "8", "type": "borderRadius", "unit": "dp" }
+      }
+    },
+    "look": {
+      "default": { "value": "quiet", "type": "other", "comment": "Preset used when a product does not pick one" },
+      "quiet": {
+        "meta": {
+          "displayName": "Quiet",
+          "description": "Calm luxury. Warm graphite, one champagne accent, soft shapes and light numerals."
+        },
+        "type": {
+          "family": {
+            "ui": { "value": "Manrope", "type": "fontFamilies" },
+            "display": { "value": "Manrope", "type": "fontFamilies" },
+            "label": { "value": "Manrope", "type": "fontFamilies" }
+          },
+          "displayWeight": { "value": "300", "type": "fontWeights" },
+          "titleWeight": { "value": "600", "type": "fontWeights" },
+          "labelWeight": { "value": "600", "type": "fontWeights" },
+          "labelAllCaps": { "value": false, "type": "boolean" },
+          "labelTracking": { "value": "0", "type": "letterSpacing", "unit": "em" }
+        },
+        "shape": {
+          "large": { "value": "28", "type": "borderRadius", "unit": "dp" },
+          "medium": { "value": "18", "type": "borderRadius", "unit": "dp" },
+          "control": { "value": "24", "type": "borderRadius", "unit": "dp", "comment": ">= 999 means fully rounded (pill)" }
+        },
+        "style": {
+          "activeStyle": { "value": "tonal", "type": "other", "comment": "tonal | underline | solid | invert" },
+          "edge": { "value": "none", "type": "other", "comment": "none | line | glass" }
+        },
+        "scheme": {
+          "night": {
+            "background": { "value": "#121110", "type": "color" },
+            "surface": { "value": "#1E1C1A", "type": "color" },
+            "surfaceContainerHigh": { "value": "#2C2926", "type": "color" },
+            "outline": { "value": "#3A3631", "type": "color" },
+            "onSurface": { "value": "#F2EEE8", "type": "color" },
+            "onSurfaceVariant": { "value": "#BDB6AC", "type": "color" },
+            "onSurfaceMuted": { "value": "#958F86", "type": "color" },
+            "primary": { "value": "#CDB894", "type": "color" },
+            "onPrimary": { "value": "#1A1712", "type": "color" },
+            "primaryContainer": { "value": "#3A3326", "type": "color" },
+            "onPrimaryContainer": { "value": "#E6D6B4", "type": "color" }
+          },
+          "day": {
+            "background": { "value": "#F4F1EC", "type": "color" },
+            "surface": { "value": "#FFFFFF", "type": "color" },
+            "surfaceContainerHigh": { "value": "#ECE7DF", "type": "color" },
+            "outline": { "value": "#D8D0C4", "type": "color" },
+            "onSurface": { "value": "#1C1A17", "type": "color" },
+            "onSurfaceVariant": { "value": "#4D4842", "type": "color" },
+            "onSurfaceMuted": { "value": "#6B655D", "type": "color" },
+            "primary": { "value": "#8A6F3E", "type": "color" },
+            "onPrimary": { "value": "#FFFFFF", "type": "color" },
+            "primaryContainer": { "value": "#F0E6D2", "type": "color" },
+            "onPrimaryContainer": { "value": "#5C4824", "type": "color" }
+          }
+        }
+      },
+      "precision": {
+        "meta": {
+          "displayName": "Precision",
+          "description": "Instrument-grade. True black, hairline rules, mono caps labels, tabular numbers."
+        },
+        "type": {
+          "family": {
+            "ui": { "value": "IBM Plex Sans", "type": "fontFamilies" },
+            "display": { "value": "IBM Plex Sans", "type": "fontFamilies" },
+            "label": { "value": "IBM Plex Mono", "type": "fontFamilies" }
+          },
+          "displayWeight": { "value": "300", "type": "fontWeights" },
+          "titleWeight": { "value": "500", "type": "fontWeights" },
+          "labelWeight": { "value": "400", "type": "fontWeights" },
+          "labelAllCaps": { "value": true, "type": "boolean" },
+          "labelTracking": { "value": "0.04", "type": "letterSpacing", "unit": "em" }
+        },
+        "shape": {
+          "large": { "value": "4", "type": "borderRadius", "unit": "dp" },
+          "medium": { "value": "2", "type": "borderRadius", "unit": "dp" },
+          "control": { "value": "4", "type": "borderRadius", "unit": "dp", "comment": ">= 999 means fully rounded (pill)" }
+        },
+        "style": {
+          "activeStyle": { "value": "underline", "type": "other", "comment": "tonal | underline | solid | invert" },
+          "edge": { "value": "line", "type": "other", "comment": "none | line | glass" }
+        },
+        "scheme": {
+          "night": {
+            "background": { "value": "#000000", "type": "color" },
+            "surface": { "value": "#0C0D0E", "type": "color" },
+            "surfaceContainerHigh": { "value": "#17191C", "type": "color" },
+            "outline": { "value": "#2A2E33", "type": "color" },
+            "onSurface": { "value": "#F5F6F7", "type": "color" },
+            "onSurfaceVariant": { "value": "#A9AFB6", "type": "color" },
+            "onSurfaceMuted": { "value": "#848B93", "type": "color" },
+            "primary": { "value": "#D4FF3F", "type": "color" },
+            "onPrimary": { "value": "#000000", "type": "color" },
+            "primaryContainer": { "value": "#1E2608", "type": "color" },
+            "onPrimaryContainer": { "value": "#D4FF3F", "type": "color" }
+          },
+          "day": {
+            "background": { "value": "#E9ECEF", "type": "color" },
+            "surface": { "value": "#FFFFFF", "type": "color" },
+            "surfaceContainerHigh": { "value": "#DDE1E5", "type": "color" },
+            "outline": { "value": "#B9C0C8", "type": "color" },
+            "onSurface": { "value": "#0A0B0C", "type": "color" },
+            "onSurfaceVariant": { "value": "#3A4048", "type": "color" },
+            "onSurfaceMuted": { "value": "#555C64", "type": "color" },
+            "primary": { "value": "#4D6B00", "type": "color" },
+            "onPrimary": { "value": "#FFFFFF", "type": "color" },
+            "primaryContainer": { "value": "#E3EDC8", "type": "color" },
+            "onPrimaryContainer": { "value": "#2F4200", "type": "color" }
+          }
+        }
+      },
+      "warm": {
+        "meta": {
+          "displayName": "Warm",
+          "description": "Friendly and tactile. Ink blue instead of black, chunky tonal tiles, pill controls."
+        },
+        "type": {
+          "family": {
+            "ui": { "value": "Plus Jakarta Sans", "type": "fontFamilies" },
+            "display": { "value": "Plus Jakarta Sans", "type": "fontFamilies" },
+            "label": { "value": "Plus Jakarta Sans", "type": "fontFamilies" }
+          },
+          "displayWeight": { "value": "700", "type": "fontWeights" },
+          "titleWeight": { "value": "700", "type": "fontWeights" },
+          "labelWeight": { "value": "600", "type": "fontWeights" },
+          "labelAllCaps": { "value": false, "type": "boolean" },
+          "labelTracking": { "value": "0", "type": "letterSpacing", "unit": "em" }
+        },
+        "shape": {
+          "large": { "value": "32", "type": "borderRadius", "unit": "dp" },
+          "medium": { "value": "22", "type": "borderRadius", "unit": "dp" },
+          "control": { "value": "999", "type": "borderRadius", "unit": "dp", "comment": ">= 999 means fully rounded (pill)" }
+        },
+        "style": {
+          "activeStyle": { "value": "tonal", "type": "other", "comment": "tonal | underline | solid | invert" },
+          "edge": { "value": "none", "type": "other", "comment": "none | line | glass" }
+        },
+        "scheme": {
+          "night": {
+            "background": { "value": "#0F1420", "type": "color" },
+            "surface": { "value": "#1B2338", "type": "color" },
+            "surfaceContainerHigh": { "value": "#27314B", "type": "color" },
+            "outline": { "value": "#34405E", "type": "color" },
+            "onSurface": { "value": "#EEF2FA", "type": "color" },
+            "onSurfaceVariant": { "value": "#B4BED2", "type": "color" },
+            "onSurfaceMuted": { "value": "#909BB3", "type": "color" },
+            "primary": { "value": "#8AB4FF", "type": "color" },
+            "onPrimary": { "value": "#0B1630", "type": "color" },
+            "primaryContainer": { "value": "#24375F", "type": "color" },
+            "onPrimaryContainer": { "value": "#B9D1FF", "type": "color" }
+          },
+          "day": {
+            "background": { "value": "#F3F5FA", "type": "color" },
+            "surface": { "value": "#FFFFFF", "type": "color" },
+            "surfaceContainerHigh": { "value": "#E4E9F2", "type": "color" },
+            "outline": { "value": "#CDD5E3", "type": "color" },
+            "onSurface": { "value": "#111827", "type": "color" },
+            "onSurfaceVariant": { "value": "#3F4A5E", "type": "color" },
+            "onSurfaceMuted": { "value": "#5A6478", "type": "color" },
+            "primary": { "value": "#2357C6", "type": "color" },
+            "onPrimary": { "value": "#FFFFFF", "type": "color" },
+            "primaryContainer": { "value": "#DCE6FB", "type": "color" },
+            "onPrimaryContainer": { "value": "#1A428F", "type": "color" }
+          }
+        }
+      },
+      "glass": {
+        "meta": {
+          "displayName": "Glass",
+          "description": "Layered and spatial. Frosted panels float over the map; depth instead of borders."
+        },
+        "type": {
+          "family": {
+            "ui": { "value": "Figtree", "type": "fontFamilies" },
+            "display": { "value": "Figtree", "type": "fontFamilies" },
+            "label": { "value": "Figtree", "type": "fontFamilies" }
+          },
+          "displayWeight": { "value": "500", "type": "fontWeights" },
+          "titleWeight": { "value": "600", "type": "fontWeights" },
+          "labelWeight": { "value": "600", "type": "fontWeights" },
+          "labelAllCaps": { "value": false, "type": "boolean" },
+          "labelTracking": { "value": "0", "type": "letterSpacing", "unit": "em" }
+        },
+        "shape": {
+          "large": { "value": "30", "type": "borderRadius", "unit": "dp" },
+          "medium": { "value": "20", "type": "borderRadius", "unit": "dp" },
+          "control": { "value": "999", "type": "borderRadius", "unit": "dp", "comment": ">= 999 means fully rounded (pill)" }
+        },
+        "style": {
+          "activeStyle": { "value": "tonal", "type": "other", "comment": "tonal | underline | solid | invert" },
+          "edge": { "value": "glass", "type": "other", "comment": "none | line | glass" }
+        },
+        "scheme": {
+          "night": {
+            "background": { "value": "#070B12", "type": "color" },
+            "surface": { "value": "#FFFFFF14", "type": "color" },
+            "surfaceContainerHigh": { "value": "#FFFFFF1F", "type": "color" },
+            "outline": { "value": "#FFFFFF29", "type": "color" },
+            "onSurface": { "value": "#F4F8FB", "type": "color" },
+            "onSurfaceVariant": { "value": "#C6D0DA", "type": "color" },
+            "onSurfaceMuted": { "value": "#9EAAB6", "type": "color" },
+            "primary": { "value": "#6EE7D8", "type": "color" },
+            "onPrimary": { "value": "#04201D", "type": "color" },
+            "primaryContainer": { "value": "#6EE7D82E", "type": "color" },
+            "onPrimaryContainer": { "value": "#9AF2E7", "type": "color" },
+            "backdropGlowStart": { "value": "#12324A", "type": "color", "comment": "Glass backdrop radial glow (top-left)" },
+            "backdropGlowEnd": { "value": "#2B2050", "type": "color", "comment": "Glass backdrop radial glow (bottom-right)" }
+          },
+          "day": {
+            "background": { "value": "#EEF2F6", "type": "color" },
+            "surface": { "value": "#FFFFFFB8", "type": "color" },
+            "surfaceContainerHigh": { "value": "#0A1E3212", "type": "color" },
+            "outline": { "value": "#FFFFFFF2", "type": "color" },
+            "onSurface": { "value": "#0B1520", "type": "color" },
+            "onSurfaceVariant": { "value": "#33414F", "type": "color" },
+            "onSurfaceMuted": { "value": "#4F5D6B", "type": "color" },
+            "primary": { "value": "#0B7A70", "type": "color" },
+            "onPrimary": { "value": "#FFFFFF", "type": "color" },
+            "primaryContainer": { "value": "#0B7A7024", "type": "color" },
+            "onPrimaryContainer": { "value": "#075E56", "type": "color" },
+            "backdropGlowStart": { "value": "#CBE6F1", "type": "color", "comment": "Glass backdrop radial glow (top-left)" },
+            "backdropGlowEnd": { "value": "#E2DBF6", "type": "color", "comment": "Glass backdrop radial glow (bottom-right)" }
+          }
+        }
+      },
+      "graphic": {
+        "meta": {
+          "displayName": "Graphic",
+          "description": "Bold and editorial. Flat color blocks, heavy grotesk type, solid violet active state."
+        },
+        "type": {
+          "family": {
+            "ui": { "value": "Space Grotesk", "type": "fontFamilies" },
+            "display": { "value": "Space Grotesk", "type": "fontFamilies" },
+            "label": { "value": "Space Grotesk", "type": "fontFamilies" }
+          },
+          "displayWeight": { "value": "700", "type": "fontWeights" },
+          "titleWeight": { "value": "700", "type": "fontWeights" },
+          "labelWeight": { "value": "700", "type": "fontWeights" },
+          "labelAllCaps": { "value": true, "type": "boolean" },
+          "labelTracking": { "value": "0.02", "type": "letterSpacing", "unit": "em" }
+        },
+        "shape": {
+          "large": { "value": "12", "type": "borderRadius", "unit": "dp" },
+          "medium": { "value": "8", "type": "borderRadius", "unit": "dp" },
+          "control": { "value": "12", "type": "borderRadius", "unit": "dp", "comment": ">= 999 means fully rounded (pill)" }
+        },
+        "style": {
+          "activeStyle": { "value": "solid", "type": "other", "comment": "tonal | underline | solid | invert" },
+          "edge": { "value": "none", "type": "other", "comment": "none | line | glass" }
+        },
+        "scheme": {
+          "night": {
+            "background": { "value": "#0B0B0F", "type": "color" },
+            "surface": { "value": "#17171F", "type": "color" },
+            "surfaceContainerHigh": { "value": "#25252F", "type": "color" },
+            "outline": { "value": "#33333F", "type": "color" },
+            "onSurface": { "value": "#FFFFFF", "type": "color" },
+            "onSurfaceVariant": { "value": "#C8C8D6", "type": "color" },
+            "onSurfaceMuted": { "value": "#9C9CB0", "type": "color" },
+            "primary": { "value": "#A78BFA", "type": "color" },
+            "onPrimary": { "value": "#120A2B", "type": "color" },
+            "primaryContainer": { "value": "#A78BFA", "type": "color" },
+            "onPrimaryContainer": { "value": "#120A2B", "type": "color" }
+          },
+          "day": {
+            "background": { "value": "#F5F5F7", "type": "color" },
+            "surface": { "value": "#FFFFFF", "type": "color" },
+            "surfaceContainerHigh": { "value": "#E8E8EE", "type": "color" },
+            "outline": { "value": "#CFCFDA", "type": "color" },
+            "onSurface": { "value": "#0B0B0F", "type": "color" },
+            "onSurfaceVariant": { "value": "#3A3A48", "type": "color" },
+            "onSurfaceMuted": { "value": "#565666", "type": "color" },
+            "primary": { "value": "#5B3FD6", "type": "color" },
+            "onPrimary": { "value": "#FFFFFF", "type": "color" },
+            "primaryContainer": { "value": "#5B3FD6", "type": "color" },
+            "onPrimaryContainer": { "value": "#FFFFFF", "type": "color" }
+          }
+        }
+      },
+      "mono": {
+        "meta": {
+          "displayName": "Mono",
+          "description": "Monochrome. Grayscale only, so warning, error and charging are the only color on screen."
+        },
+        "type": {
+          "family": {
+            "ui": { "value": "Instrument Sans", "type": "fontFamilies" },
+            "display": { "value": "Instrument Serif", "type": "fontFamilies" },
+            "label": { "value": "Instrument Sans", "type": "fontFamilies" }
+          },
+          "displayWeight": { "value": "400", "type": "fontWeights" },
+          "titleWeight": { "value": "600", "type": "fontWeights" },
+          "labelWeight": { "value": "500", "type": "fontWeights" },
+          "labelAllCaps": { "value": false, "type": "boolean" },
+          "labelTracking": { "value": "0", "type": "letterSpacing", "unit": "em" }
+        },
+        "shape": {
+          "large": { "value": "20", "type": "borderRadius", "unit": "dp" },
+          "medium": { "value": "14", "type": "borderRadius", "unit": "dp" },
+          "control": { "value": "999", "type": "borderRadius", "unit": "dp", "comment": ">= 999 means fully rounded (pill)" }
+        },
+        "style": {
+          "activeStyle": { "value": "invert", "type": "other", "comment": "tonal | underline | solid | invert" },
+          "edge": { "value": "none", "type": "other", "comment": "none | line | glass" }
+        },
+        "scheme": {
+          "night": {
+            "background": { "value": "#0A0A0A", "type": "color" },
+            "surface": { "value": "#161616", "type": "color" },
+            "surfaceContainerHigh": { "value": "#242424", "type": "color" },
+            "outline": { "value": "#333333", "type": "color" },
+            "onSurface": { "value": "#F4F4F4", "type": "color" },
+            "onSurfaceVariant": { "value": "#BDBDBD", "type": "color" },
+            "onSurfaceMuted": { "value": "#959595", "type": "color" },
+            "primary": { "value": "#F4F4F4", "type": "color" },
+            "onPrimary": { "value": "#0A0A0A", "type": "color" },
+            "primaryContainer": { "value": "#F4F4F4", "type": "color" },
+            "onPrimaryContainer": { "value": "#0A0A0A", "type": "color" }
+          },
+          "day": {
+            "background": { "value": "#F2F2F2", "type": "color" },
+            "surface": { "value": "#FFFFFF", "type": "color" },
+            "surfaceContainerHigh": { "value": "#E6E6E6", "type": "color" },
+            "outline": { "value": "#CFCFCF", "type": "color" },
+            "onSurface": { "value": "#0A0A0A", "type": "color" },
+            "onSurfaceVariant": { "value": "#3D3D3D", "type": "color" },
+            "onSurfaceMuted": { "value": "#5C5C5C", "type": "color" },
+            "primary": { "value": "#0A0A0A", "type": "color" },
+            "onPrimary": { "value": "#FFFFFF", "type": "color" },
+            "primaryContainer": { "value": "#0A0A0A", "type": "color" },
+            "onPrimaryContainer": { "value": "#FFFFFF", "type": "color" }
+          }
+        }
+      }
+    },
+    "safety": {
+      "comment": "Locked across every look. Looks must not define these roles (codegen fails).",
+      "night": {
+        "warning": { "value": "#FFB020", "type": "color", "extensions": { "cabin.lock": "safety" } },
+        "warningContainer": { "value": "#3A2A10", "type": "color", "extensions": { "cabin.lock": "safety" } },
+        "error": { "value": "#FF5A4E", "type": "color", "extensions": { "cabin.lock": "safety" } },
+        "errorContainer": { "value": "#3D1512", "type": "color", "extensions": { "cabin.lock": "safety" } },
+        "charging": { "value": "#3DDC84", "type": "color", "extensions": { "cabin.lock": "safety" } },
+        "chargingContainer": { "value": "#0F2E1E", "type": "color", "extensions": { "cabin.lock": "safety" } }
+      },
+      "day": {
+        "warning": { "value": "#905D00", "type": "color", "extensions": { "cabin.lock": "safety" } },
+        "warningContainer": { "value": "#FCEFD6", "type": "color", "extensions": { "cabin.lock": "safety" } },
+        "error": { "value": "#C2261B", "type": "color", "extensions": { "cabin.lock": "safety" } },
+        "errorContainer": { "value": "#FBE3E0", "type": "color", "extensions": { "cabin.lock": "safety" } },
+        "charging": { "value": "#1A7742", "type": "color", "extensions": { "cabin.lock": "safety" } },
+        "chargingContainer": { "value": "#DDF3E5", "type": "color", "extensions": { "cabin.lock": "safety" } }
       }
     }
   }

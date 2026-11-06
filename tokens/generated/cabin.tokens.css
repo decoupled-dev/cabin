@@ -1,6 +1,6 @@
 /*
  * GENERATED from tokens/cabin.tokens.json — do not edit by hand.
- * Stub version: 0.1.2-stub
+ * Stub version: 0.2.0-looks
  * Run: python3 tools/generate_cabin_tokens.py
  *
  * Same semantic names as Android (cabin_color_*) and Compose (CabinTokens).
@@ -8,7 +8,7 @@
  */
 
 :root {
-  --cabin-tokens-version: "0.1.2-stub";
+  --cabin-tokens-version: "0.2.0-looks";
   --cabin-type-family-plain: CabinSans, system-ui, sans-serif;
 
   /* Semantic colors */

@@ -1,0 +1,256 @@
+/*
+ * Cabin look presets -- generated from tokens/cabin.tokens.json.
+ * Do not edit by hand -- run `python3 tools/generate_cabin_tokens.py`.
+ * Source version: 0.2.0-looks
+ * Usage: <div data-cabin-look="quiet" data-cabin-scheme="night">
+ */
+
+[data-cabin-scheme="night"] {
+  --cabin-safety-warning: #FFB020;
+  --cabin-safety-warning-container: #3A2A10;
+  --cabin-safety-error: #FF5A4E;
+  --cabin-safety-error-container: #3D1512;
+  --cabin-safety-charging: #3DDC84;
+  --cabin-safety-charging-container: #0F2E1E;
+}
+
+[data-cabin-scheme="day"] {
+  --cabin-safety-warning: #905D00;
+  --cabin-safety-warning-container: #FCEFD6;
+  --cabin-safety-error: #C2261B;
+  --cabin-safety-error-container: #FBE3E0;
+  --cabin-safety-charging: #1A7742;
+  --cabin-safety-charging-container: #DDF3E5;
+}
+
+:root, [data-cabin-look="quiet"] {
+  --cabin-look-font-ui: 'Manrope', system-ui, sans-serif;
+  --cabin-look-font-display: 'Manrope', system-ui, sans-serif;
+  --cabin-look-font-label: 'Manrope', system-ui, sans-serif;
+  --cabin-look-display-weight: 300;
+  --cabin-look-radius-large: 28px;
+  --cabin-look-radius-medium: 18px;
+  --cabin-look-radius-control: 24px;
+}
+
+[data-cabin-look="quiet"][data-cabin-scheme="night"] {
+  --cabin-look-background: #121110;
+  --cabin-look-surface: #1E1C1A;
+  --cabin-look-surface-container-high: #2C2926;
+  --cabin-look-outline: #3A3631;
+  --cabin-look-on-surface: #F2EEE8;
+  --cabin-look-on-surface-variant: #BDB6AC;
+  --cabin-look-on-surface-muted: #958F86;
+  --cabin-look-primary: #CDB894;
+  --cabin-look-on-primary: #1A1712;
+  --cabin-look-primary-container: #3A3326;
+  --cabin-look-on-primary-container: #E6D6B4;
+}
+
+[data-cabin-look="quiet"][data-cabin-scheme="day"] {
+  --cabin-look-background: #F4F1EC;
+  --cabin-look-surface: #FFFFFF;
+  --cabin-look-surface-container-high: #ECE7DF;
+  --cabin-look-outline: #D8D0C4;
+  --cabin-look-on-surface: #1C1A17;
+  --cabin-look-on-surface-variant: #4D4842;
+  --cabin-look-on-surface-muted: #6B655D;
+  --cabin-look-primary: #8A6F3E;
+  --cabin-look-on-primary: #FFFFFF;
+  --cabin-look-primary-container: #F0E6D2;
+  --cabin-look-on-primary-container: #5C4824;
+}
+
+[data-cabin-look="precision"] {
+  --cabin-look-font-ui: 'IBM Plex Sans', system-ui, sans-serif;
+  --cabin-look-font-display: 'IBM Plex Sans', system-ui, sans-serif;
+  --cabin-look-font-label: 'IBM Plex Mono', system-ui, sans-serif;
+  --cabin-look-display-weight: 300;
+  --cabin-look-radius-large: 4px;
+  --cabin-look-radius-medium: 2px;
+  --cabin-look-radius-control: 4px;
+}
+
+[data-cabin-look="precision"][data-cabin-scheme="night"] {
+  --cabin-look-background: #000000;
+  --cabin-look-surface: #0C0D0E;
+  --cabin-look-surface-container-high: #17191C;
+  --cabin-look-outline: #2A2E33;
+  --cabin-look-on-surface: #F5F6F7;
+  --cabin-look-on-surface-variant: #A9AFB6;
+  --cabin-look-on-surface-muted: #848B93;
+  --cabin-look-primary: #D4FF3F;
+  --cabin-look-on-primary: #000000;
+  --cabin-look-primary-container: #1E2608;
+  --cabin-look-on-primary-container: #D4FF3F;
+}
+
+[data-cabin-look="precision"][data-cabin-scheme="day"] {
+  --cabin-look-background: #E9ECEF;
+  --cabin-look-surface: #FFFFFF;
+  --cabin-look-surface-container-high: #DDE1E5;
+  --cabin-look-outline: #B9C0C8;
+  --cabin-look-on-surface: #0A0B0C;
+  --cabin-look-on-surface-variant: #3A4048;
+  --cabin-look-on-surface-muted: #555C64;
+  --cabin-look-primary: #4D6B00;
+  --cabin-look-on-primary: #FFFFFF;
+  --cabin-look-primary-container: #E3EDC8;
+  --cabin-look-on-primary-container: #2F4200;
+}
+
+[data-cabin-look="warm"] {
+  --cabin-look-font-ui: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --cabin-look-font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --cabin-look-font-label: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --cabin-look-display-weight: 700;
+  --cabin-look-radius-large: 32px;
+  --cabin-look-radius-medium: 22px;
+  --cabin-look-radius-control: 999px;
+}
+
+[data-cabin-look="warm"][data-cabin-scheme="night"] {
+  --cabin-look-background: #0F1420;
+  --cabin-look-surface: #1B2338;
+  --cabin-look-surface-container-high: #27314B;
+  --cabin-look-outline: #34405E;
+  --cabin-look-on-surface: #EEF2FA;
+  --cabin-look-on-surface-variant: #B4BED2;
+  --cabin-look-on-surface-muted: #909BB3;
+  --cabin-look-primary: #8AB4FF;
+  --cabin-look-on-primary: #0B1630;
+  --cabin-look-primary-container: #24375F;
+  --cabin-look-on-primary-container: #B9D1FF;
+}
+
+[data-cabin-look="warm"][data-cabin-scheme="day"] {
+  --cabin-look-background: #F3F5FA;
+  --cabin-look-surface: #FFFFFF;
+  --cabin-look-surface-container-high: #E4E9F2;
+  --cabin-look-outline: #CDD5E3;
+  --cabin-look-on-surface: #111827;
+  --cabin-look-on-surface-variant: #3F4A5E;
+  --cabin-look-on-surface-muted: #5A6478;
+  --cabin-look-primary: #2357C6;
+  --cabin-look-on-primary: #FFFFFF;
+  --cabin-look-primary-container: #DCE6FB;
+  --cabin-look-on-primary-container: #1A428F;
+}
+
+[data-cabin-look="glass"] {
+  --cabin-look-font-ui: 'Figtree', system-ui, sans-serif;
+  --cabin-look-font-display: 'Figtree', system-ui, sans-serif;
+  --cabin-look-font-label: 'Figtree', system-ui, sans-serif;
+  --cabin-look-display-weight: 500;
+  --cabin-look-radius-large: 30px;
+  --cabin-look-radius-medium: 20px;
+  --cabin-look-radius-control: 999px;
+}
+
+[data-cabin-look="glass"][data-cabin-scheme="night"] {
+  --cabin-look-background: #070B12;
+  --cabin-look-surface: rgba(255, 255, 255, 0.0784);
+  --cabin-look-surface-container-high: rgba(255, 255, 255, 0.122);
+  --cabin-look-outline: rgba(255, 255, 255, 0.161);
+  --cabin-look-on-surface: #F4F8FB;
+  --cabin-look-on-surface-variant: #C6D0DA;
+  --cabin-look-on-surface-muted: #9EAAB6;
+  --cabin-look-primary: #6EE7D8;
+  --cabin-look-on-primary: #04201D;
+  --cabin-look-primary-container: rgba(110, 231, 216, 0.18);
+  --cabin-look-on-primary-container: #9AF2E7;
+  --cabin-look-backdrop-glow-start: #12324A;
+  --cabin-look-backdrop-glow-end: #2B2050;
+}
+
+[data-cabin-look="glass"][data-cabin-scheme="day"] {
+  --cabin-look-background: #EEF2F6;
+  --cabin-look-surface: rgba(255, 255, 255, 0.722);
+  --cabin-look-surface-container-high: rgba(10, 30, 50, 0.0706);
+  --cabin-look-outline: rgba(255, 255, 255, 0.949);
+  --cabin-look-on-surface: #0B1520;
+  --cabin-look-on-surface-variant: #33414F;
+  --cabin-look-on-surface-muted: #4F5D6B;
+  --cabin-look-primary: #0B7A70;
+  --cabin-look-on-primary: #FFFFFF;
+  --cabin-look-primary-container: rgba(11, 122, 112, 0.141);
+  --cabin-look-on-primary-container: #075E56;
+  --cabin-look-backdrop-glow-start: #CBE6F1;
+  --cabin-look-backdrop-glow-end: #E2DBF6;
+}
+
+[data-cabin-look="graphic"] {
+  --cabin-look-font-ui: 'Space Grotesk', system-ui, sans-serif;
+  --cabin-look-font-display: 'Space Grotesk', system-ui, sans-serif;
+  --cabin-look-font-label: 'Space Grotesk', system-ui, sans-serif;
+  --cabin-look-display-weight: 700;
+  --cabin-look-radius-large: 12px;
+  --cabin-look-radius-medium: 8px;
+  --cabin-look-radius-control: 12px;
+}
+
+[data-cabin-look="graphic"][data-cabin-scheme="night"] {
+  --cabin-look-background: #0B0B0F;
+  --cabin-look-surface: #17171F;
+  --cabin-look-surface-container-high: #25252F;
+  --cabin-look-outline: #33333F;
+  --cabin-look-on-surface: #FFFFFF;
+  --cabin-look-on-surface-variant: #C8C8D6;
+  --cabin-look-on-surface-muted: #9C9CB0;
+  --cabin-look-primary: #A78BFA;
+  --cabin-look-on-primary: #120A2B;
+  --cabin-look-primary-container: #A78BFA;
+  --cabin-look-on-primary-container: #120A2B;
+}
+
+[data-cabin-look="graphic"][data-cabin-scheme="day"] {
+  --cabin-look-background: #F5F5F7;
+  --cabin-look-surface: #FFFFFF;
+  --cabin-look-surface-container-high: #E8E8EE;
+  --cabin-look-outline: #CFCFDA;
+  --cabin-look-on-surface: #0B0B0F;
+  --cabin-look-on-surface-variant: #3A3A48;
+  --cabin-look-on-surface-muted: #565666;
+  --cabin-look-primary: #5B3FD6;
+  --cabin-look-on-primary: #FFFFFF;
+  --cabin-look-primary-container: #5B3FD6;
+  --cabin-look-on-primary-container: #FFFFFF;
+}
+
+[data-cabin-look="mono"] {
+  --cabin-look-font-ui: 'Instrument Sans', system-ui, sans-serif;
+  --cabin-look-font-display: 'Instrument Serif', system-ui, sans-serif;
+  --cabin-look-font-label: 'Instrument Sans', system-ui, sans-serif;
+  --cabin-look-display-weight: 400;
+  --cabin-look-radius-large: 20px;
+  --cabin-look-radius-medium: 14px;
+  --cabin-look-radius-control: 999px;
+}
+
+[data-cabin-look="mono"][data-cabin-scheme="night"] {
+  --cabin-look-background: #0A0A0A;
+  --cabin-look-surface: #161616;
+  --cabin-look-surface-container-high: #242424;
+  --cabin-look-outline: #333333;
+  --cabin-look-on-surface: #F4F4F4;
+  --cabin-look-on-surface-variant: #BDBDBD;
+  --cabin-look-on-surface-muted: #959595;
+  --cabin-look-primary: #F4F4F4;
+  --cabin-look-on-primary: #0A0A0A;
+  --cabin-look-primary-container: #F4F4F4;
+  --cabin-look-on-primary-container: #0A0A0A;
+}
+
+[data-cabin-look="mono"][data-cabin-scheme="day"] {
+  --cabin-look-background: #F2F2F2;
+  --cabin-look-surface: #FFFFFF;
+  --cabin-look-surface-container-high: #E6E6E6;
+  --cabin-look-outline: #CFCFCF;
+  --cabin-look-on-surface: #0A0A0A;
+  --cabin-look-on-surface-variant: #3D3D3D;
+  --cabin-look-on-surface-muted: #5C5C5C;
+  --cabin-look-primary: #0A0A0A;
+  --cabin-look-on-primary: #FFFFFF;
+  --cabin-look-primary-container: #0A0A0A;
+  --cabin-look-on-primary-container: #FFFFFF;
+}
