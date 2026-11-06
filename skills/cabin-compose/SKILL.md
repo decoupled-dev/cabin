@@ -28,6 +28,41 @@ Must **not** depend on `cabin-views`.
 **Status:** Experimental Theme + System/Status bars. Views bars remain Alpha
 and the SystemUI path.
 
+## v0.2 kit (ADR 0006) — use this for new app UI
+
+```kotlin
+CabinTheme(look = CabinLook.Quiet, colorScheme = scheme, vehicleState = state, fonts = myFonts) {
+    CabinScreenFrame(status, climate, onClimate, CabinDestinations.defaultDock(), dest, onDest) {
+        CabinHomeSplitScreen(media, onMedia, energy, quickControls, onQuick, nextTurn = turn)
+    }
+}
+```
+
+- **Theme:** `CabinTheme(look, colorScheme, brand, fonts, compliance, vehicleState)`
+  builds a Material 3 `MaterialTheme`. Read car extensions with
+  `CabinTheme.look` (`colors`, `shapes`, `type`, `activeStyle`, `edge`,
+  `labelText()`) and `CabinTheme.compliance`.
+- **Looks:** `CabinLook.{Quiet (default), Precision, Warm, Glass, Graphic, Mono}`.
+  Safety colors (`warning`, `error`, `charging`) are identical in every look.
+- **Fonts:** libraries ship none. Pass a `CabinFontResolver`
+  (`CabinFonts.of(mapOf("Manrope" to family))`); default is platform families.
+- **Kit (`dev.decoupled.cabin.compose.kit`):** `CabinPanel`, `CabinBackdrop`,
+  `CabinButton`, `CabinIconButton`, `CabinToggleButton`, `CabinSegmentedControl`,
+  `CabinStepper`, `CabinProgressBar`, `CabinLevelDots`, `CabinRestrictedHint`,
+  `CabinIcons`; cards `CabinNowPlayingCard`, `CabinNextTurnCard`, `CabinEtaChip`,
+  `CabinEnergyCard`, `CabinQuickControlTile`, `CabinZoneTemperature`,
+  `CabinSeatHeatButton`, `CabinFanSelector`, `CabinStatusRow`, `CabinDock`.
+- **Every activating control takes a required `interaction: CabinInteraction`.**
+  Pick the narrowest: `MediaTransport`, `MediaComplex`, `HvacQuick` (single-tap
+  climate), `HvacAdjust` (multi-step), `VehicleQuick`, `VehicleAdjust`, `Glance`.
+- **Screens (`cabin-screens`, opt-in):** `CabinScreenFrame`,
+  `CabinHomeSplitScreen`, `CabinMediaScreen`, `CabinClimateScreen`,
+  `CabinScreenSamples` (fictional data + reference climate reducer).
+- **Sizes and strings:** dimensions from `CabinKitMetrics`; user-visible
+  strings as resources; no color literals.
+- **Visual check:** `./gradlew :cabin-screens:testDebugUnitTest` writes every
+  screen × look × scheme to `cabin-screens/build/showcase-shots/`.
+
 ## Guidelines
 
 - `CabinTheme` + composition locals for colors and compliance

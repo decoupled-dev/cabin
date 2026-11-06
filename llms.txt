@@ -72,3 +72,8 @@ under [`samples/kitchen-sink`](samples/kitchen-sink/README.md) (not product deps
 ## Optional
 
 - [llms-full style expansion](docs/README.md) — use the docs TOC for exhaustive coverage
+
+## v0.2 (ADR 0006)
+- [ADR 0006](docs/adr/0006-material3-looks-and-tiers.md): Material 3 base, six look presets (Quiet default), locked safety tier, three tiers
+- [AOSP upstream path](docs/adoption/aosp-upstream.md): external/cabin drop-in checklist
+- [Compose kit skill](skills/cabin-compose/SKILL.md): CabinTheme(look=...), compose.kit primitives/cards, cabin-screens

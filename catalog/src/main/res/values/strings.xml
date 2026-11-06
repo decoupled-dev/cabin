@@ -16,6 +16,7 @@
 -->
 <resources>
     <string name="catalog_app_name">Cabin Catalog</string>
+    <string name="catalog_showcase_name">Cabin Showcase</string>
     <string name="catalog_tagline">Tokens + chrome demos (sample)</string>
     <string name="catalog_last_action_none">No activations yet</string>
     <string name="catalog_last_action">Last: %1$s</string>

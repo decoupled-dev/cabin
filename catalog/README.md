@@ -3,6 +3,15 @@
 Thin interactive catalog for Cabin chrome and the Experimental kit scaffold —
 **not** a product library and **not** a SystemUI / Soong dependency.
 
+## Showcase (launcher)
+
+`ShowcaseActivity` is the launcher: Home (H1), Media (M2) and Climate (C4)
+reference screens from `cabin-screens`, with controls in the status row to
+cycle the look, switch day/night, and step the simulated drive state
+(Parked → Idling → Moving → Restricted). It bundles the looks' OFL fonts;
+see [fonts/README.md](fonts/README.md). The previous catalog index is still
+installed as "Cabin Catalog".
+
 ## What it demos
 
 | Area | Stack | Notes |

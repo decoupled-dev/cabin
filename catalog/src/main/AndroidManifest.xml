@@ -23,6 +23,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cabin">
         <activity
+            android:name=".showcase.ShowcaseActivity"
+            android:exported="true"
+            android:label="@string/catalog_showcase_name"
+            android:screenOrientation="landscape"
+            android:theme="@android:style/Theme.Material.NoActionBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".CatalogActivity"
             android:exported="true"
             android:label="@string/catalog_app_name"

@@ -23,6 +23,15 @@ metadata:
    `container`) and locked night contrast for `warning` / `error` / `charging`.
 6. Domain accents stay off body-text roles (`onSurface`, `onContainer`).
 
+## Looks and safety tier (v0.2)
+
+- `cabin.look.<name>` presets (Material 3 role names) over one schema;
+  `cabin.safety.{night,day}` is locked across looks.
+- Codegen (`tools/cabin_looks.py`) rejects looks that define safety roles,
+  missing roles, and text under 4.5:1. Never hand-edit
+  `CabinLooks.generated.kt` or `cabin.looks.css`.
+- Details: [token-schema](../../docs/design-language/token-schema.md#looks-and-the-safety-tier-v02-adr-0006).
+
 ## Layers
 
 ```text
