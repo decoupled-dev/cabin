@@ -9,8 +9,8 @@ androidxComposeBom = "2024.10.01"
 androidCompileSdk = "34"
 androidMinSdk = "29"
 androidTargetSdk = "34"
-detekt = "1.23.7"
-binaryCompatibilityValidator = "0.16.3"
+detekt = "1.23.8"
+binaryCompatibilityValidator = "0.18.2"
 
 [libraries]
 detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
