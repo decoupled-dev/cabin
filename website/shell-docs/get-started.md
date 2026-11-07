@@ -6,8 +6,10 @@ sidebar_position: 1
 
 # Get started
 
-Cabin is in an early docs-and-foundations phase. Library Maven coordinates and
-many UI APIs are **planned**, not published.
+Cabin's Alpha modules (`cabin-tokens`, `cabin-compliance`, `cabin-views`) are
+in the repo. The Material 3 Compose kit, six look presets, and the opt-in
+`cabin-screens` reference screens are **Experimental**. Maven coordinates are
+**planned**, not published.
 
 ## Read first
 
@@ -16,6 +18,7 @@ many UI APIs are **planned**, not published.
 3. [Tokens](/docs/design-language/tokens) — semantic + component contract
 4. [Compliance](/docs/compliance/) — Restriction Engine overview
 5. [MVP v0.1](/docs/mvp) — frozen scope before domain screens
+6. [ADR 0006](/docs/adr/0006-material3-looks-and-tiers) — Material 3 base, looks, three tiers
 
 ## Choose a path
 
@@ -23,7 +26,7 @@ many UI APIs are **planned**, not published.
 | --- | --- |
 | Design / product | [Foundations](/docs/design-language/foundations) · [Stance](/docs/product/stance) |
 | App developers | [Compose](/docs/platforms/compose) · [Integration](/docs/adoption/integration) |
-| Platform / OEM | [Views](/docs/platforms/views) · [Build-tree](/docs/adoption/build-tree) · [Soong](/docs/platforms/soong) |
+| Platform / OEM | [Views](/docs/platforms/views) · [Build-tree](/docs/adoption/build-tree) · [Soong](/docs/platforms/soong) · [AOSP upstream](/docs/adoption/aosp-upstream) |
 | Compliance owners | [Restriction states](/docs/compliance/restriction-states) |
 
 ## What this site is (and is not)

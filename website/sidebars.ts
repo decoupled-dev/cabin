@@ -68,8 +68,10 @@ const sidebars: SidebarsConfig = {
       items: [
         'adoption/integration',
         'adoption/build-tree',
+        'adoption/theme-kit',
         'adoption/packaging',
         'adoption/migration',
+        'adoption/aosp-upstream',
       ],
     },
     {
@@ -82,6 +84,9 @@ const sidebars: SidebarsConfig = {
         'mvp',
         'pre-implementation',
         'support-matrix',
+        'quality',
+        'adr/README',
+        'adr/0006-material3-looks-and-tiers',
         'website/site-plan',
         'contributing',
       ],
