@@ -1,4 +1,5 @@
 @import "../styles/cabin.tokens.css";
+@import "../styles/cabin.looks.css";
 
 @tailwind base;
 @tailwind components;

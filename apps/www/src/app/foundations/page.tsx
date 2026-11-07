@@ -5,6 +5,7 @@ import {
   TypeScaleDemo,
 } from "@/components/foundations-demos";
 import { DemoStage } from "@/components/demo-stage";
+import { LookPreviewDemo } from "@/components/demo-look-preview";
 import {
   GalleryHeader,
   GalleryNav,
@@ -18,7 +19,7 @@ import { DOCS_FOUNDATIONS, DOCS_TOKENS, FOUNDATIONS_NAV } from "@/lib/tokens";
 export const metadata: Metadata = {
   title: "Foundations",
   description:
-    "Cabin foundations — color, type, space, and motion from generated design tokens. Live day/night demos.",
+    "Cabin foundations — six look presets, color, type, space, and motion from generated design tokens. Live day/night demos.",
 };
 
 export default function FoundationsPage() {
@@ -26,11 +27,19 @@ export default function FoundationsPage() {
     <div className="bg-background" data-gallery="foundations">
       <GalleryHeader
         title="Foundations"
-        summary="Color, type, space, and motion — live from generated tokens. Flip Night / Day in the header."
+        summary="Looks, color, type, space, and motion — live from generated tokens. Flip Night / Day in the header."
       />
       <GalleryNav label="Foundations sections" items={FOUNDATIONS_NAV} />
 
       <PageFrame className="flex flex-col gap-16 py-10 sm:py-12">
+        <GallerySection
+          id="looks"
+          title="Looks"
+          body="Six presets over one token schema, with Quiet as the default. A look sets Material 3 color roles, type, and shape; warning, error, and charging come from a shared safety tier that no look can override."
+        >
+          <LookPreviewDemo />
+        </GallerySection>
+
         <GallerySection
           id="color"
           title="Color"

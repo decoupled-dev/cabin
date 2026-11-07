@@ -13,6 +13,7 @@ python3 tools/generate_cabin_tokens.py
 | File | Consumer |
 | --- | --- |
 | `cabin.tokens.css` | `apps/www` (mirrored at `apps/www/src/styles/cabin.tokens.css`) |
+| `cabin.looks.css` | `apps/www` look previews (mirrored at `apps/www/src/styles/cabin.looks.css`) |
 
 Android / Compose outputs live under `cabin-tokens/` and `cabin-compose/` (same generator run).
 

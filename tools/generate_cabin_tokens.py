@@ -77,6 +77,7 @@ CSS_GENERATED_OUT = ROOT / "tokens" / "generated" / "cabin.tokens.css"
 GENERATED_README = ROOT / "tokens" / "generated" / "README.md"
 LOOKS_KOTLIN_OUT = KOTLIN_OUT.with_name("CabinLooks.generated.kt")
 LOOKS_CSS_OUT = ROOT / "tokens" / "generated" / "cabin.looks.css"
+LOOKS_CSS_WWW_OUT = CSS_WWW_OUT.with_name("cabin.looks.css")
 
 REQUIRED_NIGHT_LOCKS = ("warning", "error", "charging")
 LOCK_SAFETY = "safety-adjacent"
@@ -591,6 +592,8 @@ def generated_readme_text() -> str:
             "| --- | --- |",
             "| `cabin.tokens.css` | `apps/www` (mirrored at "
             "`apps/www/src/styles/cabin.tokens.css`) |",
+            "| `cabin.looks.css` | `apps/www` look previews (mirrored at "
+            "`apps/www/src/styles/cabin.looks.css`) |",
             "",
             "Android / Compose outputs live under `cabin-tokens/` and "
             "`cabin-compose/` (same generator run).",
@@ -899,6 +902,7 @@ def collect_outputs(doc: dict) -> dict[Path, str]:
         type_family,
     )
 
+    looks_css = cabin_looks.build_css(doc, version)
     return {
         KOTLIN_OUT: kotlin,
         RES_VALUES / "cabin_colors.xml": colors_xml(
@@ -916,7 +920,8 @@ def collect_outputs(doc: dict) -> dict[Path, str]:
         CSS_GENERATED_OUT: css,
         GENERATED_README: generated_readme_text(),
         LOOKS_KOTLIN_OUT: cabin_looks.build_kotlin(doc, version),
-        LOOKS_CSS_OUT: cabin_looks.build_css(doc, version),
+        LOOKS_CSS_OUT: looks_css,
+        LOOKS_CSS_WWW_OUT: looks_css,
     }
 
 

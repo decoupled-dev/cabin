@@ -11,7 +11,7 @@ import {
   GallerySection,
 } from "@/components/gallery-chrome";
 import { PageFrame } from "@/components/site-chrome";
-import { DOCS_URL, KITCHEN_SINK_URL } from "@/lib/site";
+import { CATALOG_URL, DOCS_URL, KITCHEN_SINK_URL } from "@/lib/site";
 import {
   COMPONENTS_NAV,
   DOCS_CLIMATE_TILE,
@@ -23,7 +23,7 @@ import {
 export const metadata: Metadata = {
   title: "Components",
   description:
-    "Cabin components — Bars, ClimateTile, MediaNowPlaying, Experimental kit chrome, and screens composed from the kit.",
+    "Cabin components — Bars, ClimateTile, MediaNowPlaying, the Material 3 Compose kit, and Home / Media / Climate reference screens.",
 };
 
 export default function ComponentsPage() {
@@ -31,7 +31,7 @@ export default function ComponentsPage() {
     <div className="bg-background" data-gallery="components">
       <GalleryHeader
         title="Components"
-        summary="Bars, Climate, Media, then kit chrome and screens built from those pieces. One scheme toggle in the header."
+        summary="Bars, Climate, Media, then the Compose kit and the reference screens built from it. One scheme toggle in the header."
       />
       <GalleryNav label="Components sections" items={COMPONENTS_NAV} />
 
@@ -106,7 +106,7 @@ export default function ComponentsPage() {
         <GallerySection
           id="kit"
           title="Kit"
-          body="Experimental shared chrome for generated Compose / Views stubs — family accent mark, focus ring, Restriction Engine copy. Inspect one row at a time; the Android sample is samples/kitchen-sink."
+          body="The Compose kit is hand-written on Material 3: primitives and cards in compose.kit that declare an interaction and ask the Restriction Engine. The generated scaffolds are frozen; this inspector shows the host chrome they share — family mark, focus ring, gate copy."
         >
           <KitInspectorDemo />
         </GallerySection>
@@ -114,7 +114,7 @@ export default function ComponentsPage() {
         <GallerySection
           id="screens"
           title="Screens"
-          body="Cabin surfaces assembled from the kit — dashboard chrome with now playing and climate. Parked / Moving uses the same Restriction Engine as the sample app."
+          body="Home (Split), Media (Art hero), and Climate (Panel) ship as opt-in reference screens in cabin-screens, for apps only — never SystemUI. This dashboard assembles the same pieces; the catalog Showcase runs them in every look, day and night, Parked through Restricted."
         >
           <ComposedScreenDemo />
         </GallerySection>
@@ -134,6 +134,16 @@ export default function ComponentsPage() {
             className="text-on-surface underline-offset-4 hover:underline"
           >
             Foundations
+          </a>
+          <span aria-hidden className="mx-2">
+            ·
+          </span>
+          <a
+            href={CATALOG_URL}
+            className="text-on-surface underline-offset-4 hover:underline"
+            rel="noreferrer"
+          >
+            Catalog Showcase
           </a>
           <span aria-hidden className="mx-2">
             ·

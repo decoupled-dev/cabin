@@ -30,6 +30,50 @@ const layers = [
   },
 ] as const;
 
+const MODES = ["Parked", "Idling", "Moving", "Restricted"] as const;
+
+type Gate = "Allow" | "Substitute" | "Block";
+
+/** Mirrors CabinRestrictionEngine's default matrix (cabin-compliance). */
+const matrix: readonly { task: string; detail: string; gates: readonly Gate[] }[] = [
+  {
+    task: "Single-tap climate and body",
+    detail: "Temp step, fan, seat heat, defrost, lock, lights, drive mode",
+    gates: ["Allow", "Allow", "Allow", "Allow"],
+  },
+  {
+    task: "Media transport",
+    detail: "Play, pause, skip",
+    gates: ["Allow", "Allow", "Allow", "Allow"],
+  },
+  {
+    task: "Multi-step setup",
+    detail: "Climate zones and schedules, windows, mirrors, seat position",
+    gates: ["Allow", "Allow", "Block", "Block"],
+  },
+  {
+    task: "Media source and browse",
+    detail: "Source picker, seek, queue",
+    gates: ["Allow", "Substitute", "Block", "Block"],
+  },
+  {
+    task: "Keyboard and filtering",
+    detail: "Text entry, sort, filter",
+    gates: ["Allow", "Block", "Block", "Block"],
+  },
+  {
+    task: "Parked-only content",
+    detail: "Video, lyrics, long-form setup",
+    gates: ["Allow", "Block", "Block", "Block"],
+  },
+];
+
+const gateClass: Record<Gate, string> = {
+  Allow: "text-on-surface",
+  Substitute: "text-on-surface-variant italic",
+  Block: "text-on-surface-variant line-through decoration-[var(--outline-subtle)]",
+};
+
 export default function CompliancePage() {
   return (
     <div className="bg-background">
@@ -102,6 +146,74 @@ export default function CompliancePage() {
             </Reveal>
           ))}
         </div>
+
+        <Reveal className="mt-16">
+          <SectionHeading
+            kicker="Restriction Engine"
+            title="One matrix, four drive states."
+          />
+          <p className="mt-4 max-w-2xl text-body text-on-surface-variant text-balance">
+            Widgets declare an interaction and ask the engine. Single-tap
+            controls stay available at speed — defrost is never blocked —
+            while multi-step tasks fail closed. On AAOS, an adapter maps
+            CarUxRestrictions into these states; if the car service is
+            missing, the state is unknown and treated as Restricted.
+          </p>
+        </Reveal>
+
+        <Reveal className="mt-8" delayMs={40}>
+          <InstrumentWell>
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[40rem] border-collapse text-left">
+                <thead>
+                  <tr className="border-b border-[var(--outline-subtle)]">
+                    <th scope="col" className="kicker px-5 py-4 font-semibold text-on-surface-variant">
+                      Task
+                    </th>
+                    {MODES.map((mode) => (
+                      <th
+                        key={mode}
+                        scope="col"
+                        className="kicker px-4 py-4 font-semibold text-on-surface-variant"
+                      >
+                        {mode}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {matrix.map((row) => (
+                    <tr
+                      key={row.task}
+                      className="border-b border-[var(--outline-subtle)] last:border-b-0"
+                    >
+                      <th scope="row" className="px-5 py-4 font-normal">
+                        <span className="block text-label text-on-surface">
+                          {row.task}
+                        </span>
+                        <span className="mt-1 block text-status text-on-surface-variant">
+                          {row.detail}
+                        </span>
+                      </th>
+                      {row.gates.map((gate, i) => (
+                        <td
+                          key={MODES[i]}
+                          className={`px-4 py-4 text-status ${gateClass[gate]}`}
+                        >
+                          {gate}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="border-t border-[var(--outline-subtle)] px-5 py-4 text-status text-on-surface-variant">
+              Default policy. Programs can tighten it without forking widgets.
+              Unknown vehicle state uses the Restricted column.
+            </p>
+          </InstrumentWell>
+        </Reveal>
 
         <Reveal className="mt-16">
           <div className="flex flex-wrap gap-3">

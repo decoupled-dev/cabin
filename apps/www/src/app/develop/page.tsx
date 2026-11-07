@@ -3,26 +3,26 @@ import { ButtonLink } from "@/components/button-link";
 import { Reveal } from "@/components/reveal";
 import { InstrumentWell } from "@/components/instrument-frame";
 import { PageFrame, SectionHeading } from "@/components/site-chrome";
-import { DOCS_URL, GITHUB_URL, KITCHEN_SINK_URL } from "@/lib/site";
+import { CATALOG_URL, DOCS_URL, GITHUB_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Develop",
   description:
-    "Get started with Cabin — tokens, Restriction Engine, Theme Kit, Experimental kit scaffold, dual Gradle/Soong distribution.",
+    "Get started with Cabin — tokens, Restriction Engine, Theme Kit, the Material 3 Compose kit, reference screens, and dual Gradle/Soong distribution.",
 };
 
 const steps = [
   {
     title: "Read the contracts",
-    body: "Start with vision, MVP v0.1, and the pre-implementation gate so library scope stays frozen and thin.",
+    body: "Start with vision, MVP v0.1, and ADR 0006 (Material 3 base, six looks, three tiers) so library scope stays deliberate and thin.",
   },
   {
     title: "Tokens, compliance, chrome",
-    body: "Alpha: cabin-tokens, cabin-compliance, cabin-views (Theme Kit + System/Status bars). Experimental: cabin-foundation, cabin-compose kit, cabin-gauges.",
+    body: "Alpha: cabin-tokens, cabin-compliance, cabin-views (Theme Kit + System/Status bars). Experimental: cabin-foundation, cabin-compose (Material 3 theme, looks, kit), cabin-screens (Home / Media / Climate), cabin-gauges.",
   },
   {
     title: "Pick your consumption path",
-    body: "Apps: Gradle / Maven. SystemUI and build-tree: Soong Android.bp — Views-first, never Gradle-implementation into platform chrome. Inspect rows in samples/kitchen-sink (sample only).",
+    body: "Apps: Gradle / Maven. SystemUI and build-tree: Soong Android.bp — Views-first, never Gradle-implementation into platform chrome. Compose and screens are app dependencies only.",
   },
 ] as const;
 
@@ -99,7 +99,7 @@ export default function DevelopPage() {
                     <br />
                     <span className="text-status text-on-surface-variant">
                       cabin-tokens · cabin-compliance · cabin-views ·
-                      cabin-compose
+                      cabin-compose · cabin-screens
                     </span>
                   </dd>
                 </div>
@@ -113,6 +113,10 @@ export default function DevelopPage() {
                     <span className="text-status text-on-surface-variant">
                       CabinTokens · CabinCompliance · CabinViews
                     </span>
+                    <br />
+                    <span className="text-status text-on-surface-variant">
+                      Apps in the tree: CabinCompose · CabinScreens
+                    </span>
                   </dd>
                 </div>
               </dl>
@@ -120,17 +124,65 @@ export default function DevelopPage() {
           </InstrumentWell>
         </Reveal>
 
+        <Reveal className="mt-8">
+          <InstrumentWell>
+            <div className="px-6 py-8">
+              <h2 className="font-display text-headline text-on-surface">
+                Toward external/cabin
+              </h2>
+              <p className="mt-3 max-w-2xl text-body text-on-surface-variant">
+                The long-term target is an AOSP drop next to car-ui-lib and the
+                AAOS OEM design tokens. Look roles use the same Material 3 names
+                as those tokens.
+              </p>
+            </div>
+            <dl className="grid border-t border-[var(--outline-subtle)] sm:grid-cols-3">
+              {[
+                {
+                  label: "Verified",
+                  value:
+                    "All seven Soong modules compile with an AOSP 17 tree's own toolchain, against AOSP prebuilts only.",
+                },
+                {
+                  label: "Enforced",
+                  value:
+                    "Apache-2.0 headers, no GMS or bundled fonts, token-only color, thin Soong deps — checked by the quality pipeline in CI.",
+                },
+                {
+                  label: "Planned",
+                  value:
+                    "A full m build in a clean tree, a public API dump, and one OEM design token RRO per look.",
+                },
+              ].map((cell, i) => (
+                <div
+                  key={cell.label}
+                  className={`px-6 py-6 ${
+                    i > 0
+                      ? "border-t border-[var(--outline-subtle)] sm:border-t-0 sm:border-l"
+                      : ""
+                  }`}
+                >
+                  <dt className="kicker text-on-surface-variant">{cell.label}</dt>
+                  <dd className="mt-3 text-status text-on-surface">{cell.value}</dd>
+                </div>
+              ))}
+            </dl>
+          </InstrumentWell>
+        </Reveal>
+
         <Reveal className="mt-10">
           <p className="max-w-2xl text-body text-on-surface-variant text-balance">
-            Inspect inventory rows and screens built from the kit in{" "}
+            See the kit running in{" "}
             <a
-              href={KITCHEN_SINK_URL}
+              href={CATALOG_URL}
               className="text-on-surface underline-offset-4 hover:underline"
               rel="noreferrer"
             >
-              samples/kitchen-sink
+              the catalog Showcase
             </a>
-            . Gradle sample only — never a cabin-* or SystemUI dependency.
+            : Home, Media, and Climate in each look, day and night, stepping
+            from Parked to Restricted. Sample only — never a cabin-* or
+            SystemUI dependency.
           </p>
         </Reveal>
       </PageFrame>

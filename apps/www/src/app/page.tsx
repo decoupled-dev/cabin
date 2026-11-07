@@ -12,11 +12,11 @@ const reasons = [
   },
   {
     title: "Compose and Views",
-    body: "Two skins, one language. Shared tokens, Restriction Engine, and scaffold chrome so system UI and apps stay in parity.",
+    body: "Two skins, one language. Views for system UI; a Material 3 Compose kit and reference screens for apps — sharing tokens and the Restriction Engine.",
   },
   {
-    title: "OEM brand without forks",
-    body: "Remap semantic tokens and extension slots. Keep safety meaning intact when programs specialize.",
+    title: "Theme, don't redesign",
+    body: "Six look presets over one token schema, Quiet by default. Warning, error, and charging stay locked in every look.",
   },
 ] as const;
 

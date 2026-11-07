@@ -2,6 +2,8 @@ export const DOCS_URL = "https://decoupled-dev.github.io/cabin/";
 export const GITHUB_URL = "https://github.com/decoupled-dev/cabin";
 /** Gradle sample — not a product / SystemUI dependency. */
 export const KITCHEN_SINK_URL = `${GITHUB_URL}/tree/main/samples/kitchen-sink`;
+/** Catalog sample with the Showcase (look × day/night × drive state). Sample only. */
+export const CATALOG_URL = `${GITHUB_URL}/tree/main/catalog`;
 
 export const NAV = [
   { href: "/", label: "Home" },

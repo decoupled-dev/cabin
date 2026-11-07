@@ -163,6 +163,56 @@ export function GlyphPlus({ className }: GlyphProps) {
   );
 }
 
+export function GlyphLock({ className }: GlyphProps) {
+  return (
+    <Svg className={className}>
+      <rect x="5.5" y="10.5" width="13" height="9.5" rx="2" stroke="currentColor" strokeWidth="1.75" />
+      <path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+    </Svg>
+  );
+}
+
+export function GlyphDefrost({ className }: GlyphProps) {
+  return (
+    <Svg className={className}>
+      <path d="M4 18c2.5-7 13.5-7 16 0" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+      <path
+        d="M9 13.5c-.8-1 .8-2-.1-3.2M12 12.8c-.8-1 .8-2-.1-3.2M15 13.5c-.8-1 .8-2-.1-3.2"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+    </Svg>
+  );
+}
+
+export function GlyphLights({ className }: GlyphProps) {
+  return (
+    <Svg className={className}>
+      <path d="M11 6.5c-3.5 0-5.5 2.5-5.5 5.5s2 5.5 5.5 5.5V6.5Z" stroke="currentColor" strokeWidth="1.75" strokeLinejoin="round" />
+      <path d="M14 8h5M14 12h5M14 16h5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+    </Svg>
+  );
+}
+
+export function GlyphDriveMode({ className }: GlyphProps) {
+  return (
+    <Svg className={className}>
+      <path d="M5 16a7 7 0 1 1 14 0" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+      <path d="m12 16 3.5-4.5" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" />
+    </Svg>
+  );
+}
+
+export function GlyphTurnRight({ className }: GlyphProps) {
+  return (
+    <Svg className={className}>
+      <path d="M7 20v-7a3 3 0 0 1 3-3h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+      <path d="m14.5 6.5 3.5 3.5-3.5 3.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+    </Svg>
+  );
+}
+
 export function GlyphSignal({ className }: GlyphProps) {
   return (
     <Svg className={className}>

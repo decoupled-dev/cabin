@@ -28,6 +28,7 @@ npm run build   # must pass before finishing
 | `src/app/` | Routes: `/`, `/foundations`, `/use-cases`, `/components`, `/compliance`, `/develop` |
 | `src/app/globals.css` | Scheme tokens (`data-scheme` day/night), brand colors |
 | `src/styles/cabin.tokens.css` | **Generated** — never hand-edit; change `tokens/cabin.tokens.json` and run `python3 tools/generate_cabin_tokens.py` from repo root |
+| `src/styles/cabin.looks.css` | **Generated** — six look presets (`data-cabin-look` × `data-cabin-scheme`) plus the locked safety tier; same generator. Used by the Foundations look preview only |
 | `src/components/` | Site chrome (`site-header`, `instrument-frame`, `segmented-control`, `scheme-provider`) and HMI demos (`demo-*`, `cabin-hmi-preview`, `use-case-stages`) |
 | `src/lib/` | `site.ts` (nav/meta), `tokens.ts`, `use-cases.ts`, `demo-signal.ts` |
 

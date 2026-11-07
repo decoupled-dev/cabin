@@ -19,10 +19,18 @@ export type GateDisposition = "allow" | "substitute" | "block";
 
 export function dispositionFor(
   drive: DriveState,
-  interaction: "hvacAdjust" | "mediaTransport" | "mediaComplex",
+  interaction:
+    | "hvacAdjust"
+    | "hvacQuick"
+    | "vehicleQuick"
+    | "mediaTransport"
+    | "mediaComplex",
 ): GateDisposition {
   if (drive === "parked") return "allow";
   switch (interaction) {
+    // Single-tap controls (HvacQuick / VehicleQuick) are Allow in every mode.
+    case "hvacQuick":
+    case "vehicleQuick":
     case "mediaTransport":
       return "allow";
     case "hvacAdjust":

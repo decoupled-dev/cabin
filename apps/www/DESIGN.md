@@ -107,6 +107,11 @@ reject it before merge.
 ### Gallery routes (`/foundations`, `/use-cases`, `/components`)
 
 - Dense two-up / full-bleed demo stages — no sparse right-column void.
+- Foundations opens with one Looks preview: a single Home layout, the six
+  presets on one segmented control, safety colors shared across looks. The
+  preview follows the site header scheme; it never gets its own Night/Day
+  control. Look accents (including Graphic's violet) stay inside the preview
+  and never become site brand; Glass renders without its backdrop glow.
 - Components: Bars / Climate / Media stay the live Alpha demos; Kit is one
   inspector (not an inventory grid); Screens compose those pieces.
 - Real SVG glyphs and art wells — no dash icon stubs, no hyphen artwork, no
@@ -162,7 +167,7 @@ Each section: **one purpose**, **one headline**, usually **one short supporting
 sentence**. If a section needs cards to make sense as interaction, keep them
 minimal; default is no decorative cards.
 
-Good section jobs: pitch, pillars, foundations gallery (color / type / space /
+Good section jobs: pitch, pillars, foundations gallery (looks / color / type / space /
 motion), use-case stages (Parked / Moving / Charging), components gallery
 (Bars / Climate / Media, kit inspector, composed screens), compliance story,
 develop / get started. Bad: “stats strip + logos + testimonials + feature bingo”
@@ -174,8 +179,9 @@ in the site header. No marketing hero noise on those routes.
 
 **Components kit / screens:** shared Experimental scaffold chrome (family mark,
 focus, Restriction Engine) and one dashboard assembled from bars + climate +
-media. Do not add a 100-row inventory grid. The Android sample is
-`samples/kitchen-sink` — mention it; do not embed the catalog.
+media. Do not add a 100-row inventory grid. The Android samples are the
+`catalog` Showcase (looks × day/night × drive state) and `samples/kitchen-sink`
+— link them; do not embed the catalog.
 
 | Use case | Stage job |
 | --- | --- |
