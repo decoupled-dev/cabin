@@ -98,7 +98,7 @@ jobs:
           category: cabin-static
       - name: Upload reports
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: static-reports
           path: |
@@ -125,7 +125,7 @@ jobs:
         run: tools/quality.sh test
       - name: Upload screenshots
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: showcase-shots
           path: |
@@ -134,7 +134,7 @@ jobs:
           if-no-files-found: ignore
       - name: Upload test reports
         if: failure()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: test-reports
           path: |
